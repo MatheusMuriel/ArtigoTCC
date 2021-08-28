@@ -1,4 +1,8 @@
-% 12pt,openright,oneside,a4paper,english,french,spanish,brazil %
+%%%%%%%%%%%%%%%%
+% Classe Principal da monografia
+%%%%%%%%%%%%%%%%
+
+
 \documentclass[12pt,openright,oneside,a4paper,english,brazil]{unifil}
 
 % TODO - Definir título da sua monografia %
@@ -10,54 +14,48 @@
 \preambulo  {Ciência da Computação}
 \orientador {Ricardo Inacio Alvares e Silva}
 
-\begin{document}
 
+
+\begin{document}
 \frenchspacing
 
-%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%Elementos pré-textuais%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%
-\pretextual
 
+%%%%% Elementos pré-textuais %%%%%
+\pretextual
 
 \imprimircapa
 
 \include{./folhaderosto}
 \include{./folhadeaprovacao}
 \include{./dedicatoria}
-\include{./agradecimentos} % (opcional)
-\include{./epigrafe} % (opcional)
-
-%\textit{Escreva sua epígrafe diretamente aqui, dentro deste bloco de textit} % (opcional)
-
+\include{./agradecimentos}  % Opcional %
+\include{./epigrafe}        % Opcional %
 \include{./resumo}
 \include{./abstract}
-
-% --- gerar lista de figuras ---
 \newpage
+
+
+%%%%% Lista de Figuras %%%%%
 \pdfbookmark[0]{\listfigurename}{Lista de Figuras}
 \listoffigures*
 \cleardoublepage
+%%%%% Lista de Figuras %%%%%
 
-% --- gerar lista de tabelas ---
+
+%%%%% Lista de Tabelas %%%%%
 \renewcommand{\listtablename}{Lista de Tabelas}
 \listoftables*
 \clearpage
-%%%%% lista tabela
+%%%%% Lista de Tabelas %%%%%
 
 \include{./siglas}
 
-%\par
-%\vspace{11cm}
 
 \tableofcontents*
-
   \setlength\absleftindent{0cm}
   \setlength\absrightindent{0cm}
-  
   %fonte do ambiente%
   \abstracttextfont{\normalfont\normalsize}
-
   %intentação e espaçamento entre parágrafos%
   \setlength{\absparindent}{0pt}
   \setlength{\absparsep}{18pt}
@@ -66,6 +64,8 @@
 %\listoffigures*
 %\cleardoublepage
 
+
+%%%%% Elementos Textuais %%%%%
 \textual
 
 \renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
