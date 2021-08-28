@@ -3,12 +3,25 @@
 \makeatletter
 \renewcommand{\folhaderostocontent}{
   \begin{center}
-    {\ABNTEXchapterfont\bfseries\MakeTextUppercase{\imprimirautor}}
+    \ABNTEXchapterfont{
+      \textbf{
+        \MakeTextUppercase{\imprimirautor}
+      }
+    }
+
     \vspace*{5cm}
+
     \begin{center}
-      \ABNTEXchapterfont\bfseries\normalsize\MakeTextUppercase{\imprimirtitulo}
+      \ABNTEXchapterfont{
+        \normalsize
+        \textbf{
+          \MakeTextUppercase{\imprimirtitulo}
+        }
+      }
     \end{center}
+
     \vspace*{1cm}
+
     \abntex@ifnotempty{\imprimirpreambulo}{%
       \hspace{.45\textwidth}
       \begin{minipage}{.5\textwidth}
@@ -17,10 +30,13 @@
         {\textnormal{\imprimirorientadorRotulo~\imprimirorientador.}}
       \end{minipage}%
     }%
+
     \vspace*{\fill}
-    {\bfseries\large\imprimirlocal}
+
+    \bfseries\large{\imprimirlocal}
     \par
-    {\bfseries\large\imprimirdata}
+    \bfseries\large{\imprimirdata}
+
     \vspace*{1cm}
   \end{center}
 }
