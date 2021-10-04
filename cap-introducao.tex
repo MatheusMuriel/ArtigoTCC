@@ -1,14 +1,34 @@
 \chapter{Introdução}
 %% Introdução ao que vai ser o trabalho %%
-\lipsum[2]
+Em um ambiente de produção industrial moderna a optimização é um ponto de grande importância, devido a constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa  (WARI; ZHU, 2016).\newline
+
+Um dos exemplos de otimização dentro de sistemas de manufatura é dentro de um cenário com diversas máquinas independentes e uma fila de tarefas não homogêneas, achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar tempo e energia.\newline
+
+Em um ambiente de alta concorrência é importante que essa ordem seja encontrada o quanto antes, pois demora para encontrar a solução significa perda de tempo de produção. Porém a busca de um bom escalonamento, ou seja, a configuração e ordem de execução, não é uma tarefa fácil. Pois o número de possibilidades de arranjos cresce exponencialmente, e computar todas as soluções possíveis torna-se inviável após alguns níveis.\newline
+
+Por causa dessa característica exponencial de acordo com o número de máquinas e o número de problemas, esse problema de escalonamento é classificado como um problema de optimização de análise combinatória e pertence a classe de problemas NP-Hard. Segundo Eswaramurthy (2008), problemas NP-Hard são aqueles em que a resposta não pode ser encontrada computacionalmente em tempo polinomial, ou seja, um tempo razoável, porém uma solução pode ser verificada em tempo polinomial, um outro exemplo de problema NP-Hard é encontrar um número primo, que é muito utilizado em sistemas de criptografia.\newline
+
+Existem diversos problemas clássicos de produção e manufatura que são enquadrados em problemas de otimização e escalonamento, o que torna esse assunto uma área de muito interesse para pesquisadores do mundo inteiro.\newline
+
+Dentre os clássicos de escalonamento e planejamento de produção estão: Single Machine Scheduling Problem, Parallel Machine Scheduling Problem, Flow Shop Scheduling Problem, Job Shop Scheduling Problem e Open Shop Scheduling Problem (ALLAHVERDI et al., 2008).\newline
+
+Como esses problemas não são possíveis de serem resolvidos em tempo polinomial, não é possível encontrar uma solução para eles. Mas é possível encontrarmos uma solução “boa o suficiente”, que chamamos de solução ótima. Para encontrar uma solução ótima para um problema de análise escalonamento HP-Hard existem diversas abordagens.\newline
+%% Fim Introdução %%
+
+
 
 \section{Problema de Job Shop Flexível - FJSP}
 %% Oque é FJSP %%
-\lipsum[2]
+Para esse trabalho foi escolhido o cenário de Flexible Job Shop  Scheduling Problem (FJSSP), que é uma variação do Job Shop  Scheduling Problem (JSSP).
 
 \subsection{Problema de Job Shop - JSP} 
 %% Oque é o problema de JSP Simples %%
-\lipsum[2]
+Job Shop Scheduling Problem (JSSP) é um problema clássico, pertencente a classe de problemas NP-Hard, ele chama muito a atenção de pesquisadores por ser uma problema com muitas aplicações no mundo real, seja em ambientes de manufatura ou em planejamento de produção ou até mesmo em logística. [Cheng et al.1996].\newline
+
+Nesse problema, temos um conjunto de máquinas e um conjunto de tarefas (os jobs), sendo cada job uma sequência de operações, e o objetivo é encontrar uma sequência que combine as máquinas para minimize a quantidade de tempo ocioso de cada máquina, assim atingindo um ou mais objetivos. [Cheng et al.1996]. O problema de JSP é comprovadamente pertencente à classe NP-Hard como demonstrado por [Lenstra e Rinnooy 1979] quando existem duas ou mais máquinas. \newline
+
+Ao longo do tempo já foram propostas diversas abordagens para resolver o problema de JSP, dentre elas o branch and bound [Nababan et al. 2008], a Programação Inteira [Pan 1997], a Programação Dinâmica [Gro-micho et al. 2012], Algoritmos Evolutivos [Pezzella et al.2008], e até mesmo técnicas híbridas [Zhang et al. 2009], onde duas ou mais abordagens são associadas para compor um algoritmo híbrido.\newline
+%% Fim do JSP %%
 
 \subsubsection{Problema de Job Shop Flexível - FJSP}
 %% Diferenças para o problema de Job Shop Flexível %%
@@ -63,4 +83,7 @@
 %% Sobre a possibilidade de usar GA no PSO %% 
 
 %% TPSO, DIPSO, etc... %%
+
+
+
 
