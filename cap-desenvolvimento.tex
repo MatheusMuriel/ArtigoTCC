@@ -1,93 +1,27 @@
-\chapter{Outros Elementos}
+\chapter{Desenvolvimento}
 
-\section{Código-Fonte}
-%É possível alterar a linguagem do código utilizando \lstset{language=nomedalinguagem}
-\begin{lstlisting}
-/* Block
-    comment */
-public class Exemplo
-{
+\section{Metodologia de Pesquisa}
 
- public static void main(String args[])
- {
-    int i;
- 
-    // Line comment.
-    System.out.println("Hello world!");
- 
-    for (i = 0; i < 1; i++)
-    {
-        System.out.println("LaTeX is also great for programmers!");
-    }
- }
-}
-\end{lstlisting}
+Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e que já são largamente usados na literatura. E são representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ é a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.
+\newline
 
-\section{Termos Matemáticos}
+Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
 
-\begin{equation} 
-\label{eq:equacao} %Título da equacao
-5^2 - 5 = 20
-\end{equation}
+\section{Execuções}
+Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução. O teste de performance consiste em executar o algoritmo uma vez com cada problema de teste e salvar os dados de \textit{makespan}, tempo de execução e \textit{fitnes}.
 
-Descrição da equação \ref{eq:equacao}.
+O teste de diversidade é feitos apenas entre as variações de PSO Dinâmico, afim de saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitnes} da solução.
 
-\noindent $\forall x \in X, \quad \exists y \leq \epsilon$
-\\
-$\cos (2\theta) = \cos^2 \theta - \sin^2 \theta$
-\\
-$\lim_{x \to \infty} \exp(-x) = 0$
-\\
-$a \bmod b$
-\\
-$x \equiv a \pmod b$
-\\
-$f(n) = n^5 + 4n^2 + 2 |_{n=17}$
-\\
-$\frac{n!}{k!(n-k)!} = \binom{n}{k}$
-\\
-$\sum_{i=1}^{10} t_i$
-\\
-$\int\limits_a^b$
+\section{Critérios de Avaliação}
+A partir das medias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitnes} que é representado pelo diagrama de Gantt como pode ser visto no exemplo da figuraX. No caso das variações dinamicas do PSO a taxa de mutação da população.
+% Inserir diagrama de Gantt Aqui %
 
-\section{Gráficos Químicos}
+\section{Iniciação do espaço de soluções}
+Como o algoritmo do PSO trabalha com um mapa de soluções, a maneira como ele é formado é de grande importância, por isso afim de tornar a comparação mais precisa, todos os casos de testes usam o mesmo algoritmo gerador do espaço de estados inicial, representado pelo pseudo-código (Adicionar aqui).
 
-\chemfig{(-[:0,1.5,,,draw=none]\scriptstyle\color{red}0)
-(-[1]1)(-[:45,1.5,,,draw=none]\scriptstyle\color{red}45)
-(-[2]2)(-[:90,1.5,,,draw=none]\scriptstyle\color{red}90)
-(-[3]3)(-[:135,1.5,,,draw=none]\scriptstyle\color{red}135)
-(-[4]4)(-[:180,1.5,,,draw=none]\scriptstyle\color{red}180)
-(-[5]5)(-[:225,1.5,,,draw=none]\scriptstyle\color{red}225)
-(-[6]6)(-[:270,1.5,,,draw=none]\scriptstyle\color{red}270)
-(-[7]7)(-[:315,1.5,,,draw=none]\scriptstyle\color{red}315)
--0} \\
+\section{Iniciação da população}
+O algoritmo PSO também é bastante influenciado pela sua população inicial, mesmo nos algoritmos onde á mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição dessa população inicial são de grande importância. Assim, os algoritmos PSO utilizam a mesma função de geração de população inicial, representada pelo pseudo-código (Adicionar aqui).
 
-\chemfig{A-B}\\
-\chemfig{A=B}\\
-\chemfig{A~B}\\
-\chemfig{A>B}\\
-\chemfig{A<B}\\
-\chemfig{A>:B}\\
-\chemfig{A<:B}\\
-\chemfig{A>|B}\\
-\chemfig{A<|B}\\
-
-\chemfig{C(-[:0]H)(-[:90]H)(-[:180]H)(-[:270]H)} \\
-
-\chemfig{-[:30]-[:-30]-[:30]} \\
-
-\chemfig{-[:30]=[:-30]-[:30]} \\
-
-\chemfig{A*6(-B-C-D-E-F-)} \\
-
-\chemfig{A*5(-B-C-D-E-)} \\
-
-\chemfig{*6(=-=-=-)} \\ 
-
-\chemfig{**5(------)} \\
-
-\chemfig{-(-[1]O^{-})=[7]O} \\
-
-\chemfig{-(-[1]O^{\ominus})=[7]O} \\
-
-\chemfig{-\chemabove{N}{\scriptstyle\oplus}(=[1]O)-[7]O^{\ominus}}
+\section{Resultados}
+(Ainda em desenvolvimento...)
+\lipsum[1]

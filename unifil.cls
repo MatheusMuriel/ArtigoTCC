@@ -40,7 +40,7 @@
 \RequirePackage{chemfig}
 \RequirePackage{lipsum}
 
-\RequirePackage[subentrycounter,seeautonumberlist]{glossaries}
+%\RequirePackage[subentrycounter,seeautonumberlist]{glossaries}
 
 \RequirePackage[brazilian,hyperpageref]{backref}
 \RequirePackage[alf]{abntex2cite}

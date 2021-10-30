@@ -4,13 +4,21 @@ Sempre escrevam um parágrafo inicial, introduzindo o capítulo e os temas trata
 
 \section{Usando referências}
 
-Todo o texto gerado neste exemplo de trabalho de conclusão de curso é \textit{lorem ipsum} que foi desenvolvido por \citeauthor{lipsum2014}. \cite{lipsum2014}
+Todo o texto gerado neste exemplo de trabalho de conclusão de curso é \textit{lorem ipsum} que foi desenvolvido por .
 
 Para maiores dúvidas, acessem: https://en.wikibooks.org/wiki/LaTeX/. Este site tem muita informação sobre o \LaTeX  e seus comandos.
 
-\lipsum[1]\cite{Yang2017}
+\section{Termos Matemáticos}
+\begin{equation} 
+    \label{eq:equacao} %Título da equacao
+    5^2 - 5 = 20
+\end{equation}
 
-\lipsum[1]\cite{alkassebeh2009}
+%% falar de Makespan, fitness
+
+\lipsum[1]%\cite{Yang2017}
+
+\lipsum[1]%\cite{alkassebeh2009}
 
 \section{Lista Numerada}
 
@@ -66,5 +74,3 @@ O primeiro parágrafo já é indentado. Para pular uma linha, deve-se colocar du
 \indent Para indentar um novo parágrafo, inicie-o com \textbackslash indent.\\
 \noindent Para iniciar um parágrafo sem indentação, é so utilizar \textbackslash noindent
 
-\section{Nota de Rodapé}
-Para utilizar a nota de rodapé, é só utilizar a marcação \textbackslash footnote na frente do seu texto. \footnote{Exemplo de nota de rodapé.} Ele numera automaticamente as notas. \footnote{Outra nota de rodapé.}
