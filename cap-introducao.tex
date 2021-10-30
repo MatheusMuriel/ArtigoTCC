@@ -80,126 +80,196 @@ Neste trabalho iremos demonstrar e comparar a eficiência de uma abordagem híbr
 
 
 
-
-
+%% 1 ::: Introdução
+%% 1.1
 \section{Problemas de Agendamento}
-Problemas de agendamento estão muito presentes nos dias atuais, e existem diretamente em diversos cenários, tais como planejamento de produção, sistemas de manufatura, sistemas de produção, processamento de informação, gerenciamento de rotas de logísticas e etc... e indiretamente nos computadores através do escalonamento de processos do sistema operacional.\newline
+    %% Interludio do [Problemas de Agendamento] %%
+        Problemas de agendamento estão muito presentes nos dias atuais, e existem diretamente em diversos cenários, tais como planejamento de produção, sistemas de manufatura, sistemas de produção, processamento de informação, gerenciamento de rotas de logísticas e etc... e indiretamente nos computadores através do escalonamento de processos do sistema operacional.\newline
 
-Com tantos possíveis cenários de aplicação é natural que existam inúmeras sub-divisões deste problema. Porém a maioria deles tem características em comum. No geral eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo ordenar as execuções das demandas e as distribuir entre os recursos, isso afim de alcançar da melhor possível um ou mais objetivos, que podem ser por exemplo o tempo total para o algoritmo executar o agendamento (também chamado de \textit{makespan}), o tempo total de execução de todas as tarefas no agendamento encontrado (também chamado de \textit{fitness}) ou a soma total do tempo de ociosidade das maquinas.\newline
+        Com tantos possíveis cenários de aplicação é natural que existam inúmeras sub-divisões deste problema. Porém a maioria deles tem características em comum. No geral eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo ordenar as execuções das demandas e as distribuir entre os recursos, isso afim de alcançar da melhor possível um ou mais objetivos, que podem ser por exemplo o tempo total para o algoritmo executar o agendamento (também chamado de \textit{makespan}), o tempo total de execução de todas as tarefas no agendamento encontrado (também chamado de \textit{fitness}) ou a soma total do tempo de ociosidade das maquinas.\newline
 
-Por essa característica de buscar um melhor resultado em um objetivo os problemas de agendamento são caracterizados como problemas de optimização, que são os problemas que a solução são aquelas que trazem um melhor resultado para o objetivo. É importante ressaltar que nesses problemas de optimização a solução não necessariamente precisa a melhor possível, mas sim uma solução boa o suficiente (também chamado de solução ótima).\newline
+        Por essa característica de buscar um melhor resultado em um objetivo os problemas de agendamento são caracterizados como problemas de optimização, que são os problemas que a solução são aquelas que trazem um melhor resultado para o objetivo. É importante ressaltar que nesses problemas de optimização a solução não necessariamente precisa a melhor possível, mas sim uma solução boa o suficiente (também chamado de solução ótima).\newline
 
-Os problemas de agendamento multi-objetivo consideram ao mesmo tempo mais de um critério de avaliação, podendo ter ou não o mesmo peso ou nível de importância, e espera se que sejam atingidos todos os objetivos. Por causa dessa diversidade de objetivos que podem muitas vezes serem conflitantes entre si, como por exemplo ser mais rápido e ao mesmo tempo gastar a menor quantidade possível de energia.\newline
+        Os problemas de agendamento multi-objetivo consideram ao mesmo tempo mais de um critério de avaliação, podendo ter ou não o mesmo peso ou nível de importância, e espera se que sejam atingidos todos os objetivos. Por causa dessa diversidade de objetivos que podem muitas vezes serem conflitantes entre si, como por exemplo ser mais rápido e ao mesmo tempo gastar a menor quantidade possível de energia.\newline
 
-Já os problemas de agendamento mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar um solução, porém em contra partida define uma importância maior para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
+        Já os problemas de agendamento mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar um solução, porém em contra partida define uma importância maior para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
+    %% Fim do Interludio do [Problemas de Agendamento] %%
+
+    %% 1 ::: Introdução
+    %% 1.1 ::: Problemas de Agendamento
+    %% 1.1.1
+    \subsection{Definição}
+        Como foi definido por \cite{Bagchi1999} um problema de escalonamento de tarefas computacionais (\textit{jobs}) é um problema de otimização aonde os recursos limitados são alocados no tempo de execução dos recursos, com as diferentes tarefas podendo ser executadas em paralelo entre as diversas maquinas, porém cada atividade única sendo executada sequenciamento em uma só maquina.\newline
+
+        Assim como a grande maioria dos problemas de origem combinatória, ou seja que um fator depende o fator anterior, formando assim uma combinação de fatores, o problema de escalonamento é um problema da classe NP-Hard da qual não é possível se encontrar a melhor solução possível em um tempo polinomial, ou seja, computacionalmente aceitável, devido a sua quantidade de operações necessárias crescer exponencialmente, com base no tamanho do problema, tornando se assim um problema inviável de se resolver através de cálculos brutos.\newline
+
+        Por causa disso nesses casos de problemas NP-Hard normalmente se usam algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente com base nos critérios de avaliação, a chamada "Solução Ótima", como visto por \cite{Lawler1993}.\newline
+
+        Porém esse conceito de solução ótima varia de acordo com o problema, em alguns casos é mais importante que essa solução seja encontrada em um tempo curto, do que ela seja alguns milissegundos mais rápida do que as outras soluções já encontradas, isso se aplica em ambientes que o agendamento deve ser feito em tempo real.\newline
+        Já para um problema em que essa solução precisa ser encontrada apenas uma vez e ser replicada varias vezes, como uma estrutura de linha de montagem definitiva, vale a pena esperar algumas horas a mais se essa solução economizar tempo de produção ao longo do seu uso. Então esse critério de avaliação de solução ótima deve ser muito bem analisado de caso a caso. \newline
+
+        Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados, algoritmos populacionais e algoritmos evolutivos. Que são capazes de simular uma inteligencia biológica ou comportamentos já observados na natureza e selecionados pela evolução para encontrar uma solução ótima, de maneira similar a que um ser vivo faria.
+    %% Fim do [Definição] %%
 
 
+    %% 1 ::: Introdução
+    %% 1.1 ::: Problemas de Agendamento
+    %% 1.1.2
+    \subsection{Variações}
+        Diversos autores já classificaram diversas variações de problemas de escalonamento dentre eles \cite{graham1979}, \cite{Lenstra1979}, e \cite{maccarthy1993}. O que diferencia os problemas são o fluxo dos \textit{jobs} a serem processados e a capacidade dos recursos. Dentre esses problemas estão:
+        \begin{itemize}
+            \item \textbf{\textit{Open Shop:}} Os \textit{job} tem uma ordem de execução, porém as operações de cada \textit{job} tem uma ordem específica de execução.
+            
+            \item \textbf{\textit{Flow Shop:}} Os \textit{jobs} devem ser executados em um fluxo unidirecional e em uma maquina somente. E não exite uma divisão do \textit{jobs} em operações.
+            
+            \item \textbf{\textit{Flexible Flow Shop:}} Semelhante ao \textit{Flow Shop}, porém os \textit{jobs} podem ser divididos em operações.
+            
+            \item \textbf{\textit{Job Shop:}} Diferentemente do \textit{Flow Shop} o \textit{Job Shop} pode ter execuções paralelas, assim como ser dividido em operações.
+            
+            \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} em que as operações de cada \textit{Job} podem ser executados em maquinas diferentes. Esse problema tem duas sub divições, a Total, em que todas as maquinas podem executar todas as operações. E a Parcial, na qual existem limitações para quais maquinas podem executar quais operações.
+        \end{itemize}
 
-\subsection{Definição}
-Como foi definido por \cite{Bagchi1999} um problema de escalonamento de tarefas computacionais (\textit{jobs}) é um problema de otimização aonde os recursos limitados são alocados no tempo de execução dos recursos, com as diferentes tarefas podendo ser executadas em paralelo entre as diversas maquinas, porém cada atividade única sendo executada sequenciamento em uma só maquina.\newline
+        Além disso cada um dos problemas acima podem ser sub-classificados como mono-objetivos ou multi-objetivos de acordo com os tipos e a quantidade de obejtivos. \newline
+        No caso de ter somente um unico objetivo, como um menor \textit{fitness} por exemplo, ou ter mais de um objetivo, como um menor \textit{fitness} e um menor indice de inercia total.\newline
 
-Assim como a grande maioria dos problemas de origem combinatória, ou seja que um fator depende o fator anterior, formando assim uma combinação de fatores, o problema de escalonamento é um problema da classe NP-Hard da qual não é possível se encontrar a melhor solução possível em um tempo polinomial, ou seja, computacionalmente aceitável, devido a sua quantidade de operações necessárias crescer exponencialmente, com base no tamanho do problema, tornando se assim um problema inviável de se resolver através de cálculos brutos.\newline
-
-Por causa disso nesses casos de problemas NP-Hard normalmente se usam algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente com base nos critérios de avaliação, a chamada "Solução Ótima", como visto por \cite{Laler1993}.\newline
-
-Porém esse conceito de solução ótima varia de acordo com o problema, em alguns casos é mais importante que essa solução seja encontrada em um tempo curto, do que ela seja alguns milissegundos mais rápida do que as outras soluções já encontradas, isso se aplica em ambientes que o agendamento deve ser feito em tempo real.\newline
-Já para um problema em que essa solução precisa ser encontrada apenas uma vez e ser replicada varias vezes, como uma estrutura de linha de montagem definitiva, vale a pena esperar algumas horas a mais se essa solução economizar tempo de produção ao longo do seu uso. Então esse critério de avaliação de solução ótima deve ser muito bem analisado de caso a caso. \newline
-
-Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados, algoritmos populacionais e algoritmos evolutivos. Que são capazes de simular uma inteligencia biológica ou comportamentos já observados na natureza e selecionados pela evolução para encontrar uma solução ótima, de maneira similar a que um ser vivo faria.
+        Esse trabalho é focado no problema de \textit{Flexible Job Shop} Total, em um contexto mono-objetivo.
+    %% Fim do [Problema] %%
 
 
-\subsection{Problema}
-Diversos autores já classificaram diversas variações de problemas de escalonamento dentre eles \cite{graham1979}, \cite{vaca1995}, \cite{Lenstra1979}, e \cite{maccarthy1993}. O que diferencia os problemas são o fluxo dos \textit{jobs} a serem processados e a capacidade dos recursos. Dentre esses problemas estão:
-\begin{itemize}
-    \item \textbf{\textit{Open Shop:}} Os \textit{job} tem uma ordem de execução, porém as operações de cada \textit{job} tem uma ordem específica de execução.
+    %% 1 ::: Introdução
+    %% 1.1 ::: Problemas de Agendamento
+    %% 1.1.3
+    \subsection{Problema de Job Shop - JSP}
+        %% Interludio do [Problemas de Agendamento] %%
+            Como citado anteriormente o \textit{Job Shop Problem} (JSP) é um problema de escalonamento de tarefas e pertence a classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} chama muita atenção por ser um problema com diversas aplicações no mundo real, e em diversos cenários diferentes, como industria, computação e manufatura.\newline
+
+            De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem especifica. Cada operação $Oij$ tem seu respectivo tempo de execução.\newline
+
+            Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas:
+            \begin{itemize}
+                \item Mais de uma operação de um mesmo \textit{job} não pode ser executada ao mesmo tempo.
+                \item Não existe mais de uma maquina de um mesmo tipo.
+                \item As máquinas podem ficar ociosas durante o período de escalonamento.
+                \item As execuções de \textit{jobs} são atômicas, ou seja cada \textit{job} deve ser processado até o fim.
+                \item Uma máquina não pode executar mais de uma operação simultaneamente.
+                \item Um \textit{job} não é processado duas vezes na mesma máquina.
+                \item Não é possível interromper a execução de uma operação.
+            \end{itemize}
+        %% Fim do Interludio do [Problemas de Agendamento] %%
+        
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.3 ::: JSP
+        %% 1.1.3.1
+        \subsubsection{Representações}
+            Para que seja possivel que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
+            \begin{itemize}
+                \item Quantas maquinas existem;
+                \item Quantos \textit{Jobs} existem;
+                \item Quantas operações cada \textit{Job} posui;
+                \item Em qual maquina cada operação pode ser executada;
+                \item Quanto tempo cada operação leva para ser executada em sua respectiva maquina;
+            \end{itemize}
+        %% Fim do [Representações] %%
+
+
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.3 ::: JSP
+        %% 1.1.3.1 ::: Representações
+        %% 1.1.3.1.1
+        \subsubsubsection{Instancia de um Problema}
+            Na figuraX é possível ver um exemplo de uma instancia de problema de \textit{Job Shop}. A onde à duas maquinas $(M1, $ e $M2)$, dois \textit{jobs} $(J1, $ e $J2)$ e que cada \textit{job} possui duas operações $(Oj,1 $ e $Oj,2)$.\newline
+            Sendo assim:\newline
+            A $O1,1$ na maquina $M2$ tem o tempo de execução 9.\newline 
+            A $O1,2$ na maquina $M1$ tem o tempo de execução 5.\newline
+            A $O2,1$ na maquina $M1$ tem o tempo de execução 1. \newline
+            A $O2,2$ na maquina $M2$ tem o tempo de execução 7. \newline
+
+            \textit{\textbf{Inserir a figuraX aqui}}\newline
+        %% Fim do [Instancia de um Problema] %%
+
+     %%
+    %% Fim do [JSP] %%
+
+
+    %% 1 ::: Introdução
+    %% 1.1 ::: Problemas de Agendamento
+    %% 1.1.4
+    \subsection{Problema de Job Shop Flexível - FJSP}
+        %% Interludio do [FJSP]%%
+            O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} em que é permitido que uma operação seja executada em mais de uma maquina. Então além de definir a ordem e a maquina de execução de cada \textit{job} também é preciso definir o agendamento das operações.\newline 
+            De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior numero de possíveis soluções e deixa o algoritmo mais flexível para encontrar soluções. Mas por esse aumento de fatores a considerar o \textit{Flexible Job Shop} é considerado um problema mais complexo que o \textit{Job Shop}.\newline
+
+            Existem sub divisões no problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer maquina.\newline
+
+            Para o \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\newline
+        %% Fim do Interludio do [FJSP]%%
+
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.4 ::: FJSP
+        %% 1.1.4.1
+        \subsubsection{Representações}
+            As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exeção da representação do problema, devido a sua natureza flexivel uma representação do \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para procesar cada operação. Porém no caso de uma problema de \textit{Flexible Job Shop} Parcial, ou seja, em que uma operação não pode ser processada por qualquer maquina, a representação não precisa definir o tempo de processamento de todas as operações para todas as maquinas, mas somente para as maquinas que podem processar aquela operação
+        %% Fim do [Representações] %%
+
+
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.4 ::: FJSP
+        %% 1.1.4.1 ::: Representações
+        %% 1.1.4.1.1
+        \subsubsubsection{Instancia de um Problema}
+            Na TabelaX é mostrado uma instancia de um problema de \textit{Flexible Job Shop} Total. Devido a sua flexibilidade a instancia de problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instancia de um problema de \textit{Flexible Job Shop} é consideravelmente maior.\newline
+
+            A representação a seguir tem um exemplo de problema com dez maquinas $(M1, M2, M3, ..., M10)$ e dez \textit{jobs} $(J1, J2, J3, ..., J10)$ e cada \textit{job} possuindo três operações $(Oj1, Oj2 e Oj3)$.\newline
+
+            Cada índice $ji$ da Tabelax representa o tempo $Tji$ de execução de execução de $Oji$, para cada máquina $Mk$, sendo $k = 1,... m$, onde $m$ é a quantidade de maquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n = 10$ e $m = 10$.\newline
+            Então esse problema é de tamanho 10 x 10 como visto no benchmark de \cite{Kacem2002}.\newline
+
+            \textit{\textbf{Inserir a TabelaX aqui}}\newline
+        %% Fim do [Instancia de um Problema] %%
+
+
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.4 ::: FJSP
+        %% 1.1.4.1 ::: Representações
+        %% 1.1.4.1.2
+        \subsubsubsection{Solução}
+
+            Na FiguraX é possível ver um gráfico de Gantt para uma solução para o problema representado na TabelaX, que é um problema de \cite{Kacem2002} de tamanho 10 x 10. Nessa solução é possível se observar:
+            \begin{itemize}
+                \item A máquina $M1$ executa as operações $[(O1,1), (O7,1), (O2,1)]$.
+                \item Cada \textit{job} utiliza no minimo duas máquinas para ser executado, por exemplo: o $J1$ é executado nas máquinas $M1 , M3, M4$.
+                \item O \textit{fitness} dessa solução é 7.
+            \end{itemize}
+
+            ...\newline
+
+            \textit{\textbf{Inserir a TabelaX aqui}}\newline
+        %% Fim do [Solução] %%
+
+
+        %% 1 ::: Introdução
+        %% 1.1 ::: Problemas de Agendamento
+        %% 1.1.4 ::: FJSP
+        %% 1.1.4.2
+        \subsubsection{Cenários de Aplicação}
+            %% Onde da para usar e onde resolve problemas %%
+            \lipsum[3]
+        %% Fim do [Cenários de Aplicação] %%
+        
+     %%
+    %% Fim do [FJSP] %%
     
-    \item \textbf{\textit{Flow Shop:}} Os \textit{jobs} devem ser executados em um fluxo unidirecional e em uma maquina somente. E não exite uma divisão do \textit{jobs} em operações.
-    
-    \item \textbf{\textit{Flexible Flow Shop:}} Semelhante ao \textit{Flow Shop}, porém os \textit{jobs} podem ser divididos em operações.
-    
-    \item \textbf{\textit{Job Shop:}} Diferentemente do \textit{Flow Shop} o \textit{Job Shop} pode ter execuções paralelas, assim como ser dividido em operações.
-    
-    \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} em que as operações de cada \textit{Job} podem ser executados em maquinas diferentes
-\end{itemize}
-Esse trabalho é focado no \textit{Flexible Job Shop}, em um contexto mono-objetivo
-
-
-
-
-\subsection{Problema de Job Shop - JSP} 
-%% Oque é o problema de JSP Simples %%
-Como citado anteriormente o \textit{Job Shop Problem} (JSP) é um problema de escalonamento de tarefas e pertence a classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} chama muita atenção por ser um problema com diversas aplicações no mundo real, e em diversos cenários diferentes, como industria, computação e manufatura.\newline
-
-De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem especifica. Cada operação $Oij$ tem seu respectivo tempo de execução.\newline
-
-Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas:
-\begin{itemize}
-    \item Mais de uma operação de um mesmo \textit{job} não pode ser executada ao mesmo tempo.
-    \item Não existe mais de uma maquina de um mesmo tipo.
-    \item As máquinas podem ficar ociosas durante o período de escalonamento.
-    \item As execuções de \textit{jobs} são atômicas, ou seja cada \textit{job} deve ser processado até o fim.
-    \item Uma máquina não pode executar mais de uma operação simultaneamente.
-    \item Um \textit{job} não é processado duas vezes na mesma máquina.
-    \item Não é possível interromper a execução de uma operação.
-\end{itemize}
-
-
-Na figuraX é possível ver um exemplo de uma instancia de problema de \textit{Job Shop}. A onde à duas maquinas $(M1, $ e $M2)$, dois \textit{jobs} $(J1, $ e $J2)$ e que cada \textit{job} possui duas operações $(Oj,1 $ e $Oj,2)$.\newline
-Sendo assim:\newline
-A $O1,1$ na maquina $M2$ tem o tempo de execução 9.\newline 
-A $O1,2$ na maquina $M1$ tem o tempo de execução 5.\newline
-A $O2,1$ na maquina $M1$ tem o tempo de execução 1. \newline
-A $O2,2$ na maquina $M2$ tem o tempo de execução 7. \newline
-
-\textit{\textbf{Inserir a figuraX aqui}}\newline
-%% Fim do JSP %%
-
+ %%
+%% Fim do [Problemas de Agendamento] %%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Problema de Job Shop Flexível - FJSP}
 
-
-O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} em que é permitido que uma operação seja executada em mais de uma maquina. Então além de definir a ordem e a maquina de execução de cada \textit{job} também é preciso definir o agendamento das operações.\newline 
-De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior numero de possíveis soluções e deixa o algoritmo mais flexível para encontrar soluções. Mas por esse aumento de fatores a considerar o \textit{Flexible Job Shop} é considerado um problema mais complexo que o \textit{Job Shop}.\newline
-
-Existem sub divisões no problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer maquina.\newline
-
-Para o \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\newline
-
-%%%%%%%
-
-\subsubsection{Instancia de um problema FJSP}
-Na TabelaX é mostrado uma instancia de um problema de \textit{Flexible Job Shop} Total. Devido a sua flexibilidade a instancia de problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instancia de um problema de \textit{Flexible Job Shop} é consideravelmente maior.\newline
-
-A representação a seguir tem um exemplo de problema com dez maquinas $(M1, M2, M3, ..., M10)$ e
-dez \textit{jobs} $(J1, J2, J3, ..., J10)$ e cada \textit{job} possuindo três operações $(Oj1, Oj2 e Oj3)$.\newline
-
-Cada índice $ji$ da Tabelax representa o tempo $Tji$ de execução de execução de $Oji$, para cada máquina $Mk$, sendo $k = 1,... m$, onde $m$ é a quantidade de maquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n = 10$ e $m = 10$.\newline
-Então esse problema é de tamanho 10 x 10 como visto no benchmark de \cite{Kacem2002}.\newline
-
-\textit{\textbf{Inserir a TabelaX aqui}}\newline
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Representações}
-Para representar um solução para um problema de escalonamento é usado um gráfico de Gantt, demonstrando a maquina, tempo de inicio e tempo de termino de cada operação.\newline
-
-Na FiguraX é possível ver um gráfico de Gantt para uma solução para o problema representado na TabelaX, que é um problema de \cite{Kacem2002} de tamanho 10 x 10. Nessa solução é possível se observar:
-\begin{itemize}
-    \item A máquina $M1$ executa as operações $[(O1,1), (O7,1), (O2,1)]$.
-    \item Cada \textit{job} utiliza no minimo duas máquinas para ser executado, por exemplo: o $J1$ é executado nas máquinas $M1 , M3, M4$.
-    \item O \textit{fitness} dessa solução é 7.
-\end{itemize}
-
-...\newline
-
-\textit{\textbf{Inserir a TabelaX aqui}}\newline
-
-
-\subsubsection{Cenários de Aplicação}
-%% Onde da para usar e onde resolve problemas %%
-\lipsum[3]
 
 \section{Soluções Existentes}
 %% Estado da arte e algoritmos que solucionam %%
