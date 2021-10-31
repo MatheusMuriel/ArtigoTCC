@@ -1,27 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 2 ::: Desenvolvimento
 \chapter{Desenvolvimento}
+    %% Interlúdio do [Desenvolvimento] %%
+        ...
+    %% Fim do Interlúdio do [Desenvolvimento] %%
 
+
+%% 2 ::: Desenvolvimento
+%% 2.1
 \section{Metodologia de Pesquisa}
+    %% Interlúdio do [Metodologia de Pesquisa] %%
+        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e que já são largamente usados na literatura. E são representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ é a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\newline
 
-Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e que já são largamente usados na literatura. E são representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ é a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.
-\newline
+        Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
+    %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
 
-Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
+    %% 2 ::: Desenvolvimento
+    %% 2.1 ::: Metodologia de Pesquisa
+    %% 2.1.1
+    \subsection{Objetivos}
+        ... Analise visa descobrir e analisar como as alterações afetam o a qualidade do algoritmo...
+    %% Fim do [Objetivos] %%
+ %
+%% Fim do [Metodologia de Pesquisa] %%
 
+
+%% 2 ::: Desenvolvimento
+%% 2.2
+\section{Arquitetura}
+    %% Interlúdio do [Arquitetura] %%
+        A arquitetura de um projeto de é um fator que impacta diretamente no seu desempenho, porém como o objetivo desse trabalho é entender como o algoritmo PSO se comporta diante das alterações propostas, foi necessário o desenvolvimento de uma arquitetura que represente o problema de mais mais abstrata.
+    %% Fim do Interlúdio do [Arquitetura] %%
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.1
+    \subsection{Design do Projeto}
+        ...
+    %% Fim do [Design do Projeto] %%
+
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.1
+    \subsection{População}
+        O algoritmo PSO também é bastante influenciado pela sua população inicial, mesmo nos algoritmos onde á mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição dessa população inicial são de grande importância. Assim, os algoritmos PSO utilizam a mesma função de geração de população inicial, representada pelo pseudo-código (Adicionar aqui).
+    %% Fim do [População] %%
+
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.2
+    \subsection{Espaço de Soluções}
+        Como o algoritmo do PSO trabalha com um mapa de soluções, a maneira como ele é formado é de grande importância, por isso afim de tornar a comparação mais precisa, todos os casos de testes usam o mesmo algoritmo gerador do espaço de estados inicial, representado pelo pseudo-código (Adicionar aqui).
+    %% Fim do [Espaço de Soluções] %%
+
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.3
+    \subsection{Algoritmos}
+        ...
+    %% Fim do [Algoritmos] %%
+    
+ %
+%% Fim do [Arquitetura] %%
+
+
+
+%% 2 ::: Desenvolvimento
+%% 2.3
 \section{Execuções}
-Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução. O teste de performance consiste em executar o algoritmo uma vez com cada problema de teste e salvar os dados de \textit{makespan}, tempo de execução e \textit{fitnes}.
+    Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução. O teste de performance consiste em executar o algoritmo uma vez com cada problema de teste e salvar os dados de \textit{makespan}, tempo de execução e \textit{fitnes}.
 
-O teste de diversidade é feitos apenas entre as variações de PSO Dinâmico, afim de saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitnes} da solução.
+    O teste de diversidade é feitos apenas entre as variações de PSO Dinâmico, afim de saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitnes} da solução.
+%% Fim do [Execuções] %%
 
+
+
+%% 2 ::: Desenvolvimento
+%% 2.4
 \section{Critérios de Avaliação}
-A partir das medias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitnes} que é representado pelo diagrama de Gantt como pode ser visto no exemplo da figuraX. No caso das variações dinamicas do PSO a taxa de mutação da população.
-% Inserir diagrama de Gantt Aqui %
+    A partir das medias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitnes} que é representado pelo diagrama de Gantt como pode ser visto no exemplo da figuraX. No caso das variações dinamicas do PSO a taxa de mutação da população.
+    % Inserir diagrama de Gantt Aqui %
+%% Fim do [Critérios de Avaliação] %%
 
-\section{Iniciação do espaço de soluções}
-Como o algoritmo do PSO trabalha com um mapa de soluções, a maneira como ele é formado é de grande importância, por isso afim de tornar a comparação mais precisa, todos os casos de testes usam o mesmo algoritmo gerador do espaço de estados inicial, representado pelo pseudo-código (Adicionar aqui).
 
-\section{Iniciação da população}
-O algoritmo PSO também é bastante influenciado pela sua população inicial, mesmo nos algoritmos onde á mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição dessa população inicial são de grande importância. Assim, os algoritmos PSO utilizam a mesma função de geração de população inicial, representada pelo pseudo-código (Adicionar aqui).
 
+%% 2 ::: Desenvolvimento
+%% 2.5
 \section{Resultados}
-(Ainda em desenvolvimento...)
-\lipsum[1]
+    (Ainda em desenvolvimento...)
+    %\lipsum[1]
+%% Fim do [Resultados] %%
+
+
+
+%%%%%%%%%% Ir agr até a pagina 27 %%%%%%%%%%
+
+
+
+
+
+
+% Esse captulo deve ir no minimo até a pagina 36
