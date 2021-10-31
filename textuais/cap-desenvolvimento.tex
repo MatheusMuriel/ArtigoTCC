@@ -63,11 +63,19 @@
             \item Representações e calculo de vetores de movimentação.
         \end{itemize}
         
+        Para trazer mais clareza ao codigo foi optado por criar algumas classes para a representação de entidades e abstração de logicas. Dentre elas estão:\newline
+        
+        Classe de Particula, que faz a representação de uma entidade de particula e armazena sua posição, velocidade e direção. Faz a inicialização da particula com valores aleatorios de posição, velocidade e direção. E estabelesse metodos para calcular o movimento da particula e o valor da qualidade de sua nova posição.\newline
+        
+        Classe de \textit{encoding}, responsavel por ler e interpretar os arquivos de instancia de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\newline
+         
+        Classe de \textit{decoding}, responsavel por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelesse o metodo que gera o grafico de Gantt para representar visualmente a solução.\newline
+        
 
+        Como o PSO é um algoritmo estocástico, ou seja seu resultado é fruto de eventos não previsiveis, como a geração aleatoria de soluções, foi decidido que para obter uma media real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\newline
+        E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{Deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma analise mais justa.\newline
 
-        %% Um mesmo espaço de soluções para todos os algoritmos.
-        %% Diferentes espaçoes de soluções para as diferentes rodadas.
-
+        Para que a analise dos dados possa ser feita mais detalhadamente foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas que foram feitas, o historico da variavel $gBest$, o numero de mudanças de $pBest$, o historico de posição das particulas e as soluções finais encontradas.
      %
     %% Fim do [Design do Projeto] %%
 
