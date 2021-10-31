@@ -1,3 +1,6 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 1 ::: Introdução
 \chapter{Introdução}
     Em um ambiente de produção industrial moderna a optimização é um ponto de grande importância, devido a constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\newline
 
@@ -55,8 +58,6 @@
 
     Neste trabalho iremos demonstrar e comparar a eficiência de uma abordagem híbrida do Algoritmo PSO com componentes evolutivos de GA, tornando assim esse algoritmo mais dinâmico, além de demonstrar sua eficiência em diferentes cenários reais de aplicação na indústria.\newline
 %% Fim da [Introdução] %%
-
-%% TODO - Expandir Estado da Arte %%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -249,18 +250,55 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%% 1 ::: Introdução
+%% 1.2
 \section{Soluções Existentes}
-%% Estado da arte e algoritmos que solucionam %%
-\lipsum[3]
+    %% Interludio %%
+        Ao longo do tempo foram propostas, testestadas, revisadas e aprimoradas diversas soluções para os problemas de agendamento, e como cada cenario de aplicação é diferente não é possivel definir qual solução é a melhor, pois isso depende de caso a caso, contudo, durante o tempo varias soluções se destacaram como mais eficientes e adaptaveis a novas demandas, cenarios e objetivos. \newline
+        
+        Um tipo de solução muito recorente são as baseadas em comportamento biologico. Ao longo de milhões de anos a vida biologica no planeta terra evoloiu e se adaptou para encontrar o mode mais eficiente de resolver os diversos problemas que a natureza os impõe. Então observando esses comportamentos adaptativos, foram propóstos diversos algoritmos como os algoritmos populacionais que simulam como populações, como por exemplo bandos de avés, enchames de abelhas ou colonias de formigas usam o comportamento de bando para solucionar um problema como o de encontrar alimento, ou fugir de predadores. Ou algoritmos que simulam as proprias regras de seleção natural para evoluir individos de uma população para gerar e acumular mutações para achar um individuo mais adaptado e solucionar o problema, esses são os algoritmos geneticos e algoritmos evolutivos.
+    %% Fim do Interludio %%
 
-\subsection{Algoritmos Genéticos - GA}
-%% Falar sobre GA %%
-\lipsum[2]
 
-%% TODO - Adicionar outras soluções existentes %%
+    %% 1 ::: Introdução
+    %% 1.2 ::: Soluções Existentes
+    \subsection{Algoritmos Evolutivos}
+        Os Algoritmos Evolutivos são baseados no mecanismo de seleção natural que é observado na natureza. Então um individo que tem alguma caracteristica que o destaque tem maior chance de se reproduzir e transmitir essa caracteristica para os seus descendentes.\newline
+        A estrutura basica de um algoritmo evolutivo é:
+        \begin{enumerate}
+            \item Inicialização da população;
+            \item Analise da qualidade de cada individo;
+            \item Seleção dos melhores individos;
+            \item Cruzamento desses individos afim de gerar uma nova população;
+            \item Repetição apartir do passo 2;
+        \end{enumerate}
+        Essa estrutura se repete até que seja atingido o criterio de parada estabelecido pelo problema em questão.\newline
+        Além da estrutura basica é possivel melhorar um algoritmo evolutivo atraves de um aprendizado continuo, ou seja, em um ambiente no qual tenha mudanças constantes um algoritmo evolutivo pode se adaptar e assim se auto melhorar sem a necessidade de uma intervação do programador.
+    %% Fim do [Alg EV] %%
 
-%% Citar aqui no final o PSO %%
+
+    %% 1 ::: Introdução
+    %% 1.2 ::: Soluções Existentes
+    \subsection{Algoritmos Genéticos}
+        Uma derivação dos algoritmos evolutivos são os algoritmos geneticos, que são utilizados para buscas e para otimizações, como nos problemas de escalonamento. Essa abordagem chama atenção por conseguir lidar com uma grande diversidade de soluções, o que a torna interessante especialmente em problemas de multi-objetivo como visto por \cite{Bagchi1999}.\newline
+        
+        Os algoritmos geneticos são com certeza a abordagem mais utilizada dentre os algoritmos evolutivos, o que algumas vezes pode gerar a impressão de que algoritmos geneticos e evolutivos são a mesma coisa, porém como o algoritmo genetico lida com uma simulação de cromossomos isso o faz com que suas estruturas sejam muito mais dinamicas, enquanto as tecnicas de algoritmos evolutivos tem estruturas mais fixas.\newline
+        Para ter essa dinamissidade os algoritmos geneticos trabalham com o conceito de mutações aleatorias, que podem ou não serem boas para o individuo, porém, por ser uma derivação dos algoritmos evolutivos o algoritmo genetico conta também com os mecanismos de seleção e cruzamento da população, o que tende a selecionar apenas os individuos com mutações que são positivas do ponto de vista do objetivo estabelecido.
+    %% Fim do [GA] %%
+
+
+    %% 1 ::: Introdução
+    %% 1.2 ::: Soluções Existentes
+    \subsection{Algoritmos Populacionais}
+
+        %% Citar aqui no final o PSO %%
+    %% Fim do [Algoritmos Populacionais] %%
+
+
+    %% Fim do [XXX] %%
+ %%
+%% Fim do [Soluções Existentes] %%
+
 
 \section{Particle Swarm Optimization - PSO}
 \lipsum[4]
