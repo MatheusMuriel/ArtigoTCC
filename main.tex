@@ -1,7 +1,6 @@
-%%%%%%%%%%%%%%%%
-% Classe Principal da monografia
-%%%%%%%%%%%%%%%%
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Classe Principal da monografia %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[12pt,openright,oneside,a4paper,english,brazil]{./definitions/unifil}
 
@@ -16,83 +15,81 @@
 
 
 \begin{document}
+
 \frenchspacing
 
-
 %%%%% Elementos pré-textuais %%%%%
-\pretextual
+  \pretextual
 
-\imprimircapa
+  \imprimircapa
 
-\include{./pretextuais/folhaderosto}
-\include{./pretextuais/folhadeaprovacao}
-%\include{./pretextuais/dedicatoria}
-%\include{./pretextuais/agradecimentos}  % Opcional %
-%\include{./pretextuais/epigrafe}        % Opcional %
-\include{./pretextuais/resumo}
-\include{./pretextuais/abstract}
-\newpage
-
-
-%%%%% Lista de Figuras %%%%%
-\pdfbookmark[0]{\listfigurename}{Lista de Figuras}
-\listoffigures*
-\cleardoublepage
-%%%%% Lista de Figuras %%%%%
+  \include{./pretextuais/folhaderosto}
+  \include{./pretextuais/folhadeaprovacao}
+  %\include{./pretextuais/dedicatoria}
+  %\include{./pretextuais/agradecimentos}  % Opcional %
+  %\include{./pretextuais/epigrafe}        % Opcional %
+  \include{./pretextuais/resumo}
+  \include{./pretextuais/abstract}
+  \newpage
 
 
-%%%%% Lista de Tabelas %%%%%
-\renewcommand{\listtablename}{Lista de Tabelas}
-\listoftables*
-\clearpage
-%%%%% Lista de Tabelas %%%%%
-
-\include{./pretextuais/siglas}
+  %%%%% Lista de Figuras %%%%%
+  \pdfbookmark[0]{\listfigurename}{Lista de Figuras}
+  \listoffigures*
+  \cleardoublepage
+  %%%%% Lista de Figuras %%%%%
 
 
-\tableofcontents*
-  \setlength\absleftindent{0cm}
-  \setlength\absrightindent{0cm}
-  %fonte do ambiente%
-  \abstracttextfont{\normalfont\normalsize}
-  %intentação e espaçamento entre parágrafos%
-  \setlength{\absparindent}{0pt}
-  \setlength{\absparsep}{18pt}
+  %%%%% Lista de Tabelas %%%%%
+  \renewcommand{\listtablename}{Lista de Tabelas}
+  \listoftables*
+  \clearpage
+  %%%%% Lista de Tabelas %%%%%
 
-%\pdfbookmark[0]{\listfigurename}{lof}
-%\listoffigures*
-%\cleardoublepage
+  \include{./pretextuais/siglas}
 
+
+  \tableofcontents*
+    \setlength\absleftindent{0cm}
+    \setlength\absrightindent{0cm}
+    %fonte do ambiente%
+    \abstracttextfont{\normalfont\normalsize}
+    %intentação e espaçamento entre parágrafos%
+    \setlength{\absparindent}{0pt}
+    \setlength{\absparsep}{18pt}
+
+  %\pdfbookmark[0]{\listfigurename}{lof}
+  %\listoffigures*
+  %\cleardoublepage
 %%%%% Fim dos Elementos pré-textuais %%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Elementos Textuais %%%%%
-\textual
+  \textual
 
-\renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
-\renewcommand{\ABNTEXchapterfontsize}{\Large}
+  \renewcommand{\ABNTEXchapterfont}{\fontfamily{cmr}\fontseries{b}\selectfont}
+  \renewcommand{\ABNTEXchapterfontsize}{\Large}
 
-\renewcommand{\ABNTEXsectionfont}{\uppercase{\fontfamily{cmr}\fontseries{b}\selectfont}}
-\renewcommand{\ABNTEXsectionfontsize}{\large}
-
-
-\include{./textuais/cap-introducao}
-%\include{./textuais/cap-fundamentacao} %% TODO - passar parte da introdução para cá %%
-\include{./textuais/cap-desenvolvimento}
-\include{./textuais/cap-conclusao}
+  \renewcommand{\ABNTEXsectionfont}{\uppercase{\fontfamily{cmr}\fontseries{b}\selectfont}}
+  \renewcommand{\ABNTEXsectionfontsize}{\large}
 
 
-\cleardoublepage
+  \include{./textuais/cap-introducao}
+  %\include{./textuais/cap-fundamentacao} %% TODO - passar parte da introdução para cá %%
+  \include{./textuais/cap-desenvolvimento}
+  \include{./textuais/cap-conclusao}
 
+
+  \cleardoublepage
 %%%%% Fim dos Elementos Textuais %%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Elementos pós-textuais %%%%%
-\postextual
+  \postextual
 
-\bibliography{assets/references.bib}{}
+  \bibliography{assets/references.bib}{}
 %%%%% Fim dos Elementos pós-textuais %%%%%
 
 \end{document}
