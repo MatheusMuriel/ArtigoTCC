@@ -310,18 +310,22 @@
  %%
 %% Fim do [Soluções Existentes] %%
 
-
 %% 1 ::: Introdução
 %% 1.3
 \section{Particle Swarm Optimization - PSO}
-    %\lipsum[4]
-    %% Falar mais a fundo sobre o PSO %%
+    %% Interludio %%
+        O algoritmo de Optimização por Enxame de Particulas ou PSO da sigla em ingles para (\textit{Particle Swarm Optimization}) é um algoritmo baseado nas teorias de inteligencia de enxame. E diferentemente de outros algoritmos baseados em populações, como o \textit{Ant Colony Optimization} o \textit{Particle Swarm Optimization} é baseado em uma população generica de individuos, embora normalmente sejam ilustrados como uma população de avés.
+    %% Fim do [Interludio] %%
+
 
     %% 1 ::: Introdução
     %% 1.3 ::: PSO
     %% 1.3.1
     \subsection{Historia}
-        %\lipsum[2]
+        O algoritmo \textit{Particle Swarm Optimization} for proposto por \cite{Kennedy1995} e desde então tems e mostrado muito promisor para a solução de diversos problemas de optimização. Por ser um algoritmo bem simples e flexivel, ao longo do tempo jpa foram propostas varias variações para ele. \newline
+        
+        Porém o \textit{Particle Swarm Optimization} ja foi alvo de varias discuções na area pois alguns autores discordam de ele ser classividade como parte dos algoritmos evolutivos, pois embora haja variações que sim, o \textit{Particle Swarm Optimization} original não implementa mecanismos de seleção, cruzamento e mutação, que são criterios base para os algoritmos evolutivos. \newline
+        Atualmente o \textit{Particle Swarm Optimization} é classificado como parte da familia dos algoritmos de \textit{Swarm Intelligence}.
     %% Fim do [Historia] %%
 
 
@@ -329,42 +333,51 @@
     %% 1.3 ::: PSO
     %% 1.3.2
     \subsection{Definição}
-        %\lipsum[2]
+        A definição basica do algoritmo \textit{Particle Swarm Optimization} é uma população de particulas (também chamadas de individuos), em que cada particula tem uma velocidade e uma direção, além das informações da sua posição, qual é a qualidade de sua posição, qual foi a melhor posição na qual ela já esteve, e acesso a um conhecimento compartilhado entre todos os individuos com a melhor posição em que qualquer um deles já esteve. E assim a cada rodada as particulas se movimentam com base na sua melhor posição e na melhor posição geral, e assim a cada rodada a população converge para uma solução otima.\newline
+        
+        As variaveis mais importantes do PSO são justamente as melhores posições, sendo a local normalmente chamada de $pBest$ e a geral normalmente chamada de $gBest$. Elas vão ser utilizadas para obter uma media que será a nova posição da particula. Porém existem resistencias para que a particula mude de direção, isso acontece por meio da inercia normalmente representada por $w$ que representa a força que tende a fazer a particula seguir a direção na qual ela já está se movendo. Essa força de inercia cresce de acordo com o valor de velocidade da particula normalmente representado por $v$, ou seja, particulas com uma maior velocidade ($v$) tendem a tem uma maior inercia ($w$).\newline
+        
+        No pseudocodigoX é possivel uma representação de um algoritmo PSO basico, esse algoritmo tem como base a formulação de \cite{martinez2009}.
+        
+        \textit{inserir o pseudocodigoX aqui}
+
+        Na definição base do algoritmo não existe uma especcificação de uma formula para o calculo da movimentação da particula. Porém na formulaX é posivel ver uma representação de uma formula base para o calculo de uma nova posição para a particula.
+
+        \textit{inserir a formulaX aqui}
+
+     %%
     %% Fim do [Definição] %%
-
-
-    %% 1 ::: Introdução
-    %% 1.3 ::: PSO
-    %% 1.3.3
-    \subsection{Aplicações}
-        %\lipsum[3]
-    %% Fim do [Aplicações] %%
-
+    
 
     %% 1 ::: Introdução
     %% 1.3 ::: PSO
     %% 1.3.4
-    \subsection{Limitações}
-        %\lipsum[2]
-    %% Fim do [Limitações] %%
+    \subsection{Problemas}
+        Alguns cuidados devem ser tomados para a implementação do \textit{Particle Swarm Optimization} pois o algoritmo se mal configurado atravez dos parametros de velocidade, inercia e tamanho da população, tende a convergir prematuramente para uma solução não otima, esse problema é normalmente chamado de "Convergencia Prematura".\newline
+        
+        Algumas medidas podem ser tomadas para diminuir essa posibilidade de convergencia Prematura, como valores dinamicos de inercia e uma ponderação nos valor de importancia de $pBest$ e $gBest$.
+    %% Fim do [Problemas] %%
 
 
     %% 1 ::: Introdução
     %% 1.3 ::: PSO
     %% 1.3.5
     \subsection{Melhorias}
-        %\lipsum[2]
+        %% Interludio %%
+            Algumas tecnicas podem ser usadas para melhorar o desenpenho do PSO em cada cenario de aplicação. Porém o efeito dessas abordagens varia de acordo com qual problema esta sendo resolvido e dos recursos e limitações de processamento e memoria do ambiente de processamento do algoritmo.
+        %% Fim do [Interludio] %%
 
         \subsubsection{Multithreading}
-            %\lipsum[2]
-            %% Ambientes distribuídos %%
+            Uma abordagem que tem bons resultados é o processamento distribuido do calculo de cada particula como visto por \cite{Thongkrairat2019} e \cite{Kim2011}. Essa paralelização é possivel graças a natureza distribuida dos algoritmos populacionais. No caso do \textit{Particle Swarm Optimization} o unico fator a se levar em consideração para uma implementação distribuida é a atualização da variavel $gBest$.\newline
+            
+            Um cenario que tira um bom proveito dessa abordagem são os de robos e drones.            
         %% Fim do [Multitheading] %%
 
         \subsubsection{Hibridização}
             %\lipsum[2]
             %% Sobre a possibilidade de usar GA no PSO %% 
         %% Fim do [Hibridização] %%
-        
+
      %
     %% Fim do [Melhorias] %%
 
