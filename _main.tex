@@ -24,13 +24,13 @@
 
 \imprimircapa
 
-\include{./folhaderosto}
-\include{./folhadeaprovacao}
-%\include{./dedicatoria}
-%\include{./agradecimentos}  % Opcional %
-%\include{./epigrafe}        % Opcional %
-\include{./resumo}
-\include{./abstract}
+\include{./pretextuais/folhaderosto}
+\include{./pretextuais/folhadeaprovacao}
+%\include{./pretextuais/dedicatoria}
+%\include{./pretextuais/agradecimentos}  % Opcional %
+%\include{./pretextuais/epigrafe}        % Opcional %
+\include{./pretextuais/resumo}
+\include{./pretextuais/abstract}
 \newpage
 
 
@@ -47,7 +47,7 @@
 \clearpage
 %%%%% Lista de Tabelas %%%%%
 
-\include{./siglas}
+\include{./pretextuais/siglas}
 
 
 \tableofcontents*
@@ -63,6 +63,9 @@
 %\listoffigures*
 %\cleardoublepage
 
+%%%%% Fim dos Elementos pré-textuais %%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Elementos Textuais %%%%%
 \textual
@@ -82,8 +85,14 @@
 
 \cleardoublepage
 
+%%%%% Fim dos Elementos Textuais %%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% Elementos pós-textuais %%%%%
 \postextual
 
 \bibliography{assets/references.bib}{}
+%%%%% Fim dos Elementos pós-textuais %%%%%
 
 \end{document}
