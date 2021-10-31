@@ -374,10 +374,19 @@
         %% Fim do [Multitheading] %%
 
         \subsubsection{Hibridização}
-            %\lipsum[2]
-            %% Sobre a possibilidade de usar GA no PSO %% 
+            Uma outra melhoria que tem dado bons resultados é a hibridização de PSO com outros algoritmos, como algoritmos geneticos como demostrado por \cite{carvalho2014}, ou com outros algoritmos evolutivos.\newline
+            Essas hibridizações com algoritmos evolutivos são tão boas pela caracteristica basica do PSO de não ter componentes evolutivos em seus individos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO. \newline
+            
+            Esses componentes evolutivos normalmente trabalham nos valores de inercia e de velocidade, criando particulas mais teimosas ou com uma tendencia maior a fugir da convergencia do grupo, o que pode ajudar a escapar de minimos locais, evitando assim a convergencia prematura.\newline
+            
+            Um cenario que tem um bom proveito da hibridização evolutiva do PSO são os cenarios com multi-objetivo, pois os componentes de mutação de algoritmos geneticos trazem uma maior diversidade para os individuos da população, trazendo assim uma maior gama de exploração no espaço de soluções.
         %% Fim do [Hibridização] %%
 
+        \subsubsection{Dinamicidade}
+            Outra abordagem promisora é a implementação de componentes dinamicos na população, ou seja, que possam mudar suas caracteristicas como velocidade e inercia de maneira dinamica, por exemplo, se uma particula perceber que esta longe do $gBest$ e está se movendo pouco ela pode reconhecer que possivelmente esta em um minimo local e diminuir seu valor de inercia afim ou o fator de importancia do seu $pBest$.\newline
+            
+            Essa abordagem pode feita de maneira constante nas particulas, fazendo elas se atualizarem em tempo real.
+        %% Fim do [Dinamicidade] %%
      %
     %% Fim do [Melhorias] %%
 
