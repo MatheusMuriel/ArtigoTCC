@@ -37,7 +37,38 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.1
     \subsection{Design do Projeto}
-        ...
+        Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi obtado por usar uma estrutura de projeto mais didatica e de facil entendimento, de maneira que possa ser facilmente reutilizada por futuros estudantes. Porém essa escolha acarreta em uma certa perda de desempenho, porém, como se trata de um trabalho que visa explorar como cada tipo de alteração impacta o algoritmo, essa perca de desempenho não se torna um defeito.\newline
+        
+        O projeto foi desenvolvido na linguagem de programação Python versão 3.9.7 e utiliza além das bibliotecas basicas da linguagem, as biblotecas:
+        \begin{itemize}
+            \item NumPy (versão 1.21.3)
+            \item MatPlotlib (versão 3.4.3)
+        \end{itemize}
+
+        \noindent O MatPlotlib foi utilizado para a geração de: 
+        \begin{itemize}
+            \item Graficos de Dispersão (\textit{Scatter Plot}) para representar a posição das particulas da população.
+            \item Graficos de Superfice (\textit{Surface Plot}) para representar o espaço de soluções.
+            \item Graficos de Barra Horizontal (\textit{Horizontal Bar Plot}) para representar um diagrama de Gantt com a solução do agendamento.
+        \end{itemize}
+
+        \noindent O NumPy foi utilizado para: 
+        \begin{itemize}
+            \item Grandes arranjos multi dimensionais de dados. 
+            \item Funções randomicas de escolha.
+            \item Ordenação de dados.
+            \item Operações de calculo como raiz quadrada e potenciação.
+            \item Funções de escolha de valores maximos e minimos.
+            \item Modelagem, união e remodelagem de matrizes.
+            \item Representações e calculo de vetores de movimentação.
+        \end{itemize}
+        
+
+
+        %% Um mesmo espaço de soluções para todos os algoritmos.
+        %% Diferentes espaçoes de soluções para as diferentes rodadas.
+
+     %
     %% Fim do [Design do Projeto] %%
 
 
@@ -53,6 +84,11 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.2
     \subsection{Espaço de Soluções}
+
+        %% Mapa 2d x mapa 1d
+        %% Mesh e interpolação de matrizes.
+        %% Movimentação vetorial
+
         Como o algoritmo do PSO trabalha com um mapa de soluções, a maneira como ele é formado é de grande importância, por isso afim de tornar a comparação mais precisa, todos os casos de testes usam o mesmo algoritmo gerador do espaço de estados inicial, representado pelo pseudo-código (Adicionar aqui).
     %% Fim do [Espaço de Soluções] %%
 
