@@ -78,32 +78,90 @@
         Para que a analise dos dados possa ser feita mais detalhadamente foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas que foram feitas, o historico da variavel $gBest$, o numero de mudanças de $pBest$, o historico de posição das particulas e as soluções finais encontradas.
      %
     %% Fim do [Design do Projeto] %%
-
-
-    %% 2 ::: Desenvolvimento
-    %% 2.2 ::: Arquitetura
-    %% 2.2.1
-    \subsection{População}
-        O algoritmo PSO também é bastante influenciado pela sua população inicial, mesmo nos algoritmos onde á mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição dessa população inicial são de grande importância. Assim, os algoritmos PSO utilizam a mesma função de geração de população inicial, representada pelo pseudo-código (Adicionar aqui).
-    %% Fim do [População] %%
-
+    
 
     %% 2 ::: Desenvolvimento
     %% 2.2 ::: Arquitetura
     %% 2.2.2
     \subsection{Espaço de Soluções}
+        O espaço de soluções (também chamado de espaço de busca) é um conceito que define um espaço imaginario aonde cada ponto desse espaço é uma possivel solução para o problema em questão. Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
+        
+        Nessa matriz de soluções cada localização $[i, j]$ tem uma solução valida para o problema, e o algoritmo em questão tem a tarefa de encontrar qual dessas posições tem a melhor solução, ou uma solução boa o suficiente. Na 
+        \hyperref[fig:solution-space]{Figura \ref{fig:solution-space}} 
+        é mostrado uma representação conceitual de um espaço de soluções em forma de matriz.\newline
+        
+        \begin{figure}[h]
+            \centering
+            \small{Incluir a imagem do exemplo de espaço de solução aqui}
+            \caption{Figura X}
+            \label{fig:solution-space}
+        \end{figure}
 
+
+        Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de codigo aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma unica dimenção, ous eja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um indice da lista. Essa implementação foi escolhida por ser mais rapida e economica na maioria dos casos. \newline
+
+        Como esse trabalho tem como foco uma exploração e implementação mais didatica foi optado a utilização de uma representação em forma de uma matriz com duas dimenções, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimenções também facilita a geração de graficos para representação visual, como é possivel ver na 
+        \hyperref[fig:surfaceplot]{Figura \ref{fig:surfaceplot}} 
+        xxx
+
+        
+        \begin{figure}[h]
+            \centering
+            \small{Incluir a grafico surface aqui}
+            \caption{Grafico surface simples}
+            \label{fig:surfaceplot}
+        \end{figure}
+        
+
+        
         %% Mapa 2d x mapa 1d
-        %% Mesh e interpolação de matrizes.
-        %% Movimentação vetorial
 
-        Como o algoritmo do PSO trabalha com um mapa de soluções, a maneira como ele é formado é de grande importância, por isso afim de tornar a comparação mais precisa, todos os casos de testes usam o mesmo algoritmo gerador do espaço de estados inicial, representado pelo pseudo-código (Adicionar aqui).
+        %% Influencia na solução
+
+        %% Movimentação vetorial
+        %% 
+
+        E então depois de todas as analises acime e de modelagem foi desenvolvido para esse trabalho o algoritmo de inicialização populacional representado pelo 
+        \hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}} 
+        mas que a implementação está no apêndice x desse trabalho.\hfill
+
+        %% Todo - Apendice
+        %% Todo - pseudo codigo
+        \begin{figure}[h]
+            \centering
+            \small{Incluir o pseudo codigo de geração do espaço de soluções aqui}
+            \caption{Pseudo codigo da geração do espaço de soluções}
+            \label{fig:pseudocodigo-solutionspace}
+        \end{figure}
+     %
     %% Fim do [Espaço de Soluções] %%
 
 
     %% 2 ::: Desenvolvimento
     %% 2.2 ::: Arquitetura
     %% 2.2.3
+    \subsection{Particula}
+        ....
+    %% Fim do [Particula] %%
+
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.4
+    \subsection{População}
+        O algoritmo PSO por ser um algoritmo paseado em inteligencia populacional, é muito influenciado pela geração de população inicial, mesmo nos algoritmos com variações aonde a mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses individuos da população inicial são de grande importância.\newline
+
+
+        
+
+
+        Assim, as variaçoes do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código   (Adicionar aqui).
+    %% Fim do [População] %%
+
+
+    %% 2 ::: Desenvolvimento
+    %% 2.2 ::: Arquitetura
+    %% 2.2.5
     \subsection{Algoritmos}
         ...
     %% Fim do [Algoritmos] %%
@@ -141,7 +199,7 @@
 
 
 
-%%%%%%%%%% Ir agr até a pagina 27 %%%%%%%%%%
+%%%%%%%%%% Ir agr até a pagina 31 %%%%%%%%%%
 
 
 
