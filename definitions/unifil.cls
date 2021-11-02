@@ -71,6 +71,9 @@
 
 \renewcommand{\familydefault}{\sfdefault}
 
+% Comandos customizados %
+\newcommand{\code}[1]{\texttt{#1}}
+
 % Margens Esquerda e Direita %
 \setlength\absleftindent{0cm}
 \setlength\absrightindent{0cm}

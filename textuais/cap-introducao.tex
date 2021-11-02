@@ -122,7 +122,7 @@
         %% Interlúdio do [Problemas de Agendamento] %%
             Como citado anteriormente o \textit{Job Shop Problem} (JSP) é um problema de escalonamento de tarefas e pertence à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} chama muita atenção por ser um problema com diversas aplicações no mundo real, e em diversos cenários diferentes, como industria, computação e manufatura.\newline
 
-            De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica. Cada operação $Oij$ tem seu respectivo tempo de execução.\newline
+            De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica. Cada operação $O_{ij}$ tem seu respectivo tempo de execução.\newline
 
             Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas:
             \begin{itemize}
@@ -158,12 +158,12 @@
         %% 1.1.3.1 ::: Representações
         %% 1.1.3.1.1
         \subsubsubsection{Instancia de um Problema}
-            Na figuraX é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. A onde existem duas maquinas $(M1, $ e $M2)$, dois \textit{jobs} $(J1, $ e $J2)$ e que cada \textit{job} possui duas operações $(Oj,1 $ e $Oj,2)$.\newline
+            Na figuraX é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. A onde existem duas maquinas $(M_1, $ e $M_2)$, dois \textit{jobs} $(J_1, $ e $J_2)$ e que cada \textit{job} possui duas operações $(O_{j,1} $ e $O_{j,2})$.\newline
             Sendo assim:\newline
-            A $O1,1$ na máquina $M2$ tem o tempo de execução 9.\newline 
-            A $O1,2$ na máquina $M1$ tem o tempo de execução 5.\newline
-            A $O2,1$ na máquina $M1$ tem o tempo de execução 1. \newline
-            A $O2,2$ na máquina $M2$ tem o tempo de execução 7. \newline
+            A $O_{1,1}$ na máquina $M_2$ tem o tempo de execução 9.\newline 
+            A $O_{1,2}$ na máquina $M_1$ tem o tempo de execução 5.\newline
+            A $O_{2,1}$ na máquina $M_1$ tem o tempo de execução 1. \newline
+            A $O_{2,2}$ na máquina $M_2$ tem o tempo de execução 7. \newline
 
             \textit{\textbf{Inserir a figuraX aqui}}\newline
         %% Fim do [Instancia de um Problema] %%
@@ -202,9 +202,9 @@
         \subsubsubsection{Instancia de um Problema}
             Na TabelaX é mostrado uma instância de um problema de \textit{Flexible Job Shop} Total. Devido a sua flexibilidade a instância de problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instância de um problema de \textit{Flexible Job Shop} é consideravelmente maior.\newline
 
-            A representação a seguir tem um exemplo de problema com dez maquinas $(M1, M2, M3, ..., M10)$ e dez \textit{jobs} $(J1, J2, J3, ..., J10)$ e cada \textit{job} possuindo três operações $(Oj1, Oj2 e Oj3)$.\newline
+            A representação a seguir tem um exemplo de problema com dez maquinas $(M_1, M_2, M_3, ..., M_10)$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_10)$ e cada \textit{job} possuindo três operações $(O_{j1}, O_{j2} e O_{j3})$.\newline
 
-            Cada índice $ji$ da Tabelax representa o tempo $Tji$ de execução de $Oji$, para cada máquina $Mk$, sendo $k = 1,... m$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n = 10$ e $m = 10$.\newline
+            Cada índice $ji$ da Tabelax representa o tempo $T_{ji}$ de execução de $O_{ji}$, para cada máquina $M_k$, sendo $k = 1,... m$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n = 10$ e $m = 10$.\newline
             Então esse problema é de tamanho 10 x 10 como visto no benchmark de \cite{Kacem2002}.\newline
 
             \textit{\textbf{Inserir a TabelaX aqui}}\newline
@@ -220,8 +220,8 @@
 
             Na FiguraX é possível ver um gráfico de Gantt para uma solução para o problema representado na TabelaX, sendo um problema de \cite{Kacem2002} de tamanho 10 x 10. Nessa solução é possível se observar:
             \begin{itemize}
-                \item A máquina $M1$ executa as operações $[(O1,1), (O7,1), (O2,1)]$.
-                \item Cada \textit{job} utiliza no mínimo duas máquinas para ser executado, por exemplo: o $J1$ é executado nas máquinas $M1 , M3, M4$.
+                \item A máquina $M_1$ executa as operações $[(O_{1,1}), (O_{7,1}), (O_{2,1})]$.
+                \item Cada \textit{job} utiliza no mínimo duas máquinas para ser executado, por exemplo: o $J_{1}$ é executado nas máquinas $M_1 , M_3, M_4$.
                 \item O \textit{fitness} dessa solução é 7.
             \end{itemize}
 

@@ -45,13 +45,15 @@
             \item MatPlotlib (versão 3.4.3)
         \end{itemize}
 
+        \hfill\newline
         \noindent O MatPlotlib foi utilizado para a geração de: 
         \begin{itemize}
             \item Gráficos de Dispersão (\textit{Scatter Plot}) para representar a posição das partículas da população.
             \item Gráficos de Superfície (\textit{Surface Plot}) para representar o espaço de soluções.
             \item Gráficos de Barra Horizontal (\textit{Horizontal Bar Plot}) para representar um diagrama de Gantt com a solução do agendamento.
         \end{itemize}
-
+        
+        \hfill\newline
         \noindent O NumPy foi utilizado para: 
         \begin{itemize}
             \item Grandes arranjos multi dimensionais de dados. 
@@ -63,6 +65,7 @@
             \item Representações e calculo de vetores de movimentação.
         \end{itemize}
         
+        \hfill\newline
         Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\newline
         
         Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.\newline
@@ -106,7 +109,6 @@
             Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões. \newline
         %% Fim do [Representações] %%
 
-        
 
         %% 2 ::: Desenvolvimento
         %% 2.2 ::: Arquitetura
@@ -129,10 +131,11 @@
 
 
         %% Influencia na solução
-
-        %% Inicialização do Array
-
-        %% Movimentação vetorial
+        \subsubsection{Influencia na Solução}
+            ...
+            % Falar dos minimos locais
+         %
+        %% Fim do [Influencia na Solução] %%
         
 
         %% 2 ::: Desenvolvimento
@@ -140,9 +143,39 @@
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.x
         \subsubsection{Implementação}
-            E então depois de todas as análises acime e de modelagem foi desenvolvido para esse trabalho o algoritmo de inicialização populacional representado pelo 
-            \hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}} 
-            mas que a implementação está no apêndice x desse trabalho.\hfill
+            Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
+
+            \subsubsubsection{Inicialização}
+                Um ponto importante que foi percebido e a forma como se ira inicializar o array no qual será armazenado o espaço de soluções.\newline
+
+                O NumPy disponibiliza trés metodos de inicialização para um novo array sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
+                \begin{itemize}
+                    \item \textit{numpy.zeros}: Ao inicializar o array com todos os valor preenchidos com o valor "$0$", por causa do processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados erroneos, nos quais por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado final, e por causa da falta de algumas operações a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução erronea a melhor.
+
+                    \item \textit{numpy.ones}: Ao inicializar o array com todos os valor preenchidos com o valor "$1$", o algoritmos gerava soluções que tendiam a sobre carregar a maquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
+
+                    \item \textit{numpy.empty}: Esse metodo de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memoria (semelhante ao \code{malloc} da linguagem C), o que o torna mais rapido, porém ele trás o revés de possivelmente ter valor errados, pois por simplesmente alocar um bloco de memoria, o array pode ser inicializado com valores estranhos devido a lixo de memoria.
+                \end{itemize}
+
+                \noindent Devido aos problemas citados acima, acaba sendo necessário de qualquer maneira percorer todo o array para setar valores, 
+                então para resolver esse problema foi utilizado um metodo de preenchimento de valores aleatorio, 
+                gerados pela função \code{numpy.random.choice} que gera um array de valores aleatórios seguindo uma distribuição uniforme, 
+                conforme demonstrado no Grafico da \hyperref[fig:distrib-uniforme]{Figura \ref{fig:distrib-uniforme}}
+
+                \begin{figure}[h]
+                    \centering
+                    \small{Incluir o grafico de distribuição aqui}
+                    \caption{Grafico de distribuição de valores gerados pela função aleatoria}
+                    \label{fig:distrib-uniforme}
+                \end{figure}
+                
+             %
+            %% Inicialização do Array
+
+
+            Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
+            \hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}}. 
+            Além disso a implementação real em Python está no apêndice x desse trabalho.\hfill
 
             %% Todo - Apendice
             %% Todo - pseudo codigo
@@ -163,6 +196,9 @@
     %% 2.2.3
     \subsection{Partícula}
         ....
+
+        %% Movimentação vetorial
+     %
     %% Fim do [Particula] %%
 
 
@@ -177,6 +213,7 @@
 
         ...
         Assim, as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código   (Adicionar aqui).
+     %
     %% Fim do [População] %%
 
 
