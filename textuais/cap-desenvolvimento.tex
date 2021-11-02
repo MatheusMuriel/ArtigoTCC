@@ -11,7 +11,7 @@
 %% 2.1
 \section{Metodologia de Pesquisa}
     %% Interlúdio do [Metodologia de Pesquisa] %%
-        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e que já são largamente usados na literatura. E são representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ é a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\newline
+        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\newline
 
         Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
     %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
@@ -20,7 +20,7 @@
     %% 2.1 ::: Metodologia de Pesquisa
     %% 2.1.1
     \subsection{Objetivos}
-        ... Analise visa descobrir e analisar como as alterações afetam o a qualidade do algoritmo...
+        ... Bla bla bla ...Analise visa descobrir e analisar como as alterações afetam a qualidade do algoritmo... Bla bla bla...
     %% Fim do [Objetivos] %%
  %
 %% Fim do [Metodologia de Pesquisa] %%
@@ -30,16 +30,16 @@
 %% 2.2
 \section{Arquitetura}
     %% Interlúdio do [Arquitetura] %%
-        A arquitetura de um projeto de é um fator que impacta diretamente no seu desempenho, porém como o objetivo desse trabalho é entender como o algoritmo PSO se comporta diante das alterações propostas, foi necessário o desenvolvimento de uma arquitetura que represente o problema de mais mais abstrata.
+        A arquitetura de um projeto de é um fator que impacta diretamente no seu desempenho, porém como o objetivo desse trabalho é entender como o algoritmo PSO se comporta diante das alterações propostas, foi necessário o desenvolvimento de uma arquitetura que represente o problema de maneira mais abstrata.
     %% Fim do Interlúdio do [Arquitetura] %%
 
     %% 2 ::: Desenvolvimento
     %% 2.2 ::: Arquitetura
     %% 2.2.1
     \subsection{Design do Projeto}
-        Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi obtado por usar uma estrutura de projeto mais didatica e de facil entendimento, de maneira que possa ser facilmente reutilizada por futuros estudantes. Porém essa escolha acarreta em uma certa perda de desempenho, porém, como se trata de um trabalho que visa explorar como cada tipo de alteração impacta o algoritmo, essa perca de desempenho não se torna um defeito.\newline
+        Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi optado por usar uma estrutura de projeto mais didática e de fácil entendimento, de maneira que possa ser facilmente reutilizada por futuros estudantes. Porém, essa escolha acarreta uma certa perda de desempenho, porém, como se trata de um trabalho que visa explorar como cada tipo de alteração impacta o algoritmo, essa perca de desempenho não se torna um defeito.\newline
         
-        O projeto foi desenvolvido na linguagem de programação Python versão 3.9.7 e utiliza além das bibliotecas basicas da linguagem, as biblotecas:
+        O projeto foi desenvolvido na linguagem de programação Python versão 3.9.7 e utiliza além das bibliotecas básicas da linguagem, as bibliotecas:
         \begin{itemize}
             \item NumPy (versão 1.21.3)
             \item MatPlotlib (versão 3.4.3)
@@ -47,35 +47,35 @@
 
         \noindent O MatPlotlib foi utilizado para a geração de: 
         \begin{itemize}
-            \item Graficos de Dispersão (\textit{Scatter Plot}) para representar a posição das particulas da população.
-            \item Graficos de Superfice (\textit{Surface Plot}) para representar o espaço de soluções.
-            \item Graficos de Barra Horizontal (\textit{Horizontal Bar Plot}) para representar um diagrama de Gantt com a solução do agendamento.
+            \item Gráficos de Dispersão (\textit{Scatter Plot}) para representar a posição das partículas da população.
+            \item Gráficos de Superfície (\textit{Surface Plot}) para representar o espaço de soluções.
+            \item Gráficos de Barra Horizontal (\textit{Horizontal Bar Plot}) para representar um diagrama de Gantt com a solução do agendamento.
         \end{itemize}
 
         \noindent O NumPy foi utilizado para: 
         \begin{itemize}
             \item Grandes arranjos multi dimensionais de dados. 
-            \item Funções randomicas de escolha.
+            \item Funções randômicas de escolha.
             \item Ordenação de dados.
-            \item Operações de calculo como raiz quadrada e potenciação.
-            \item Funções de escolha de valores maximos e minimos.
+            \item Operações de cálculo como raiz quadrada e potenciação.
+            \item Funções de escolha de valores máximos e mínimos.
             \item Modelagem, união e remodelagem de matrizes.
             \item Representações e calculo de vetores de movimentação.
         \end{itemize}
         
-        Para trazer mais clareza ao codigo foi optado por criar algumas classes para a representação de entidades e abstração de logicas. Dentre elas estão:\newline
+        Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\newline
         
-        Classe de Particula, que faz a representação de uma entidade de particula e armazena sua posição, velocidade e direção. Faz a inicialização da particula com valores aleatorios de posição, velocidade e direção. E estabelesse metodos para calcular o movimento da particula e o valor da qualidade de sua nova posição.\newline
+        Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.\newline
         
-        Classe de \textit{encoding}, responsavel por ler e interpretar os arquivos de instancia de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\newline
+        Classe de \textit{encoding}, responsável por ler e interpretar os arquivos de instância de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\newline
          
-        Classe de \textit{decoding}, responsavel por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelesse o metodo que gera o grafico de Gantt para representar visualmente a solução.\newline
+        Classe de \textit{decoding}, responsável por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelece o método que gera o gráfico de Gantt para representar visualmente a solução.\newline
         
 
-        Como o PSO é um algoritmo estocástico, ou seja seu resultado é fruto de eventos não previsiveis, como a geração aleatoria de soluções, foi decidido que para obter uma media real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\newline
-        E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{Deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma analise mais justa.\newline
+        Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis, como a geração aleatória de soluções, foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\newline
+        E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{Deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\newline
 
-        Para que a analise dos dados possa ser feita mais detalhadamente foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas que foram feitas, o historico da variavel $gBest$, o numero de mudanças de $pBest$, o historico de posição das particulas e as soluções finais encontradas.
+        Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variavel $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
      %
     %% Fim do [Design do Projeto] %%
     
@@ -84,7 +84,7 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.2
     \subsection{Espaço de Soluções}
-        O espaço de soluções (também chamado de espaço de busca) é um conceito que define um espaço imaginario aonde cada ponto desse espaço é uma possivel solução para o problema em questão. Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
+        O espaço de soluções (também chamado espaço de busca) é um conceito que define um espaço imaginário aonde cada ponto desse espaço é uma possível solução para o problema em questão. Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
         
 
         %% 2 ::: Desenvolvimento
@@ -103,7 +103,7 @@
                 \label{fig:solution-space}
             \end{figure}
 
-            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de codigo aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma unica dimenção, ous eja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um indice da lista. Essa implementação foi escolhida por ser mais rapida e economica na maioria dos casos. \newline
+            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões. \newline
         %% Fim do [Representações] %%
 
         
@@ -112,19 +112,19 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.2
-        \subsubsection{Graficos de Analise}
-            Como esse trabalho tem como foco uma exploração e implementação mais didatica foi optado a utilização de uma representação em forma de uma matriz com duas dimenções, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimenções também facilita a geração de graficos para representação visual, como por exemplo passar a matriz de soluções pela função de avaliação e assim obter um valor de \textit{fitness} para cada ponto do espaço de soluções, como é possivel ver na 
+        \subsubsection{Gráficos de análise}
+            Como esse trabalho tem como foco uma exploração e implementação mais didática foi optado a utilização de uma representação em forma de uma matriz com duas dimensões, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimensões também facilita a geração de gráficos para representação visual, como, por exemplo, passar a matriz de soluções pela função de avaliação e assim obter um valor de \textit{fitness} para cada ponto do espaço de soluções, como é possível ver na 
             \hyperref[fig:surfaceplot]{Figura \ref{fig:surfaceplot}} 
-            na qual os valor mais acima e mais escuros são os com um valor de \textit{fitness} mais alto (ou seja, pior) e os valores mais abaixo e mais claros são os com um valor de \textit{fitness} mais baixo (ou seja, melhor).\newline
+            na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).\newline
 
             \begin{figure}[h]
                 \centering
                 \small{Incluir a grafico surface aqui}
-                \caption{Grafico surface simples}
+                \caption{Gráfico surface simples}
                 \label{fig:surfaceplot}
             \end{figure}
 
-            Esses graficos se mostraram extramamente uteis ao decorrer do desenvolvimento deste trabalho, servindo como forma de validar detectar erros na função de inicialização do espaço de soluções.\newline
+            Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\newline
         %% Fim do [Graficos de Analise] %%
 
 
@@ -140,7 +140,7 @@
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.x
         \subsubsection{Implementação}
-            E então depois de todas as analises acime e de modelagem foi desenvolvido para esse trabalho o algoritmo de inicialização populacional representado pelo 
+            E então depois de todas as análises acime e de modelagem foi desenvolvido para esse trabalho o algoritmo de inicialização populacional representado pelo 
             \hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}} 
             mas que a implementação está no apêndice x desse trabalho.\hfill
 
@@ -149,7 +149,7 @@
             \begin{figure}[h]
                 \centering
                 \small{Incluir o pseudo codigo de geração do espaço de soluções aqui}
-                \caption{Pseudo codigo da geração do espaço de soluções}
+                \caption{Pseudo código da geração do espaço de soluções}
                 \label{fig:pseudocodigo-solutionspace}
             \end{figure}
         %% Fim do [Implementação] %%
@@ -161,7 +161,7 @@
     %% 2 ::: Desenvolvimento
     %% 2.2 ::: Arquitetura
     %% 2.2.3
-    \subsection{Particula}
+    \subsection{Partícula}
         ....
     %% Fim do [Particula] %%
 
@@ -170,13 +170,13 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.4
     \subsection{População}
-        O algoritmo PSO por ser um algoritmo paseado em inteligencia populacional, é muito influenciado pela geração de população inicial, mesmo nos algoritmos com variações aonde a mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses individuos da população inicial são de grande importância.\newline
+        O algoritmo PSO por ser um algoritmo baseado em inteligência populacional, é muito influenciado pela geração de população inicial, mesmo nos algoritmos com variações aonde a mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\newline
 
 
         
 
-
-        Assim, as variaçoes do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código   (Adicionar aqui).
+        ...
+        Assim, as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código   (Adicionar aqui).
     %% Fim do [População] %%
 
 
@@ -192,14 +192,14 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Algoritmos
         %% 2.2.2.1
-        \subsubsection{PSO - Basico}
+        \subsubsection{PSO — Básico}
         %% Fim do [PSO - Basico] %%
 
         %% 2 ::: Desenvolvimento
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Algoritmos
         %% 2.2.2.2
-        \subsubsection{PSO - Dinamico}
+        \subsubsection{PSO — Dinâmico}
         %% Fim do [PSO - Dinamico] %%
 
      %
@@ -215,7 +215,7 @@
 \section{Execuções}
     Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução. O teste de performance consiste em executar o algoritmo uma vez com cada problema de teste e salvar os dados de \textit{makespan}, tempo de execução e \textit{fitness}.
 
-    O teste de diversidade é feitos apenas entre as variações de PSO Dinâmico, afim de saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitness} da solução.
+    O teste de diversidade é feito apenas entre as variações de PSO Dinâmico, para saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitness} da solução.
 %% Fim do [Execuções] %%
 
 
@@ -223,9 +223,9 @@
 %% 2 ::: Desenvolvimento
 %% 2.4
 \section{Critérios de Avaliação}
-    A partir das medias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitness} que é representado pelo diagrama de Gantt como pode ser visto no exemplo da 
+    A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitness} representado pelo diagrama de Gantt como pode ser visto no exemplo da 
     \hyperref[fig:exemplo-gantt]{Figura \ref{fig:exemplo-gantt}}
-    . No caso das variações dinamicas do PSO a taxa de mutação da população.
+    . No caso das variações dinâmicas do PSO a taxa de mutação da população.
 
     % Todo - Inserir diagrama de Gantt Aqui %
     \begin{figure}[h]
