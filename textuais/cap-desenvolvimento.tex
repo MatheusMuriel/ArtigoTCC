@@ -87,7 +87,10 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.2
     \subsection{Espaço de Soluções}
-        O espaço de soluções (também chamado espaço de busca) é um conceito que define um espaço imaginário aonde cada ponto desse espaço é uma possível solução para o problema em questão. Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
+        %% Interludio %%
+            O espaço de soluções (também chamado espaço de busca) é um conceito que define um espaço imaginário aonde cada ponto desse espaço é uma possível solução para o problema em questão. 
+            Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
+        %% Fim do [Interludio] %%
         
 
         %% 2 ::: Desenvolvimento
@@ -132,8 +135,42 @@
 
         %% Influencia na solução
         \subsubsection{Influencia na Solução}
-            ...
-            % Falar dos minimos locais
+            A geração do espaço de soluções é muito importante no caso de um algoritmo como o PSO 
+            que funciona com base na movimentação de acordo com as médias de melhores posições, 
+            devido a isso, o PSO tente a ter problemas com convergencia prematura em minimos locais.\newline
+            
+            Os minimos locais são fenomenos aonde dentro de uma parte do espaço de soluções existe um ponto que é melhor do que a media dos pontos a sua volta, porém não é o melhor entre o todo o espaço de soluções, como é possivel ver na \hyperref[fig:ex-minimolocal]{Figura \ref{fig:ex-minimolocal}}.\newline
+            \begin{figure}[h]
+                \centering
+                \small{Incluir um grafico de minimo local aqui}
+                \caption{Exemplo de um minimo local}
+                \label{fig:ex-minimolocal}
+            \end{figure}
+            
+
+            Já que esse ponto se destaca muito entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a media local sempre tende para o ponto no qual está o minimo local.\newline
+
+            Como o PSO se baseia na media local e global, se houver mais de um minimo local e quantidades equivalentes de particulas da população forem distribuidas para esses pontos, as particulas podem ficar presas já que as forças se balanceiam e o $gBest$ não muda mais, como é possivel ver na \hyperref[fig:stuck-por-minimolocal]{Figura \ref{fig:stuck-por-minimolocal}}.\newline
+            
+            \begin{figure}[h]
+                \centering
+                \small{Incluir a uma imagem de um stuck por minimo local aqui}
+                \caption{Representação de \textit{stuck} por minimo local}
+                \label{fig:stuck-por-minimolocal}
+            \end{figure}
+            
+            
+            Já a convergencia prematura acontece quando a um minimo local e por coincidencia a posição inical da maioria das particulas da população tende a ser atraido para o minimo local, logo a maioria da população para nesse ponto e o algoritmo termina em um estado como é mostrado na 
+            \hyperref[fig:convergencia-prematura]{Figura \ref{fig:convergencia-prematura}} 
+            ou seja, termina antes de encontrar uma solução tão boa quando seria possivel.\newline
+
+            \begin{figure}[h]
+                \centering
+                \small{Incluir a convergencia prematura aqui aqui}
+                \caption{Demonstração de convergencia prematura de uma população de particulas}
+                \label{fig:convergencia-prematura}
+            \end{figure}
+            
          %
         %% Fim do [Influencia na Solução] %%
         
@@ -157,10 +194,10 @@
                     \item \textit{numpy.empty}: Esse metodo de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memoria (semelhante ao \code{malloc} da linguagem C), o que o torna mais rapido, porém ele trás o revés de possivelmente ter valor errados, pois por simplesmente alocar um bloco de memoria, o array pode ser inicializado com valores estranhos devido a lixo de memoria.
                 \end{itemize}
 
-                \noindent Devido aos problemas citados acima, acaba sendo necessário de qualquer maneira percorer todo o array para setar valores, 
-                então para resolver esse problema foi utilizado um metodo de preenchimento de valores aleatorio, 
+                \noindent Devido aos problemas citados acima, acaba sendo necessário de qualquer maneira percorer todo o array para setar valores. \newline 
+                Então foi optado por utilizar um metodo de preenchimento de valores aleatorio, 
                 gerados pela função \code{numpy.random.choice} que gera um array de valores aleatórios seguindo uma distribuição uniforme, 
-                conforme demonstrado no Grafico da \hyperref[fig:distrib-uniforme]{Figura \ref{fig:distrib-uniforme}}
+                conforme demonstrado no Grafico da \hyperref[fig:distrib-uniforme]{Figura \ref{fig:distrib-uniforme}}.
 
                 \begin{figure}[h]
                     \centering
@@ -171,7 +208,6 @@
                 
              %
             %% Inicialização do Array
-
 
             Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
             \hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}}. 
@@ -185,6 +221,7 @@
                 \caption{Pseudo código da geração do espaço de soluções}
                 \label{fig:pseudocodigo-solutionspace}
             \end{figure}
+         %
         %% Fim do [Implementação] %%
         
      %
