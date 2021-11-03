@@ -238,12 +238,11 @@
         %% Fim do [Interludio] %%
         
 
-
         %% 2 ::: Desenvolvimento
         %% 2.2 ::: Arquitetura
         %% 2.2.3 ::: Partícula
         %% 2.2.3.1
-        \subsubsection{Definições}
+        \subsubsection{Implementação}
             Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados que são utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções. \newline
 
             Para fazer uma melhor movimentação foi optado por nao usar uma variavel de direção, mas sim uma variavel que guarda a ultima posição na qual a particula esteve.\newline
@@ -271,32 +270,122 @@
         %% 2.2.3 ::: Partícula
         %% 2.2.3.3
         \subsubsection{Movimentação}
-            ...
+            A movimentação da particula no espaço de soluções é o ponto mais importante dessa entidade. Pois se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possivel.\newline
+            
+            Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.\newline
+            Aonde se tem uma direção e com base nessa direção se soma ou substrai o valor de velocidade do eixo de movimento e assim se obtem uma nova posição, como mostrado no 
+            \hyperref[alg:mov-int-sum]{Pseudocodido \ref{alg:mov-int-sum}}.\newline
+
+            \begin{figure}[h]
+                \centering
+                \small{Incluir o pseudo codigo de uma movimentação por soma de inteiros aqui}
+                \caption{Pseudocodido de uma movimentação por soma de inteiros}
+                \label{alg:mov-int-sum}
+            \end{figure}
+            
+            Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
+            uma velocidade $2$ e a direção do movimento ser \code{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
+            \hyperref[fig:movimentacao-int-sum]{Figura \ref{fig:movimentacao-int-sum}}.\newline
+            
+            \begin{figure}[h]
+                \centering
+                \small{Incluir a demonstração de movimentação por soma de inteiros aqui}
+                \caption{Demonstração de movimentação por soma de inteiro}
+                \label{fig:movimentacao-int-sum}
+            \end{figure}
+            
+            Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\newline
+            
+            Porém no caso do algoritmo PSO é necessario que ao calcular a nova posição, se leve em conta a inercia e uma media entre o $pBest$ e o $gBest$, o que muitas vezes gera uma movimentação em angulos mais especificos como representado na 
+            \hyperref[fig:angular-moviment-grid-based]{Figura \ref{fig:angular-moviment-grid-based}}
+            o que torna essa abordagem de soma de inteiros muito complexa e limitada para esse cenario.\newline
+            
+            \begin{figure}[h]
+                \centering
+                \small{Incluir a imagem demonstrativa de movimentação com angulos estranhos aqui}
+                \caption{Exemplo de movimentação com angulos complexos}
+                \label{fig:angular-moviment-grid-based}
+            \end{figure}
+            
+            %%%%
+            
+            Então nesse trabalho foi desenvolvido um metodo de movimentação baseado em calculos vetoriais que elimina esses problemas movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o calculo da nova posição.\newline
+            
+            \subsubsubsection{Movimentação Vetorial}
+                Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Algebra Linear, e representa o produto interno padrão do espaço euclidiano e é representado por uma operação binaria entre dois vetores.\newline
+                
+                \noindent Para encontrar a nova posição de uma uma particula são utilizados:
+                \begin{itemize}
+                    \item $\vec p$ Que representa o vetor entre a particula e o $pBest$ 
+                        (\hyperref[fig:vetor-p]{Figura \ref{fig:vetor-p}}).
+                    \item $\vec g$ Que representa o vetor entre a particula e o $gBest$ 
+                        (\hyperref[fig:vetor-g]{Figura \ref{fig:vetor-g}}).
+                    \item $\vec w$ Que representa o vetor de inercia da particula, que é o vetor resultante da soma da posição atual com o valor da velocidade 
+                        (\hyperref[fig:vetor-w]{Figura \ref{fig:vetor-w}}).
+                \end{itemize}
+
+                \begin{figure}[!htb]
+                    \begin{minipage}{\textwidth}
+
+                        % 1º linha
+                        \begin{minipage}{0.5\textwidth}
+                            \centering
+                            %\includegraphics[width=.8\linewidth]{example-image-a}
+                            \small{Incluir vetor v aqui}
+                            \caption{xxxx}
+                            \label{fig:vetor-v}
+                        \end{minipage}
+                        \begin{minipage}{0.5\textwidth}
+                            \centering
+                            %\includegraphics[width=.8\linewidth]{example-image-b}
+                            \small{Incluir vetor p aqui}
+                            \caption{xxxx}
+                            \label{fig:vetor-p}
+                        \end{minipage}
+
+                        % 2º linha
+                        \begin{minipage}{0.5\textwidth}
+                            \centering
+                            %\includegraphics[width=.8\linewidth]{example-image-a}
+                            \small{Incluir vetor g aqui}
+                            \caption{xxxx}
+                            \label{fig:vetor-g}
+                        \end{minipage}
+                        \begin{minipage}{0.5\textwidth}
+                            \centering
+                            %\includegraphics[width=.8\linewidth]{example-image-b}
+                            \small{Incluir vetor w aqui}
+                            \caption{xxxx}
+                            \label{fig:vetor-w}
+                        \end{minipage}
+
+                    \end{minipage}
+                \end{figure}
+
+                \noindent A nova posição da particula é dada pela 
+                \hyperref[fig:formula-nova-posicao]{Formula \ref{fig:formula-nova-posicao}}.
+                
+                \begin{figure}[h]
+                    \centering
+                    \small{Incluir a Formula de posição particula aqui}
+                    \caption{Formula que define a nova posição da particula}
+                    \label{fig:formula-nova-posicao}
+                \end{figure}
+
+                \noident Ou seja, em um cenario aonde $\vec v=[10, 15]$ 
+                
+
+                %median_best_vector = ((p_best_vector + g_best_vector)/2)
+                %innitial_position = np.array([x_position, y_position])
+                %inertia_vector = (innitial_position * velocity)
+                %final_vector = (median_best_vector - innitial_position) + (inertia_vector /2)
+
+             %
+            %% Fim do [Movimentação Vetorial] %%
+
+
          %
         %% Fim do [Movimentação] %%
-        
-
-        %% 2 ::: Desenvolvimento
-        %% 2.2 ::: Arquitetura
-        %% 2.2.3 ::: Partícula
-        %% 2.2.3.4
-        \subsubsection{Implementação}
-            %Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que %influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
-
-            %Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de %inicialização do espaço de soluções representado pelo 
-            %\hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}}. 
-            %Além disso a implementação real em Python está no apêndice x desse trabalho.\hfill
-
-            %% Todo - Apendice
-            %% Todo - pseudo codigo
-            %\begin{figure}[h]
-                %\centering
-                %\small{Incluir o pseudo codigo de geração do espaço de soluções aqui}
-                %\caption{Pseudo código da geração do espaço de soluções}
-                %\label{fig:pseudocodigo-solutionspace}
-            %\end{figure}
-         %
-        %% Fim do [Implementação] %%
 
      %
     %% Fim do [Particula] %%
