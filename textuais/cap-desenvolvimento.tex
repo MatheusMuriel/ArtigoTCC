@@ -314,6 +314,8 @@
             \subsubsubsection{Movimentação Vetorial}
                 Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Algebra Linear, e representa o produto interno padrão do espaço euclidiano e é representado por uma operação binaria entre dois vetores.\newline
                 
+                \noindent Em um cenario aonde a posição da particula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.
+
                 \noindent Para encontrar a nova posição de uma uma particula são utilizados:
                 \begin{itemize}
                     \item $\vec p$ Que representa o vetor entre a particula e o $pBest$ 
@@ -372,13 +374,23 @@
                     \label{fig:formula-nova-posicao}
                 \end{figure}
 
-                \noident Ou seja, em um cenario aonde $\vec v=[10, 15]$ 
+                \noindent Então temos o vetor $\vec r$ resultante, então a nova posição da particula é $[12,10]$.
                 
+                No codigo Python essa implementação é feita de maneira levemente diferente por características da linguagem. Para realizar os calculos vetoriais foi utilizado a biblioteca \textit{Numpy}. \newline
+                
+                Para isso primeiro é calculo um vetor medio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inercia. \newline
+                Então a posição atual da particula é deduzido do valor medio entre medio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da particula fosse o ponto $[0,0]$ do mapa.\newline
+                Então somado com o vetor de inercia divido por um valor de significancia para a inercia (Definido pelos parametros de configuração do algoritmo).\newline
 
-                %median_best_vector = ((p_best_vector + g_best_vector)/2)
-                %innitial_position = np.array([x_position, y_position])
-                %inertia_vector = (innitial_position * velocity)
-                %final_vector = (median_best_vector - innitial_position) + (inertia_vector /2)
+                No \hyperref[cod:new-posicao]{Pseudocodido \ref{cod:new-posicao}} é possivel ver a representação dessa função de calculo, e a implementação desse metodoestá disponivel no apendice x.
+                
+                %% TODO - apendice
+                \begin{figure}[h]
+                    \centering
+                    \small{Incluir o psudocodigo de movimentação aqui}
+                    \caption{Pseudocodigo da função de calculo de movimentação de particula}
+                    \label{cod:new-posicao}
+                \end{figure}
 
              %
             %% Fim do [Movimentação Vetorial] %%
