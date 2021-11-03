@@ -18,7 +18,12 @@
     %% 2.1 ::: Metodologia de Pesquisa
     %% 2.1.1
     \subsection{Objetivos}
-        ... Bla bla bla ...Analise visa descobrir e analisar como as alterações afetam a qualidade do algoritmo... Bla bla bla...
+        Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinamicos em cenarios mono objetivos, principalmente em problemas com o FJSP. \newline
+
+        Com as implementações feitas nesse trabalho se espera não uma analise crua de numeros e metricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendencias de mudanças. \newline
+        
+        Para assim poder propor novas abordagens que tenham maior chance de serem proitosas em diversos cenarios e aplicações no mundo real.
+     %
     %% Fim do [Objetivos] %%
  %
 %% Fim do [Metodologia de Pesquisa] %%
@@ -490,17 +495,25 @@
 %% 2 ::: Desenvolvimento
 %% 2.4
 \section{Critérios de Avaliação}
-    A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitness} representado pelo diagrama de Gantt como pode ser visto no exemplo da 
-    \hyperref[fig:exemplo-gantt]{Figura \ref{fig:exemplo-gantt}}
-    .
+    A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo: \newline
+    
+    \begin{itemize}
+        \item Tempo total de execução do algoritmo.
+        \item Fitness final.
+    \end{itemize}
+    
 
-    % Todo - Inserir diagrama de Gantt Aqui %
-    \begin{figure}[h]
-        \centering
-        \small{Incluir a plotagem de gantt aqui}
-        \caption{Exemplo de diagrama de Gantt para representação da solução}
-        \label{fig:exemplo-gantt}
-    \end{figure}
+
+    E são parametros de analise:\newline
+    
+    \begin{itemize}
+        \item Taxa de mudança da variavel $gBest$ ao longo da execução.
+        \item Quantidade de rodadas necessarias para atingir o criterio de parada.
+        \item Taxa de mudanças de $pBest$ por rodada.
+        \item Historico de movimentação das particulas.
+    \end{itemize}
+
+    Além desses criterios também é possivel observar os dados e tirar outras concluções sobre o comportamento do algoritmo.\newline
     
  %
 %% Fim do [Critérios de Avaliação] %%
