@@ -1,10 +1,8 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% 2 ::: Desenvolvimento
 \chapter{Desenvolvimento}
-    %% Interlúdio do [Desenvolvimento] %%
-        ...
-    %% Fim do Interlúdio do [Desenvolvimento] %%
+%% Interlúdio do [Desenvolvimento] %%
+    ...
+%% Fim do Interlúdio do [Desenvolvimento] %%
 
 
 %% 2 ::: Desenvolvimento
@@ -133,7 +131,10 @@
         %% Fim do [Graficos de Analise] %%
 
 
-        %% Influencia na solução
+        %% 2 ::: Desenvolvimento
+        %% 2.2 ::: Arquitetura
+        %% 2.2.2 ::: Espaço de Soluções
+        %% 2.2.2.3
         \subsubsection{Influencia na Solução}
             A geração do espaço de soluções é muito importante no caso de um algoritmo como o PSO 
             que funciona com base na movimentação de acordo com as médias de melhores posições, 
@@ -178,7 +179,7 @@
         %% 2 ::: Desenvolvimento
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
-        %% 2.2.2.x
+        %% 2.2.2.4
         \subsubsection{Implementação}
             Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
 
@@ -232,9 +233,71 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.3
     \subsection{Partícula}
-        ....
+        %% Interludio %%
+            Por se tratar de um algoritmo populacional focado em particulas, por isso o nome \textit{Particle Swarm Optimization} que significa Otimização por Enxame de Particulas, a representação dessa entidade, assim como sua geração, controle e movimentação, se mostra um dos principais pilares do algoritmo. Devido a criterios de legibilidade e facilitação de futuros estudos nesse trabalho foi optado por criar uma estrutura de classe bem definida para essa representação e controle.
+        %% Fim do [Interludio] %%
+        
 
-        %% Movimentação vetorial
+
+        %% 2 ::: Desenvolvimento
+        %% 2.2 ::: Arquitetura
+        %% 2.2.3 ::: Partícula
+        %% 2.2.3.1
+        \subsubsection{Definições}
+            Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados que são utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções. \newline
+
+            Para fazer uma melhor movimentação foi optado por nao usar uma variavel de direção, mas sim uma variavel que guarda a ultima posição na qual a particula esteve.\newline
+            Além da armazenagem dos valores da particula, a classe da Particula também implementa algumas funções como:\newline
+            
+            Função \textbf{\code{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatoria para a particula.\newline
+            
+            Função \textbf{\code{evaluate\_value}} que faz o calculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\newline
+
+            Função \textbf{\code{update\_position}} que faz a movimentação da particula.\newline
+            
+
+            \noindent A implementação de toda a classe de particula está disponivel no apendice x desse trabalho.\newline
+
+            %% TODO - Apendice
+            
+            
+            Em implementações de codigo aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de calculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatorios na particula.\newline
+
+         %
+        %% Fim do [Representações] %%
+
+        %% 2 ::: Desenvolvimento
+        %% 2.2 ::: Arquitetura
+        %% 2.2.3 ::: Partícula
+        %% 2.2.3.3
+        \subsubsection{Movimentação}
+            ...
+         %
+        %% Fim do [Movimentação] %%
+        
+
+        %% 2 ::: Desenvolvimento
+        %% 2.2 ::: Arquitetura
+        %% 2.2.3 ::: Partícula
+        %% 2.2.3.4
+        \subsubsection{Implementação}
+            %Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que %influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
+
+            %Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de %inicialização do espaço de soluções representado pelo 
+            %\hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}}. 
+            %Além disso a implementação real em Python está no apêndice x desse trabalho.\hfill
+
+            %% Todo - Apendice
+            %% Todo - pseudo codigo
+            %\begin{figure}[h]
+                %\centering
+                %\small{Incluir o pseudo codigo de geração do espaço de soluções aqui}
+                %\caption{Pseudo código da geração do espaço de soluções}
+                %\label{fig:pseudocodigo-solutionspace}
+            %\end{figure}
+         %
+        %% Fim do [Implementação] %%
+
      %
     %% Fim do [Particula] %%
 
@@ -293,7 +356,6 @@
 %% Fim do [Execuções] %%
 
 
-
 %% 2 ::: Desenvolvimento
 %% 2.4
 \section{Critérios de Avaliação}
@@ -309,9 +371,8 @@
         \label{fig:exemplo-gantt}
     \end{figure}
     
-
+ %
 %% Fim do [Critérios de Avaliação] %%
-
 
 
 %% 2 ::: Desenvolvimento
@@ -320,10 +381,6 @@
     (Ainda em desenvolvimento...)
     %\lipsum[1]
 %% Fim do [Resultados] %%
-
-
-
-%%%%%%%%%% Ir agr até a pagina 31 %%%%%%%%%%
 
 
 % Esse captulo deve ir no minimo até a pagina 36
