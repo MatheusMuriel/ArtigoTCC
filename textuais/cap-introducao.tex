@@ -41,7 +41,7 @@
         \item As operações são atômicas, não sendo possível interromper ou pausar a execução da mesma;
     \end{itemize}
 
-    O problema de Job Shop Flexível ou \textit{Flexible Job Shop Problem} (FJSP) é uma extensão do JSP onde é possível que uma operação seja executada em mais de uma máquina. Sendo assim deve se além de determinar a ordem e o local de execução de cada \textit{job}, também é preciso determinada ordem e local de execução das operações. Assim sendo considerado uma extensão mais complexa do JSP \cite{Jansen2000}.\newline
+    O problema de \textit{Job Shop Flexível} ou \textit{Flexible Job Shop Problem} (FJSP) é uma extensão do JSP onde é possível que uma operação seja executada em mais de uma máquina. Sendo assim deve se além de determinar a ordem e o local de execução de cada \textit{job}, também é preciso determinada ordem e local de execução das operações. Assim sendo considerado uma extensão mais complexa do JSP \cite{Jansen2000}.\newline
 
     Além disso, o problema de FJSP pode ser dividido em dois tipos, o parcial (P-FJSP), onde uma operação só pode ser executada por um subconjunto de máquinas, ou o total (T-FJSP), onde qualquer operação pode ser executada por qualquer máquina. O FJSP tem as mesmas restrições do JSP exceto a que diz que nenhum \textit{job} pode ser processado duas vezes na mesma máquina.\newline
 
@@ -103,7 +103,7 @@
             
             \item \textbf{\textit{Job Shop:}} Diferentemente do \textit{Flow Shop} o \textit{Job Shop} pode ter execuções paralelas, assim como ser dividido em operações.
             
-            \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{Job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões, a Total, em que todas as maquinas podem executar todas as operações. E a Parcial, onde existem limitações para quais maquinas podem executar quais operações.
+            \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões, a Total, em que todas as maquinas podem executar todas as operações. E a Parcial, onde existem limitações para quais maquinas podem executar quais operações.
         \end{itemize}
 
         Além disso, cada um dos problemas acima podem ser sub-classificados como mono-objetivos ou multi-objetivos conforme os tipos e a quantidade de objetivos.\newline
@@ -143,8 +143,8 @@
             Para ser possível que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
             \begin{itemize}
                 \item Quantas maquinas existem;
-                \item Quantos \textit{Jobs} existem;
-                \item Quantas operações cada \textit{Job} possui;
+                \item Quantos \textit{jobs} existem;
+                \item Quantas operações cada \textit{job} possui;
                 \item Em qual maquina cada operação pode ser executada;
                 \item Quanto tempo cada operação leva para ser executada em sua respectiva maquina;
             \end{itemize}
@@ -218,7 +218,7 @@
             Cada índice $ji$ da 
             \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}} 
             representa o tempo $T{ji}$ de execução de $O_{ji}$, para cada máquina $M_k$, 
-            sendo $k=1,... m$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n=10$ e $m=10$.\newline
+            sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n=10$ e $m=10$.\newline
             Então esse problema é de tamanho $10\times10$ como visto no benchmark de \cite{Kacem2002}.\newline
 
             \begin{figure}[ht]
@@ -244,7 +244,7 @@
             \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}}, 
             sendo um problema de \cite{Kacem2002} de tamanho $10\times10$. Nessa solução é possível se observar:
             \begin{itemize}
-                \item A máquina $M_1$ executa as operações $[(O_{1,1}), (O_{7,1}), (O_{2,1})]$.
+                \item A máquina $M_1$ executa as operações $[O_{1,1}, O_{7,1}, O_{2,1}]$.
                 \item Cada \textit{job} utiliza no mínimo duas máquinas para ser executado, por exemplo: o $J_1$ é executado nas máquinas $M_1 , M_3, M_4$.
                 \item O \textit{fitness} dessa solução é $7$.
             \end{itemize}
@@ -369,7 +369,7 @@
         
         \begin{figure}[h]
             \centering
-            \small{Incluir o pseudo código de PSO basico aqui}
+            \small{Incluir o pseudo código de PSO básico aqui}
             \caption{Pseudocódigo de um PSO básico}
             \label{alg:pso-base}
         \end{figure}
