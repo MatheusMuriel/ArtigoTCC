@@ -9,8 +9,9 @@
 %% 2.1
 \section{Metodologia de Pesquisa}
     %% Interlúdio do [Metodologia de Pesquisa] %%
-        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\newline
-
+        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\hfill
+        
+        \vspace{\onelineskip}
         Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
     %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
 
@@ -18,9 +19,9 @@
     %% 2.1 ::: Metodologia de Pesquisa
     %% 2.1.1
     \subsection{Objetivos}
-        Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinâmicos em cenários mono objetivos, principalmente em problemas com o FJSP. \newline
-
-        Com as implementações feitas nesse trabalho se espera não uma análise crua de números e métricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendências de mudanças. \newline
+        Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinâmicos em cenários mono objetivos, principalmente em problemas com o FJSP.\hfill\vspace{\onelineskip}
+        
+        Com as implementações feitas nesse trabalho se espera não uma análise crua de números e métricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendências de mudanças.\hfill\vspace{\onelineskip}
         
         Para assim poder propor novas abordagens que tenham uma maior chance de serem proveitosas em diversos cenários e aplicações no mundo real.
      %
@@ -40,7 +41,7 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.1
     \subsection{Design do Projeto}
-        Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi optado por usar uma estrutura de projeto mais didática e de fácil entendimento, de maneira que possa ser facilmente reutilizada por futuros estudantes. Porém, essa escolha acarreta uma certa perda de desempenho, porém, como se trata de um trabalho que visa explorar como cada tipo de alteração impacta o algoritmo, essa perca de desempenho não se torna um defeito.\newline
+        Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi optado por usar uma estrutura de projeto mais didática e de fácil entendimento, de maneira que possa ser facilmente reutilizada por futuros estudantes. Porém, essa escolha acarreta uma certa perda de desempenho, porém, como se trata de um trabalho que visa explorar como cada tipo de alteração impacta o algoritmo, essa perca de desempenho não se torna um defeito.\hfill\vspace{\onelineskip}
         
         O projeto foi desenvolvido na linguagem de programação Python versão 3.9.7 e utiliza além das bibliotecas básicas da linguagem, as bibliotecas:
         \begin{itemize}
@@ -69,17 +70,16 @@
         \end{itemize}
         
         \hfill\newline
-        Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\newline
+        Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\hfill\vspace{\onelineskip}
         
-        Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.\newline
+        Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.\hfill\vspace{\onelineskip}
         
-        Classe de \textit{encoding}, responsável por ler e interpretar os arquivos de instância de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\newline
+        Classe de \textit{encoding}, responsável por ler e interpretar os arquivos de instância de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\hfill\vspace{\onelineskip}
          
-        Classe de \textit{decoding}, responsável por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelece o método que gera o gráfico de Gantt para representar visualmente a solução.\newline
-        
+        Classe de \textit{decoding}, responsável por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelece o método que gera o gráfico de Gantt para representar visualmente a solução.\hfill\vspace{\onelineskip}
 
         Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis, como a geração aleatória de soluções, foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\newline
-        E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\newline
+        E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\hfill\vspace{\onelineskip}
 
         Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
      %
@@ -92,7 +92,7 @@
     \subsection{Espaço de Soluções}
         %% Interlúdio %%
             O espaço de soluções (também chamado espaço de busca) é um conceito que define um espaço imaginário aonde cada ponto desse espaço é uma possível solução para o problema em questão. 
-            Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\newline
+            Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\hfill
         %% Fim do [Interlúdio] %%
         
 
@@ -103,16 +103,16 @@
         \subsubsection{Representações}
             Nessa representação em forma de matriz cada localização $[i, j]$ tem uma solução valida para o problema, e o algoritmo em questão tem a tarefa de encontrar qual dessas posições tem a melhor solução, ou uma solução boa o suficiente. Na 
             \hyperref[fig:solution-space]{Figura \ref{fig:solution-space}} 
-            é mostrado uma representação conceitual de um espaço de soluções em forma de matriz.\newline
+            é mostrado uma representação conceitual de um espaço de soluções em forma de matriz.\hfill
             
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir a imagem do exemplo de espaço de solução aqui}
                 \caption{Figura X}
                 \label{fig:solution-space}
             \end{figure}
 
-            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões. \newline
+            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões. \hfill
         %% Fim do [Representações] %%
 
 
@@ -123,16 +123,16 @@
         \subsubsection{Gráficos de análise}
             Como esse trabalho tem como foco uma exploração e implementação mais didática foi optado a utilização de uma representação em forma de uma matriz com duas dimensões, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimensões também facilita a geração de gráficos para representação visual, como, por exemplo, passar a matriz de soluções pela função de avaliação e assim obter um valor de \textit{fitness} para cada ponto do espaço de soluções, como é possível ver na 
             \hyperref[fig:surfaceplot]{Figura \ref{fig:surfaceplot}} 
-            na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).\newline
+            na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).\hfill
 
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir o gráfico surface aqui}
                 \caption{Gráfico surface simples}
                 \label{fig:surfaceplot}
             \end{figure}
 
-            Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\newline
+            Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\hfill\vspace{\onelineskip}
         %% Fim do [Gráficos de Analise] %%
 
 
@@ -143,10 +143,10 @@
         \subsubsection{Influencia na Solução}
             A geração do espaço de soluções é muito importante no caso de um algoritmo como o PSO 
             que funciona com base na movimentação conforme as médias de melhores posições, 
-            devido a isso, o PSO tente a ter problemas com convergência prematura em mínimos locais.\newline
+            devido a isso, o PSO tente a ter problemas com convergência prematura em mínimos locais.\hfill\vspace{\onelineskip}
             
             Os mínimos locais são fenômenos aonde dentro de uma parte do espaço de soluções existe um ponto que é melhor que a média dos pontos a sua volta, porém não é o melhor entre o todo o espaço de soluções, como é possível ver na \hyperref[fig:ex-minimolocal]{Figura \ref{fig:ex-minimolocal}}.\newline
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir um gráfico de mínimo local aqui}
                 \caption{Exemplo de um mínimo local}
@@ -154,11 +154,11 @@
             \end{figure}
             
 
-            Já que esse ponto se destaca muito entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a média local sempre tende para o ponto onde está o mínimo local.\newline
+            Já que esse ponto se destaca muito entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a média local sempre tende para o ponto onde está o mínimo local.\hfill\vspace{\onelineskip}
 
-            Como o PSO se baseia na média local e global, se houver mais de um mínimo local e quantidades equivalentes de partículas da população forem distribuídas para esses pontos, as partículas podem ficar presas já que as forças se balanceiam e o $gBest$ não muda mais, como é possível ver na \hyperref[fig:stuck-por-minimolocal]{Figura \ref{fig:stuck-por-minimolocal}}.\newline
+            Como o PSO se baseia na média local e global, se houver mais de um mínimo local e quantidades equivalentes de partículas da população forem distribuídas para esses pontos, as partículas podem ficar presas já que as forças se balanceiam e o $gBest$ não muda mais, como é possível ver na \hyperref[fig:stuck-por-minimolocal]{Figura \ref{fig:stuck-por-minimolocal}}.\hfill
             
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir a uma imagem de um stuck por mínimo local aqui}
                 \caption{Representação de \textit{stuck} por mínimo local}
@@ -168,9 +168,9 @@
             
             Já a convergência prematura acontece quando a um mínimo local e por coincidência a posição inicial da maioria das partículas da população tende a ser atraído para o mínimo local, logo a maioria da população para nesse ponto e o algoritmo termina em um estado como é mostrado na 
             \hyperref[fig:convergencia-prematura]{Figura \ref{fig:convergencia-prematura}} 
-            ou seja, termina antes de encontrar uma solução tão boa quando seria possível.\newline
+            ou seja, termina antes de encontrar uma solução tão boa quando seria possível.\hfill
 
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir a convergência prematura aqui aqui}
                 \caption{Demonstração de convergência prematura de uma população de partículas}
@@ -189,7 +189,7 @@
             Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
 
             \subsubsubsection{Inicialização}
-                Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\newline
+                Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\hfill\vspace{\onelineskip}
 
                 O NumPy disponibiliza trés métodos de inicialização para um novo \textit{array} sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
                 \begin{itemize}
@@ -205,7 +205,7 @@
                 gerados pela função \code{numpy.random.choice} que gera um \textit{array} de valores aleatórios seguindo uma distribuição uniforme, 
                 conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{fig:distrib-uniforme}}.
 
-                \begin{figure}[h]
+                \begin{figure}[ht]
                     \centering
                     \small{Incluir o gráfico de distribuição aqui}
                     \caption{Gráfico de distribuição de valores gerados pela função aleatória}
@@ -221,7 +221,7 @@
 
             %% Todo - Apêndice
             %% Todo - pseudo código
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir o pseudo código de geração do espaço de soluções aqui}
                 \caption{Pseudo código da geração do espaço de soluções}
@@ -248,24 +248,24 @@
         %% 2.2.3 ::: Partícula
         %% 2.2.3.1
         \subsubsection{Implementação}
-            Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções. \newline
+            Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções.\hfill\vspace{\onelineskip}
 
-            Para fazer uma melhor movimentação foi optado por não usar uma variável de direção, mas sim uma variável que guarda a última posição onde a partícula esteve.\newline
-            Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:\newline
+            Para fazer uma melhor movimentação foi optado por não usar uma variável de direção, mas sim uma variável que guarda a última posição onde a partícula esteve.\hfill
+            Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:\hfill\vspace{\onelineskip}
             
-            Função \textbf{\code{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\newline
+            Função \textbf{\code{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\hfill\vspace{\onelineskip}
             
-            Função \textbf{\code{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\newline
+            Função \textbf{\code{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\hfill\vspace{\onelineskip}
 
-            Função \textbf{\code{update\_position}} que faz a movimentação da partícula.\newline
+            Função \textbf{\code{update\_position}} que faz a movimentação da partícula.\hfill\vspace{\onelineskip}
             
 
-            \noindent A implementação de toda a classe de partícula está disponível no apêndice x desse trabalho.\newline
+            \noindent A implementação de toda a classe de partícula está disponível no apêndice x desse trabalho.\hfill\vspace{\onelineskip}
 
             %% TODO - Apêndice
             
             
-            Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\newline
+            Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\hfill
 
          %
         %% Fim do [Representações] %%
@@ -275,13 +275,13 @@
         %% 2.2.3 ::: Partícula
         %% 2.2.3.3
         \subsubsection{Movimentação}
-            A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.\newline
+            A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.\hfill\vspace{\onelineskip}
             
             Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.\newline
             Aonde se tem uma direção e com base nessa direção se soma ou subtrai o valor de velocidade do eixo de movimento e assim se obtém uma nova posição, como mostrado no 
-            \hyperref[alg:mov-int-sum]{Pseudocódigo \ref{alg:mov-int-sum}}.\newline
+            \hyperref[alg:mov-int-sum]{Pseudocódigo \ref{alg:mov-int-sum}}.\hfill
 
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir o pseudo código de uma movimentação por soma de inteiros aqui}
                 \caption{Pseudocódigo de uma movimentação por soma de inteiros}
@@ -290,22 +290,22 @@
             
             Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
             uma velocidade $2$ e a direção do movimento ser \code{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
-            \hyperref[fig:movimentacao-int-sum]{Figura \ref{fig:movimentacao-int-sum}}.\newline
+            \hyperref[fig:movimentacao-int-sum]{Figura \ref{fig:movimentacao-int-sum}}.\hfill
             
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir a demonstração de movimentação por soma de inteiros aqui}
                 \caption{Demonstração de movimentação por soma de inteiro}
                 \label{fig:movimentacao-int-sum}
             \end{figure}
             
-            Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\newline
+            Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\hfill\vspace{\onelineskip}
             
             Porém, no caso do algoritmo PSO é necessário que ao calcular a nova posição, se considere a inércia e uma média entre o $pBest$ e o $gBest$, o que gera muitas vezes uma movimentação em ângulos mais específicos como representado na 
             \hyperref[fig:angular-moviment-grid-based]{Figura \ref{fig:angular-moviment-grid-based}}
-            o que torna essa abordagem de soma de inteiros muito complexa e limitada para esse cenário.\newline
+            o que torna essa abordagem de soma de inteiros muito complexa e limitada para esse cenário.\hfill
             
-            \begin{figure}[h]
+            \begin{figure}[ht]
                 \centering
                 \small{Incluir a imagem demonstrativa de movimentação com ângulos estranhos aqui}
                 \caption{Exemplo de movimentação com ângulos complexos}
@@ -314,10 +314,10 @@
             
             %%%%
             
-            Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\newline
+            Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\hfill
             
             \subsubsubsection{Movimentação Vetorial}
-                Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.\newline
+                Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.\hfill\vspace{\onelineskip}
                 
                 \noindent Em um cenário aonde a posição da partícula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.
 
@@ -335,14 +335,14 @@
                     \begin{minipage}{\textwidth}
 
                         % 1º linha
-                        \begin{minipage}{0.5\textwidth}
+                        \begin{minipage}{0.48\textwidth}
                             \centering
                             %\includegraphics[width=.8\linewidth]{example-image-a}
                             \small{Incluir vetor v aqui}
                             \caption{xxxx}
                             \label{fig:vetor-v}
                         \end{minipage}
-                        \begin{minipage}{0.5\textwidth}
+                        \begin{minipage}{0.48\textwidth}
                             \centering
                             %\includegraphics[width=.8\linewidth]{example-image-b}
                             \small{Incluir vetor p aqui}
@@ -351,14 +351,14 @@
                         \end{minipage}
 
                         % 2º linha
-                        \begin{minipage}{0.5\textwidth}
+                        \begin{minipage}{0.48\textwidth}
                             \centering
                             %\includegraphics[width=.8\linewidth]{example-image-a}
                             \small{Incluir vetor g aqui}
                             \caption{xxxx}
                             \label{fig:vetor-g}
                         \end{minipage}
-                        \begin{minipage}{0.5\textwidth}
+                        \begin{minipage}{0.48\textwidth}
                             \centering
                             %\includegraphics[width=.8\linewidth]{example-image-b}
                             \small{Incluir vetor w aqui}
@@ -372,7 +372,7 @@
                 \noindent A nova posição da partícula é dada pela 
                 \hyperref[fig:formula-nova-posicao]{Formula \ref{fig:formula-nova-posicao}}.
                 
-                \begin{figure}[h]
+                \begin{figure}[ht]
                     \centering
                     \small{Incluir a Formula de posição partícula aqui}
                     \caption{Formula que define a nova posição da partícula}
@@ -381,16 +381,16 @@
 
                 \noindent Então temos o vetor $\vec r$ resultante, então a nova posição da partícula é $[12,10]$.
                 
-                No código Python essa implementação é feita de maneira levemente diferente por características da linguagem. Para realizar os cálculos vetoriais foi utilizado a biblioteca \textit{Numpy}. \newline
+                No código Python essa implementação é feita de maneira levemente diferente por características da linguagem. Para realizar os cálculos vetoriais foi utilizado a biblioteca \textit{Numpy}.\hfill\vspace{\onelineskip}
                 
-                Para isso primeiro é calculo um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia. \newline
+                Para isso primeiro é calculo um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.\newline
                 Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\newline
-                Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\newline
+                Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\hfill\vspace{\onelineskip}
 
                 No \hyperref[cod:new-posicao]{Pseudocódigo \ref{cod:new-posicao}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
                 
                 %% TODO - apêndice
-                \begin{figure}[h]
+                \begin{figure}[ht]
                     \centering
                     \small{Incluir o pseudocódigo de movimentação aqui}
                     \caption{Pseudocódigo da função de cálculo de movimentação de partícula}
@@ -412,21 +412,21 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.4
     \subsection{População}
-        Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele é muito influenciado pela geração da população inicial, mesmo nos algoritmos com variações aonde existem mutações e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\newline
+        Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele é muito influenciado pela geração da população inicial, mesmo nos algoritmos com variações aonde existem mutações e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\hfill\vspace{\onelineskip}
 
-        Os parâmetros como o tamanho da população são definidos nas configurações do algoritmo. Todas as funções utilizadas na geração dos indivíduos seguem o padrão de distribuição uniforme.\newline
+        Os parâmetros como o tamanho da população são definidos nas configurações do algoritmo. Todas as funções utilizadas na geração dos indivíduos seguem o padrão de distribuição uniforme.\hfill\vspace{\onelineskip}
         
-        A posição inicial da partícula é dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.\newline
+        A posição inicial da partícula é dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.\hfill\vspace{\onelineskip}
         
-        A última posição da partícula é obtida através de um sorteio de chances iguais que pode ou subtraindo, ou adicionar o valor $1$ na posição inicial gerada anteriormente. Caso seja subtraído $1$ a direção do movimento é para frente, caso seja subtraído $1$ a direção do movimento é para trás.\newline
+        A última posição da partícula é obtida através de um sorteio de chances iguais que pode ou subtraindo, ou adicionar o valor $1$ na posição inicial gerada anteriormente. Caso seja subtraído $1$ a direção do movimento é para frente, caso seja subtraído $1$ a direção do movimento é para trás.\hfill\vspace{\onelineskip}
 
-        A velocidade é dada por um valor aleatório entre $0.1$ e $0.2$.\newline
+        A velocidade é dada por um valor aleatório entre $0.1$ e $0.2$.\hfill\vspace{\onelineskip}
 
         Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuída, dificultando o acontecimento de convergência prematura.
         
         Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código \hyperref[cod:geracao-pop]{Pseudocódigo \ref{cod:geracao-pop}}.
         
-        \begin{figure}[h]
+        \begin{figure}[ht]
             \centering
             \small{Incluir a pseudo código da geração populacional aqui}
             \caption{Pseudocódigo de geração populacional}
@@ -474,9 +474,9 @@
 %% 2 ::: Desenvolvimento
 %% 2.3
 \section{Execuções}
-    Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução.\newline
+    Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução.\hfill\vspace{\onelineskip}
     
-    Como foi descrito anteriormente, de modo a assegurar uma análise mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo texto para análise detalhada.\newline
+    Como foi descrito anteriormente, de modo a assegurar uma análise mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo texto para análise detalhada.\hfill\vspace{\onelineskip}
     
     Os dados salvos são:
     \begin{itemize}
@@ -503,7 +503,7 @@
         \item \textit{Fitness} final.
     \end{itemize}
     
-    \noindent E são parâmetros de análise: \hfill
+    \noindent E são parâmetros de análise:\hfill
     \begin{itemize}
         \item Taxa de mudança da variável $gBest$ ao longo da execução.
         \item Quantidade de rodadas necessárias para atingir o critério de parada.

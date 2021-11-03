@@ -1,16 +1,16 @@
 %% 1 ::: Introdução
 \chapter{Introdução}
-    Em um ambiente de produção industrial moderna a optimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\newline
+    Em um ambiente de produção industrial moderna a optimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\hfill\vspace{\onelineskip}
     
-    Um dos exemplos de otimização em sistemas de manufatura é dentro de um cenário onde existem diversas máquinas independentes e uma fila de tarefas não homogêneas, e o objetivo é achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar o máximo de tempo e energia.\newline
+    Um dos exemplos de otimização em sistemas de manufatura é dentro de um cenário onde existem diversas máquinas independentes e uma fila de tarefas não homogêneas, e o objetivo é achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar o máximo de tempo e energia.\hfill\vspace{\onelineskip}
 
-    Em um ambiente de alta concorrência é importante que essa ordem seja encontrada quanto antes, pois essa demora para encontrar a solução significa perda de tempo de produção. Porém, a busca de um bom escalonamento, ou seja, a configuração e ordem de execução, não é uma tarefa fácil. Pois, o número de possibilidades de arranjos cresce exponencialmente, e computar todas as soluções possíveis torna-se inviável após alguns níveis.\newline
+    Em um ambiente de alta concorrência é importante que essa ordem seja encontrada quanto antes, pois essa demora para encontrar a solução significa perda de tempo de produção. Porém, a busca de um bom escalonamento, ou seja, a configuração e ordem de execução, não é uma tarefa fácil. Pois, o número de possibilidades de arranjos cresce exponencialmente, e computar todas as soluções possíveis torna-se inviável após alguns níveis.\hfill\vspace{\onelineskip}
 
-    Por causa dessa característica exponencial conforme o número de máquinas e o número de problemas, esse problema de escalonamento é classificado como um problema de otimização de análise combinatória e pertence à classe de problemas \textit{NP-Hard}.\newline
+    Por causa dessa característica exponencial conforme o número de máquinas e o número de problemas, esse problema de escalonamento é classificado como um problema de otimização de análise combinatória e pertence à classe de problemas \textit{NP-Hard}.\hfill\vspace{\onelineskip}
 
-    Os problemas da classe \textit{NP-Hard} são aqueles onde a resposta não pode ser encontrada computacionalmente em um tempo polinomial, ou seja, em um tempo razoável, porém uma solução pode ser verificada em tempo polinomial \cite{Eswaramurthy2008}.\newline
+    Os problemas da classe \textit{NP-Hard} são aqueles onde a resposta não pode ser encontrada computacionalmente em um tempo polinomial, ou seja, em um tempo razoável, porém uma solução pode ser verificada em tempo polinomial \cite{Eswaramurthy2008}.\hfill\vspace{\onelineskip}
 
-    Existem diversos problemas clássicos de produção e manufatura enquadrados em problemas de otimização e escalonamento, o que torna esse assunto uma área de muito interesse para pesquisadores do mundo inteiro.\newline
+    Existem diversos problemas clássicos de produção e manufatura enquadrados em problemas de otimização e escalonamento, o que torna esse assunto uma área de muito interesse para pesquisadores do mundo inteiro.\hfill\vspace{\onelineskip}
 
     Dentre os problemas clássicos de escalonamento e planejamento de produção estão: 
     \textit{Single Machine Scheduling Problem}, 
@@ -18,17 +18,17 @@
     \textit{Flow Shop Scheduling Problem}, 
     \textit{Job Shop Scheduling Problem} e 
     \textit{Open Shop Scheduling Problem} 
-    \cite{Allahverdi2008}.\newline
+    \cite{Allahverdi2008}.\hfill\vspace{\onelineskip}
 
-    Como esses problemas não são possíveis de serem resolvidos em tempo polinomial, não é possível encontrar uma solução perfeita para eles. Mas é possível encontrarmos uma solução boa o suficiente, conforme os critérios de avaliação do problema, essa solução é chamada solução ótima.\newline
+    Como esses problemas não são possíveis de serem resolvidos em tempo polinomial, não é possível encontrar uma solução perfeita para eles. Mas é possível encontrarmos uma solução boa o suficiente, conforme os critérios de avaliação do problema, essa solução é chamada solução ótima.\hfill\vspace{\onelineskip}
 
-    \textit{Job Shop Scheduling Problem} (JSSP) é um do problema pertencente a classe de problemas \textit{NP-Hard}, ele chama muito a atenção de pesquisadores por ser um problema com diversas aplicações no mundo real, seja em ambientes de manufatura ou em planejamento de produção, ou até mesmo em logística \cite{Cheng1996}.\newline
+    \textit{Job Shop Scheduling Problem} (JSSP) é um do problema pertencente a classe de problemas \textit{NP-Hard}, ele chama muito a atenção de pesquisadores por ser um problema com diversas aplicações no mundo real, seja em ambientes de manufatura ou em planejamento de produção, ou até mesmo em logística \cite{Cheng1996}.\hfill\vspace{\onelineskip}
 
-    Nesse problema, temos um conjunto $m$ de máquinas e um conjunto $n$ de tarefas chamadas \textit{jobs}, sendo cada \textit{job} uma sequência de operações, cada uma com seu determinado tempo de execução.\newline 
+    Nesse problema, temos um conjunto $m$ de máquinas e um conjunto $n$ de tarefas chamadas \textit{jobs}, sendo cada \textit{job} uma sequência de operações, cada uma com seu determinado tempo de execução.\hfill\vspace{\onelineskip} 
 
-    O objetivo é encontrar um escalonamento que combine todas as máquinas de forma que minimize a quantidade de tempo ocioso de cada máquina, assim atingindo o objetivo de forma que seja mais econômica e eficiente \cite{Cheng1996}.\newline
+    O objetivo é encontrar um escalonamento que combine todas as máquinas de forma que minimize a quantidade de tempo ocioso de cada máquina, assim atingindo o objetivo de forma que seja mais econômica e eficiente \cite{Cheng1996}.\hfill\vspace{\onelineskip}
 
-    O problema de JSP é comprovadamente pertencente à classe \textit{NP-Hard} quando em um ambiente com duas ou mais máquinas, como demonstrado por \cite{Lenstra1979}.\newline
+    O problema JSP é comprovadamente pertencente à classe \textit{NP-Hard} quando em um ambiente com duas ou mais máquinas, como demonstrado por \cite{Lenstra1979}.\hfill\vspace{\onelineskip}
 
     Porém, assim como visto por \cite{Bagchi1999} existem algumas restrições no cenário de JSP, dentre elas:
     \begin{itemize}
@@ -41,34 +41,34 @@
         \item As operações são atômicas, não sendo possível interromper ou pausar a execução da mesma;
     \end{itemize}
 
-    O problema de \textit{Job Shop Flexível} ou \textit{Flexible Job Shop Problem} (FJSP) é uma extensão do JSP onde é possível que uma operação seja executada em mais de uma máquina. Sendo assim deve se além de determinar a ordem e o local de execução de cada \textit{job}, também é preciso determinada ordem e local de execução das operações. Assim sendo considerado uma extensão mais complexa do JSP \cite{Jansen2000}.\newline
+    O problema de \textit{Job Shop Flexível} ou \textit{Flexible Job Shop Problem} (FJSP) é uma extensão do JSP onde é possível que uma operação seja executada em mais de uma máquina. Sendo assim deve se além de determinar a ordem e o local de execução de cada \textit{job}, também é preciso determinada ordem e local de execução das operações. Assim sendo considerado uma extensão mais complexa do JSP \cite{Jansen2000}.\hfill\vspace{\onelineskip}
 
-    Além disso, o problema de FJSP pode ser dividido em dois tipos, o parcial (P-FJSP), onde uma operação só pode ser executada por um subconjunto de máquinas, ou o total (T-FJSP), onde qualquer operação pode ser executada por qualquer máquina. O FJSP tem as mesmas restrições do JSP exceto a que diz que nenhum \textit{job} pode ser processado duas vezes na mesma máquina.\newline
+    Além disso, o problema de FJSP pode ser dividido em dois tipos, o parcial (P-FJSP), onde uma operação só pode ser executada por um subconjunto de máquinas, ou o total (T-FJSP), onde qualquer operação pode ser executada por qualquer máquina. O FJSP tem as mesmas restrições do JSP exceto a que diz que nenhum \textit{job} pode ser processado duas vezes na mesma máquina.\hfill\vspace{\onelineskip}
 
     Ao longo do tempo já foram propostas diversas abordagens para resolver o problema de FJSP, dentre elas o \textit{Branch and Bound} \cite{Nababan2008}, a 
     \textit{Integer Programming} \cite{Pan2007}, a 
     \textit{Dynamic Programming} \cite{Gromicho2012}, 
-    \textit{Evolutionary Algorithm} \cite{Pezzella2008}, e até mesmo técnicas híbridas \cite{Zhang2009}, onde duas ou mais abordagens são associadas para compor um algoritmo híbrido.\newline
+    \textit{Evolutionary Algorithm} \cite{Pezzella2008}, e até mesmo técnicas híbridas \cite{Zhang2009}, onde duas ou mais abordagens são associadas para compor um algoritmo híbrido.\hfill\vspace{\onelineskip}
 
-    Um desses algoritmos propostos é o algoritmo de Otimização por Enxame de Partículas ou \textit{Particle Swarm Optimization} (PSO) proposto por \cite{Kennedy1995} e trabalha com um grupo de indivíduos cada um tendo: direção, velocidade, a informação da sua melhor posição e a informação da melhor posição entre todos os indivíduos do grupo, e com essas informações cada indivíduo consegue tirar sua média e a cada rodada do algoritmo ir chegando mais perto do objetivo.\newline
+    Um desses algoritmos propostos é o algoritmo de Otimização por Enxame de Partículas ou \textit{Particle Swarm Optimization} proposto por \cite{Kennedy1995} e trabalha com um grupo de indivíduos cada um tendo: direção, velocidade, a informação da sua melhor posição e a informação da melhor posição entre todos os indivíduos do grupo, e com essas informações cada indivíduo consegue tirar sua média e a cada rodada do algoritmo ir chegando mais perto do objetivo.\hfill\vspace{\onelineskip}
 
-    Outra abordagem que tem tido bons resultados em diversos problemas práticos \cite{Qing2012} são os Algoritmos Genéticos ou \textit{Genetic Algorithms} (GA), proposto por \textit{John Henry Holland} sendo inspirado na teoria da evolução de Charles Darwin, simulando a transmissão de genes dos indivíduos mais aptos por meio da simulação de operações de cruzamento e de mutações, para selecionar os indivíduos mais aptos.\newline
+    Outra abordagem que tem tido bons resultados em diversos problemas práticos \cite{Qing2012} são os Algoritmos Genéticos ou \textit{Genetic Algorithms} (GA), proposto por \textit{John Henry Holland} sendo inspirado na teoria da evolução de Charles Darwin, simulando a transmissão de genes dos indivíduos mais aptos por meio da simulação de operações de cruzamento e de mutações, para selecionar os indivíduos mais aptos.\hfill\vspace{\onelineskip}
 
-    Neste trabalho iremos demonstrar e comparar a eficiência de uma abordagem híbrida do Algoritmo PSO com componentes evolutivos de GA, tornando assim esse algoritmo mais dinâmico, além de demonstrar sua eficiência em diferentes cenários reais de aplicação na indústria.\newline
+    Neste trabalho iremos demonstrar e comparar a eficiência de uma abordagem híbrida do Algoritmo PSO com componentes evolutivos de GA, tornando assim esse algoritmo mais dinâmico, além de demonstrar sua eficiência em diferentes cenários reais de aplicação na indústria.\hfill
 
 
 %% 1 ::: Introdução
 %% 1.1
 \section{Problemas de Agendamento}
     %% Interlúdio do [Problemas de Agendamento] %%
-        Problemas de agendamento estão muito presentes atualmente, e existem diretamente em diversos cenários, tais como planejamento de produção, sistemas de manufatura, sistemas de produção, processamento de informação, gerenciamento de rotas de logísticas, etc. e indiretamente nos computadores através do escalonamento de processos do sistema operacional.\newline
+        Problemas de agendamento estão muito presentes atualmente, e existem diretamente em diversos cenários, tais como planejamento de produção, sistemas de manufatura, sistemas de produção, processamento de informação, gerenciamento de rotas de logísticas, etc. e indiretamente nos computadores através do escalonamento de processos do sistema operacional.\hfill\vspace{\onelineskip}
 
-        Com tantos possíveis cenários de aplicação é natural que existam inúmeras sub-divisões deste problema. Porém, a maioria deles tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e visa ordenar as execuções das demandas e as distribuir entre os recursos, isso de modo a alcançar da melhor possível um ou mais objetivos, que podem ser, por exemplo, o tempo total para o algoritmo executar o agendamento (também chamado \textit{makespan}), o tempo total de execução de todas as tarefas no agendamento encontrado (também chamado \textit{fitness}) ou a soma total do tempo de ociosidade das máquinas.\newline
+        Com tantos possíveis cenários de aplicação é natural que existam inúmeras sub-divisões deste problema. Porém, a maioria deles tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e visa ordenar as execuções das demandas e as distribuir entre os recursos, isso de modo a alcançar da melhor possível um ou mais objetivos, que podem ser, por exemplo, o tempo total para o algoritmo executar o agendamento (também chamado \textit{makespan}), o tempo total de execução de todas as tarefas no agendamento encontrado (também chamado \textit{fitness}) ou a soma total do tempo de ociosidade das máquinas.\hfill\vspace{\onelineskip}
 
-        Por essa característica de buscar um melhor resultado em um objetivo os problemas de agendamento são caracterizados como problemas de optimização, que são os problemas que a solução são aquelas que trazem um melhor resultado para o objetivo. É importante ressaltar que nesses problemas de optimização a solução não necessariamente precisa a melhor possível, mas sim uma solução boa o suficiente (também chamado solução ótima).\newline
-
-        Os problemas de agendamento multi-objetivo consideram em simultâneo, mais de um critério de avaliação, podendo ter ou não o mesmo peso, ou nível de importância, e espera se que sejam atingidos todos os objetivos. Por causa dessa diversidade de objetivos que podem muitas vezes serem conflitantes entre si, como, por exemplo, ser mais rápido e, em simultâneo, gastar a menor quantidade possível de energia.\newline
-
+        Por essa característica de buscar um melhor resultado em um objetivo os problemas de agendamento são caracterizados como problemas de optimização, que são os problemas que a solução são aquelas que trazem um melhor resultado para o objetivo. É importante ressaltar que nesses problemas de optimização a solução não necessariamente precisa a melhor possível, mas sim uma solução boa o suficiente (também chamado solução ótima).\hfill\vspace{\onelineskip}
+        
+        Os problemas de agendamento multiobjetivo consideram em simultâneo, mais de um critério de avaliação, podendo ter ou não o mesmo peso, ou nível de importância, e espera se que sejam atingidos todos os objetivos. Por causa dessa diversidade de objetivos que podem muitas vezes serem conflitantes entre si, como, por exemplo, ser mais rápido e, em simultâneo, gastar a menos energia.\hfill\vspace{\onelineskip}
+        
         Já os problemas de agendamento mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, define uma importância maior para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
     %% Fim do Interlúdio do [Problemas de Agendamento] %%
 
@@ -76,14 +76,14 @@
     %% 1.1 ::: Problemas de Agendamento
     %% 1.1.1
     \subsection{Definição}
-        Como foi definido por \cite{Bagchi1999} um problema de escalonamento de tarefas computacionais (\textit{jobs}) é um problema de otimização aonde os recursos limitados são alocados no tempo de execução dos recursos, com as diferentes tarefas podendo ser executadas em paralelo entre as diversas maquinas, porém, cada atividade única sendo executada sequenciamento em uma só maquina.\newline
+        Como foi definido por \cite{Bagchi1999} um problema de escalonamento de tarefas computacionais (\textit{jobs}) é um problema de otimização aonde os recursos limitados são alocados no tempo de execução dos recursos, com as diferentes tarefas podendo ser executadas em paralelo entre as diversas maquinas, porém, cada atividade única sendo executada sequenciamento em uma só maquina.\hfill\vspace{\onelineskip}
 
-        Assim como a grande maioria dos problemas de origem combinatória, ou seja, que um fator depende o fator anterior, formando assim uma combinação de fatores, o problema de escalonamento é um problema da classe NP-Hard da qual não é possível se encontrar a melhor solução possível em um tempo polinomial, ou seja, computacionalmente aceitável, devido a sua quantidade de operações necessárias crescer exponencialmente, com base no tamanho do problema, tornando se assim um problema inviável de se resolver através de cálculos brutos.\newline
+        Assim como a grande maioria dos problemas de origem combinatória, ou seja, que um fator depende o fator anterior, formando assim uma combinação de fatores, o problema de escalonamento é um problema da classe NP-Hard da qual não é possível se encontrar a melhor solução possível em um tempo polinomial, ou seja, computacionalmente aceitável, devido a sua quantidade de operações necessárias crescer exponencialmente, com base no tamanho do problema, tornando se assim um problema inviável de se resolver através de cálculos brutos.\hfill\vspace{\onelineskip}
 
-        Por causa disso, nesses casos de problemas NP-Hard normalmente se usam algoritmos de aproximação, que tenham um tempo de execução razoável e consigam encontrar uma solução boa o suficiente com base nos critérios de avaliação, a chamada "Solução Ótima", como visto por \cite{lawler1993}.\newline
+        Por causa disso, nesses casos de problemas NP-Hard normalmente se usam algoritmos de aproximação, que tenham um tempo de execução razoável e consigam encontrar uma solução boa o suficiente com base nos critérios de avaliação, a chamada "Solução Ótima", como visto por \cite{lawler1993}.\hfill\vspace{\onelineskip}
 
-        Porém, esse conceito de solução ótima varia conforme o problema, em alguns casos é mais importante que essa solução seja encontrada em um tempo curto, do que ela seja alguns milissegundos mais rápida do que as outras soluções já encontradas, isso se aplica em ambientes que o agendamento deve ser feito em tempo real.\newline
-        Já para um problema em que essa solução precisa ser encontrada apenas uma vez e ser replicada varias vezes, como uma estrutura de linha de montagem definitiva, vale a pena esperar algumas horas a mais se essa solução economizar tempo de produção ao longo do seu uso. Então esse critério de avaliação de solução ótima deve ser muito bem analisado de caso a caso.\newline
+        Porém, esse conceito de solução ótima varia conforme o problema, em alguns casos é mais importante que essa solução seja encontrada em um tempo curto, do que ela seja alguns milissegundos mais rápida do que as outras soluções já encontradas, isso se aplica em ambientes que o agendamento deve ser feito em tempo real.\hfill
+        Já para um problema em que essa solução precisa ser encontrada apenas uma vez e ser replicada varias vezes, como uma estrutura de linha de montagem definitiva, vale a pena esperar algumas horas a mais se essa solução economizar tempo de produção ao longo do seu uso. Então esse critério de avaliação de solução ótima deve ser muito bem analisado de caso a caso.\hfill\vspace{\onelineskip}
 
         Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados, algoritmos populacionais e algoritmos evolutivos. Que conseguem simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução para encontrar uma solução ótima, de maneira similar a que um ser vivo faria.
     %% Fim do [Definição] %%
@@ -106,9 +106,9 @@
             \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões, a Total, em que todas as maquinas podem executar todas as operações. E a Parcial, onde existem limitações para quais maquinas podem executar quais operações.
         \end{itemize}
 
-        Além disso, cada um dos problemas acima podem ser sub-classificados como mono-objetivos ou multi-objetivos conforme os tipos e a quantidade de objetivos.\newline
+        Além disso, cada um dos problemas acima podem ser sub-classificados como mono-objetivos ou multi-objetivos conforme os tipos e a quantidade de objetivos.\hfill\vspace{\onelineskip}
 
-        No caso de ter somente um único objetivo, como um menor \textit{fitness} por exemplo, ou ter mais de um objetivo, como um menor \textit{fitness} e um menor índice de inércia total.\newline
+        No caso de ter somente um único objetivo, como um menor \textit{fitness} por exemplo, ou ter mais de um objetivo, como um menor \textit{fitness} e um menor índice de inércia total.\hfill\vspace{\onelineskip}
 
         Esse trabalho é focado no problema de \textit{Flexible Job Shop} Total, em um contexto mono-objetivo.
     %% Fim do [Problema] %%
@@ -119,9 +119,9 @@
     %% 1.1.3
     \subsection{Problema de Job Shop — JSP}
         %% Interlúdio do [Problemas de Agendamento] %%
-            Como citado anteriormente o \textit{Job Shop Problem} (JSP) é um problema de escalonamento de tarefas e pertence à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} chama muita atenção por ser um problema com diversas aplicações no mundo real, e em diversos cenários diferentes, como industria, computação e manufatura.\newline
+            Como citado anteriormente o \textit{Job Shop Problem} (JSP) é um problema de escalonamento de tarefas e pertence à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} chama muita atenção por ser um problema com diversas aplicações no mundo real, e em diversos cenários diferentes, como industria, computação e manufatura.\hfill\vspace{\onelineskip}
 
-            De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica. Cada operação $O_{ij}$ tem seu respectivo tempo de execução.\newline
+            De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica. Cada operação $O_{ij}$ tem seu respectivo tempo de execução.\hfill\vspace{\onelineskip}
 
             Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas:
             \begin{itemize}
@@ -159,13 +159,7 @@
         \subsubsubsection{Instancia de um Problema}
             Na 
             \hyperref[fig:ex-instancia-problema-JSP]{Figura \ref{fig:ex-instancia-problema-JSP}}
-            é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. A onde existem duas maquinas $(M_1, $ e $M_2)$, dois \textit{jobs} $(J_1, $ e $J_2)$ e que cada \textit{job} possui duas operações $(O_{j,1} $ e $O_{j,2})$.\newline
-            
-            Sendo assim:\newline
-            A $O_{1,1}$ na máquina $M_2$ tem o tempo de execução $9$.\newline 
-            A $O_{1,2}$ na máquina $M_1$ tem o tempo de execução $5$.\newline
-            A $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$.\newline
-            A $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$.\newline
+            é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. A onde existem duas maquinas $(M_1, $ e $M_2)$, dois \textit{jobs} $(J_1, $ e $J_2)$ e que cada \textit{job} possui duas operações $(O_{j,1} $ e $O_{j,2})$.\hfill\vspace{\onelineskip}
 
             \begin{figure}[ht]
                 \centering
@@ -173,6 +167,14 @@
                 \caption{Exemplo de instancia de um \textit{Job Shop Problem}}
                 \label{fig:ex-instancia-problema-JSP}
             \end{figure}
+            
+            \noindent Sendo assim:\hfill
+            \begin{itemize}
+                \item A $O_{1,1}$ na máquina $M_2$ tem o tempo de execução $9$
+                \item A $O_{1,2}$ na máquina $M_1$ tem o tempo de execução $5$
+                \item A $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$
+                \item A $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$
+            \end{itemize}            
             
          %
         %% Fim do [Instancia de um Problema] %%
