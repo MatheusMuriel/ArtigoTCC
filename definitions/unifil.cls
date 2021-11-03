@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{unifil}
+\ProvidesClass{./definitions/unifil}
 
 \DeclareOption*{
   \PassOptionsToClass{
@@ -102,6 +102,7 @@
 \makeatletter
 \newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
 \makeatother
+
 
 \renewcommand{\imprimircapa}{
   \begin{capa}
