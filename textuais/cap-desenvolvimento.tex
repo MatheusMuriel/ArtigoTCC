@@ -407,13 +407,29 @@
     %% 2.2 ::: Arquitetura
     %% 2.2.4
     \subsection{População}
-        O algoritmo PSO por ser um algoritmo baseado em inteligência populacional, é muito influenciado pela geração de população inicial, mesmo nos algoritmos com variações aonde a mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\newline
+        Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele é muito influenciado pela geração da população inicial, mesmo nos algoritmos com variações aonde existem mutação e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\newline
 
-
+        Os parametros como o tamanho da população são definido nas configuração do algoritmo. Todas as funções utilizadas na geração dos individuos seguem o padrão de distribuição uniforme.\newline
         
+        A possição inicial da particula é dada por dois numeros aleatorios entre $1$ e o limite do espaço de soluções - $1$.\newline
+        
+        A ultima posição da particula é obtida atravez de um sorteio de chances iguais que pode ou subtraindo ou adicionar $1$ na posição inicial gerada anteriormente. Caso seja subtraido $1$ a direção de movimentação é para frente, caso seja subtraido $1$ a direção do movimento é para trás.\newline
 
-        ...
-        Assim, as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código   (Adicionar aqui).
+        A velocidade é dada por um valor aleatorio entre $0.1$ e $0.2$.\newline
+
+        Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuida, dificultando o acontecimento de convergencia prematura.
+        
+        Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código \hyperref[cod:geracao-pop]{Pseudocodido \ref{cod:geracao-pop}}.
+        
+        \begin{figure}[h]
+            \centering
+            \small{Incluir a pseudo codigo da geração populacional aqui}
+            \caption{Pseudocodigo de geração populacional}
+            \label{cod:geracao-pop}
+        \end{figure}
+        
+        \noindent Garantindo assim um ponto de comparação mais justo entre os algoritmos.
+
      %
     %% Fim do [População] %%
 
@@ -451,9 +467,23 @@
 %% 2 ::: Desenvolvimento
 %% 2.3
 \section{Execuções}
-    Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução. O teste de performance consiste em executar o algoritmo uma vez com cada problema de teste e salvar os dados de \textit{makespan}, tempo de execução e \textit{fitness}.
-
-    O teste de diversidade é feito apenas entre as variações de PSO Dinâmico, para saber a taxa de mutação da população e como isso influenciou no \textit{makespan} e no \textit{fitness} da solução.
+    Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução.\newline
+    
+    Como foi descrito anteriormentem, afim de asegurar uma analise mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo texto para analise detalhada.\newline
+    
+    Os dados salvos são:
+    \begin{itemize}
+        \item População inicial.
+        \item Espaço de soluções.
+        \item Numeros de rodadas do algoritmo.
+        \item Historico da variavel $gBest$.
+        \item Historico da variavel $pBest$.
+        \item Historico da posição das particulas.
+        \item Soluções encontradas.
+    \end{itemize}
+    
+    (Dados a completar...)
+ % 
 %% Fim do [Execuções] %%
 
 
@@ -462,7 +492,7 @@
 \section{Critérios de Avaliação}
     A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo o tempo de \textit{makespan}, o \textit{fitness} representado pelo diagrama de Gantt como pode ser visto no exemplo da 
     \hyperref[fig:exemplo-gantt]{Figura \ref{fig:exemplo-gantt}}
-    . No caso das variações dinâmicas do PSO a taxa de mutação da população.
+    .
 
     % Todo - Inserir diagrama de Gantt Aqui %
     \begin{figure}[h]
@@ -479,9 +509,6 @@
 %% 2 ::: Desenvolvimento
 %% 2.5
 \section{Resultados}
-    (Ainda em desenvolvimento...)
-    %\lipsum[1]
+    (Dados a completar...)
+ %
 %% Fim do [Resultados] %%
-
-
-% Esse captulo deve ir no minimo até a pagina 36
