@@ -216,7 +216,7 @@
                 \item A operação $O_{1,2}$ na máquina $M_1$ tem o tempo de execução $5$
                 \item A operação $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$
                 \item A operação $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$
-            \end{itemize}\hfill\vspace{\onelineskip}
+            \end{itemize}
             
          %
         %% Fim do [Instancia de um Problema] %%
@@ -230,13 +230,13 @@
     %% 1.1.4
     \subsection{Problema de Job Shop Flexível — FJSP}
         %% Interlúdio do [FJSP]%%
-            O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} em que é permitido que uma operação seja executada em mais de uma máquina. Então além de definir a ordem e a maquina de execução de cada \textit{job} também é preciso definir o agendamento das operações.\hfill\vspace{\onelineskip}
+            O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} na qual é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\hfill\vspace{\onelineskip}
             
-            De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar soluções. Mas por esse aumento de fatores a considerar o \textit{Flexible Job Shop} é considerado um problema mais complexo que o \textit{Job Shop}.\hfill\vspace{\onelineskip}
+            De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.\hfill\vspace{\onelineskip}
 
-            Existem sub divisões no problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer máquina.\hfill\vspace{\onelineskip}
+            Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer máquina.\hfill\vspace{\onelineskip}
 
-            Para o \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
+            E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
         %% Fim do Interlúdio do [FJSP]%%
 
         %% 1 ::: Introdução
@@ -244,7 +244,9 @@
         %% 1.1.4 ::: FJSP
         %% 1.1.4.1
         \subsubsection{Representações}
-            As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da representação do problema, devido a sua natureza flexível uma representação do \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação. Porém, no caso de uma problema de \textit{Flexible Job Shop} Parcial, ou seja, em que uma operação não pode ser processada por qualquer máquina, a representação não precisa definir o tempo de processamento de todas as operações para todas as maquinas, mas somente para as máquinas que podem processar aquela operação
+            As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da representação do problema, devido a sua natureza flexível uma representação do \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.\breakline
+            
+            Porém, no caso de uma problema de \textit{Flexible Job Shop} Parcial, ou seja, em que uma operação não pode ser processada por qualquer máquina, a representação não precisa definir o tempo de processamento de todas as operações para todas as maquinas, mas somente para as máquinas que podem processar aquela operação
         %% Fim do [Representações] %%
 
 
@@ -256,22 +258,27 @@
         \subsubsubsection{Instancia de um Problema}
             Na 
             \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}} 
-            é mostrado uma instância de um problema de \textit{Flexible Job Shop} Total. Devido a sua flexibilidade a instância de problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instância de um problema de \textit{Flexible Job Shop} é consideravelmente maior.\hfill\vspace{\onelineskip}
-
-            A representação a seguir tem um exemplo de problema com dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ e cada \textit{job} possuindo três operações $(O_{j1}, O_{j2}, O_{j3})$.\hfill\vspace{\onelineskip}
-
-            Cada índice $ji$ da 
-            \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}} 
-            representa o tempo $T{ji}$ de execução de $O_{ji}$, para cada máquina $M_k$, 
-            sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n=10$ e $m=10$.\newline
-            Então esse problema é de tamanho $10\times10$ como visto no benchmark de \cite{Kacem2002}.\hfill
-
+            é mostrado uma instância de um problema de \textit{Flexible Job Shop} Total. De tamanho $10\times10$ retirado do benchmark de \cite{Kacem2002}.\breakline
+            
+            Devido a definição do FJSP Total, uma instância de um problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instância de um problema de FJSP-T é consideravelmente maior do que uma representação de problema de JSP.\hfill\vspace{\onelineskip}
+            
             \begin{figure}[ht]
                 \centering
                 \small{Incluir a instancia de problema FJSP aqui}
                 \caption{Exemplo de instancia de um \textit{Flexible Job Shop Problem}}
                 \label{fig:ex-instancia-problema-FJSP}
             \end{figure}
+            
+            Na representação da 
+            \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}} 
+            é representado um problema com dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ aonde cada \textit{job} possui três operações $(O_{j1}, O_{j2}, O_{j3})$.\hfill\vspace{\onelineskip}
+
+            Cada índice $ji$ da 
+            \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}} 
+            representa o tempo $T{ji}$ de execução de $O_{ji}$, para a máquina $M_k$, 
+            sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n=10$ e $m=10$.\breakline
+            
+            
          %
         %% Fim do [Instancia de um Problema] %%
 
@@ -285,14 +292,9 @@
 
             Na 
             \hyperref[fig:plot-gantt]{Figura \ref{fig:plot-gantt}} 
-            é possível ver um gráfico de Gantt para uma solução para o problema representado na 
+            é possível ver um gráfico do tipo \textit{Gantt Plot} que representa uma solução para o problema representado na 
             \hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}}, 
-            sendo um problema de \cite{Kacem2002} de tamanho $10\times10$. Nessa solução é possível se observar:
-            \begin{itemize}
-                \item A máquina $M_1$ executa as operações $[O_{1,1}, O_{7,1}, O_{2,1}]$.
-                \item Cada \textit{job} utiliza no mínimo duas máquinas para ser executado, por exemplo: o $J_1$ é executado nas máquinas $M_1 , M_3, M_4$.
-                \item O \textit{fitness} dessa solução é $7$.
-            \end{itemize}
+            que é o problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\breakline
             
             \begin{figure}[ht]
                 \centering
@@ -300,7 +302,13 @@
                 \caption{Exemplo Gráfico de Gantt}
                 \label{fig:plot-gantt}
             \end{figure}
-        
+            
+            \noindent Nessa solução é possível observar que:
+            \begin{itemize}
+                \item A máquina $M_1$ executa as operações $[O_{1,1}, O_{7,1}, O_{2,1}]$.
+                \item Cada \textit{job} utiliza no mínimo duas máquinas para ser executado, como por exemplo o \textit{job} $J_1$ que é executado nas máquinas $[M_1 , M_3, M_4]$.
+                \item O \textit{fitness} dessa solução é $7$.
+            \end{itemize}
          %
         %% Fim do [Solução] %%
 
@@ -310,8 +318,9 @@
         %% 1.1.4 ::: FJSP
         %% 1.1.4.2
         \subsubsection{Cenários de Aplicação}
-            O exemplo mais claro de aplicação do problema de \textit{Flexible Job Shop} é em produção industrial e em sistemas de manufatura, o que traz muito interesse econômico para boas soluções para essa categoria de problema.\newline
-            Como visto por \cite{Wari2016} nos tempos modernos onde a uma grande competição e constante melhorias tecnológicas, a organização e otimização desses processos industriais se torna um gargalo a ser resolvido e pode ser um fator decisório no sucesso de uma indústria.
+            O exemplo mais claro de aplicação do problema de \textit{Flexible Job Shop} é na produção industrial e em sistemas de manufatura, o que traz muito interesse econômico para encontrar boas soluções para essa categoria de problema.\breakline
+            
+            Como visto por \cite{Wari2016} nos tempos modernos onde existe uma grande competição e constantes mudanças e melhorias tecnológicas, a organização e otimização desses processos industriais se torna um gargalo a ser resolvido e pode ser um fator decisório no sucesso de uma indústria.
         %% Fim do [Cenários de Aplicação] %%
         
      %%
@@ -326,36 +335,47 @@
 %% 1.2
 \section{Soluções Existentes}
     %% Interlúdio %%
-        Ao longo do tempo foram propostas, testadas, revisadas e aprimoradas diversas soluções para os problemas de agendamento, e como cada cenário de aplicação difere não é possível definir qual solução é a melhor, pois isso depende de caso a caso, contudo, durante o tempo varias soluções se destacaram como mais eficientes e adaptáveis a novas demandas, cenários e objetivos.\hfill\vspace{\onelineskip}
+        Ao longo do tempo foram propostas, testadas, revisadas e aprimoradas diversas soluções para os problemas de agendamento, más como cada cenário de aplicação é único, não é possível definir que uma solução é melhor do que outra, pois isso depende dos critérios de analise de cada problema, contudo, durante o tempo algumas soluções chamaram a atenção de pesquisadores, seja por serem mais eficientes ou por serem mais adaptáveis a novas demandas, cenários e objetivos.\breakline
         
-        Um tipo de solução muito recorrente são as baseadas em comportamento biológico. Ao longo de milhões de anos a vida biológica no planeta terra evoluiu e se adaptou para encontrar o modo mais eficiente de resolver os diversos problemas que a natureza os impõe. Então observando esses comportamentos adaptativos, foram propostos diversos algoritmos como os algoritmos populacionais que simulam como populações, como, por exemplo, bandos de aves, enxames de abelhas ou colonias de formigas usam o comportamento de bando para solucionar um problema como o de encontrar alimento, ou fugir de predadores. Ou algoritmos que simulam as próprias regras de seleção natural para evoluir indivíduos de uma população para gerar e acumular mutações para achar um individuo mais adaptado e solucionar o problema, esses são os algoritmos genéticos e algoritmos evolutivos.
+        Um tipo de solução muito recorrente são as soluções baseadas em comportamento biológico. 
+        \\
+        Ao longo de milhões de anos a vida biológica no planeta Terra evoluiu e se adaptou para encontrar modos mais eficientes de resolver os diversos problemas que a natureza impõe. 
+        Então observando esses comportamentos adaptativos, foram propostos diversos algoritmos, 
+        como os algoritmos populacionais que simulam como populações de animais, como por exemplo, bandos de aves, enxames de abelhas ou colonias de formigas usam o comportamento de bando para solucionar um problema como o de encontrar alimento, ou fugir de predadores. 
+        Ou algoritmos que simulam as próprias regras de seleção natural para selecionar e evoluir indivíduos de uma população para gerar e acumular mutações afim de obter uma população de indivíduos mais adaptados e solucionar um problema, esses são os Algoritmos Genéticos e Algoritmos Evolutivos.
     %% Fim do Interlúdio %%
 
 
     %% 1 ::: Introdução
     %% 1.2 ::: Soluções Existentes
     \subsection{Algoritmos Evolutivos}
-        Os Algoritmos Evolutivos são baseados no mecanismo de seleção natural observado na natureza. Então um individuo que tem alguma característica que o destaque tem maior chance de se reproduzir e transmitir essa característica para os seus descendentes.\newline
-        A estrutura básica de um algoritmo evolutivo é:
+        Os Algoritmos Evolutivos são baseados no mecanismo de seleção natural observado na natureza e descritos por Charles Darwin. Onde um individuo que tem alguma mutação que gere uma característica positiva que o destaque dos outros indivíduos da população, tem maior chance de se reproduzir e transmitir essa característica para os seus descendentes.\breakline
+        
+        \noindent A estrutura básica de um Algoritmo Evolutivo é:
         \begin{enumerate}
-            \item Inicialização da população;
-            \item Analise da qualidade de cada indivíduo;
-            \item Seleção dos melhores indivíduos;
-            \item Cruzamento desses indivíduos, de modo a gerar uma nova população;
-            \item Repetição a partir do passo 2;
+            \item Inicialização da população.
+            \item Analise a qualidade de cada indivíduo.
+            \item Selecionar os melhores indivíduos.
+            \item Cruzar esses indivíduos melhores entre si, de modo a gerar uma nova população com melhores indivíduos.
+            \item Voltar e repetir a partir do passo 2.
         \end{enumerate}
-        Essa estrutura se repete até que seja atingido o critério de parada estabelecido pelo problema em questão.\newline
-        Além da estrutura básica é possível melhorar um algoritmo evolutivo através de um aprendizado continuo, ou seja, em um ambiente em que tenha mudanças constantes um algoritmo evolutivo pode se adaptar e assim se auto melhorar sem a necessidade de uma intervenção do programador.
+        
+        Essa estrutura se repete até que seja atingido o critério de parada estabelecido pelo problema em questão.\breakline
+        
+        Além da estrutura básica é possível melhorar um Algoritmo Evolutivo através de um aprendizado continuo, ou seja, em um ambiente em que tenha mudanças constantes um Algoritmo Evolutivo pode se adaptar e assim se auto melhorar sem a necessidade de uma intervenção do programador.
     %% Fim do [Alg EV] %%
 
 
     %% 1 ::: Introdução
     %% 1.2 ::: Soluções Existentes
     \subsection{Algoritmos Genéticos}
-        Uma derivação dos algoritmos evolutivos são os algoritmos genéticos, utilizados para buscas e para otimizações, como nos problemas de escalonamento. Essa abordagem chama atenção por conseguir lidar com uma grande diversidade de soluções, o que a torna interessante especialmente em problemas de multi-objetivo como visto por \cite{Bagchi1999}.\hfill\vspace{\onelineskip}
+        Uma derivação dos Algoritmos Evolutivos são os Algoritmos Genéticos, utilizados para buscas e para otimizações, como nos problemas de escalonamento.\breakline
         
-        Os algoritmos genéticos são com certeza a abordagem mais utilizada dentre os algoritmos evolutivos, o que algumas vezes podem gerar a impressão de que algoritmos genéticos e evolutivos são a mesma coisa, porém como o algoritmo genético lida com uma simulação de cromossomos isso o faz com que suas estruturas sejam muito mais dinâmicas, enquanto as técnicas de algoritmos evolutivos tem estruturas mais fixas.\newline
-        Para ter essa dinamicidade os algoritmos genéticos trabalham com o conceito de mutações aleatórias, que podem ou não serem boas para o indivíduo, porém, por ser uma derivação dos algoritmos evolutivos o algoritmo genético conta também com os mecanismos de seleção e cruzamento da população, o que tende a selecionar apenas os indivíduos com mutações que são positivas do ponto de vista do objetivo estabelecido.
+        Essa abordagem chama atenção por conseguir lidar com uma grande diversidade de soluções, o que a torna interessante especialmente em problemas de multi-objetivo como visto por \cite{Bagchi1999}.\hfill\vspace{\onelineskip}
+        
+        Os Algoritmos Genéticos são com certeza a abordagem mais utilizada dentre os Algoritmos Evolutivos, o que algumas vezes podem gerar a impressão de que Algoritmos Genéticos e Evolutivos são a mesma coisa, porém como o Algoritmo Genético lida com uma simulação de cromossomos isso o faz com que suas estruturas sejam muito mais dinâmicas, enquanto as técnicas de Algoritmos Evolutivos geralmente tem estruturas mais fixas.\breakline
+        
+        Para ter essa dinamicidade os Algoritmos Genéticos trabalham com o conceito de mutações aleatórias, que podem ou não serem boas para o indivíduo, porém por ser uma derivação dos Algoritmos Evolutivos o Algoritmo Genético conta também com os mecanismos de seleção e cruzamento entre indivíduos da população, o que tende a selecionar apenas os indivíduos com mutações que são positivas do ponto de vista do objetivo estabelecido pelo problema.
     %% Fim do [GA] %%
 
 
@@ -398,7 +418,7 @@
     \subsection{Historia}
         O algoritmo \textit{Particle Swarm Optimization} foi proposto em 1995 por \cite{Kennedy1995} e desde então tem se mostrado muito promissor para a solução de diversos problemas de otimização. Por ser um algoritmo bem simples e flexível, ao longo do tempo já foram propostas varias variações para ele.\hfill\vspace{\onelineskip}
         
-        Porém, o \textit{Particle Swarm Optimization} já foi alvo de várias discussões na área, pois alguns autores discordam de ele ser classificada como parte dos algoritmos evolutivos, pois embora haja variações que sim, o \textit{Particle Swarm Optimization} original não implementa mecanismos de seleção, cruzamento e mutação, critérios base para os algoritmos evolutivos.\newline
+        Porém, o \textit{Particle Swarm Optimization} já foi alvo de várias discussões na área, pois alguns autores discordam de ele ser classificada como parte dos Algoritmos Evolutivos, pois embora haja variações que sim, o \textit{Particle Swarm Optimization} original não implementa mecanismos de seleção, cruzamento e mutação, critérios base para os Algoritmos Evolutivos.\newline
         Atualmente o \textit{Particle Swarm Optimization} é classificado como parte da família dos algoritmos de \textit{Swarm Intelligence}.
     %% Fim do [Historia] %%
 
@@ -461,13 +481,13 @@
         %% Fim do [Multitheading] %%
 
         \subsubsection{Hibridização}
-            Outra melhoria que tem dado bons resultados é a hibridização de PSO com outros algoritmos, como algoritmos genéticos como demostrado por \cite{carvalho2014}, ou com outros algoritmos evolutivos.\hfill
+            Outra melhoria que tem dado bons resultados é a hibridização de PSO com outros algoritmos, como Algoritmos Genéticos como demostrado por \cite{carvalho2014}, ou com outros Algoritmos Evolutivos.\hfill
             \\
-            Essas hibridizações com algoritmos evolutivos são tão boas pela característica básica do PSO de não ter componentes evolutivos em seus indivíduos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO.\hfill\vspace{\onelineskip}
+            Essas hibridizações com Algoritmos Evolutivos são tão boas pela característica básica do PSO de não ter componentes evolutivos em seus indivíduos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO.\hfill\vspace{\onelineskip}
             
             Esses componentes evolutivos normalmente trabalham nos valores de inércia e de velocidade, criando partículas mais teimosas ou com uma tendência maior a fugir da convergência do grupo, o que pode ajudar a escapar de mínimos locais, evitando assim a convergência prematura.\hfill\vspace{\onelineskip}
             
-            Um cenário que tem um bom proveito da hibridização evolutiva do PSO são os cenários com multi-objetivo, pois os componentes de mutação de algoritmos genéticos trazem uma maior diversidade para os indivíduos da população, trazendo assim uma maior gama de exploração no espaço de soluções.
+            Um cenário que tem um bom proveito da hibridização evolutiva do PSO são os cenários com multi-objetivo, pois os componentes de mutação de Algoritmos Genéticos trazem uma maior diversidade para os indivíduos da população, trazendo assim uma maior gama de exploração no espaço de soluções.
         %% Fim do [Hibridização] %%
 
         \subsubsection{Dinamicidade}
