@@ -87,16 +87,41 @@
     %% 1.1 ::: Problemas de Agendamento
     %% 1.1.1
     \subsection{Definição}
-        Como foi definido por \cite{Bagchi1999} um problema de escalonamento de tarefas computacionais (\textit{jobs}) é um problema de otimização aonde os recursos limitados são alocados no tempo de execução dos recursos, com as diferentes tarefas podendo ser executadas em paralelo entre as diversas maquinas, porém, cada atividade única sendo executada sequenciamento em uma só maquina.\hfill\vspace{\onelineskip}
+        Como foi definido por \cite{Bagchi1999} um problema de agendamento (também chamado de problema de escalonamento) é um problema de otimização aonde 
+        diversas tarefas (chamadas de \textit{jobs}) são alocados em uma ordem sequencial entre os recursos (máquinas), 
+        com diferentes tarefas podendo ser executadas simultaneamente
+        em maquinas diferentes, porém cada atividade devendo ser executada somente em uma maquina por vez, como demonstrado na
+        \hyperref[fig:ex-problema-escalonamento]{Figura \ref{fig:ex-problema-escalonamento}}.\hfill\vspace{\onelineskip}
+        
+        \begin{figure}[ht]
+            \centering
+            \small{Incluir um exemplo de problema de escalonamento aqui}
+            \caption{Demonstração de um problema de escalonamento}
+            \label{fig:ex-problema-escalonamento}
+        \end{figure}
 
-        Assim como a grande maioria dos problemas de origem combinatória, ou seja, que um fator depende o fator anterior, formando assim uma combinação de fatores, o problema de escalonamento é um problema da classe NP-Hard da qual não é possível se encontrar a melhor solução possível em um tempo polinomial, ou seja, computacionalmente aceitável, devido a sua quantidade de operações necessárias crescer exponencialmente, com base no tamanho do problema, tornando se assim um problema inviável de se resolver através de cálculos brutos.\hfill\vspace{\onelineskip}
+        Assim como a grande maioria dos problemas de origem combinatória, ou seja, cujo um valor dependa do valor anterior, formando assim uma combinação de fatores, o problema de escalonamento pertence a classe de problemas NP-Hard na qual não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.\hfill\vspace{\onelineskip}
 
-        Por causa disso, nesses casos de problemas NP-Hard normalmente se usam algoritmos de aproximação, que tenham um tempo de execução razoável e consigam encontrar uma solução boa o suficiente com base nos critérios de avaliação, a chamada "Solução Ótima", como visto por \cite{lawler1993}.\hfill\vspace{\onelineskip}
+        Isso acontece devido a quantidade de operações necessárias para verificar todas as possibilidades de soluções para o problema em questão, crescerem de forma exponencial com base no tamanho do problema, 
+        como demonstrado na \hyperref[fig:problema-exponencial]{Figura \ref{fig:problema-exponencial}},
+        o que torna os problemas dessa classe inviáveis de serem resolvidos através de métodos comuns de cálculos.\hfill
+        
+        \begin{figure}[h]
+            \centering
+            \small{Incluir a representação de um problema exponencial aqui}
+            \caption{Demonstração de um problema exponencial}
+            \label{fig:problema-exponencial}
+        \end{figure}
+        
 
-        Porém, esse conceito de solução ótima varia conforme o problema, em alguns casos é mais importante que essa solução seja encontrada em um tempo curto, do que ela seja alguns milissegundos mais rápida do que as outras soluções já encontradas, isso se aplica em ambientes que o agendamento deve ser feito em tempo real.\hfill
-        Já para um problema em que essa solução precisa ser encontrada apenas uma vez e ser replicada varias vezes, como uma estrutura de linha de montagem definitiva, vale a pena esperar algumas horas a mais se essa solução economizar tempo de produção ao longo do seu uso. Então esse critério de avaliação de solução ótima deve ser muito bem analisado de caso a caso.\hfill\vspace{\onelineskip}
+        Por causa disso, nos casos de problemas NP-Hard normalmente são utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.\hfill\vspace{\onelineskip}
 
-        Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados, algoritmos populacionais e algoritmos evolutivos. Que conseguem simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução para encontrar uma solução ótima, de maneira similar a que um ser vivo faria.
+        Porém, esse conceito de solução ótima varia conforme o problema, em alguns casos é mais importante que a solução seja encontrada em um curto espaço de tempo, do que seja alguns milissegundos mais rápida do que as outras soluções já encontradas pelo algoritmo, isso se aplica por exemplo em ambientes em que o agendamento deva ser feito em tempo real.\hfill\vspace{\onelineskip}
+        
+        Já em um cenário no qual essa solução precisa ser encontrada apenas uma vez no dia e depois ser aplicada varias vezes, como em uma estrutura de linha de montagem, vale a pena esperar algumas minutos a mais se essa solução economizar tempo de produção (e consequentemente dinheiro) ao longo de seu uso. Então esse critério de avaliação que define uma solução ótima deve ser muito bem analisado de caso a caso.\hfill\vspace{\onelineskip}
+
+        Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados como: Algoritmos Populacionais e Algoritmos Evolutivos. 
+        Que consistem em simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução, para encontrar uma solução ótima para o problema em questão, de maneira similar a qual um ser vivo faria.
     %% Fim do [Definição] %%
 
 
