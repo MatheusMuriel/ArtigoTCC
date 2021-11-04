@@ -1,6 +1,6 @@
 %% 1 ::: Introdução
 \chapter{Introdução}
-    Em um ambiente de produção industrial moderna a optimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\hfill\vspace{\onelineskip}
+    Em um ambiente de produção industrial moderna a otimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\hfill\vspace{\onelineskip}
     
     Um dos exemplos de otimização em sistemas de manufatura é dentro de um cenário onde existem diversas máquinas independentes e uma fila de tarefas não homogêneas, e o objetivo é achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar o máximo de tempo e energia.\hfill\vspace{\onelineskip}
 
@@ -61,15 +61,26 @@
 %% 1.1
 \section{Problemas de Agendamento}
     %% Interlúdio do [Problemas de Agendamento] %%
-        Problemas de agendamento estão muito presentes atualmente, e existem diretamente em diversos cenários, tais como planejamento de produção, sistemas de manufatura, sistemas de produção, processamento de informação, gerenciamento de rotas de logísticas, etc. e indiretamente nos computadores através do escalonamento de processos do sistema operacional.\hfill\vspace{\onelineskip}
+        Problemas de agendamento são muito comuns atualmente, pois estão diretamente presentes em diversos cenários, tais como planejamento de produção, sistemas de manufatura, linhas de montagem, processamento de informação, planejamento e gerenciamento de rotas logísticas e mesmo que de maneira indireta, também estão presentes nos computadores através de escalonadores de processos do sistema operacional.\hfill\vspace{\onelineskip}
 
-        Com tantos possíveis cenários de aplicação é natural que existam inúmeras sub-divisões deste problema. Porém, a maioria deles tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e visa ordenar as execuções das demandas e as distribuir entre os recursos, isso de modo a alcançar da melhor possível um ou mais objetivos, que podem ser, por exemplo, o tempo total para o algoritmo executar o agendamento (também chamado \textit{makespan}), o tempo total de execução de todas as tarefas no agendamento encontrado (também chamado \textit{fitness}) ou a soma total do tempo de ociosidade das máquinas.\hfill\vspace{\onelineskip}
+        Com tantos possíveis cenários de aplicação é esperado que existam diversas variações deste problema, cada uma em seu cenário, e com suas peculiaridades. Porém, a maioria destes problemas tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo organizar as execuções dessas demandas e distribuí-las entre os recursos, de modo a alcançar da melhor maneira possível um ou mais objetivos, que podem ser, por exemplo: 
+        
+        O tempo total para o algoritmo executar o algoritmo e encontrar uma solução, ou seja, um agendamento.
+        
+        O tempo total decorrido entre o a primeira e a ultima tarefa do agendamento (também chamado \textit{fitness} ou \textit{makespan}).
+        
+        Ou a soma total do tempo de ociosidade das máquinas durante o período do agendamento.\hfill\vspace{\onelineskip}
 
-        Por essa característica de buscar um melhor resultado em um objetivo os problemas de agendamento são caracterizados como problemas de optimização, que são os problemas que a solução são aquelas que trazem um melhor resultado para o objetivo. É importante ressaltar que nesses problemas de optimização a solução não necessariamente precisa a melhor possível, mas sim uma solução boa o suficiente (também chamado solução ótima).\hfill\vspace{\onelineskip}
+        Devido a esta característica de buscar um melhor resultado para atender a um objetivo os problemas de agendamento são caracterizados como problemas de otimização, 
+        que são problemas nos quais o objetivo é encontrar uma solução que melhor atenda os critérios de avaliação do problema em questão.\hfill\vspace{\onelineskip}
         
-        Os problemas de agendamento multiobjetivo consideram em simultâneo, mais de um critério de avaliação, podendo ter ou não o mesmo peso, ou nível de importância, e espera se que sejam atingidos todos os objetivos. Por causa dessa diversidade de objetivos que podem muitas vezes serem conflitantes entre si, como, por exemplo, ser mais rápido e, em simultâneo, gastar a menos energia.\hfill\vspace{\onelineskip}
+        Os problemas de otimização são caracterizados por terem um numero gigantesco de soluções possíveis (algumas vezes tendendo ao infinito), o que torna inviável a computação de todas essas possibilidade. Por causa dessa característica um algoritmo de otimização não necessariamente precisa encontrar a melhor solução possível entre todas as possibilidades, mas sim uma solução boa o suficiente (também chamado solução ótima) de acordo com os critérios de avaliação do problema.\hfill\vspace{\onelineskip}
         
-        Já os problemas de agendamento mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, define uma importância maior para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
+        \noindent Os problemas de otimização podem ser classificados em dois tipos, sendo eles: Problemas "mono-objetivos", e problemas "multi-objetivos".\hfill\vspace{\onelineskip}
+        
+        Os problemas do tipo multi-objetivo consideram simultaneamente, mais de um critério de avaliação, podendo ter ou não o mesmo peso (nível de importância), e espera se que sejam atingidos de forma satisfatória todos os critérios de avaliação. Por causa dessa diversidade de objetivos que podem muitas vezes ser conflitantes entre si, como por exemplo: Ser mais rápido e gastar a menos energia.\hfill\vspace{\onelineskip}\vspace{\onelineskip}
+        
+        Já os problemas to tipos mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, espera se um resultado melhor para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
     %% Fim do Interlúdio do [Problemas de Agendamento] %%
 
     %% 1 ::: Introdução
@@ -331,12 +342,12 @@
         O que torna essa abordagem interessante é a sua característica decentralizada e de auto organização, o que a torna mais extensível e adaptável a cenários distribuídos. Um exemplo da utilização de algoritmos populacionais é na auto organização de drones e robôs, definidas como \textit{Swarm Robotics}. Fazendo assim com que por se algum robô tiver um defeito isso não afete a organização do grupo.\newline
         Dentre os principais algoritmos populacionais estão:
         \begin{itemize}
-            \item Optimização por Colonia de Formigas (\textit{Ant Colony Optimization}) 
+            \item Otimização por Colonia de Formigas (\textit{Ant Colony Optimization}) 
             \item Difusão Estocástica de Busca (\textit{Stochastic Diffusion Search})
-            \item Optimização por Enxame de Partículas (\textit{Particle Swarm Optimization})
+            \item Otimização por Enxame de Partículas (\textit{Particle Swarm Optimization})
         \end{itemize}
         
-        Todos eles se baseiam em como a população de indivíduos encontram juntos um objetivo. Nesse trabalho é utilizado o algoritmo de Optimização por Enxame de Partículas. 
+        Todos eles se baseiam em como a população de indivíduos encontram juntos um objetivo. Nesse trabalho é utilizado o algoritmo de Otimização por Enxame de Partículas. 
     %% Fim do [Algoritmos Populacionais] %%
 
  %%
@@ -346,7 +357,7 @@
 %% 1.3
 \section{Particle Swarm Optimization — PSO}
     %% Interlúdio %%
-        O algoritmo de Optimização por Enxame de Partículas ou PSO da sigla em inglês para (\textit{Particle Swarm Optimization}) é um algoritmo baseado nas teorias de inteligência de enxame. E diferentemente de outros algoritmos baseados em populações, como o \textit{Ant Colony Optimization} o \textit{Particle Swarm Optimization} é baseado em uma população genérica de indivíduos, embora sejam normalmente ilustrados como uma população de aves.
+        O algoritmo de Otimização por Enxame de Partículas ou PSO da sigla em inglês para (\textit{Particle Swarm Optimization}) é um algoritmo baseado nas teorias de inteligência de enxame. E diferentemente de outros algoritmos baseados em populações, como o \textit{Ant Colony Optimization} o \textit{Particle Swarm Optimization} é baseado em uma população genérica de indivíduos, embora sejam normalmente ilustrados como uma população de aves.
     %% Fim do [Interlúdio] %%
 
 
@@ -354,7 +365,7 @@
     %% 1.3 ::: PSO
     %% 1.3.1
     \subsection{Historia}
-        O algoritmo \textit{Particle Swarm Optimization} foi proposto em 1995 por \cite{Kennedy1995} e desde então tem se mostrado muito promissor para a solução de diversos problemas de optimização. Por ser um algoritmo bem simples e flexível, ao longo do tempo já foram propostas varias variações para ele.\hfill\vspace{\onelineskip}
+        O algoritmo \textit{Particle Swarm Optimization} foi proposto em 1995 por \cite{Kennedy1995} e desde então tem se mostrado muito promissor para a solução de diversos problemas de otimização. Por ser um algoritmo bem simples e flexível, ao longo do tempo já foram propostas varias variações para ele.\hfill\vspace{\onelineskip}
         
         Porém, o \textit{Particle Swarm Optimization} já foi alvo de várias discussões na área, pois alguns autores discordam de ele ser classificada como parte dos algoritmos evolutivos, pois embora haja variações que sim, o \textit{Particle Swarm Optimization} original não implementa mecanismos de seleção, cruzamento e mutação, critérios base para os algoritmos evolutivos.\newline
         Atualmente o \textit{Particle Swarm Optimization} é classificado como parte da família dos algoritmos de \textit{Swarm Intelligence}.
