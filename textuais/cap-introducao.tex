@@ -1,10 +1,12 @@
 %% 1 ::: Introdução
 \chapter{Introdução}
-    Em um ambiente de produção industrial moderna a otimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\hfill\vspace{\onelineskip}
-    
-    Um dos exemplos de otimização em sistemas de manufatura é dentro de um cenário onde existem diversas máquinas independentes e uma fila de tarefas não homogêneas, e o objetivo é achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar o máximo de tempo e energia.\hfill\vspace{\onelineskip}
+    Em um ambiente de produção industrial moderna a otimização é um ponto de grande importância, devido à constante mudança e alta concorrência. Em ramos como a manufatura isso se mostra especialmente importante, podendo ser o fator decisório para o sucesso de uma empresa \cite{Wari2016}.\\
+    \indent Um dos exemplos de otimização em sistemas de manufatura é dentro de um cenário onde existem diversas máquinas independentes e uma fila de tarefas não homogêneas, e o objetivo é achar uma programação de onde cada tarefa será executada e em qual ordem, de maneira a economizar o máximo de tempo e energia.\breakline
 
-    Em um ambiente de alta concorrência é importante que essa ordem seja encontrada quanto antes, pois essa demora para encontrar a solução significa perda de tempo de produção. Porém, a busca de um bom escalonamento, ou seja, a configuração e ordem de execução, não é uma tarefa fácil. Pois, o número de possibilidades de arranjos cresce exponencialmente, e computar todas as soluções possíveis torna-se inviável após alguns níveis.\hfill\vspace{\onelineskip}
+    Em um ambiente de alta concorrência é importante que essa ordem seja encontrada quanto antes, pois essa demora para encontrar a solução significa perda de tempo de produção. Porém, a busca de um bom escalonamento, ou seja, a configuração e ordem de execução, não é uma tarefa fácil. Pois, o número de possibilidades de arranjos cresce exponencialmente, e computar todas as soluções possíveis torna-se inviável após alguns níveis.\breakline
+
+
+    %%% Aqui já esta sendo uma fundamentação
 
     Por causa dessa característica exponencial conforme o número de máquinas e o número de problemas, esse problema de escalonamento é classificado como um problema de otimização de análise combinatória e pertence à classe de problemas \textit{NP-Hard}.\hfill\vspace{\onelineskip}
 
@@ -479,23 +481,23 @@
         %% Fim do [Interlúdio] %%
 
         \subsubsection{Multithreading}
-            Uma abordagem com bons resultados é o processamento distribuído do cálculo de cada partícula como visto por \cite{Thongkrairat2019} e \cite{Kim2011}. Essa paralelização é possível graças a natureza distribuída dos algoritmos populacionais. No caso do \textit{Particle Swarm Optimization} o único fator a se considerar para uma implementação distribuída é a atualização da variável $gBest$.\hfill\vspace{\onelineskip}
+            Uma abordagem com bons resultados é o processamento distribuído do cálculo de movimentação de cada partícula como visto por \cite{Thongkrairat2019} e \cite{Kim2011}. Essa paralelização é possível graças a natureza distribuída dos algoritmos populacionais. No caso do PSO o único fator a se considerar para uma implementação distribuída é a atualização da variável $gBest$.\hfill\vspace{\onelineskip}
             
-            Um cenário que tira um bom proveito dessa abordagem são os de robôs e drones.            
+            Um exemplo de cenário onde se tem um bom proveito dessa abordagem são nos gerenciamentos de robôs e drones.            
         %% Fim do [Multitheading] %%
 
         \subsubsection{Hibridização}
-            Outra melhoria que tem dado bons resultados é a hibridização de PSO com outros algoritmos, como Algoritmos Genéticos como demostrado por \cite{carvalho2014}, ou com outros Algoritmos Evolutivos.\hfill
-            \\
-            Essas hibridizações com Algoritmos Evolutivos são tão boas pela característica básica do PSO de não ter componentes evolutivos em seus indivíduos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO.\hfill\vspace{\onelineskip}
+            Outra melhoria que tem demonstrado bons resultados é a hibridização de PSO com outros algoritmos, como com Algoritmos Genéticos como demostrado por \cite{carvalho2014}, ou com outros Algoritmos Evolutivos.\breakline
             
-            Esses componentes evolutivos normalmente trabalham nos valores de inércia e de velocidade, criando partículas mais teimosas ou com uma tendência maior a fugir da convergência do grupo, o que pode ajudar a escapar de mínimos locais, evitando assim a convergência prematura.\hfill\vspace{\onelineskip}
+            Essas abordagens de hibridizações com Algoritmos Evolutivos tendem a ser tão boas devido as características básicas do PSO como a de não ter componentes evolutivos em seus indivíduos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO.\hfill\vspace{\onelineskip}
             
-            Um cenário que tem um bom proveito da hibridização evolutiva do PSO são os cenários com multi-objetivo, pois os componentes de mutação de Algoritmos Genéticos trazem uma maior diversidade para os indivíduos da população, trazendo assim uma maior gama de exploração no espaço de soluções.
+            Esses componentes evolutivos normalmente trabalham nos valores de inércia e de velocidade, criando partículas mais "teimosas" com uma tendência maior a fugir da convergência do grupo, o que pode ajudar a escapar de mínimos locais, evitando assim uma convergência prematura.\hfill\vspace{\onelineskip}
+            
+            Um cenário que tem um bom proveito da hibridização evolutiva do PSO são os cenários com multi-objetivo, pois os componentes de mutação de Algoritmos Genéticos podem trazer uma maior diversidade para os indivíduos da população, gerando assim uma maior gama de exploração no espaço de soluções.
         %% Fim do [Hibridização] %%
 
         \subsubsection{Dinamicidade}
-            Outra abordagem promissora é a implementação de componentes dinâmicos na população, ou seja, que possam mudar suas características como velocidade e inercia de maneira dinâmica, por exemplo, se uma partícula perceber que esta longe do $gBest$ e está se movendo pouco ela pode reconhecer que possivelmente esta em um mínimo local e diminuir seu valor de inércia afim ou o fator de importância do seu $pBest$.\hfill\vspace{\onelineskip}
+            Outra abordagem promissora é a implementação de componentes dinâmicos na população, ou seja, que possam mudar suas características como velocidade e inercia de maneira dinâmica, por exemplo, se uma partícula perceber que esta longe do $gBest$ e está se movendo pouco ela pode reconhecer que possivelmente esta em um mínimo local e diminuir seu valor de inércia, ou aumentar o fator de importância do $gBest$.\hfill\vspace{\onelineskip}
             
             Essa abordagem pode ser feita de maneira constante nas partículas, fazendo elas se atualizarem em tempo real.
         %% Fim do [Dinamicidade] %%
