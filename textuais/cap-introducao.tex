@@ -41,65 +41,45 @@ O numero de possibilidades de arranjos é $(n!)^m$, ou seja, o numero de soluç�
 %%%%
 Esse característica de crescimento exponencial faz com que um problema se torne inviável de ser resolvido de formas tradicionais após um certo tamanho, pois é necessário computar todas as suas possibilidades de soluções.\\
 %%%%
-Isso faz com que o \textit{FJSP} definido como um problema de otimização com crescimento exponencial, o que de acordo com \citeauthor{Eswaramurthy2008} o define como um problema pertencente a classe de problemas \textit{NP-Hard}.\\
+Isso faz com que o \textit{FJSP} seja definido como um problema de otimização com crescimento exponencial, o que de acordo com \citeauthor{Eswaramurthy2008} o define como um problema pertencente a classe de problemas \textit{NP-Hard}.\\
 %%%%
-A classe de problemas \textit{NP-Hard} é composta por problemas onde a resposta não pode ser encontrada computacionalmente em um tempo polinomial, ou seja, em um tempo aceitável, porém uma solução pode ser verificada em tempo polinomial \cite{Eswaramurthy2008}.\\
+A classe de problemas \textit{NP-Hard} é composta por problemas cujo a resposta não pode ser encontrada computacionalmente em um tempo polinomial, ou seja, em um tempo aceitável, porém uma solução pode ser verificada em um tempo polinomial \cite{Eswaramurthy2008}.\\
 %%%%%%%%%%%%
 
 
 %%%%%%%%%%%% Algoritmos bio inspirados
-%%%%%%%%%%%% Algoritmos populacionais 
-%%%%%%%%%%%% Algoritmos PSO
-%%%%%%%%%%%% Problemas no PSO
-%%%%%%%%%%%% Possiveis soluções
-%%%%%%%%%%%% Oq esse trabalho faz
-%%%%%%%%%%%% Objetivos e motivações
+Para solucionar problemas da classe \textit{NP-Hard} geralmente são utilizados métodos de aproximação, que tem como objetivo ao invés de tentar encontrar a melhor solução possível, tentar encontrar uma solução boa o suficiente para o problema em questão.
+%%
+Um dos tipos de algoritmos que fazem essa busca de uma solução via aproximação são os algoritmos bio inspirados, que se baseiam técnicas observadas na natureza.\\
+%%
+\indent A ideia de se basear em um comportamento biológico tem como objetivo usar técnicas que passaram pela seleção natural ao longo de milhares de anos, e que como resultado dessa seleção sobraram somente as técnicas mais eficientes.\\
 %%%%%%%%%%%%
 
+%%%%%%%%%%%% Algoritmos populacionais 
+Uma sub categoria dos algoritmos bioinspirados são os algoritmos populacionais, baseados no comportamento de populações de animais como aves, abelhas e insetos.
+%%
+Esses algoritmos visam utilizar o conceito de inteligência de bando. Simulando indivíduos interagindo entre si e com o ambiente para encontrar um objetivo.\\
+%%
+Existem diferentes algoritmos populacionais como o \textit{Ant Colony Optimization}, o \textit{Stochastic Diffusion Search} e o \textit{Particle Swarm Optimization}.\\
 %%%%%%%%%%%%
-Existem diversos problemas clássicos de produção e manufatura enquadrados em problemas de otimização e escalonamento, o que torna esse assunto uma área de muito interesse para pesquisadores do mundo inteiro.\\
+
+%%%%%%%%%%%% Algoritmos PSO
+O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} ou Optimização por Enxame de Partículas se baseia na convergencia de um enxame de particulas em um objetivo.\\
+%%
+A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos individos da população já esteve ($gBest$).\\
+%%
+E assim a cada rodada as partículas se movimentam para uma média entre ($pBest$ e $gBest$) e assim a cada rodada do algoritmo a população vai chegando cada vez mais perto da melhor solução.
 %%%%%%%%%%%%
-Dentre os problemas clássicos de escalonamento e planejamento de produção estão: 
-\textit{Single Machine Scheduling Problem}, 
-\textit{Parallel Machine Scheduling Problem}, 
-\textit{Flow Shop Scheduling Problem}, 
-\textit{Job Shop Scheduling Problem} e 
-\textit{Open Shop Scheduling Problem} 
-\cite{Allahverdi2008}.\\
+
+%%%%%%%%%%%% Problemas no PSO
 %%%%%%%%%%%%
-Como esses problemas não são possíveis de serem resolvidos em tempo polinomial, não é possível encontrar uma solução perfeita para eles. Mas é possível encontrarmos uma solução boa o suficiente, conforme os critérios de avaliação do problema, essa solução é chamada solução ótima.\\
+
+%%%%%%%%%%%% Possíveis soluções
 %%%%%%%%%%%%
-\textit{Job Shop Scheduling Problem} (JSSP) é um do problema pertencente a classe de problemas \textit{NP-Hard}, ele chama muito a atenção de pesquisadores por ser um problema com diversas aplicações no mundo real, seja em ambientes de manufatura ou em planejamento de produção, ou até mesmo em logística \cite{Cheng1996}.\\
+
+%%%%%%%%%%%% Oq esse trabalho faz
 %%%%%%%%%%%%
-Nesse problema, temos um conjunto $m$ de máquinas e um conjunto $n$ de tarefas chamadas \textit{jobs}, sendo cada \textit{job} uma sequência de operações, cada uma com seu determinado tempo de execução.\\ 
+
+%%%%%%%%%%%% Objetivos e motivações
 %%%%%%%%%%%%
-O objetivo é encontrar um escalonamento que combine todas as máquinas de forma que minimize a quantidade de tempo ocioso de cada máquina, assim atingindo o objetivo de forma que seja mais econômica e eficiente \cite{Cheng1996}.\\
-%%%%%%%%%%%%
-O problema JSP é comprovadamente pertencente à classe \textit{NP-Hard} quando em um ambiente com duas ou mais máquinas, como demonstrado por \cite{Lenstra1979}.\\
-%%%%%%%%%%%%
-Porém, assim como visto por \cite{Bagchi1999} existem algumas restrições no cenário de JSP, dentre elas:
-\begin{itemize}
-    \item Duas operações do mesmo \textit{job} não podem ser executadas em simultâneo;
-    \item Nenhuma máquina pode executar simultaneamente mais de uma operação;
-    \item As restrições e configurações de processamento são conhecidas previamente e não são alteradas;
-    \item Todo \textit{job} deve ser processado até o fim, mas é permitido que haja pausas e esperas entre suas operações;
-    \item As máquinas são homogêneas;
-    \item Nenhum \textit{job} pode ser processado duas vezes na mesma máquina;
-    \item As operações são atômicas, não sendo possível interromper ou pausar a execução da mesma;
-\end{itemize}
-%%%%%%%%%%%%
-O problema de \textit{Job Shop Flexível} ou \textit{Flexible Job Shop Problem} (FJSP) é uma extensão do JSP onde é possível que uma operação seja executada em mais de uma máquina. Sendo assim deve se além de determinar a ordem e o local de execução de cada \textit{job}, também é preciso determinada ordem e local de execução das operações. Assim sendo considerado uma extensão mais complexa do JSP \cite{Jansen2000}.\\
-%%%%%%%%%%%%
-Além disso, o problema de FJSP pode ser dividido em dois tipos, o parcial (P-FJSP), onde uma operação só pode ser executada por um subconjunto de máquinas, ou o total (T-FJSP), onde qualquer operação pode ser executada por qualquer máquina. O FJSP tem as mesmas restrições do JSP exceto a que diz que nenhum \textit{job} pode ser processado duas vezes na mesma máquina.\\
-%%%%%%%%%%%%
-Ao longo do tempo já foram propostas diversas abordagens para resolver o problema de FJSP, dentre elas o \textit{Branch and Bound} \cite{Nababan2008}, a 
-\textit{Integer Programming} \cite{Pan2007}, a 
-\textit{Dynamic Programming} \cite{Gromicho2012}, 
-\textit{Evolutionary Algorithm} \cite{Pezzella2008}, e até mesmo técnicas híbridas \cite{Zhang2009}, onde duas ou mais abordagens são associadas para compor um algoritmo híbrido.\\
-%%%%%%%%%%%%
-Um desses algoritmos propostos é o algoritmo de Otimização por Enxame de Partículas ou \textit{Particle Swarm Optimization} proposto por \cite{Kennedy1995} e trabalha com um grupo de indivíduos cada um tendo: direção, velocidade, a informação da sua melhor posição e a informação da melhor posição entre todos os indivíduos do grupo, e com essas informações cada indivíduo consegue tirar sua média e a cada rodada do algoritmo ir chegando mais perto do objetivo.\\
-%%%%%%%%%%%%
-Outra abordagem que tem tido bons resultados em diversos problemas práticos \cite{Qing2012} são os Algoritmos Genéticos ou \textit{Genetic Algorithms} (GA), proposto por \textit{John Henry Holland} sendo inspirado na teoria da evolução de Charles Darwin, simulando a transmissão de genes dos indivíduos mais aptos por meio da simulação de operações de cruzamento e de mutações, para selecionar os indivíduos mais aptos.\\
-%%%%%%%%%%%%
-Neste trabalho iremos demonstrar e comparar a eficiência de uma abordagem híbrida do Algoritmo PSO com componentes evolutivos de GA, tornando assim esse algoritmo mais dinâmico, além de demonstrar sua eficiência em diferentes cenários reais de aplicação na indústria.
 
