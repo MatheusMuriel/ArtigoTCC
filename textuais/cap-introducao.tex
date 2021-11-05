@@ -64,20 +64,32 @@ Existem diferentes algoritmos populacionais como o \textit{Ant Colony Optimizati
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Algoritmos PSO
-O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} ou Optimização por Enxame de Partículas se baseia na convergencia de um enxame de particulas em um objetivo.\\
+O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} ou Optimização por Enxame de Partículas se baseia na convergência de um enxame de partículas em um objetivo.\\
 %%
-A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos individos da população já esteve ($gBest$).\\
+A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos indivíduos da população já esteve ($gBest$).\\
 %%
-E assim a cada rodada as partículas se movimentam para uma média entre ($pBest$ e $gBest$) e assim a cada rodada do algoritmo a população vai chegando cada vez mais perto da melhor solução.
+E assim a cada rodada as partículas se movimentam para uma direção média entre ($pBest$ e $gBest$) na com um velocidade que é o valor de velocidade menos o valor de inercia da partícula. 
+E assim a cada rodada do algoritmo a população vai chegando cada vez mais perto da melhor solução.\\
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Problemas no PSO
+Alguns dos problemas que podem acontecer no \textit{PSO} é uma convergência prematura da população em mínimos locais.
+%%
+Os mínimos locais são casos aonde entre as soluções existe uma que é melhor que a média das soluções a sua volta, porém não é o melhor entre todas.\\
+%%
+Como a movimentação das párticas se baseia na media entre as melhores posições locais e gerais do grupo, caso a maioria das partículas vá para em direção ao mínimo local o $gBest$ fica no mínimo local, e as partículas tentem a não saírem dessa região.\\
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Possíveis soluções
+Algumas medidas podem ser tomadas para diminuir essas possibilidades de convergência Prematura.
+%%
+Como as variáveis de inercia e de velocidade são variáveis individuais que influenciam a movimentação da partícula, é possível utilizar técnicas como valores dinâmicos e pesos relativos para as variáveis, e assim mudar de maneira dinâmica as características de movimentação das partículas.\\
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Oq esse trabalho faz
+Nesse trabalho são analisados os fatores de implementação que influenciam como o \textit{PSO} converge para a solução de um problema de \textit{FJSP}.
+%%
+E além disso analisar como a implementação de mecânicos dinâmicos nas variáveis de velocidade e inercia afetam a convergência do \textit{PSO}
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Objetivos e motivações
