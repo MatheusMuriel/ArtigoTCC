@@ -8,25 +8,27 @@
 %% 2 ::: Desenvolvimento
 %% 2.1
 \section{Metodologia de Pesquisa}
-    %% Interlúdio do [Metodologia de Pesquisa] %%
-        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\\
-        
-        \vspace{\onelineskip}
-        Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
-    %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
+%% Interlúdio do [Metodologia de Pesquisa] %%
+Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\\
+%
+\indent Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.\\
+%
 
-    %% 2 ::: Desenvolvimento
-    %% 2.1 ::: Metodologia de Pesquisa
-    %% 2.1.1
-    \subsection{Objetivos}
-        Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinâmicos em cenários mono objetivos, principalmente em problemas com o FJSP.\hfill\vspace{\onelineskip}
-        
-        Com as implementações feitas nesse trabalho se espera não uma análise crua de números e métricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendências de mudanças.\hfill\vspace{\onelineskip}
-        
-        Para assim poder propor novas abordagens que tenham uma maior chance de serem proveitosas em diversos cenários e aplicações no mundo real.
-     %
-    %% Fim do [Objetivos] %%
- %
+%
+Para que possibilitar uma análise de dados mais detalhada e a geração de gráficos para representação nesse trabalho, foram implementados no código pontos de salvamento de dados, para salvar em arquivo texto algumas informações de execuções e de datasets.\\
+Dentre esses dados estão o espaço de soluções gerado, a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
+%% Fim do Interlúdio do [Metodologia de Pesquisa] %%
+
+%% 2 ::: Desenvolvimento
+%% 2.1 ::: Metodologia de Pesquisa
+%% 2.1.1
+\subsection{Objetivos}
+Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinâmicos em cenários mono objetivos, principalmente em problemas com o FJSP. 
+%
+Com as implementações feitas nesse trabalho se espera não uma análise crua de números e métricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendências de mudanças.
+%
+Para assim poder propor novas abordagens que tenham uma maior chance de serem proveitosas em diversos cenários e aplicações no mundo real.
+%% Fim do [Objetivos] %%
 %% Fim do [Metodologia de Pesquisa] %%
 
 
