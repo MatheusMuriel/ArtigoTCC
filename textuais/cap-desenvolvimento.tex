@@ -9,7 +9,7 @@
 %% 2.1
 \section{Metodologia de Pesquisa}
     %% Interlúdio do [Metodologia de Pesquisa] %%
-        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\hfill
+        Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\\
         
         \vspace{\onelineskip}
         Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.
@@ -92,7 +92,7 @@
     \subsection{Espaço de Soluções}
         %% Interlúdio %%
             O espaço de soluções (também chamado espaço de busca) é um conceito que define um espaço imaginário aonde cada ponto desse espaço é uma possível solução para o problema em questão. 
-            Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\hfill
+            Um espaço de soluções pode ser representado de diversas maneiras, como listas e grafos, mas em problemas de optimização normalmente se usa uma representação na forma de uma matriz.\\
         %% Fim do [Interlúdio] %%
         
 
@@ -100,7 +100,7 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.1
-        \subsubsection{Representações}
+        %\subsubsection{Representações}
             Nessa representação em forma de matriz cada localização $[i, j]$ tem uma solução valida para o problema, e o algoritmo em questão tem a tarefa de encontrar qual dessas posições tem a melhor solução, ou uma solução boa o suficiente. Na 
             \hyperref[fig:solution-space]{Figura \ref{fig:solution-space}} 
             é mostrado uma representação conceitual de um espaço de soluções em forma de matriz.\hfill
@@ -112,7 +112,7 @@
                 \label{fig:solution-space}
             \end{figure}
 
-            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões. \hfill
+            Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões.\\
         %% Fim do [Representações] %%
 
 
@@ -120,7 +120,7 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.2
-        \subsubsection{Gráficos de análise}
+        %\subsubsection{Gráficos de análise}
             Como esse trabalho tem como foco uma exploração e implementação mais didática foi optado a utilização de uma representação em forma de uma matriz com duas dimensões, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimensões também facilita a geração de gráficos para representação visual, como, por exemplo, passar a matriz de soluções pela função de avaliação e assim obter um valor de \textit{fitness} para cada ponto do espaço de soluções, como é possível ver na 
             \hyperref[fig:surfaceplot]{Figura \ref{fig:surfaceplot}} 
             na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).\hfill
@@ -132,7 +132,7 @@
                 \label{fig:surfaceplot}
             \end{figure}
 
-            Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\hfill\vspace{\onelineskip}
+            Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
         %% Fim do [Gráficos de Analise] %%
 
 
@@ -140,7 +140,7 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.3
-        \subsubsection{Influencia na Solução}
+        %\subsubsection{Influencia na Solução}
             A geração do espaço de soluções é muito importante no caso de um algoritmo como o PSO 
             que funciona com base na movimentação conforme as médias de melhores posições, 
             devido a isso, o PSO tente a ter problemas com convergência prematura em mínimos locais.\hfill\vspace{\onelineskip}
@@ -185,10 +185,10 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.2 ::: Espaço de Soluções
         %% 2.2.2.4
-        \subsubsection{Implementação}
-            Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.
+        %\subsubsection{Implementação}
+            Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.\\
 
-            \subsubsubsection{Inicialização}
+            %\subsubsubsection{Inicialização}
                 Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\hfill\vspace{\onelineskip}
 
                 O NumPy disponibiliza trés métodos de inicialização para um novo \textit{array} sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
@@ -197,12 +197,12 @@
 
                     \item \textit{numpy.ones}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$1$", o algoritmo gerava soluções que tendiam a sobre carregar a máquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
 
-                    \item \textit{numpy.empty}: Esse método de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memória (semelhante ao \code{malloc} da linguagem C), o que o torna mais rápido, porém ele traz o revés de possivelmente ter valores errados, pois por simplesmente alocar um bloco de memória, o \textit{array} pode ser inicializado com valores estranhos devido a lixo de memória.
+                    \item \textit{numpy.empty}: Esse método de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memória (semelhante ao \textit{malloc} da linguagem C), o que o torna mais rápido, porém ele traz o revés de possivelmente ter valores errados, pois por simplesmente alocar um bloco de memória, o \textit{array} pode ser inicializado com valores estranhos devido a lixo de memória.
                 \end{itemize}
 
                 \noindent Devido aos problemas citados acima, acaba sendo necessário de qualquer maneira percorrer todo o \textit{array} para setar valores. \newline 
                 Então foi optado por utilizar um método de preenchimento de valores aleatório, 
-                gerados pela função \code{numpy.random.choice} que gera um \textit{array} de valores aleatórios seguindo uma distribuição uniforme, 
+                gerados pela função \textit{numpy.random.choice} que gera um \textit{array} de valores aleatórios seguindo uma distribuição uniforme, 
                 conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{fig:distrib-uniforme}}.
 
                 \begin{figure}[ht]
@@ -247,17 +247,17 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.3 ::: Partícula
         %% 2.2.3.1
-        \subsubsection{Implementação}
+        %\subsubsection{Implementação}
             Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções.\hfill\vspace{\onelineskip}
 
             Para fazer uma melhor movimentação foi optado por não usar uma variável de direção, mas sim uma variável que guarda a última posição onde a partícula esteve.\hfill
             Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:\hfill\vspace{\onelineskip}
             
-            Função \textbf{\code{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\hfill\vspace{\onelineskip}
+            Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\hfill\vspace{\onelineskip}
             
-            Função \textbf{\code{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\hfill\vspace{\onelineskip}
+            Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\hfill\vspace{\onelineskip}
 
-            Função \textbf{\code{update\_position}} que faz a movimentação da partícula.\hfill\vspace{\onelineskip}
+            Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.\hfill\vspace{\onelineskip}
             
 
             \noindent A implementação de toda a classe de partícula está disponível no apêndice x desse trabalho.\hfill\vspace{\onelineskip}
@@ -265,7 +265,7 @@
             %% TODO - Apêndice
             
             
-            Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\hfill
+            Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\\
 
          %
         %% Fim do [Representações] %%
@@ -274,7 +274,7 @@
         %% 2.2 ::: Arquitetura
         %% 2.2.3 ::: Partícula
         %% 2.2.3.3
-        \subsubsection{Movimentação}
+        %\subsubsection{Movimentação}
             A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.\hfill\vspace{\onelineskip}
             
             Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.\newline
@@ -289,7 +289,7 @@
             \end{figure}
             
             Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
-            uma velocidade $2$ e a direção do movimento ser \code{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
+            uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
             \hyperref[fig:movimentacao-int-sum]{Figura \ref{fig:movimentacao-int-sum}}.\hfill
             
             \begin{figure}[ht]
@@ -314,9 +314,9 @@
             
             %%%%
             
-            Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\hfill
+            Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\\
             
-            \subsubsubsection{Movimentação Vetorial}
+            %\subsubsubsection{Movimentação Vetorial}
                 Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.\hfill\vspace{\onelineskip}
                 
                 \noindent Em um cenário aonde a posição da partícula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.
