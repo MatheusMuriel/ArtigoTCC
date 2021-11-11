@@ -93,18 +93,18 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 %% 1.1.3
 \subsection{Problema de Job Shop — JSP}
 %% Interlúdio do [Problemas de Agendamento] %%
-    Como citado anteriormente o \textit{Job Shop Problem} (também chamado de JSP) é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
-    \indent De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes entre si, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica, e cada operação $O_{ij}$ tem seu respectivo tempo de execução.\\
-    \noindent Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas estão:
-    \begin{itemize}
-        \item Não é possível executar simultaneamente duas operações de um mesmo \textit{job}.
-        \item Não existe mais de uma máquina de um mesmo tipo.
-        \item As máquinas podem ficar ociosas durante o período de escalonamento.
-        \item As execuções de um \textit{job} são atômicas e não podem ser interrompidas.
-        \item Uma máquina não pode executar mais de uma operação simultaneamente.
-        \item Um \textit{job} não é processado duas vezes na mesma máquina.
-        \item Não é possível interromper a execução de uma operação.
-    \end{itemize}
+Como citado anteriormente o \textit{Job Shop Problem} (também chamado de JSP) é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
+\indent De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes entre si, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica, e cada operação $O_{ij}$ tem seu respectivo tempo de execução.\\
+\noindent Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas estão:
+\begin{itemize}
+    \item Não é possível executar simultaneamente duas operações de um mesmo \textit{job}.
+    \item Não existe mais de uma máquina de um mesmo tipo.
+    \item As máquinas podem ficar ociosas durante o período de escalonamento.
+    \item As execuções de um \textit{job} são atômicas e não podem ser interrompidas.
+    \item Uma máquina não pode executar mais de uma operação simultaneamente.
+    \item Um \textit{job} não é processado duas vezes na mesma máquina.
+    \item Não é possível interromper a execução de uma operação.
+\end{itemize}
 %% Fim do Interlúdio do [Problemas de Agendamento] %%
 
 %% 1 ::: Introdução
@@ -112,14 +112,14 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 %% 1.1.3 ::: JSP
 %% 1.1.3.1
 %\subsubsection{Representações}
-    \noindent Para ser possível que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
-    \begin{itemize}
-        \item Quantas maquinas existem;
-        \item Quantos \textit{jobs} existem;
-        \item Quantas operações cada \textit{job} possui;
-        \item Em qual maquina cada operação pode ser executada;
-        \item Quanto tempo cada operação leva para ser executada em sua respectiva maquina;
-    \end{itemize}
+\noindent Para ser possível que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
+\begin{itemize}
+    \item Quantas maquinas existem;
+    \item Quantos \textit{jobs} existem;
+    \item Quantas operações cada \textit{job} possui;
+    \item Em qual maquina cada operação pode ser executada;
+    \item Quanto tempo cada operação leva para ser executada em sua respectiva maquina;
+\end{itemize}
 %% Fim do [Representações] %%
 
 
@@ -129,13 +129,13 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 %% 1.1.3.1 ::: Representações
 %% 1.1.3.1.1
 %\subsubsubsection{Instancia de um Problema}
-    Na 
-    \hyperref[fig:ex-instancia-problema-JSP]{Tabela \ref{fig:ex-instancia-problema-JSP}}
-    é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. 
-    A onde existem duas maquinas $M_1, $ e $M_2$, 
-    dois \textit{jobs} $J_1, $ e $J_2$ 
-    e que cada \textit{job} possui 
-    duas operações $O_{j,1} $ e $O_{j,2}$.
+Na 
+\hyperref[fig:ex-instancia-problema-JSP]{Tabela \ref{fig:ex-instancia-problema-JSP}}
+é possível ver um exemplo de uma instância de problema de \textit{Job Shop}. 
+A onde existem duas maquinas $M_1, $ e $M_2$, 
+dois \textit{jobs} $J_1, $ e $J_2$ 
+e que cada \textit{job} possui 
+duas operações $O_{j,1} $ e $O_{j,2}$.
     
 \begin{table}[htb]
     \centering
@@ -152,56 +152,95 @@ Vários autores já classificaram diversas variações de problemas de escalonam
     \end{tabular}
 \end{table}
 
-            \noindent Sendo assim:\hfill
-            \begin{itemize}
-                \item A operação $O_{1,1}$ na máquina $M_2$ tem o tempo de execução $9$
-                \item A operação $O_{1,2}$ na máquina $M_1$ tem o tempo de execução $5$
-                \item A operação $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$
-                \item A operação $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$
-            \end{itemize}
+\noindent Sendo assim:\hfill
+\begin{itemize}
+    \item A operação $O_{1,1}$ na máquina $M_2$ tem o tempo de execução $9$
+    \item A operação $O_{1,2}$ na máquina $M_1$ tem o tempo de execução $5$
+    \item A operação $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$
+    \item A operação $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$
+\end{itemize}
             
-         %
-        %% Fim do [Instancia de um Problema] %%
+%
+%% Fim do [Instancia de um Problema] %%
 
-     %%
-    %% Fim do [JSP] %%
+%%
+%% Fim do [JSP] %%
 
 
-    %% 1 ::: Introdução
-    %% 1.1 ::: Problemas de Agendamento
-    %% 1.1.4
-    \subsection{Problema de Job Shop Flexível — FJSP}
-        %% Interlúdio do [FJSP]%%
-            O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} na qual é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\\
-            \indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.\\
-            \indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer máquina.\\
-            \indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
-        %% Fim do Interlúdio do [FJSP]%%
+%% 1 ::: Introdução
+%% 1.1 ::: Problemas de Agendamento
+%% 1.1.4
+\subsection{Problema de Job Shop Flexível — FJSP}
+%% Interlúdio do [FJSP]%%
+O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} na qual é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\\
+\indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.\\
+\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer máquina.\\
+\indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
+%% Fim do Interlúdio do [FJSP]%%
 
-        %% 1 ::: Introdução
-        %% 1.1 ::: Problemas de Agendamento
-        %% 1.1.4 ::: FJSP
-        %% 1.1.4.1
-        %\subsubsection{Representações}
-            As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da representação do problema, devido a sua natureza flexível uma representação do \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.\\
-            \indent Porém, no caso de uma problema de \textit{Flexible Job Shop} Parcial, ou seja, em que uma operação não pode ser processada por qualquer máquina, a representação não precisa definir o tempo de processamento de todas as operações para todas as maquinas, mas somente para as máquinas que podem processar aquela operação.\\
-%% Fim do [Representações] %%
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
 %% 1.1.4 ::: FJSP
-%% 1.1.4.1 ::: Representações
-%% 1.1.4.1.1
-%\subsubsubsection{Instancia de um Problema}
-\indent Na 
-\hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}}
-é mostrado uma instância de um problema de \textit{Flexible Job Shop} Total. De tamanho $10\times10$ retirado do benchmark de \cite{Kacem2002}.
+%% 1.1.4.1
+%\subsubsection{Representações}
+As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da forma de representar o ambiente inicial do problema. \\
+Devido a sua característica de ter uma maior possibilidade de alocações entre as máquinas e os \textit{jobs}, 
 %
-Para o FJSP Total, uma instância de um problema precisa informar quanto tempo cada maquina utilizaria para executar cada operação, logo uma instância de um problema de FJSP-T é consideravelmente maior do que uma representação de problema de JSP.
+uma representação do de um problema de \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.\\
+%
+No caso de um problema parcial (P-FJSP) é necessário definir os tempos somente das operações que cada maquina pode executar, na 
+\hyperref[fig:ex-instancia-problema-PFJSP]{Figura \ref{fig:ex-instancia-problema-PFJSP}}
+é demonstrado um exemplo de uma representação de uma problema P-FJSP.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[htb]
+  \centering
+  \caption{Exemplo de problema $10\times10$ de \textit{P-FJSP} de Kacem et al. 2002}
+  \label{fig:ex-instancia-problema-PFJSP}
+  \begin{tabular}{llcccccccc}
+\hline
+$Job$ & $O_{ji}$  & $M_1$ & $M_2$ & $M_3$ & $M_4$ & $M_5$ & $M_6$ & $M_7$ & $M_8$ \\
+\hline
+\multirow{3}{*}{$J_{1}$} & $O_{1,1}$ & $5$ & $3$ & $5$ & $3$ & $3$ & -- & $10$ & $9$\\
+& $O_{1,2}$ & $10$ & -- & $5$ & $8$ & $3$ & $9$ & $9$ & $6$\\
+& $O_{1,3}$ & -- & $10$ & -- & $5$ & $6$ & $2$ & $4$ & $5$\\
+\multirow{4}{*}{$J_{2}$} & $O_{2,1}$ & $5$ & $7$ & $3$ & $9$ & $8$ & -- & $9$ & --\\
+& $O_{2,2}$ & -- & $8$ & $5$ & $2$ & $6$ & $7$ & $10$ & $9$\\
+& $O_{2,3}$ & -- & $10$ & -- & $5$ & $6$ & $4$ & $1$ & $7$\\
+& $O_{2,4}$ & $10$ & $8$ & $9$ & $6$ & $4$ & $7$ & -- & --\\
+\multirow{3}{*}{$J_{3}$} & $O_{3,1}$ & $10$ & -- & -- & $7$ & $6$ & $5$ & $2$ & $4$\\
+& $O_{3,2}$ & -- & $10$ & $6$ & $4$ & $8$ & $9$ & $10$ & --\\
+& $O_{3,3}$ & $1$ & $4$ & $5$ & $6$ & -- & $10$ & -- & $7$\\
+\multirow{3}{*}{$J_{4}$} & $O_{4,1}$ & $3$ & $1$ & $6$ & $5$ & $9$ & $7$ & $8$ & $4$\\
+& $O_{4,2}$ & $12$ & $11$ & $7$ & $8$ & $10$ & $5$ & $6$ & $9$\\
+& $O_{4,3}$ & $4$ & $6$ & $2$ & $10$ & $3$ & $9$ & $5$ & $7$\\
+\multirow{4}{*}{$J_{5}$} & $O_{5,1}$ & $3$ & $6$ & $7$ & $8$ & $9$ & -- & $10$ & --\\
+& $O_{5,2}$ & $10$ & -- & $7$ & $4$ & $9$ & $8$ & $6$ & --\\
+& $O_{5,3}$ & -- & $9$ & $8$ & $7$ & $4$ & $2$ & $7$ & --\\
+& $O_{5,4}$ & $11$ & $9$ & -- & $6$ & $7$ & $5$ & $3$ & $6$\\
+\multirow{3}{*}{$J_{6}$} & $O_{6,1}$ & $6$ & $7$ & $1$ & $4$ & $6$ & $9$ & -- & $10$\\
+& $O_{6,2}$ & $11$ & -- & $9$ & $9$ & $9$ & $7$ & $6$ & $4$\\
+& $O_{6,3}$ & $10$ & $5$ & $9$ & $10$ & $11$ & -- & $10$ & --\\
+\multirow{3}{*}{$J_{7}$} & $O_{7,1}$ & $5$ & $4$ & $2$ & $6$ & $7$ & -- & $10$ & --\\
+& $O_{7,2}$ & -- & $9$ & -- & $9$ & $11$ & $9$ & $10$ & $5$\\
+& $O_{7,3}$ & -- & $8$ & $9$ & $3$ & $8$ & $6$ & -- & $10$\\
+\multirow{4}{*}{$J_{8}$} & $O_{8,1}$ & $2$ & $8$ & $5$ & $9$ & -- & $4$ & -- & $10$\\
+& $O_{8,2}$ & $7$ & $4$ & $7$ & $8$ & $9$ & -- & $10$ & --\\
+& $O_{8,3}$ & $9$ & $9$ & -- & $8$ & $5$ & $6$ & $7$ & $1$\\
+& $O_{8,4}$ & $9$ & -- & $3$ & $7$ & $1$ & $5$ & $8$ & --\\
+\hline
+  \end{tabular}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\indent Já no caso de um problema de \textit{Flexible Job Shop} Total, ou seja, em que qualquer maquina pode processar qualquer operação, a representação precisa definir o tempo de processamento de todas as operações para todas as maquinas como pode ser visto na 
+\hyperref[fig:ex-instancia-problema-TFJSP]{Figura \ref{fig:ex-instancia-problema-TFJSP}}
+.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[htb]
     \centering
     \caption{Exemplo de problema $10\times10$ de \textit{T-FJSP} de Kacem et al. 2002}
-    \label{fig:ex-instancia-problema-FJSP}
+    \label{fig:ex-instancia-problema-TFJSP}
     \begin{tabular}[t]{llcccccccccc}
 \hline
 $Job$&$O_{ji}$&$M_1$&$M_2$&$M_3$&$M_4$&$M_5$&$M_6$&$M_7$&$M_8$&$M_9$&$M_{10}$\\
@@ -240,13 +279,12 @@ $Job$&$O_{ji}$&$M_1$&$M_2$&$M_3$&$M_4$&$M_5$&$M_6$&$M_7$&$M_8$&$M_9$&$M_{10}$\\
     \end{tabular}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-            
-\noindent Na 
-\hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}}
-é representado um problema com dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ aonde cada \textit{job} possui três operações $(O_{j1}, O_{j2}, O_{j3})$.\\
+Na tabela é mostrada uma instância de um problema de \textit{Flexible Job Shop} Total. De tamanho $10\times10$ retirado do benchmark de \cite{Kacem2002}.\\
+%
+\indent Nessa representação é possível ver dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ aonde cada \textit{job} possui três operações $(O_{j1}, O_{j2}, O_{j3})$.\\
 %
 Cada índice $ji$ representa o tempo $T{ji}$ de execução de $O_{ji}$, para a máquina $M_k$, 
-sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs, ou seja, nesse exemplo $n=10$ e $m=10$.\\
+sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs.\\
 %% Fim do [Instancia de um Problema] %%
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
@@ -257,12 +295,12 @@ sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade 
 \indent Na 
 \hyperref[fig:plot-gantt]{Figura \ref{fig:plot-gantt}} 
 é possível ver um gráfico do tipo \textit{Gantt Plot} que representa uma solução para o problema representado na 
-\hyperref[fig:ex-instancia-problema-FJSP]{Figura \ref{fig:ex-instancia-problema-FJSP}}, 
+\hyperref[fig:ex-instancia-problema-TFJSP]{Figura \ref{fig:ex-instancia-problema-TFJSP}}, 
 que é o problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\\
 
 \begin{figure}[ht]
     \centering
-    \small{Incluir o grafico de gantt aqui}
+    \small{Incluir o grafico de gantt aqui\ deve ser a solução para o problema acima}
     \caption{Exemplo Gráfico de Gantt}
     \label{fig:plot-gantt}
 \end{figure}
