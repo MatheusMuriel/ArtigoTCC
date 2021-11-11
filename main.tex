@@ -2,10 +2,12 @@
 % Classe Principal da monografia %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./definitions/unifil}
+%\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./definitions/unifil}
+
+\documentclass[12pt,openright,oneside,a4paper,english,french,spanish,brazil]{./definitions/unifil}
 
 % TODO - Definir título da sua monografia %
-\titulo     {TCC FODÃO}
+\titulo     {EFICIÊNCIA DA HIBRIDIZAÇÃO DE ALGORITMOS DE ENXAME DE PARTÍCULAS APLICADO AO PROBLEMA DE JOB SHOP FLEXÍVEL}
 \autor      {Matheus Muriel}
 \instituicao{Centro Universitário Filadélfia}
 \local      {Londrina}
@@ -25,12 +27,12 @@
 
   \include{./pretextuais/folhaderosto}
   \include{./pretextuais/folhadeaprovacao}
-  %\include{./pretextuais/dedicatoria}
-  %\include{./pretextuais/agradecimentos}  % Opcional %
-  %\include{./pretextuais/epigrafe}        % Opcional %
+  \include{./pretextuais/dedicatoria}
+  \include{./pretextuais/agradecimentos}  % Opcional %
+  \include{./pretextuais/epigrafe}        % Opcional %
   \include{./pretextuais/resumo}
   \include{./pretextuais/abstract}
-  \newpage
+  %\newpage
 
 
   %%%%% Lista de Figuras %%%%%
@@ -60,7 +62,7 @@
 
   %\pdfbookmark[0]{\listfigurename}{lof}
   %\listoffigures*
-  %\cleardoublepage
+  \cleardoublepage
 %%%%% Fim dos Elementos pré-textuais %%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -76,7 +78,8 @@
 
 
   \include{./textuais/cap-introducao}
-  %\include{./textuais/cap-fundamentacao} %% TODO - passar parte da introdução para cá %%
+  %% TODO - passar parte da introdução para fundamentação %%
+  \include{./textuais/cap-fundamentacao} 
   \include{./textuais/cap-desenvolvimento}
   \include{./textuais/cap-conclusao}
 
