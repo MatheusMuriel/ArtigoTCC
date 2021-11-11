@@ -14,7 +14,7 @@
     a4paper,
     english,
     brazil,
-    %chapter=TITLE, % títulos de capítulos convertidos em letras maiúsculas
+    chapter=TITLE, % títulos de capítulos convertidos em letras maiúsculas
     %section=TITLE, % títulos de seções convertidos em letras maiúsculas
     %subsection=TITLE, % títulos de subseções convertidos em letras maiúsculas
     %subsubsection=TITLE, % títulos de subsubseções em letras maiúsculas
@@ -56,17 +56,17 @@
 \setlength{\parindent}{1.5cm}
 
 \makeatother
-\hypersetup{
-  pdftitle={title},
-  pdfauthor={author},
-  pdfcreator={LaTeX},
-  colorlinks=true,
-  linkcolor=black,
-  citecolor=black,
-  urlcolor=black,
-  pdfkeywords={PALAVRAS}{CHAVES}{EM}{PORTUGUES},
-  pdfsubject={\imprimirpreambulo}
-}
+  \hypersetup{
+    pdftitle={Hibridização do algoritmo PSO aplicado ao problema FJSP},
+    pdfauthor={Matheus Muriel},
+    pdfcreator={LaTeX with abnTeX2},
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    pdfkeywords={PSO}{FJSP}{Otimização por Algoritmo de Enxame de Partículas}{Inteligencia Populacional},
+    pdfsubject={Ciência da Computação},
+  }
 \makeatletter
 
 \renewcommand{\familydefault}{\sfdefault}
@@ -103,9 +103,8 @@
 \newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
 \makeatother
 
-
-\renewcommand{\imprimircapa}{
-  \begin{capa}
+\renewcommand{\imprimircapa}{%
+  \begin{capa}%
     \begin{figure}[htb]
       \centering
       \includegraphics[scale=0.35]{assets/logo-unifil.pdf}
