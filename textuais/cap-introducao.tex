@@ -8,7 +8,6 @@ Na sociedade contemporânea, a crescente demanda pelos mais variados tipos de pr
 %%%%%%%%%%%%
 %%%%%%%%%%%%
 \indent Segundo \citeauthor{Xhafa2008} uma dessas áreas importantes para a produtividade da linha de produção é a programação de produção. 
-%%
 A programação de produção é a parte da administração de produção responsável por decidir o local, o momento e a ordem nas quais serão realizadas as operações. 
 %%
 Por ser uma areá importante e ter um escopo com variáveis e objetivos bem definidos a programação de produção se mostra como um bom ponto para se otimizar por meio da computação.\\
@@ -48,29 +47,31 @@ Para solucionar problemas da classe \textit{NP-Hard} geralmente são utilizados 
 %%
 Um dos tipos de algoritmos que fazem essa busca por uma solução via aproximação são os algoritmos bio inspirados, que se baseiam técnicas observadas na natureza.\\
 %%
-\indent A ideia de se basear em um comportamento biológico tem como objetivo usar técnicas que passaram pela seleção natural ao longo de milhares de anos, e que como resultado dessa seleção sobraram somente as técnicas mais eficientes.\\
+\indent A ideia de se basear em um comportamento biológico tem como objetivo usar técnicas que passaram pela seleção natural ao longo de milhares de anos, e que como resultado dessa seleção sobraram somente as técnicas mais eficientes.
 %%%%%%%%%%%%
 %%%%%%%%%%%% Algoritmos populacionais 
-\indent Uma sub categoria dos algoritmos bioinspirados são os algoritmos populacionais, baseados no comportamento de populações de animais como aves, abelhas e insetos.
+Uma subcategoria dos algoritmos bioinspirados são os algoritmos populacionais, baseados no comportamento de populações de animais como aves, abelhas e insetos.
 %%
-Esses algoritmos visam utilizar o conceito de inteligência de bando. Simulando indivíduos interagindo entre si e com o ambiente para encontrar um objetivo.\\
+Esses algoritmos visam utilizar o conceito de inteligência de bando, simulando indivíduos interagindo entre si e com o ambiente para chegar a um objetivo.
 %%
-Existem diferentes algoritmos populacionais como o \textit{Ant Colony Optimization}, o \textit{Stochastic Diffusion Search} e o \textit{Particle Swarm Optimization}.\\
+Existem diferentes algoritmos populacionais como o \textit{Ant Colony Optimization}, o \textit{Stochastic Diffusion Search} e o \textit{Particle Swarm Optimization}.
 %%%%%%%%%%%%
 %%%%%%%%%%%% Algoritmos PSO
-\indent O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} ou Optimização por Enxame de Partículas se baseia na convergência de um enxame de partículas em um objetivo.
+\section{Particle Swarm Optimization (PSO)}
+%\indent O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} 
+\indent O algoritmo \gls{pso}, ou Optimização por Enxame de Partículas em tradução para o português, se baseia na convergência de um enxame de partículas em um objetivo.
 %%
 A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos indivíduos da população já esteve ($gBest$).
 %%
-E assim a cada rodada as partículas se movimentam para uma direção média entre ($pBest$ e $gBest$) na com um velocidade que é o valor de velocidade menos o valor de inercia da partícula. 
+A cada rodada as partículas se movimentam para uma direção intermediaria entre $pBest$ e $gBest$, por uma distancia que é calculada pelo valor de velocidade menos o valor de inercia da partícula multiplicado por um valor aleatório entre $0.1$ e $0.9$. 
 E assim a cada rodada do algoritmo a população vai chegando cada vez mais perto da melhor solução.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Problemas no PSO
-\indent Alguns dos problemas que podem acontecer no \textit{PSO} é uma convergência prematura da população em mínimos locais.
+\indent Alguns dos problemas que podem acontecer no \textit{PSO} é uma convergência prematura da população em mínimos locais,
 %%
-Os mínimos locais são casos aonde entre as soluções existe uma que é melhor que a média das soluções a sua volta, porém não é o melhor entre todas.\\
+que são casos aonde entre as soluções existe uma que é melhor que a média das soluções a sua volta, porém não é o melhor entre todas.\\
 %%
-Como a movimentação das párticas se baseia na media entre as melhores posições locais e gerais do grupo, caso a maioria das partículas vá para em direção ao mínimo local o $gBest$ fica no mínimo local, e as partículas tentem a não saírem dessa região.\\
+Como a movimentação das partículas se baseia na media entre as melhores posições locais e gerais do grupo, caso a maioria das partículas vá para em direção ao mínimo local o $gBest$ fica no mínimo local, e as partículas tentem a não saírem dessa região.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Possíveis soluções
 \indent Algumas medidas podem ser tomadas para diminuir essas possibilidades de convergência Prematura.

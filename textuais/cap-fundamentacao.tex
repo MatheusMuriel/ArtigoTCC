@@ -7,11 +7,13 @@
 %% Interlúdio do [Problemas de Agendamento] %%
 Problemas de agendamento são muito comuns atualmente, pois estão diretamente presentes em diversos cenários, tais como planejamento de produção, sistemas de manufatura, linhas de montagem, processamento de informação, planejamento e gerenciamento de rotas logísticas e mesmo que de maneira indireta, também estão presentes nos computadores através de escalonadores de processos do sistema operacional.
 %
-Com tantos possíveis cenários de aplicação é esperado que existam diversas variações deste problema, cada uma em seu cenário, e com suas peculiaridades. Porém, a maioria destes problemas tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo organizar as execuções dessas demandas e distribuí-las entre os recursos, de modo a alcançar da melhor maneira possível um ou mais objetivos, que podem ser, por exemplo: 
+Com tantos possíveis cenários de aplicação é esperado que existam diversas variações deste problema, cada uma com suas peculiaridades.\\
+%
+\indent Porém, a maioria destes problemas tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo organizar as execuções dessas demandas e distribuí-las entre os recursos, de modo a alcançar da melhor maneira possível um ou mais objetivos, que podem ser, por exemplo: 
 \begin{itemize}
     \item O tempo total para o algoritmo executar o algoritmo e encontrar uma solução, ou seja, um agendamento.
     \item O tempo total decorrido entre o a primeira e a ultima tarefa do agendamento (também chamado \textit{fitness} ou \textit{makespan}).
-    \item Ou a soma total do tempo de ociosidade das máquinas durante o período do agendamento.\\
+    \item Ou a soma total do tempo de ociosidade das máquinas durante o período do agendamento.
 \end{itemize}
 
 Devido a esta característica de buscar um melhor resultado para atender a um objetivo os problemas de agendamento são caracterizados como problemas de otimização, que são problemas nos quais o objetivo é encontrar uma solução que melhor atenda os critérios de avaliação do problema em questão.\\
@@ -297,13 +299,14 @@ sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade 
 é possível ver um gráfico do tipo \textit{Gantt Plot} que representa uma solução para o problema representado na 
 \hyperref[fig:ex-instancia-problema-TFJSP]{Figura \ref{fig:ex-instancia-problema-TFJSP}}, 
 que é o problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\\
-
+%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
     \centering
-    \small{Incluir o grafico de gantt aqui\ deve ser a solução para o problema acima}
     \caption{Exemplo Gráfico de Gantt}
     \label{fig:plot-gantt}
+    \includegraphics[width=\textwidth]{assets/solution_problem_3.png}
 \end{figure}
+%%%%%%%%%%%%%%%%%%
             
 \noindent Nessa solução é possível observar que:
 \begin{itemize}
