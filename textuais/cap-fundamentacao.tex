@@ -12,26 +12,26 @@ Com tantos possíveis cenários de aplicação é esperado que existam diversas 
 \indent Porém, a maioria destes problemas tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo organizar as execuções dessas demandas e distribuí-las entre os recursos, de modo a alcançar da melhor maneira possível um ou mais objetivos, que podem ser, por exemplo: 
 \begin{itemize}
     \item O tempo total para o algoritmo executar o algoritmo e encontrar uma solução, ou seja, um agendamento.
-    \item O tempo total decorrido entre o a primeira e a ultima tarefa do agendamento (também chamado \textit{fitness} ou \textit{makespan}).
+    \item O tempo total decorrido entre o a primeira e a ultima tarefa do agendamento, também chamado \textit{fitness} ou \textit{makespan}.
     \item Ou a soma total do tempo de ociosidade das máquinas durante o período do agendamento.
 \end{itemize}
 
 Devido a esta característica de buscar um melhor resultado para atender a um objetivo os problemas de agendamento são caracterizados como problemas de otimização, que são problemas nos quais o objetivo é encontrar uma solução que melhor atenda os critérios de avaliação do problema em questão.\\
 %
-\indent Os problemas de otimização são caracterizados por terem um numero muito grande de soluções possíveis (algumas vezes tendendo ao infinito), o que torna inviável a computação de todas essas possibilidade. Por causa dessa característica um algoritmo de otimização não necessariamente precisa encontrar a melhor solução possível entre todas as possibilidades, mas sim uma solução boa o suficiente (também chamado solução ótima) de acordo com os critérios de avaliação do problema.\\
+\indent Os problemas de otimização são caracterizados por terem um numero muito grande de soluções possíveis, algumas vezes tendendo ao infinito, o que torna inviável a computação de todas essas possibilidade. Por causa dessa característica um algoritmo de otimização não necessariamente precisa encontrar a melhor solução possível entre todas as possibilidades, mas sim uma solução boa o suficiente, também chamado solução ótima, de acordo com os critérios de avaliação do problema.\\
 %
-Os problemas de otimização podem ser classificados em dois tipos, sendo eles: Problemas "mono-objetivos", e problemas "multi-objetivos".\\
+Os problemas de otimização podem ser classificados em dois tipos, sendo eles problemas "mono-objetivos", e problemas "multi-objetivos".\\
 %
-Os problemas do tipo multi-objetivo consideram simultaneamente, mais de um critério de avaliação, podendo ter ou não o mesmo peso (nível de importância), e espera se que sejam atingidos de forma satisfatória todos os critérios de avaliação. Por causa dessa diversidade de objetivos que podem muitas vezes ser conflitantes entre si, como por exemplo: Ser mais rápido e gastar a menos energia.\\
+\indent Os problemas do tipo multi-objetivo consideram simultaneamente, mais de um critério de avaliação, podendo ter ou não o mesmo peso (nível de importância), e espera se que sejam atingidos de forma satisfatória todos os critérios de avaliação. Por causa dessa diversidade de objetivos que podem muitas vezes ser conflitantes entre si, por exemplo, ser mais rápido e gastar a menos energia, problemas do tipo multi-objetivos são os mais comuns.\\
 %
-Já os problemas to tipos mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, espera se um resultado melhor para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
+\indent Já os problemas do tipos mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, espera se um resultado melhor para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
 %% Fim do Interlúdio do [Problemas de Agendamento] %%
 
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
 %% 1.1.1
 %\subsection{Definição}
-Como foi definido por \cite{Bagchi1999} um problema de agendamento (também chamado de problema de escalonamento) é um problema de otimização aonde 
+Como foi definido por \citeauthor{Bagchi1999} um problema de agendamento (também chamado de problema de escalonamento) é um problema de otimização aonde 
 diversas tarefas (chamadas de \textit{jobs}) são alocados em uma ordem sequencial entre os recursos (máquinas), 
 com diferentes tarefas podendo ser executadas simultaneamente
 em maquinas diferentes, porém cada atividade devendo ser executada somente em uma maquina por vez, como demonstrado na
@@ -44,21 +44,25 @@ em maquinas diferentes, porém cada atividade devendo ser executada somente em u
     \small{Incluir um exemplo de problema de escalonamento aqui}
 \end{figure}
 
-Assim como a grande maioria dos problemas de origem combinatória, ou seja, cujo um valor dependa do valor anterior, formando assim uma combinação de fatores, o problema de escalonamento pertence a classe de problemas NP-Hard na qual não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.\\
-\indent Isso acontece devido a quantidade de operações necessárias para verificar todas as possibilidades de soluções para o problema em questão, crescerem de forma exponencial com base no tamanho do problema, 
+Assim como a grande maioria dos problemas de origem combinatória, o problema de escalonamento pertence a classe de problemas NP-Hard, na qual não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.\\
+\indent Isso acontece devido a quantidade de operações necessárias para verificar todas as possibilidades de soluções para o problema em questão, crescerem de forma exponencial com base no tamanho do problema,
 como demonstrado na \hyperref[fig:problema-exponencial]{Figura \ref{fig:problema-exponencial}},
-o que torna os problemas dessa classe inviáveis de serem resolvidos através de métodos comuns de cálculos.\hfill
-
-\begin{figure}[h]
+o que torna os problemas dessa classe inviáveis de serem resolvidos através de métodos comuns de cálculos.
+%
+\begin{figure}[ht]
     \centering
-    \small{Incluir a representação de um problema exponencial aqui}
     \caption{Demonstração de um problema exponencial}
     \label{fig:problema-exponencial}
+    \small{Incluir a representação de um problema exponencial aqui}
 \end{figure}
+%
 
-Por causa disso, nos casos de problemas NP-Hard normalmente são utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.\\
-Porém, esse conceito de solução ótima varia conforme o problema, em alguns casos é mais importante que a solução seja encontrada em um curto espaço de tempo, do que seja alguns milissegundos mais rápida do que as outras soluções já encontradas pelo algoritmo, isso se aplica por exemplo em ambientes em que o agendamento deva ser feito em tempo real.\\
-\indent Já em um cenário no qual essa solução precisa ser encontrada apenas uma vez no dia e depois ser aplicada varias vezes, como em uma estrutura de linha de montagem, vale a pena esperar algumas minutos a mais se essa solução economizar tempo de produção (e consequentemente dinheiro) ao longo de seu uso. Então esse critério de avaliação que define uma solução ótima deve ser muito bem analisado de caso a caso.\\
+\indent Por causa disso, nos casos de problemas NP-Hard normalmente são utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.\\
+\indent As características de uma solução ótima variam conforme o problema, em alguns casos é mais importante que a solução seja encontrada em um curto espaço de tempo, do que seja alguns milissegundos mais rápida do que as outras soluções já encontradas pelo algoritmo.
+%
+Isso se aplica por exemplo em ambientes no qual o agendamento deve ser feito em tempo real.
+%
+Já em um cenário no qual essa solução precisa ser encontrada apenas uma vez no dia e depois ser aplicada varias vezes, como em uma estrutura de linha de montagem, pode ser vantajoso esperar algumas minutos a mais se essa solução economizar tempo de produção (e consequentemente dinheiro) ao longo de seu uso. Então esse critério de avaliação que define uma solução ótima deve ser muito bem analisado de caso a caso.\\
 \indent Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados como: Algoritmos Populacionais e Algoritmos Evolutivos. 
 Que consistem em simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução, para encontrar uma solução ótima para o problema em questão, de maneira similar a qual um ser vivo faria.\\
 %% Fim do [Definição] %%
@@ -79,17 +83,15 @@ Vários autores já classificaram diversas variações de problemas de escalonam
     
     \item \textbf{\textit{Job Shop:}} Diferentemente do \textit{Flow Shop} o \textit{Job Shop} pode ter execuções paralelas, assim como ser dividido em operações.
     
-    \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões, 
-    \subitem \textbf{\textit{Flexible Job Shop Total}}: Na qual todas as maquinas podem executar todas as operações. 
-    \subitem \textbf{\textit{Flexible Job Shop Parcial}}: Na qual existem limitações para quais maquinas podem executar quais operações.
+    \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões:
+    \begin{itemize}
+    \item \textbf{\textit{Flexible Job Shop Total}}: Na qual todas as maquinas podem executar todas as operações. 
+    \item \textbf{\textit{Flexible Job Shop Parcial}}: Na qual existem limitações para quais maquinas podem executar quais operações.
+    \end{itemize}
 \end{itemize}
-
-\noindent Além disso, cada um dos problemas acima podem ser classificado em mono-objetivos ou multi-objetivos. Esse trabalho é focado no problema \textbf{\textit{Flexible Job Shop Total}}, com um contexto mono-objetivo.\\
-
-%
+%%%%%
+\noindent Além disso, cada um dos problemas acima podem ser classificado em mono-objetivos ou multi-objetivos. Esse trabalho é focado no problema \textbf{\textit{Flexible Job Shop Total}}, com um contexto mono-objetivo.
 %% Fim do [Problema] %%
-
-
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
 %% 1.1.3
@@ -97,7 +99,7 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 %% Interlúdio do [Problemas de Agendamento] %%
 Como citado anteriormente o \textit{Job Shop Problem} (também chamado de JSP) é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
 \indent De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes entre si, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica, e cada operação $O_{ij}$ tem seu respectivo tempo de execução.\\
-\noindent Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas estão:
+\indent Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas estão:
 \begin{itemize}
     \item Não é possível executar simultaneamente duas operações de um mesmo \textit{job}.
     \item Não existe mais de uma máquina de um mesmo tipo.
@@ -108,13 +110,15 @@ Como citado anteriormente o \textit{Job Shop Problem} (também chamado de JSP) �
     \item Não é possível interromper a execução de uma operação.
 \end{itemize}
 %% Fim do Interlúdio do [Problemas de Agendamento] %%
-
+%
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
 %% 1.1.3 ::: JSP
 %% 1.1.3.1
 %\subsubsection{Representações}
-\noindent Para ser possível que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
+
+
+\indent Para ser possível que um algoritmo encontre uma solução para o agendamento, ele precisar conhecer algumas informações, dentre elas: 
 \begin{itemize}
     \item Quantas maquinas existem;
     \item Quantos \textit{jobs} existem;
@@ -283,7 +287,7 @@ $Job$&$O_{ji}$&$M_1$&$M_2$&$M_3$&$M_4$&$M_5$&$M_6$&$M_7$&$M_8$&$M_9$&$M_{10}$\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Na tabela é mostrada uma instância de um problema de \textit{Flexible Job Shop} Total. De tamanho $10\times10$ retirado do benchmark de \cite{Kacem2002}.\\
 %
-\indent Nessa representação é possível ver dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ aonde cada \textit{job} possui três operações $(O_{j1}, O_{j2}, O_{j3})$.\\
+\indent Nessa representação é possível ver dez maquinas $(M_1, M_2, M_3, ..., M_{10})$ e dez \textit{jobs} $(J_1, J_2, J_3, ..., J_{10})$ onde cada \textit{job} possui três operações $(O_{j1}, O_{j2}, O_{j3})$.\\
 %
 Cada índice $ji$ representa o tempo $T{ji}$ de execução de $O_{ji}$, para a máquina $M_k$, 
 sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade de jobs.\\
@@ -322,21 +326,16 @@ que é o problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\\
 %%\subsubsection{Cenários de Aplicação}
 \indent O exemplo mais claro de aplicação do problema de \textit{Flexible Job Shop} é na produção industrial e em sistemas de manufatura, o que traz muito interesse econômico para encontrar boas soluções para essa categoria de problema.\\
 %
-\indent Como visto por \cite{Wari2016} nos tempos modernos onde existe uma grande competição e constantes mudanças e melhorias tecnológicas, a organização e otimização desses processos industriais se torna um gargalo a ser resolvido e pode ser um fator decisório no sucesso de uma indústria.
+\indent Nos tempos modernos onde existe uma grande competição e constantes mudanças e melhorias tecnológicas, a organização e otimização desses processos industriais se torna um gargalo a ser resolvido e pode ser um fator decisório no sucesso de uma indústria \cite{Wari2016}.
 %% Fim do [Cenários de Aplicação] %%
 %% Fim do [FJSP] %%
 %% Fim do [Problemas de Agendamento] %%
-
-
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %% 1 ::: Introdução
 %% 1.2
 \section{Soluções Existentes}
 %% Interlúdio %%
-Ao longo do tempo foram propostas, testadas, revisadas e aprimoradas diversas soluções para os problemas de agendamento, más como cada cenário de aplicação é único, não é possível definir que uma solução é melhor do que outra, pois isso depende dos critérios de analise de cada problema, contudo, durante o tempo algumas soluções chamaram a atenção de pesquisadores, seja por serem mais eficientes ou por serem mais adaptáveis a novas demandas, cenários e objetivos.\\
+Ao longo do tempo foram propostas, testadas, revisadas e aprimoradas diversas soluções para os problemas de agendamento, mas como cada cenário de aplicação é único não é possível concluir que uma solução é melhor do que outra, pois isso depende dos critérios de analise de cada problema. Contudo, durante o tempo algumas soluções chamaram a atenção de pesquisadores, seja por serem mais eficientes ou por serem mais adaptáveis a novas demandas, cenários e objetivos.\\
 \indent Um tipo de solução muito recorrente são as soluções baseadas em comportamento biológico. 
 %
 Ao longo de milhões de anos a vida biológica no planeta Terra evoluiu e se adaptou para encontrar modos mais eficientes de resolver os diversos problemas que a natureza impõe. 
@@ -363,10 +362,10 @@ Essa estrutura se repete até que seja atingido o critério de parada estabeleci
 %% 1 ::: Introdução
 %% 1.2 ::: Soluções Existentes
 %\subsection{Algoritmos Genéticos}
-\indent Uma derivação dos Algoritmos Evolutivos são os Algoritmos Genéticos, utilizados para buscas e para otimizações, como nos problemas de escalonamento.\\
+\indent Uma derivação dos Algoritmos Evolutivos são os Algoritmos Genéticos, utilizados para buscas e para otimizações, como nos problemas de escalonamento.
 %
-\indent Essa abordagem chama atenção por conseguir lidar com uma grande diversidade de soluções, o que a torna interessante especialmente em problemas de multi-objetivo como visto por \cite{Bagchi1999}.\\
-\indent Os Algoritmos Genéticos são com certeza a abordagem mais utilizada dentre os Algoritmos Evolutivos, o que algumas vezes podem gerar a impressão de que Algoritmos Genéticos e Evolutivos são a mesma coisa, porém como o Algoritmo Genético lida com uma simulação de cromossomos isso o faz com que suas estruturas sejam muito mais dinâmicas, enquanto as técnicas de Algoritmos Evolutivos geralmente tem estruturas mais fixas.\\
+Essa abordagem chama atenção por conseguir lidar com uma grande diversidade de soluções, o que a torna interessante especialmente em problemas de multi-objetivo como visto por \cite{Bagchi1999}.\\
+\indent Os Algoritmos Genéticos são a abordagem mais utilizada dentre os Algoritmos Evolutivos, o que algumas vezes podem gerar a impressão de que Algoritmos Genéticos e Evolutivos são a mesma coisa, porém como o Algoritmo Genético lida com uma simulação de cromossomos isso o faz com que suas estruturas sejam muito mais dinâmicas, enquanto as técnicas de Algoritmos Evolutivos geralmente tem estruturas mais fixas.\\
 %
 \indent Para ter essa dinamicidade os Algoritmos Genéticos trabalham com o conceito de mutações aleatórias, que podem ou não serem boas para o indivíduo, porém por ser uma derivação dos Algoritmos Evolutivos o Algoritmo Genético conta também com os mecanismos de seleção e cruzamento entre indivíduos da população, o que tende a selecionar apenas os indivíduos com mutações que são positivas do ponto de vista do objetivo estabelecido pelo problema.\\
 %% Fim do [GA] %%
@@ -420,29 +419,35 @@ Atualmente o \textit{Particle Swarm Optimization} é classificado como parte da 
 \indent As variáveis mais importantes do PSO são justamente as melhores posições, sendo a local normalmente chamada de $pBest$ e a geral normalmente chamada de $gBest$. Elas vão ser utilizadas para obter uma média que será a nova posição da partícula. Porém, existem resistências para que a partícula mude de direção, isso acontece por meio da inércia normalmente representada por $w$ que representa a força que tende a fazer a partícula seguir a direção onde ela já está se movendo. Essa força de inércia cresce conforme o valor de velocidade da partícula, normalmente representada por $v$, ou seja, partículas com uma maior velocidade $v$ tendem a tem uma maior inércia $w$.\\
 \indent No \hyperref[alg:pso-base]{Pseudocódigo \ref{alg:pso-base}} 
 é possível uma representação de um algoritmo PSO básico, esse algoritmo tem como base a formulação de \cite{martinez2009}.
+\begin{algorithm}
+    \caption{Pseudocódigo de um PSO básico}\label{alg:pso-base}
+\begin{algorithmic}
+\State Inicia o espaço de soluções
+\State Inicia a população em localizações aleatorias
+\State Avalia as particulas e define o $gBest$
+\While{ \textit{não atingir o critério de parada} }
+  \State Atualiza a posição de todas as particulas
+  \State Atualiza o \textit{fitness} de todas as particulas
+  \If{algum $pBest$ é melhor que $gBest$}
+    \State $gBest \gets pBest$
+\EndIf
+\EndWhile
 
-\begin{figure}[h]
-    \centering
-    \small{Incluir o pseudo código de PSO básico aqui}
-    \caption{Pseudocódigo de um PSO básico}
-    \label{alg:pso-base}
-\end{figure}
+\end{algorithmic}
+\end{algorithm}
+
 
 Na definição base do algoritmo não existe uma especificação de uma fórmula para o cálculo da movimentação da partícula. Porém, na 
-\hyperref[fig:formula-movimentacao]{Formula \ref{fig:formula-movimentacao}} 
+\hyperref[fig:formula-movimentacao]{Equação \ref{fig:formula-movimentacao}} 
 é possível ver uma representação de uma fórmula base para o cálculo de uma nova posição para a partícula.
-        
-\begin{figure}[ht]
-    \centering
-    \small{Incluir a Formula de movimentação aqui}
-    \caption{Formula que define a movimentação da partícula}
+%
+\begin{equation} 
     \label{fig:formula-movimentacao}
-\end{figure}
-
+    \vec x_i(t+1) = \vec x_i + \vec v_i(t) + a_1 r_1 (pBest - \vec x_i(t)) + a_2 r_2 (gBest - \vec x_i(t))
+\end{equation}
+sendo $i$ o número da partícula; $t$ o número da rodada; $a_1$ e $a_2$ os valores de aceleração local e global respectivamente; $r_1$ e $r_2$ números aleatórios gerados por uma função de probabilidade uniforme em um intervalo de $[0.1, 0.9]$. \\
 %%
 %% Fim do [Definição] %%
-
-
 %% 1 ::: Introdução
 %% 1.3 ::: PSO
 %% 1.3.4
@@ -453,7 +458,6 @@ Algumas medidas podem ser tomadas para diminuir essa possibilidade de convergên
 %% Fim do [Problemas] %%
 %% 1 ::: Introdução
 %% 1.3 ::: PSO
-%% 1.3.5
 %\subsection{Melhorias}
 %% Interlúdio %%
 \indent Algumas técnicas podem ser usadas para melhorar o desempenho do PSO em cada cenário de aplicação. Porém, o efeito dessas abordagens varia de acordo com qual problema esta sendo resolvido e dos recursos e limitações de processamento e memoria do ambiente de processamento do algoritmo.\\

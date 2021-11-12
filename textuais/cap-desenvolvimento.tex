@@ -14,7 +14,7 @@ Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados 
 \indent Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foi utilizado um \textit{runtime} com processadores comuns (CPU) e 12 Gigabytes de memória RAM.\\
 %
 %
-\indent Para que possibilitar uma análise de dados mais detalhada e a geração de gráficos para representação nesse trabalho, foram implementados no código pontos de salvamento de dados, para salvar em arquivo texto algumas informações de execuções e de datasets.\\
+\indent Para que possibilitar uma análise de dados mais detalhada e a geração de gráficos para representação nesse trabalho, foram implementados no código pontos de salvamento de dados, para salvar em formato de binários do NumPy, utilizando a função \code{np.savedata}, as informações de execuções e de datasets.\\
 \indent Dentre esses dados estão o espaço de soluções gerado, a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
 %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
 
@@ -58,7 +58,7 @@ Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi optado 
     \item Representações e calculo de vetores de movimentação.
 \end{itemize}
         
-Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\\
+Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:
 \begin{itemize}
     \item Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.
 
@@ -70,6 +70,17 @@ Para trazer mais clareza ao código foi optado por criar algumas classes para a 
 \indent Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\\
 \indent E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\\
 \indent Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
+%
+Na \hyperref[fig:fluxo-design]{Figura \ref{fig:fluxo-design}} é possível ver uma representação das relações e fluxo de dados entre as classes.
+
+%
+\begin{figure}[ht]
+    \centering
+    \caption{Fluxo de dados}
+    \label{fig:fluxo-design}
+    %\includegraphics[width=\textwidth]{}
+\end{figure}
+
 %
 %% Fim do [Design do Projeto] %%
     
@@ -108,14 +119,13 @@ Algumas das implementações encontradas em bibliotecas de algoritmos populacion
 %\subsubsection{Gráficos de análise}
 \indent Como esse trabalho tem como foco uma exploração e implementação mais didática foi optado a utilização de uma representação em forma de uma matriz com duas dimensões, utilizando a biblioteca \textit{NumPy}. Essa abordagem em matriz de duas dimensões também facilita a geração de gráficos para representação visual, como, por exemplo, passar a matriz de soluções pela função de avaliação e assim obter um valor de \textit{fitness} para cada ponto do espaço de soluções, como é possível ver na 
 \hyperref[fig:surfaceplot]{Figura \ref{fig:surfaceplot}} 
-na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).\hfill
+na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} mais alto (ou seja, pior), e os valores mais abaixo e mais claros tem um \textit{fitness} mais baixo (ou seja, melhor).
 
 \begin{figure}[ht]
     \centering
     \caption{Gráfico de Superfície representando um espaço de soluções}
     \label{fig:surfaceplot}
     \includegraphics[width=\textwidth]{assets/surfaceplot.png}
-    \small{* TODO - Adicionar valores no plot}
 \end{figure}
 
 Esses gráficos se mostraram uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
@@ -139,15 +149,7 @@ devido a isso, o PSO tente a ter problemas com convergência prematura em mínim
 Por esse ponto se destacar entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a média local sempre tende para o ponto onde está o mínimo local.\\
 Como o PSO se baseia na média local e global, se houver mais de um mínimo local e quantidades equivalentes de partículas da população forem distribuídas para esses pontos, as partículas podem ficar presas já que as forças se balanceiam e o $gBest$ não muda mais.\\
 %
-\indent Já a convergência prematura acontece quando a um mínimo local e por coincidência a posição inicial da maioria das partículas da população tende a ser atraído para o mínimo local, logo a maioria da população para nesse ponto e o algoritmo termina em um estado como é mostrado na 
-\hyperref[fig:convergencia-prematura]{Figura \ref{fig:convergencia-prematura}} 
-ou seja, termina antes de encontrar uma solução tão boa quando seria possível.\\
-\begin{figure}[ht]
-    \centering
-    \small{Incluir a convergência prematura aqui aqui}
-    \caption{Demonstração de convergência prematura de uma população de partículas}
-    \label{fig:convergencia-prematura}
-\end{figure}
+\indent Já a convergência prematura acontece quando a um mínimo local e por coincidência a posição inicial da maioria das partículas da população tende a ser atraído para o mínimo local, logo a maioria da população para nesse ponto e o algoritmo termina antes de encontrar uma solução tão boa quando seria possível.\\
 %% Fim do [Influencia na Solução] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
@@ -173,9 +175,9 @@ conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{
 
 \begin{figure}[ht]
     \centering
-    \small{Incluir o gráfico de distribuição aqui}
     \caption{Gráfico de distribuição de valores gerados pela função aleatória}
     \label{fig:distrib-uniforme}
+    \includegraphics[width=\textwidth]{assets/hist_uniform.png}
 \end{figure}
 
 %
@@ -208,20 +210,29 @@ Além disso, a implementação real em Python está no apêndice x desse trabalh
 %% Fim do [Espaço de Soluções] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
+%% 2.2.3
 \subsection{Partícula}
+%% Interlúdio %%
 Por se tratar de um algoritmo populacional focado em partículas, por isso o nome \textit{Particle Swarm Optimization} que significa Otimização por Enxame de Partículas, a representação dessa entidade, assim como sua geração, controle e movimentação, se mostra um dos principais pilares do algoritmo. Devido a critérios de legibilidade e facilitação de futuros estudos nesse trabalho foi optado por criar uma estrutura de classe bem definida para essa representação e controle.
+%% Fim do [Interlúdio] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.3 ::: Partícula
+%% 2.2.3.1
 %\subsubsection{Implementação}
 Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções.\\
 \indent Para fazer uma melhor movimentação foi optado por não usar uma variável de direção, mas sim uma variável que guarda a última posição onde a partícula esteve.\\
-Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:\\
+Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:
+%%
 Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\\
+%%
 Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\\
+%%
 Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.\\
-\noindent A implementação de toda a classe de partícula está disponível no apêndice x desse trabalho.\\
-%% TODO - Apêndice
+\noindent A implementação de toda a classe de partícula está disponível no 
+\hyperref[apd:particule-class]{Apêndice \ref{apd:particule-class}}
+desse trabalho.\\
+%
 \indent Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\\
 %
 %% Fim do [Representações] %%
@@ -262,16 +273,8 @@ Função \textbf{\textit{update\_position}} que faz a movimentação da partícu
 \end{algorithm}
 
 Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
-uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
-\hyperref[fig:movimentacao-int-sum]{Figura \ref{fig:movimentacao-int-sum}}.\hfill
-
-\begin{figure}[ht]
-\centering
-\small{Incluir a demonstração de movimentação por soma de inteiros aqui}
-\caption{Demonstração de movimentação por soma de inteiro}
-\label{fig:movimentacao-int-sum}
-\end{figure}
-
+uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$.\\
+%
 Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\\
 \indent Porém, no caso do algoritmo PSO é necessário que ao calcular a nova posição, se considere a inércia e uma média entre o $pBest$ e o $gBest$, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.\\
 %%%%
@@ -361,20 +364,32 @@ Então somado com o vetor de inércia divido por um valor de significância para
 %% 2.2.4
 \subsection{População}
 Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele é muito influenciado pela geração da população inicial, mesmo nos algoritmos com variações aonde existem mutações e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\\
-\indent Os parâmetros como o tamanho da população são definidos nas configurações do algoritmo. Todas as funções utilizadas na geração dos indivíduos seguem o padrão de distribuição uniforme.\\
-\indent A posição inicial da partícula é dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.\\
-\indent A última posição da partícula é obtida através de um sorteio de chances iguais que pode ou subtraindo, ou adicionar o valor $1$ na posição inicial gerada anteriormente. Caso seja subtraído $1$ a direção do movimento é para frente, caso seja subtraído $1$ a direção do movimento é para trás.\\
-\indent A velocidade é dada por um valor aleatório entre $0.1$ e $0.2$.\\
-\indent Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuída, dificultando o acontecimento de convergência prematura.
-
-Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo código no apêndice x. %%TODO apendice  
+%
+%
+\indent Os parâmetros como o tamanho da população são definidos nas configurações de hiper parâmetros do algoritmo.
+%
+Já as funções utilizadas na geração dos indivíduos iniciais utilizam alguns valores aleatórios que seguem um padrão de distribuição uniforme. Os atributos que utilizam valores aleatórios são:
+\begin{itemize}
+    \item A velocidade, que é dada por um valor aleatório entre $0.1$ e $0.2$.
+    \item A posição inicial da partícula, que é dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.
+    \item A última posição da partícula, que é obtida através de um numero inteiro aleatório entre $1$ e $-1$ diferente de zero.
+\end{itemize}
+%
+%
+\indent Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuída, dificultando o acontecimento de convergência prematura.\\
+%
+%
+Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, cujo a implementação está no 
+\hyperref[apd:fun-gen-init-pop]{Apêndice \ref{apd:fun-gen-init-pop}}
+%%% 
 \noindent Garantindo assim um ponto de comparação mais justo entre os algoritmos.
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.5
 \subsection{Algoritmos}
 %%
-A execução dos algoritmos é chamada pela classe principal da modelagem do problema, sendo responsavel por fazer a execução e controle dos dados de analise.\\
+A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsavel por fazer a execução e controle dos dados de analise.\\
+%
 Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da particula. A implementação esta disponivel no apendice x.\\ %todo apendice
 %
 %
@@ -390,21 +405,7 @@ A movimentação basica de uma particula do PSO é definido pela
     \vec v_1(t+1)= \vec v_i(t) + a_1 r_1 (pBest - \vec x_i(t)) + a_2 r_2 (gBest - \vec x_i(t))
 \end{equation}
 %
-Como foi observado nos testes a variavel aleatoria é importande para que as particulas não entrem em um estado de equilibrio e não se movam mais, como demonstrado na \hyperref[fig:equelibrio-particulas]{Figura \ref{fig:equelibrio-particulas}}.
-\begin{figure}[ht]
-    \centering
-    \small{Incluir a aaaaaaaaaaaaaaaaaaaaaaaa aqui}
-    \caption{Equilibrio nas forças de movimentação de particula}
-    \label{fig:equelibrio-particulas}
-\end{figure}
-
-Com esse elemento aleatorio a movimentaçãos e torna mais caotica e evita o fim prematuro do algoritmo, como representado na \hyperref[fig:rand-particulas]{Figura \ref{fig:rand-particulas}}.
-\begin{figure}[ht]
-    \centering
-    \small{Incluir a aaaaaaaaaaaaaaaaaaaaaaaa aqui}
-    \caption{Equilibrio nas forças de movimentação de particula}
-    \label{fig:rand-particulas}
-\end{figure}
+Como foi observado nos testes a variavel aleatoria é importande para que as particulas não entrem em um estado de equilibrio e parem de se movimentar. Com a introdução de elementos aleatorio a movimentaçãos se torna mais caotica e evita o fim prematuro do algoritmo.
 
 Esse impacto na movimentação inspirou uma abordagem que considera o nivel de atualizações de $gBest$ e assim adiciona mais um fator aleatorio no calculo. como é representado no 
 \hyperref[alg:mov-dinamic]{Pseudocódigo \ref{alg:mov-dinamic}}.
@@ -429,34 +430,52 @@ Esse impacto na movimentação inspirou uma abordagem que considera o nivel de a
 %% 2 ::: Desenvolvimento
 %% 2.3
 \section{Execuções}
-Pela natureza variável do ambiente em nuvem cada teste de algoritmo foi executado 30 vezes para obter uma média dos tempos de execução.\hfill\vspace{\onelineskip}
+Foram utilizados como parâmetros de configuração:
+\begin{itemize}
+    \item \code{population\_size} Quantidade de particulas
+    \item \code{coeficente\_populacional}: Coeficiente entre a quantidade de particulas e o tamanho do espaço de soluções
+\end{itemize}
+%
+O tamanho do espaço de soluções é calculado pela raiz do arrendamento para baixo do tamanho da população elevado ao coeficiente populacional, representado pela equação 
+\hyperref[eq:space-size]{Equação \ref{eq:space-size}}, 
+essa equação é necessaria pois para gerar um espaco de soluções $n \times n$ pois para isso o numero precisa ser uma raiz quadrada perfeita.
+%
+\begin{equation} 
+    \label{eq:space-size}
+    space\_size = \lfloor \sqrt{\lfloor n^c \rceil} \rceil
+\end{equation}
+%
+Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 valores diferentes de coeficente populacional que são:
+\begin{itemize}
+    \item \code{coeficente\_populacional = $3$}: Gera um mapa de $50 \times 50$
+    \item \code{coeficente\_populacional = $5$}: Gera um mapa de $70 \times 70$
+    \item \code{coeficente\_populacional = $2.645$}: Gera um mapa de $90 \times 90$
+\end{itemize}
 
-Como foi descrito anteriormente, de modo a assegurar uma análise mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo texto para análise detalhada.\hfill\vspace{\onelineskip}
-
+Foram gerados 20 espaços de solução diferentes para cada cada um dos 3 coeficentes e cada um dos 4 cenarios de problema diferentes que estão no 
+\hyperref[apd:problem-instances]{Apendice \ref{apd:problem-instances}}, totalizando assim $240$ espaços de soluções diferentes.\\
+%
+Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatorios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.\\
+%
+Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binario.\\
 Os dados salvos são:
 \begin{itemize}
-\item População inicial.
-\item Espaço de soluções.
-\item Números de rodadas do algoritmo.
-\item Histórico da variável $gBest$.
-\item Histórico da variável $pBest$.
-\item Histórico da posição das partículas.
-\item Soluções encontradas.
+    \item População inicial.
+    \item Espaço de soluções.
+    \item Números de rodadas do algoritmo.
+    \item Histórico da variável $gBest$.
+    \item Histórico da posição das partículas.
+    \item Soluções encontradas.
 \end{itemize}
-
-(Dados a completar...)
-% 
-%% Fim do [Execuções] %%
 %% 2 ::: Desenvolvimento
-%% 2.4
-\section{Critérios de Avaliação}
-A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo: \hfill
+\section{Resultados}
+Para avaliar as execuções dos algoritmos foram estabelecidos os seguintes criterios de analise:
+A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo:
 \begin{itemize}
-\item Tempo total de execução do algoritmo.
-\item \textit{Fitness} final.
+\item Makespan final das soluções
 \end{itemize}
 
-\noindent E são parâmetros de análise:\hfill
+\noindent E são parâmetros de análise:
 \begin{itemize}
 \item Taxa de mudança da variável $gBest$ ao longo da execução.
 \item Quantidade de rodadas necessárias para atingir o critério de parada.
@@ -464,15 +483,6 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 \item Histórico de movimentação das partículas.
 \end{itemize}
 
-Além desses critérios também é possível observar os dados e tirar outras conclusões sobre o comportamento do algoritmo.\hfill
-
-%
-%% Fim do [Critérios de Avaliação] %%
-
-
-%% 2 ::: Desenvolvimento
-%% 2.5
-\section{Resultados}
 (Dados a completar...)
 %
 %% Fim do [Resultados] %%
