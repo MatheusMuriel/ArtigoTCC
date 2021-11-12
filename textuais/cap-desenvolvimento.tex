@@ -182,33 +182,37 @@ conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{
 %% Inicialização do Array
 
 Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
-\hyperref[fig:pseudocodigo-solutionspace]{Pseudo codigo \ref{fig:pseudocodigo-solutionspace}}. 
-Além disso, a implementação real em Python está no apêndice x desse trabalho.\hfill
-
+\hyperref[alg:generate-solution-space]{Pseudocódigo \ref{alg:generate-solution-space}}.
+Além disso, a implementação real em Python está no apêndice x desse trabalho.\\
 %% Todo - Apêndice
-%% Todo - pseudo código
-\begin{figure}[ht]
-\centering
-\small{Incluir o pseudo código de geração do espaço de soluções aqui}
-\caption{Pseudo código da geração do espaço de soluções}
-\label{fig:pseudocodigo-solutionspace}
-\end{figure}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{algorithm}
+\caption{Pseudocódigo de geração do espaço de soluções}\label{alg:generate-solution-space}
+\begin{algorithmic}
+\State espaço soluções $\gets$ lista vazia
+\State contador  $\gets$ 0
+\While{ contador $\leq$ tamanho espaço de soluções}
+  \State solução $\gets$ lista vazia
+  \State embaralhar(operações)
+  \State embaralhar(jobs)
+  \State embaralhar(maquinas)
+  \State solução[operações] $\gets$ remover ultimo elemento(operações)
+  \State solução[jobs] $\gets$ remover ultimo elemento(jobs)
+  \State solução[maquinas] $\gets$ remover ultimo elemento(maquinas)
+  \State espaço soluções $\gets$ adicionar(solução)
+\EndWhile
+\end{algorithmic}
+\end{algorithm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Implementação] %%
-
-%
 %% Fim do [Espaço de Soluções] %%
-
-
-    %% 2 ::: Desenvolvimento
-    %% 2.2 ::: Arquitetura
-    %% 2.2.3
-    \subsection{Partícula}
-        %% Interlúdio %%
-            Por se tratar de um algoritmo populacional focado em partículas, por isso o nome \textit{Particle Swarm Optimization} que significa Otimização por Enxame de Partículas, a representação dessa entidade, assim como sua geração, controle e movimentação, se mostra um dos principais pilares do algoritmo. Devido a critérios de legibilidade e facilitação de futuros estudos nesse trabalho foi optado por criar uma estrutura de classe bem definida para essa representação e controle.
-        %% Fim do [Interlúdio] %%
-
-
+%% 2 ::: Desenvolvimento
+%% 2.2 ::: Arquitetura
+%% 2.2.3
+\subsection{Partícula}
+%% Interlúdio %%
+Por se tratar de um algoritmo populacional focado em partículas, por isso o nome \textit{Particle Swarm Optimization} que significa Otimização por Enxame de Partículas, a representação dessa entidade, assim como sua geração, controle e movimentação, se mostra um dos principais pilares do algoritmo. Devido a critérios de legibilidade e facilitação de futuros estudos nesse trabalho foi optado por criar uma estrutura de classe bem definida para essa representação e controle.
+%% Fim do [Interlúdio] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.3 ::: Partícula
@@ -232,15 +236,34 @@ Função \textbf{\textit{update\_position}} que faz a movimentação da partícu
 %\subsubsection{Movimentação}
 \indent A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.\\
 \indent Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.\\
-\indent Aonde se tem uma direção e com base nessa direção se soma ou subtrai o valor de velocidade do eixo de movimento e assim se obtém uma nova posição, como mostrado no 
-\hyperref[alg:mov-int-sum]{Pseudocódigo \ref{alg:mov-int-sum}}.\hfill
+\indent Aonde se tem uma direção e com base nessa direção se soma ou subtrai o valor de velocidade do eixo de movimento e assim se obtém uma nova posição, como mostrado no \hyperref[alg:int-sum]{Pseudocódigo \ref{alg:int-sum}}.
+\begin{algorithm}
+    \caption{Pseudocódigo de movimentação por soma de inteiros}\label{alg:int-sum}
+\begin{algorithmic}
+\If{direcao = CIMA}
+  \State posicaoY = posicaoY + 1
+\ElsIf{direcao = ESQUERDA}
+  \State posicaoX = posicaoX - 1
+\ElsIf{direcao = DIREITA}
+  \State posicaoX = posicaoX + 1
+\ElsIf{direcao = BAIXO}
+  \State posicaoY = posicaoY - 1
+\ElsIf{direcao = SUPERIOR ESQUERDA}
+  \State posicaoX = posicaoX - 1
+  \State posicaoY = posicaoY + 1
+\ElsIf{direcao = SUPERIOR DIREITA}
+  \State posicaoX = posicaoX + 1
+  \State posicaoY = posicaoY + 1
+\ElsIf{direcao = INFERIOR ESQUERDA}
+  \State posicaoX = posicaoX - 1
+  \State posicaoY = posicaoY - 1
+\ElsIf{direcao = INFERIOR DIREITA}
+  \State posicaoX = posicaoX + 1
+  \State posicaoY = posicaoY - 1
+\EndIf    
 
-\begin{figure}[ht]
-\centering
-\small{Incluir o pseudo código de uma movimentação por soma de inteiros aqui}
-\caption{Pseudocódigo de uma movimentação por soma de inteiros}
-\label{alg:mov-int-sum}
-\end{figure}
+\end{algorithmic}
+\end{algorithm}
 
 Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
 uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$, como pode ser visto na 
@@ -254,20 +277,9 @@ uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posiçã
 \end{figure}
 
 Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\\
-\indent Porém, no caso do algoritmo PSO é necessário que ao calcular a nova posição, se considere a inércia e uma média entre o $pBest$ e o $gBest$, o que gera muitas vezes uma movimentação em ângulos mais específicos como representado na 
-\hyperref[fig:angular-moviment-grid-based]{Figura \ref{fig:angular-moviment-grid-based}}
-o que torna essa abordagem de soma de inteiros muito complexa e limitada para esse cenário.\hfill
-
-\begin{figure}[ht]
-\centering
-\small{Incluir a imagem demonstrativa de movimentação com ângulos estranhos aqui}
-\caption{Exemplo de movimentação com ângulos complexos}
-\label{fig:angular-moviment-grid-based}
-\end{figure}
-
+\indent Porém, no caso do algoritmo PSO é necessário que ao calcular a nova posição, se considere a inércia e uma média entre o $pBest$ e o $gBest$, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.\\
 %%%%
-
-Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\\
+\indent Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\\
 %\subsubsubsection{Movimentação Vetorial}
 \indent Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.\\
 \noindent Em um cenário aonde a posição da partícula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.\\
@@ -331,7 +343,7 @@ Então nesse trabalho foi desenvolvido um método de movimentação baseado em c
 \noindent Então temos o vetor $\vec r$ resultante, então a nova posição da partícula é $[12,10]$.
 
 No código Python essa implementação é feita de maneira levemente diferente por características da linguagem. Para realizar os cálculos vetoriais foi utilizado a biblioteca \textit{Numpy}.\\
-\indent Para isso primeiro é calculo um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.\\
+\indent Para isso primeiro é calculado um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.\\
 \indent Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\\
 Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\\
 %
@@ -345,18 +357,9 @@ Então somado com o vetor de inércia divido por um valor de significância para
 \State vetor final $\gets$ (melhor media + posição inicial) / 2
 \end{algorithmic}
 \end{algorithm}
-
-%
 %% Fim do [Movimentação Vetorial] %%
-
-
-%
 %% Fim do [Movimentação] %%
-
-%
 %% Fim do [Partícula] %%
-
-
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.4
@@ -448,8 +451,6 @@ Os dados salvos são:
 (Dados a completar...)
 % 
 %% Fim do [Execuções] %%
-
-
 %% 2 ::: Desenvolvimento
 %% 2.4
 \section{Critérios de Avaliação}
