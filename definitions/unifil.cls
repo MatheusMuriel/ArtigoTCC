@@ -39,8 +39,9 @@
 \RequirePackage[intlimits]{amsmath}
 \RequirePackage{chemfig}
 \RequirePackage{lipsum}
+\RequirePackage{multirow}
 
-%\RequirePackage[subentrycounter,seeautonumberlist]{glossaries}
+\RequirePackage[subentrycounter,seeautonumberlist]{glossaries}
 
 \RequirePackage[brazilian,hyperpageref]{backref}
 \RequirePackage[alf]{abntex2cite}

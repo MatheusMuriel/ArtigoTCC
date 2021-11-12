@@ -11,7 +11,7 @@
 %% Interlúdio do [Metodologia de Pesquisa] %%
 Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\\
 %
-\indent Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foram utilizados somente processadores comuns (CPU) e 12 Gb de memória RAM.\\
+\indent Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foi utilizado um \textit{runtime} com processadores comuns (CPU) e 12 Gigabytes de memória RAM.\\
 %
 %
 \indent Para que possibilitar uma análise de dados mais detalhada e a geração de gráficos para representação nesse trabalho, foram implementados no código pontos de salvamento de dados, para salvar em arquivo texto algumas informações de execuções e de datasets.\\
@@ -21,15 +21,6 @@ Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados 
 %% 2 ::: Desenvolvimento
 %% 2.1 ::: Metodologia de Pesquisa
 %% 2.1.1
-\subsection{Objetivos}
-Atualmente existem poucos estudos sobre o comportamento do PSO com componentes dinâmicos em cenários mono objetivos, principalmente em problemas com o FJSP. 
-%
-Com as implementações feitas nesse trabalho se espera não uma análise crua de números e métricas de desempenho, mas sim ideias de como certas alterações afetam o desempenho do algoritmo, e quais são as tendências de mudanças.
-%
-Para assim poder propor novas abordagens que tenham uma maior chance de serem proveitosas em diversos cenários e aplicações no mundo real.
-%% Fim do [Objetivos] %%
-%% Fim do [Metodologia de Pesquisa] %%
-
 
 %% 2 ::: Desenvolvimento
 %% 2.2
@@ -68,11 +59,15 @@ Por esse trabalho ser desenvolvimento dentro de um grupo de estudos, foi optado 
 \end{itemize}
         
 Para trazer mais clareza ao código foi optado por criar algumas classes para a representação de entidades e abstração de lógicas. Dentre elas estão:\\
+\begin{itemize}
+    \item Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.
 
-\indent Classe de Partícula, que faz a representação de uma entidade de partícula e armazena sua posição, velocidade e direção. Faz a inicialização da partícula com valores aleatórios de posição, velocidade e direção. E estabelece métodos para calcular o movimento da partícula e o valor da qualidade de sua nova posição.\\
-\indent Classe de \textit{encoding}, responsável por ler e interpretar os arquivos de instância de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.\\
-\indent Classe de \textit{decoding}, responsável por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelece o método que gera o gráfico de Gantt para representar visualmente a solução.\\
-\indent Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis, como a geração aleatória de soluções, foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\\
+    \item Classe de \textit{encoding}, responsável por ler e interpretar os arquivos de instância de um problema, criar uma representação para de solução, e então gerar o espaço de soluções com soluções geradas aleatoriamente.
+
+    \item Classe de \textit{decoding}, responsável por decodificar uma solução no padrão de representação estabelecido pela classe de \textit{encoding} e calcular o \textit{fitness} dessa solução. Essa classe também estabelece o método que gera o gráfico de Gantt para representar visualmente a solução.
+\end{itemize}
+
+\indent Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\\
 \indent E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\\
 \indent Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
 %
@@ -123,7 +118,7 @@ na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} ma
     \small{* TODO - Adicionar valores no plot}
 \end{figure}
 
-Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
+Esses gráficos se mostraram uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
 %% Fim do [Gráficos de Analise] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
@@ -133,7 +128,7 @@ Esses gráficos se mostraram extremamente uteis ao decorrer do desenvolvimento d
 \indent A geração do espaço de soluções é muito importante para algoritmos como o PSO 
 que funciona com base na movimentação conforme as médias de melhores posições, 
 devido a isso, o PSO tente a ter problemas com convergência prematura em mínimos locais.\\
-\indent Os mínimos locais são fenômenos aonde dentro de uma parte do espaço de soluções existe um ponto que é melhor que a média dos pontos a sua volta, porém não é o melhor entre o todo o espaço de soluções, como é possível ver na \hyperref[fig:ex-minimolocal]{Figura \ref{fig:ex-minimolocal}}.\newline
+\indent Os mínimos locais são fenômenos onde dentro de uma parte do espaço de soluções existe um ponto que é melhor que a média dos pontos a sua volta, porém não é o melhor entre o todo o espaço de soluções, como é possível ver na \hyperref[fig:ex-minimolocal]{Figura \ref{fig:ex-minimolocal}}.\newline
 \begin{figure}[ht]
     \centering
     \caption{Exemplo de um mínimo local}
@@ -141,9 +136,10 @@ devido a isso, o PSO tente a ter problemas com convergência prematura em mínim
     \includegraphics[width=\textwidth]{assets/minimo_local.png}
     %\small{}
 \end{figure}
-Já que esse ponto se destaca muito entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a média local sempre tende para o ponto onde está o mínimo local.\\
+Por esse ponto se destacar entre seus vizinhos o algoritmo pode ficar preso nesta região, pois a média local sempre tende para o ponto onde está o mínimo local.\\
 Como o PSO se baseia na média local e global, se houver mais de um mínimo local e quantidades equivalentes de partículas da população forem distribuídas para esses pontos, as partículas podem ficar presas já que as forças se balanceiam e o $gBest$ não muda mais.\\
-Já a convergência prematura acontece quando a um mínimo local e por coincidência a posição inicial da maioria das partículas da população tende a ser atraído para o mínimo local, logo a maioria da população para nesse ponto e o algoritmo termina em um estado como é mostrado na 
+%
+\indent Já a convergência prematura acontece quando a um mínimo local e por coincidência a posição inicial da maioria das partículas da população tende a ser atraído para o mínimo local, logo a maioria da população para nesse ponto e o algoritmo termina em um estado como é mostrado na 
 \hyperref[fig:convergencia-prematura]{Figura \ref{fig:convergencia-prematura}} 
 ou seja, termina antes de encontrar uma solução tão boa quando seria possível.\\
 \begin{figure}[ht]
@@ -160,10 +156,10 @@ ou seja, termina antes de encontrar uma solução tão boa quando seria possíve
 %\subsubsection{Implementação}
 \indent Durante a implementação de um algoritmo para geração do espaço de soluções, foram percebidos diversos detalhes que influenciam fortemente na qualidade final do algoritmo. Nessa seção será analisado alguns desses pontos.\\
 %\subsubsubsection{Inicialização}
-\indent Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.
+\indent Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\\
 \indent O NumPy disponibiliza trés métodos de inicialização para um novo \textit{array} sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
 \begin{itemize}
-    \item \textit{numpy.zeros}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos, nos quais por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
+    \item \textit{numpy.zeros}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos. Por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
 
     \item \textit{numpy.ones}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$1$", o algoritmo gerava soluções que tendiam a sobre carregar a máquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
 
@@ -324,14 +320,13 @@ Então nesse trabalho foi desenvolvido um método de movimentação baseado em c
 \end{figure}
 
 \noindent A nova posição da partícula é dada pela 
-\hyperref[fig:formula-nova-posicao]{Formula \ref{fig:formula-nova-posicao}}.
-
-\begin{figure}[ht]
-\centering
-\small{Incluir a Formula de posição partícula aqui}
-\caption{Formula que define a nova posição da partícula}
-\label{fig:formula-nova-posicao}
-\end{figure}
+\hyperref[eq:movimentacao-vec]{Equação \ref{eq:movimentacao-vec}}
+.
+%
+\begin{equation} 
+    \label{eq:movimentacao-vec}
+    \vec r = ((\vec g + \vec p) / 2) + \vec v
+\end{equation}
 
 \noindent Então temos o vetor $\vec r$ resultante, então a nova posição da partícula é $[12,10]$.
 
@@ -339,14 +334,17 @@ No código Python essa implementação é feita de maneira levemente diferente p
 \indent Para isso primeiro é calculo um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.\\
 \indent Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\\
 Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\\
-\indent No \hyperref[cod:new-posicao]{Pseudocódigo \ref{cod:new-posicao}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
+%
+\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
 %% TODO - apêndice
-\begin{figure}[ht]
-\centering
-\small{Incluir o pseudocódigo de movimentação aqui}
-\caption{Pseudocódigo da função de cálculo de movimentação de partícula}
-\label{cod:new-posicao}
-\end{figure}
+\begin{algorithm}
+    \caption{Pseudocódigo de movimentação de particula}\label{alg:mov-part}
+\begin{algorithmic}
+\State vetor de inercia $\gets$ (posicao inicial $*$ velocidade)
+\State melhor media $\gets$ ($pBest$ + $gBest$) / 2
+\State vetor final $\gets$ (melhor media + posição inicial) / 2
+\end{algorithmic}
+\end{algorithm}
 
 %
 %% Fim do [Movimentação Vetorial] %%
@@ -370,53 +368,65 @@ Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele �
 \indent A velocidade é dada por um valor aleatório entre $0.1$ e $0.2$.\\
 \indent Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuída, dificultando o acontecimento de convergência prematura.
 
-Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo pseudo-código \hyperref[cod:geracao-pop]{Pseudocódigo \ref{cod:geracao-pop}}.
-
-\begin{figure}[ht]
-\centering
-\small{Incluir a pseudo código da geração populacional aqui}
-\caption{Pseudocódigo de geração populacional}
-\label{cod:geracao-pop}
-\end{figure}
-
+Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, representada pelo código no apêndice x. %%TODO apendice  
 \noindent Garantindo assim um ponto de comparação mais justo entre os algoritmos.
-
-%
-%% Fim do [População] %%
-
-
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.5
 \subsection{Algoritmos}
 %%
-...
+A execução dos algoritmos é chamada pela classe principal da modelagem do problema, sendo responsavel por fazer a execução e controle dos dados de analise.\\
+Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da particula. A implementação esta disponivel no apendice x.\\ %todo apendice
+%
+%
+Como criterio de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a ultima atualização do $gBest$ for a mais rodadas do que metade da quantidade de particulas, o algoritmo termina e o resultado é o $gBest$ atual.\\
 %%
-
-%% 2 ::: Desenvolvimento
-%% 2.2 ::: Arquitetura
-%% 2.2.5 ::: Algoritmos
-%% 2.2.5.1
-\subsubsection{PSO — Básico}
-(Finalizar as alterações para escrever essa parte...)
-%% Fim do [PSO - Básico] %%
-
-%% 2 ::: Desenvolvimento
-%% 2.2 ::: Arquitetura
-%% 2.2.5 ::: Algoritmos
-%% 2.2.5.2
-\subsubsection{PSO — Dinâmico}
-(Finalizar as alterações para escrever essa parte...)
-%% Fim do [PSO - Dinâmico] %%
-
+\indent O que diferencia as abordagens analisadas nesse trabalho são as heuristicas de movimentação das particulas.\\
+A movimentação basica de uma particula do PSO é definido pela
+\hyperref[eq:movimentacao-particula]{Equação \ref{eq:movimentacao-particula}}
+.
 %
+\begin{equation} 
+    \label{eq:movimentacao-particula}
+    \vec v_1(t+1)= \vec v_i(t) + a_1 r_1 (pBest - \vec x_i(t)) + a_2 r_2 (gBest - \vec x_i(t))
+\end{equation}
+%
+Como foi observado nos testes a variavel aleatoria é importande para que as particulas não entrem em um estado de equilibrio e não se movam mais, como demonstrado na \hyperref[fig:equelibrio-particulas]{Figura \ref{fig:equelibrio-particulas}}.
+\begin{figure}[ht]
+    \centering
+    \small{Incluir a aaaaaaaaaaaaaaaaaaaaaaaa aqui}
+    \caption{Equilibrio nas forças de movimentação de particula}
+    \label{fig:equelibrio-particulas}
+\end{figure}
+
+Com esse elemento aleatorio a movimentaçãos e torna mais caotica e evita o fim prematuro do algoritmo, como representado na \hyperref[fig:rand-particulas]{Figura \ref{fig:rand-particulas}}.
+\begin{figure}[ht]
+    \centering
+    \small{Incluir a aaaaaaaaaaaaaaaaaaaaaaaa aqui}
+    \caption{Equilibrio nas forças de movimentação de particula}
+    \label{fig:rand-particulas}
+\end{figure}
+
+Esse impacto na movimentação inspirou uma abordagem que considera o nivel de atualizações de $gBest$ e assim adiciona mais um fator aleatorio no calculo. como é representado no 
+\hyperref[alg:mov-dinamic]{Pseudocódigo \ref{alg:mov-dinamic}}.
+\begin{algorithm}
+    \caption{Pseudocódigo de movimentação com componente dinamico}\label{alg:mov-dinamic}
+\begin{algorithmic}
+
+\State vetor de inercia $\gets$ (posicao inicial $*$ velocidade)
+\State melhor media $\gets$ (($pBest$ + $gBest$) / 2)
+\State vetor final $\gets$ ((melhor media + posição inicial) / 2)
+
+\If{trocas de $gBest$ é menor que (tamanho da populacao / $10$)}
+    \State vetor final $\gets$ vetor de movimento $+$ $0.1$ $*$ (inercia$*$random($0.1$, $0.9$) )
+\Else
+    \State vetor final $\gets$ vetor de movimento $+$ $0.1$ $*$ random($0.1$, $0.9$) 
+\EndIf    
+\end{algorithmic}
+\end{algorithm}
+
 %% Fim do [Algoritmos] %%
-
-%
 %% Fim do [Arquitetura] %%
-
-
-
 %% 2 ::: Desenvolvimento
 %% 2.3
 \section{Execuções}
