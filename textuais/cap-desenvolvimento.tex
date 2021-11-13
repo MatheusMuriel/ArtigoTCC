@@ -488,7 +488,8 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema A}
-O problema A tem um tamanho $4 \times 5$, ou seja com 4 \textit{jobs} e 5 maquinas.
+
+O problema A tem um tamanho $4 \times 5$, ou seja com 4 \textit{jobs} e 5 maquinas.\\
 \begin{figure}
     \caption{Problema A - Gráfico de Frequência de Makespan}
     \label{fig:plobA-freq-mk}
@@ -512,10 +513,34 @@ O problema A tem um tamanho $4 \times 5$, ou seja com 4 \textit{jobs} e 5 maquin
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_1_2.pgf}}
       }
 \end{figure}
-Na TABELA é possivel ver os valores estatísticos da execução
+
+
+Na 
+\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
+é possível ver os valores estatísticos da execução
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[]
+    \centering
+    \caption{Tabela de dados estatísticos da execução do problema A}
+    \label{tab:tableA-freq-mk}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|ll|ll|ll|}
+    \hline
+    \multicolumn{1}{|c|}{\multirow{2}{*}{Problema A       $4 \times 5$}} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} \\ \hline
+    Média & \multicolumn{1}{l|}{11.253} & 11.254 & \multicolumn{1}{l|}{11.196} & 11.093 & \multicolumn{1}{l|}{11.121} & 11.036 \\ \hline
+    Mediana & \multicolumn{1}{l|}{11.0} & 11.0 & \multicolumn{1}{l|}{11.0} & 11.0 & \multicolumn{1}{l|}{11.0} & 11.0 \\ \hline
+    Desvio Padrão & \multicolumn{1}{l|}{0.443} & 0.443 & \multicolumn{1}{l|}{0.397} & 0.29 & \multicolumn{1}{l|}{0.348} & 0.186 \\ \hline
+    Variância & \multicolumn{1}{l|}{0.196} & 0.196 & \multicolumn{1}{l|}{0.158} & 0.084 & \multicolumn{1}{l|}{0.121} & 0.034 \\ \hline
+    Mínimo & \multicolumn{1}{l|}{11} & 11 & \multicolumn{1}{l|}{11} & 11 & \multicolumn{1}{l|}{11} & 11 \\ \hline
+    Máximo & \multicolumn{1}{l|}{13} & 13 & \multicolumn{1}{l|}{12} & 12 & \multicolumn{1}{l|}{13} & 12 \\ \hline
+    \end{tabular}%
+    }
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
+Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
 \begin{figure}
     \caption{Problema B - Gráfico de Frequência de Makespan}
     \label{fig:plobB-freq-mk}
@@ -539,10 +564,29 @@ Na TABELA é possivel ver os valores estatísticos da execução
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_2_2.pgf}}
       }
 \end{figure}
-(....)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[]
+    \centering
+    \caption{Tabela de dados estatísticos da execução do problema B}
+    \label{tab:tableB-freq-mk}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|ll|ll|ll|}
+        \hline
+        \multicolumn{1}{|c|}{Problema B} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
+        \multicolumn{1}{|c|}{$10 \times 7$} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} \\ \hline
+        Média & \multicolumn{1}{l|}{18.129} & 17.521 & \multicolumn{1}{l|}{18.05} & 17.404 & \multicolumn{1}{l|}{18.286} & 17.307 \\ \hline
+        Mediana & \multicolumn{1}{l|}{18.0} & 17.5 & \multicolumn{1}{l|}{18.0} & 18.0 & \multicolumn{1}{l|}{18.0} & 17.0 \\ \hline
+        Desvio Padrão & \multicolumn{1}{l|}{1.535} & 1.394 & \multicolumn{1}{l|}{1.585} & 1.434 & \multicolumn{1}{l|}{1.275} & 1.416 \\ \hline
+        Variância & \multicolumn{1}{l|}{2.355} & 1.942 & \multicolumn{1}{l|}{2.512} & 2.055 & \multicolumn{1}{l|}{1.626} & 2.006 \\ \hline
+        Mínimo & \multicolumn{1}{l|}{13} & 13 & \multicolumn{1}{l|}{13} & 13 & \multicolumn{1}{l|}{15} & 13 \\ \hline
+        Máximo & \multicolumn{1}{l|}{21} & 21 & \multicolumn{1}{l|}{22} & 22 & \multicolumn{1}{l|}{22} & 21 \\ \hline
+    \end{tabular}%
+    }
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema C}
+A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
 \begin{figure}
     \caption{Problema C - Gráfico de Frequência de Makespan}
     \label{fig:plobC-freq-mk}
@@ -566,10 +610,29 @@ Na TABELA é possivel ver os valores estatísticos da execução
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_3_2.pgf}}
       }
 \end{figure}
-(....)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[]
+    \centering
+    \caption{Tabela de dados estatísticos da execução do problema C}
+    \label{tab:tableC-freq-mk}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|ll|ll|ll|}
+        \hline
+        \multicolumn{1}{|c|}{Problema C} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
+        \multicolumn{1}{|c|}{$10 \times 10$} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} \\ \hline
+        Média & \multicolumn{1}{l|}{12.368} & 11.514 & \multicolumn{1}{l|}{11.946} & 11.207 & \multicolumn{1}{l|}{12.254} & 11.564 \\ \hline
+        Mediana & \multicolumn{1}{l|}{12.0} & 11.0 & \multicolumn{1}{l|}{12.0} & 11.0 & \multicolumn{1}{l|}{12.0} & 12.0 \\ \hline
+        Desvio Padrão & \multicolumn{1}{l|}{1.853} & 1.615 & \multicolumn{1}{l|}{1.807} & 1.658 & \multicolumn{1}{l|}{1.818} & 1.631 \\ \hline
+        Variância & \multicolumn{1}{l|}{3.433} & 2.607 & \multicolumn{1}{l|}{3.265} & 2.75 & \multicolumn{1}{l|}{3.304} & 2.66 \\ \hline
+        Mínimo & \multicolumn{1}{l|}{8} & 9 & \multicolumn{1}{l|}{8} & 8 & \multicolumn{1}{l|}{8} & 8 \\ \hline
+        Máximo & \multicolumn{1}{l|}{16} & 17 & \multicolumn{1}{l|}{16} & 16 & \multicolumn{1}{l|}{16} & 16 \\ \hline
+    \end{tabular}%
+    }
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
+A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
 \begin{figure}
     \caption{Problema D - Gráfico de Frequência de Makespan}
     \label{fig:plobD-freq-mk}
@@ -593,7 +656,25 @@ Na TABELA é possivel ver os valores estatísticos da execução
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_4_2.pgf}}
       }
 \end{figure}
-(....)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[]
+    \centering
+    \caption{Tabela de dados estatísticos da execução do problema D}
+    \label{tab:tableD-freq-mk}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{|l|ll|ll|ll|}
+        \hline
+        \multicolumn{1}{|c|}{Problema D} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
+        \multicolumn{1}{|c|}{$15 \times 10$} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} \\ \hline
+        Média & \multicolumn{1}{l|}{23.896} & 22.621 & \multicolumn{1}{l|}{23.129} & 22.107 & \multicolumn{1}{l|}{22.536} & 21.954 \\ \hline
+        Mediana & \multicolumn{1}{l|}{24.0} & 23.0 & \multicolumn{1}{l|}{23.0} & 22.0 & \multicolumn{1}{l|}{22.0} & 22.0 \\ \hline
+        Desvio Padrão & \multicolumn{1}{l|}{1.623} & 1.561 & \multicolumn{1}{l|}{1.666} & 1.418 & \multicolumn{1}{l|}{1.658} & 1.533 \\ \hline
+        Variância & \multicolumn{1}{l|}{2.636} & 2.435 & \multicolumn{1}{l|}{2.776} & 2.01 & \multicolumn{1}{l|}{2.749} & 2.351 \\ \hline
+        Mínimo & \multicolumn{1}{l|}{19} & 19 & \multicolumn{1}{l|}{19} & 19 & \multicolumn{1}{l|}{19} & 17 \\ \hline
+        Máximo & \multicolumn{1}{l|}{28} & 26 & \multicolumn{1}{l|}{28} & 27 & \multicolumn{1}{l|}{28} & 26 \\ \hline
+    \end{tabular}%
+    }
+\end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%
