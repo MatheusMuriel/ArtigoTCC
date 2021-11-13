@@ -2,11 +2,11 @@
 % Classe Principal da monografia %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./classes/unifil}
-\documentclass[12pt,openright,oneside,a4paper,english,french,spanish,brazil]{./classes/unifil}
+%\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./definitions/unifil}
+\documentclass[12pt,openright,oneside,a4paper,english,french,spanish,brazil]{./definitions/unifil}
 
 % TODO - Definir título da sua monografia %
-\titulo     {EFICIÊNCIA DA HIBRIDIZAÇÃO DE ALGORITMOS DE ENXAME DE PARTÍCULAS APLICADO AO PROBLEMA DE JOB SHOP FLEXÍVEL}
+\titulo     {Analise da eficiência da implementação de componente dinâmico em algoritmos de enxame de partículas aplicados ao problema de Job Shop Flexível}
 \autor      {Matheus Muriel}
 \instituicao{Centro Universitário Filadélfia}
 \local      {Londrina}
@@ -14,9 +14,16 @@
 \preambulo  {Ciência da Computação}
 \orientador {Ricardo Inacio Alvares e Silva}
 
+\makeglossaries
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{minted}
+\usepackage{mwe}
+\usepackage{subfig}
+
+%\usepackage[toc,page]{appendix}
 
 \begin{document}
-
 \frenchspacing
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,9 +37,9 @@
 
 \include{./pretextuais/folhaderosto}
 \include{./pretextuais/folhadeaprovacao}
-\include{./pretextuais/dedicatoria}
-\include{./pretextuais/agradecimentos}  % Opcional %
-\include{./pretextuais/epigrafe}        % Opcional %
+%\include{./pretextuais/dedicatoria}
+%\include{./pretextuais/agradecimentos}  % Opcional %
+%\include{./pretextuais/epigrafe}        % Opcional %
 \include{./pretextuais/resumo}
 \include{./pretextuais/abstract}
 
@@ -50,6 +57,9 @@
 %%% Lista de Tabelas %%%
 
 \include{./pretextuais/siglas}
+\renewcommand{\listalgorithmname}{Lista de Algoritmos}
+\listofalgorithms
+\clearpage
 
 \tableofcontents*
   
@@ -95,9 +105,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%% Elementos pós-textuais %%%%%
-  \postextual
+\postextual
 
-  \bibliography{assets/references.bib}{}
+\bibliography{assets/references.bib}{}
+
+\include{postextuais/apendices}
+
 %%%%% Fim dos Elementos pós-textuais %%%%%
-
 \end{document}
