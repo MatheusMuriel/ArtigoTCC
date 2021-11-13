@@ -34,29 +34,13 @@ Os problemas de otimização podem ser classificados em dois tipos, sendo eles p
 Como foi definido por \citeauthor{Bagchi1999} um problema de agendamento (também chamado de problema de escalonamento) é um problema de otimização aonde 
 diversas tarefas (chamadas de \textit{jobs}) são alocados em uma ordem sequencial entre os recursos (máquinas), 
 com diferentes tarefas podendo ser executadas simultaneamente
-em maquinas diferentes, porém cada atividade devendo ser executada somente em uma maquina por vez, como demonstrado na
-\hyperref[fig:ex-problema-escalonamento]{Figura \ref{fig:ex-problema-escalonamento}}.\\
-
-\begin{figure}[ht]
-    \centering
-    \caption{Demonstração de um problema de escalonamento}
-    \label{fig:ex-problema-escalonamento}
-    \small{Incluir um exemplo de problema de escalonamento aqui}
-\end{figure}
+em maquinas diferentes, porém cada atividade devendo ser executada somente em uma maquina por vez.
 
 Assim como a grande maioria dos problemas de origem combinatória, o problema de escalonamento pertence a classe de problemas NP-Hard, na qual não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.\\
 \indent Isso acontece devido a quantidade de operações necessárias para verificar todas as possibilidades de soluções para o problema em questão, crescerem de forma exponencial com base no tamanho do problema,
-como demonstrado na \hyperref[fig:problema-exponencial]{Figura \ref{fig:problema-exponencial}},
 o que torna os problemas dessa classe inviáveis de serem resolvidos através de métodos comuns de cálculos.
 %
-\begin{figure}[ht]
-    \centering
-    \caption{Demonstração de um problema exponencial}
-    \label{fig:problema-exponencial}
-    \small{Incluir a representação de um problema exponencial aqui}
-\end{figure}
 %
-
 \indent Por causa disso, nos casos de problemas NP-Hard normalmente são utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e que consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.\\
 \indent As características de uma solução ótima variam conforme o problema, em alguns casos é mais importante que a solução seja encontrada em um curto espaço de tempo, do que seja alguns milissegundos mais rápida do que as outras soluções já encontradas pelo algoritmo.
 %
@@ -97,7 +81,7 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 %% 1.1.3
 \subsection{Problema de Job Shop — JSP}
 %% Interlúdio do [Problemas de Agendamento] %%
-Como citado anteriormente o \textit{Job Shop Problem} (também chamado de JSP) é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
+Como citado anteriormente o \gls{jsp} é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard. Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
 \indent De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes entre si, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica, e cada operação $O_{ij}$ tem seu respectivo tempo de execução.\\
 \indent Como visto por \cite{Bagchi1999} existem algumas restrições no problema de \textit{Job Shop} dentre elas estão:
 \begin{itemize}
@@ -178,9 +162,9 @@ duas operações $O_{j,1} $ e $O_{j,2}$.
 %% 1.1.4
 \subsection{Problema de Job Shop Flexível — FJSP}
 %% Interlúdio do [FJSP]%%
-O \textit{Flexible Job Shop} é uma extensão do problema de \textit{Job Shop} na qual é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\\
+O \gls{fjsp} é uma extensão do problema de \gls{jsp} na qual é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\\
 \indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.\\
-\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \textbf{Parcial} (P-FJSP) se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \textbf{Total} (T-FJSP) caso uma operação possa ser processada por qualquer máquina.\\
+\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.\\
 \indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
 %% Fim do Interlúdio do [FJSP]%%
 
@@ -300,15 +284,15 @@ sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade 
 %\subsubsubsection{Solução}
 \indent Na 
 \hyperref[fig:plot-gantt]{Figura \ref{fig:plot-gantt}} 
-é possível ver um gráfico do tipo \textit{Gantt Plot} que representa uma solução para o problema representado na 
+é possível ver um gráfico do tipo Diagrama de Gantt que representa uma solução para o problema representado na 
 \hyperref[fig:ex-instancia-problema-TFJSP]{Figura \ref{fig:ex-instancia-problema-TFJSP}}, 
 que é o problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\\
 %%%%%%%%%%%%%%%%%%
 \begin{figure}[ht]
     \centering
-    \caption{Exemplo Gráfico de Gantt}
+    \caption{Diagrama de Gantt para um agendamento}
     \label{fig:plot-gantt}
-    \includegraphics[width=\textwidth]{assets/solution_problem_3.png}
+    \resizebox{\textwidth}{!}{\input{assets/solution_exemple.pgf}}
 \end{figure}
 %%%%%%%%%%%%%%%%%%
             
@@ -382,8 +366,6 @@ A inteligência de bando pode ser vista em diversos lugares da natureza, como em
 %
 O que torna essa abordagem interessante é a sua característica decentralizada e de auto organização, o que a torna mais extensível e adaptável a cenários distribuídos. 
 %
-Um exemplo da utilização de Algoritmos Populacionais é na auto organização de drones e robôs, areá conhecida pelo nome de \textit{Swarm Robotics}. Fazendo assim com que caso algum robô tiver uma falha ou um defeito isso não afete a organização do grupo.\\
-        
 \noindent Dentre os principais algoritmos populacionais estão:
 \begin{itemize}
     \item Otimização por Colonia de Formigas (\textit{Ant Colony Optimization}) 
