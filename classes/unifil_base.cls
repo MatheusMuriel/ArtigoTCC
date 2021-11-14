@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{./classes/unifil}[2015/09/15 v0.5 Modelo do Centro Universitario Filadelfia baseado em abntex2]
+\ProvidesClass{./classes/unifil_base}[2015/09/15 v0.5 Modelo do Centro Universitario Filadelfia baseado em abntex2]
 
 \DeclareOption*{%
   \PassOptionsToClass{12pt,openright,oneside,a4paper,
