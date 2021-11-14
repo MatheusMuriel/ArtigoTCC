@@ -2,10 +2,15 @@
 \chapter{Introdução}
 
 %%%%%%%%%%%%
-Na sociedade contemporânea, a crescente demanda pelos mais variados tipos de produtos tem tornado necessário melhorias na produtividade das industrias, de modo que acompanhe o ritmo de crescimento da demanda.\\
-%%%%%%
-\indent Segundo \citeauthor{Wari2016} essa necessidade acontece por causa de um ambiente altamente dinâmico no qual a demanda por um produto pode aumentar ou diminuir em um curto espaço de tempo, e a um cenário de grande concorrência entre as industrias, e que para atender a essas necessidades as industrias devem buscar meios de otimizar seus mecanismos de produção, e que essa melhoria é importante para o sucesso dessas empresas.\\
+Na sociedade contemporânea, a crescente demanda pelas mais variadas categorias de produtos tem tornado necessário melhorias na produtividade das indústrias, de modo que acompanhe o ritmo de crescimento da demanda.
 %%%%%%%%%%%%
+
+
+%%%%%%%%%%%%
+Essa necessidade acontece devido a um ambiente altamente dinâmico onde a demanda por um produto pode aumentar ou diminuir em um curto espaço de tempo, e a um cenário de grande concorrência entre as indústrias, e que para atender a essas necessidades as indústrias devem buscar meios de otimizar seus mecanismos de produção, e que essa melhoria é importante para o sucesso dessas empresas \cite{Wari2016}.
+%%%%%%%%%%%%
+
+
 %%%%%%%%%%%%
 \indent Segundo \citeauthor{Xhafa2008} uma dessas áreas importantes para a produtividade da linha de produção é a programação de produção. 
 A programação de produção é a parte da administração de produção responsável por decidir o local, o momento e a ordem nas quais serão realizadas as operações. 
@@ -13,16 +18,16 @@ A programação de produção é a parte da administração de produção respon
 Por ser uma areá importante e ter um escopo com variáveis e objetivos bem definidos a programação de produção se mostra como um bom ponto para se otimizar por meio da computação.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Falar sobre problemas de Agendamento e FJSP
-\indent De acordo com a \citeauthor{Bagchi1999}, o problema de programação de produção se enquadra como um problema de escalonamento, que o autor define como um tipo de problema no qual existe um conjunto de demandas e um conjunto de recursos, e o objetivo é encontrar um agendamento que distribua as demandas entre os recursos de forma que o tempo de corrido entre o inicio e o fim da execução de todas as tarefas (chamado de \textit{makespan}) seja o menor possível.\\
+\indent De acordo com a \citeauthor{Bagchi1999}, o problema de programação de produção se enquadra como um problema de escalonamento, que o autor define como um tipo de problema onde existe um conjunto de demandas e um conjunto de recursos, e o objetivo é encontrar um agendamento que distribua as demandas entre os recursos de forma que o tempo de corrido entre o início e o fim da execução de todas as tarefas (chamado \textit{makespan}) seja o menor possível.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Definição formal do problema FJSP
 \indent \citeauthor{Bagchi1999} também define algumas sub divisões do problema de escalonamento, dentre elas o \gls{jsp} e uma variação sua o \gls{fjsp}. 
 %%
-Que é um problema no qual existem $m$ máquinas diferentes entre si e $n$ \textit{jobs} formados por diversas operações $O$ em uma ordem específica.\\
+Que é um problema onde existem $m$ máquinas diferentes entre si e $n$ \textit{jobs} formados por diversas operações $O$ em uma ordem específica.\\
 %%%%%%
-Cada operação $O_{ij}$ tem um tempo de execução diferente em cada maquina, ou seja uma operação 
-$O_{ij}$ demora um tempo $x$ se for executada na maquina $M_a$ e um tempo $y$ se for executa na maquina $M_b$.\\
-Porém existem algumas restrições no problema de \textit{FJSP} como:
+Cada operação $O_{ij}$ tem um tempo de execução diferente em cada máquina, ou seja, uma operação 
+$O_{ij}$ demora um tempo $x$ se for executada na máquina $M_a$ e um tempo $y$ se for executa na maquina $M_b$.\\
+Porém, existem algumas restrições no problema de \textit{FJSP} como:
 \begin{itemize}
     \item Não é possível executar simultaneamente duas operações de um mesmo \textit{job}.
     \item As maquinas são heterogêneas, ou sejam, não são iguais entre si.
@@ -33,7 +38,7 @@ Porém existem algumas restrições no problema de \textit{FJSP} como:
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Falar sobre NP-Hard
-O numero de possibilidades de arranjos pode ser representado por: $(n!)^m$, ou seja, o numero de soluções possíveis cresce exponencialmente de acordo com o numero de maquinas e de \textit{jobs}.
+O número de possibilidades de arranjos pode ser representado por: $(n!)^m$, ou seja, o número de soluções possíveis cresce exponencialmente conforme o número de máquinas e de \textit{jobs}.
 %%%%
 Esse característica de crescimento exponencial faz com que um problema se torne inviável de ser resolvido de formas tradicionais após um certo tamanho, pois é necessário computar todas as suas possibilidades de soluções.
 %%%%
@@ -43,11 +48,11 @@ Isso faz com que o \textit{FJSP} seja definido como um problema de otimização 
 \indent A classe de problemas \textit{NP-Hard} é composta por problemas cujo a resposta não pode ser encontrada computacionalmente em um tempo polinomial, ou seja, em um tempo aceitável, porém uma solução pode ser verificada em um tempo polinomial \cite{Eswaramurthy2008}.
 %%%%%%%%%%%%
 %%%%%%%%%%%% Algoritmos bio inspirados
-Para solucionar problemas da classe \textit{NP-Hard} geralmente são utilizados métodos de aproximação, que tem como objetivo ao invés de tentar encontrar a melhor solução possível, tentar encontrar uma solução boa o suficiente para o problema em questão.
+Para solucionar problemas da classe \textit{NP-Hard} são geralmente utilizados métodos de aproximação, que visam ao invés de tentar encontrar a melhor solução possível, tentar encontrar uma solução boa o suficiente para o problema em questão.
 %%
-Um dos tipos de algoritmos que fazem essa busca por uma solução via aproximação são os algoritmos bio inspirados, que se baseiam técnicas observadas na natureza.\\
+Um dos algoritmos que fazem essa busca por uma solução via aproximação são os algoritmos bio inspirados, que se baseiam técnicas observadas na natureza.\\
 %%
-\indent A ideia de se basear em um comportamento biológico tem como objetivo usar técnicas que passaram pela seleção natural ao longo de milhares de anos, e que como resultado dessa seleção sobraram somente as técnicas mais eficientes.
+\indent A ideia de se basear em um comportamento biológico visa usar técnicas que passaram pela seleção natural ao longo de milhares de anos, e que como resultado dessa seleção sobraram somente as técnicas mais eficientes.
 %%%%%%%%%%%%
 %%%%%%%%%%%% Algoritmos populacionais 
 Uma subcategoria dos algoritmos bioinspirados são os algoritmos populacionais, baseados no comportamento de populações de animais como aves, abelhas e insetos.
@@ -61,9 +66,9 @@ Existem diferentes algoritmos populacionais como o \textit{Ant Colony Optimizati
 %\indent O algoritmo \textit{Particle Swarm Optimization} \textit{(PSO)} 
 \indent O algoritmo \gls{pso}, ou Optimização por Enxame de Partículas em tradução para o português, se baseia na convergência de um enxame de partículas em um objetivo.
 %%
-A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos indivíduos da população já esteve ($gBest$).
+A estrutura básica de um algoritmo \textit{PSO} é uma população de partículas em que cada partícula tem uma velocidade e uma direção, além das informações da sua posição, o quão boa sua posição atual é, qual foi a melhor posição na, qual ela já esteve ($pBest$), e qual foi a melhor posição em que qualquer um dos indivíduos da população já esteve ($gBest$).
 %%
-A cada rodada as partículas se movimentam para uma direção intermediaria entre $pBest$ e $gBest$, por uma distancia que é calculada pelo valor de velocidade menos o valor de inercia da partícula multiplicado por um valor aleatório entre $0.1$ e $0.9$. 
+A cada rodada as partículas se movimentam para uma direção intermediaria entre $pBest$ e $gBest$, por uma distância que é calculada pelo valor de velocidade menos o valor de inércia da partícula multiplicado por um valor aleatório entre $0.1$ e $0.9$. 
 E assim a cada rodada do algoritmo a população vai chegando cada vez mais perto da melhor solução.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Problemas no PSO
@@ -71,15 +76,15 @@ E assim a cada rodada do algoritmo a população vai chegando cada vez mais pert
 %%
 que são casos aonde entre as soluções existe uma que é melhor que a média das soluções a sua volta, porém não é o melhor entre todas.\\
 %%
-Como a movimentação das partículas se baseia na media entre as melhores posições locais e gerais do grupo, caso a maioria das partículas vá para em direção ao mínimo local o $gBest$ fica no mínimo local, e as partículas tentem a não saírem dessa região.\\
+Como a movimentação das partículas se baseia na média entre as melhores posições locais e gerais do grupo, caso a maioria das partículas vá para em direção ao mínimo local o $gBest$ fica no mínimo local, e as partículas tentem a não saírem dessa região.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Possíveis soluções
 \indent Algumas medidas podem ser tomadas para diminuir essas possibilidades de convergência Prematura.
 %%
-Como as variáveis de inercia e de velocidade são variáveis individuais que influenciam a movimentação da partícula, é possível utilizar técnicas como valores dinâmicos e pesos relativos para as variáveis, e assim mudar de maneira dinâmica as características de movimentação das partículas.\\
+Como as variáveis de inércia e de velocidade são variáveis individuais que influenciam a movimentação da partícula, é possível utilizar técnicas como valores dinâmicos e pesos relativos para as variáveis, e assim mudar de maneira dinâmica as características de movimentação das partículas.\\
 %%%%%%%%%%%%
 %%%%%%%%%%%% Oq esse trabalho faz
-\indent Nesse trabalho são analisados os fatores de projeto, implementação e a utilização de uma abordagens dinâmicas nas variáveis de partícula e como essas modificações influenciam na convergência do \textit{PSO} aplicado em cenários de aplicação para a solução de problemas do tipo \textit{FJSP}.
+\indent Nesse trabalho são analisados os fatores de projeto, implementação e a utilização de uma abordagem dinâmicas nas variáveis de partícula e como essas modificações influenciam na convergência do \textit{PSO} aplicado em cenários de aplicação para a solução de problemas do tipo \textit{FJSP}.
 %%%%%%%%%%%%
 
 %%%%%%%%%%%% Objetivos e motivações
