@@ -13,13 +13,12 @@
 \preambulo   {Ciência da Computação}
 \orientador  {Ricardo Inacio Alvares e Silva}
 
-\makeglossaries
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{minted}
 \usepackage{mwe}
 \usepackage{subfig}
-
+\makeglossaries
 
 \begin{document}
 \frenchspacing
@@ -40,34 +39,43 @@
 \pdfbookmark[0]{\listfigurename}{Lista de Figuras}
 \listoffigures*
 \cleardoublepage
-%%% Lista de Figuras %%%
+%%% Fim Lista de Figuras %%%
 
 %%% Lista de Tabelas %%%
 \renewcommand{\listtablename}{Lista de Tabelas}
 \listoftables*
 \clearpage
-%%% Lista de Tabelas %%%
+%%% Fim Lista de Tabelas %%%
 
+%%% Lista de Siglas %%%
 \include{./pretextuais/siglas}
+\printglossary[title=Lista de Siglas, style=long, type=\acronymtype, nonumberlist]
+\clearpage
+%%% Fim Lista de Siglas %%%
+
+%%% Lista de Algoritmos %%%
 \renewcommand{\listalgorithmname}{Lista de Algoritmos}
 \listofalgorithms
 \clearpage
+%%% Fim Lista de Algoritmos %%%
 
+%%% Sumario %%%
 \tableofcontents*
-  
-  \setlength\absleftindent{0cm}
-  \setlength\absrightindent{0cm}
-  
-  %fonte do ambiente%
-  \abstracttextfont{\normalfont\normalsize}
+\setlength\absleftindent{0cm}
+\setlength\absrightindent{0cm}
+%%% Fim Sumario %%%
 
-  %intentação e espaçamento entre parágrafos%
-  \setlength{\absparindent}{0pt}
-  \setlength{\absparsep}{18pt}
 
-%\pdfbookmark[0]{\listfigurename}{lof}
-%\listoffigures*
-%\cleardoublepage
+%%%%%%%%%%%%% Configurações para o texto %%%%%%%%%%%%%
+%fonte do ambiente%
+\abstracttextfont{\normalfont\normalsize}
+
+%intentação e espaçamento entre parágrafos%
+\setlength{\absparindent}{0pt}
+\setlength{\absparsep}{18pt}
+%%%%%%%%%%%%% Configurações para o texto %%%%%%%%%%%%%
+
+
 %%%%% Fim dos Elementos pré-textuais %%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
