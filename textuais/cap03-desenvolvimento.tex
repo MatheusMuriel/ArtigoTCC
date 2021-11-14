@@ -463,24 +463,24 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 \item Taxa de mudanças de $pBest$ por rodada.
 \item Histórico de movimentação das partículas.
 \end{itemize}
+
+Nas Figuras \ref{fig:plobA-freq-mk}, \ref{fig:plobB-freq-mk}, \ref{fig:plobC-freq-mk} e \ref{fig:plobD-freq-mk} 
+estão representadas as frequências de \textit{Makespan} das execuções, os dados na cor azul representam os resultados obtidos com a implementação padrão do algoritmo PSO, e na cor laranja estão representados os resultados alcançados com a implementação do componente dinâmico de inércia.
+
+
+Todos os \textit{datasets} dos problemas A, B, C e D são os mesmos utilizados nos \textit{benchmarks} de \cite{Kacem2002}.
 %
 
-\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema A}
 
-O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas, sendo esse o menor dos \textit{datasets} analisados. Este \textit{dataset} é o mesmo utilizado nos \textit{benchmarks} de \cite{Kacem2002}.
-%
-%
-Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} estão representadas as frequências de \textit{Makespan} das execuções, os dados na cor azul representam os resultados obtidos com a implementação padrão do algoritmo PSO, e na cor laranja estão representados os resultados alcançados com a implementação do componente dinâmico de inércia.
-
-
-É possível perceber que o componente dinâmico obteve uma pequena tendência a obter um valor menor de \textit{makespan}, ou seja, atingir um melhor resultado, principalmente nas execuções com um espaço de soluções maior, como na \hyperref[plobA-freq-mk:c]{Figura \ref{plobA-freq-mk:c}}.
+O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas, sendo esse o menor dos \textit{datasets} analisados.
+Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} é possível perceber que o componente dinâmico obteve uma pequena tendência a obter um valor menor de \textit{makespan}, ou seja, atingir um melhor resultado, principalmente nas execuções com um espaço de soluções maior, como na \hyperref[plobA-freq-mk:c]{Figura \ref{plobA-freq-mk:c}}.
 
 %
 \begin{figure}[!htb]
-    \caption{Problema A - Gráfico de Frequência de Makespan}
+    \caption{Problema A — Gráfico de Frequência de Makespan}
     \label{fig:plobA-freq-mk}
     \begin{minipage}{.5\linewidth}
         \centering
@@ -514,7 +514,7 @@ Na
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{|l|ll|ll|ll|}
     \hline
-    \multicolumn{1}{|c|}{\multirow{2}{*}{Problema A       $4 \times 5$}} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
+    \multicolumn{1}{|c|}{\multirow{2}{*}{Problema A $4 \times 5$}} & \multicolumn{2}{c|}{$50 \times 50$} & \multicolumn{2}{c|}{$70 \times 70$} & \multicolumn{2}{c|}{$90 \times 90$} \\ \cline{2-7} 
     \multicolumn{1}{|c|}{} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} & \multicolumn{1}{l|}{\textbf{PSO Base}} & \textbf{Dinâmico} \\ \hline
     Média & \multicolumn{1}{l|}{11.253} & 11.254 & \multicolumn{1}{l|}{11.196} & 11.093 & \multicolumn{1}{l|}{11.121} & 11.036 \\ \hline
     Mediana & \multicolumn{1}{l|}{11.0} & 11.0 & \multicolumn{1}{l|}{11.0} & 11.0 & \multicolumn{1}{l|}{11.0} & 11.0 \\ \hline
@@ -525,21 +525,22 @@ Na
     \end{tabular}%
     }
 \end{table}
-%\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-É possivel ver que a abordagem dinamica 
+É possível ver que a abordagem dinâmica 
 apresentou em 
 um \textit{makespan} em média $1.16\%$ menor e com uma 
 variância $62.5\%$ menor e um 
-desvio padrão $40\%$ menor em relação a abordagem padrão.
+desvio padrão $40\%$ menor em relação à abordagem padrão.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
 Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
 %
 \begin{figure}[!htb]
-    \caption{Problema B - Gráfico de Frequência de Makespan}
+    \caption{Problema B — Gráfico de Frequência de Makespan}
     \label{fig:plobB-freq-mk}
     \begin{minipage}{.5\linewidth}
         \centering
@@ -581,9 +582,6 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
@@ -592,7 +590,7 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
 A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
 %
 \begin{figure}[!htb]
-    \caption{Problema C - Gráfico de Frequência de Makespan}
+    \caption{Problema C — Gráfico de Frequência de Makespan}
     \label{fig:plobC-freq-mk}
     \begin{minipage}{.5\linewidth}
         \centering
@@ -635,18 +633,14 @@ A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
 A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
 %
 \begin{figure}[!htb]
-    \caption{Problema D - Gráfico de Frequência de Makespan}
+    \caption{Problema D — Gráfico de Frequência de Makespan}
     \label{fig:plobD-freq-mk}
     \begin{minipage}{.5\linewidth}
         \centering
