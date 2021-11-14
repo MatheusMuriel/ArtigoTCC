@@ -71,17 +71,6 @@ Para trazer mais clareza ao código foi optado por criar algumas classes para a 
 \indent E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\\
 \indent Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
 %
-Na \hyperref[fig:fluxo-design]{Figura \ref{fig:fluxo-design}} é possível ver uma representação das relações e fluxo de dados entre as classes.
-
-%
-\begin{figure}[ht]
-    \centering
-    \caption{Fluxo de dados}
-    \label{fig:fluxo-design}
-    %\includegraphics[width=\textwidth]{}
-\end{figure}
-
-%
 %% Fim do [Design do Projeto] %%
     
 
@@ -110,7 +99,7 @@ Um espaço de soluções pode ser representado de diversas maneiras, como listas
     %\small{Incluir a imagem do exemplo de espaço de solução aqui}
 \end{figure}
 
-Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser na maioria dos casos, mais rápida em comparação a uma abordagem de duas dimensões.\\
+Algumas das implementações encontradas em bibliotecas de algoritmos populacionais de código aberto como \textit{PySwarms} utilizam internamente um sistema de representação de espaço de soluções de uma única dimensão, ou seja, uma lista simples, e utiliza uma função para transformar uma posição $[x,y]$ em um índice da lista. Essa implementação provavelmente foi escolhida por ser geralmente, mais rápida em comparação a uma abordagem de duas dimensões.\\
 %% Fim do [Representações] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
@@ -133,7 +122,6 @@ Esses gráficos se mostraram uteis ao decorrer do desenvolvimento deste trabalho
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.2 ::: Espaço de Soluções
-%% 2.2.2.3
 %\subsubsection{Influencia na Solução}
 \indent A geração do espaço de soluções é muito importante para algoritmos como o PSO 
 que funciona com base na movimentação conforme as médias de melhores posições, 
@@ -161,11 +149,11 @@ Como o PSO se baseia na média local e global, se houver mais de um mínimo loca
 \indent Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\\
 \indent O NumPy disponibiliza trés métodos de inicialização para um novo \textit{array} sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
 \begin{itemize}
-    \item \textit{numpy.zeros}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos. Por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
+    \item \textit{numpy.zeros}: ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos. Por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
 
-    \item \textit{numpy.ones}: Ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$1$", o algoritmo gerava soluções que tendiam a sobre carregar a máquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
+    \item \textit{numpy.ones}: ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$1$", o algoritmo gerava soluções que tendiam a sobre carregar a máquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
 
-    \item \textit{numpy.empty}: Esse método de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memória (semelhante ao \textit{malloc} da linguagem C), o que o torna mais rápido, porém ele traz o revés de possivelmente ter valores errados, pois por simplesmente alocar um bloco de memória, o \textit{array} pode ser inicializado com valores estranhos devido a lixo de memória.
+    \item \textit{numpy.empty}: esse método de inicialização diferentemente dos outros, não defini nenhum valor para os registros da matriz, somente aloca um bloco de memória (semelhante ao \textit{malloc} da linguagem C), o que o torna mais rápido, porém ele traz o revés de possivelmente ter valores errados, pois por simplesmente alocar um bloco de memória, o \textit{array} pode ser inicializado com valores estranhos devido a lixo de memória.
 \end{itemize}
 
 \noindent Devido aos problemas citados acima, acaba sendo necessário de qualquer maneira percorrer todo o \textit{array} para setar valores. \newline 
@@ -226,7 +214,7 @@ Além da armazenagem dos valores da partícula, a classe da Partícula também i
 %%
 Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\\
 %%
-Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e a comparação do valor com o atual valor de $pBest$ e atualiza o $pBest$ caso o novo valor seja melhor.\\
+Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e o compara com a variável $pBest$ e caso seja melhora, atualiza o $pBest$.
 %%
 Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.\\
 \noindent A implementação de toda a classe de partícula está disponível no 
@@ -276,7 +264,7 @@ Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor d
 uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$.\\
 %
 Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\\
-\indent Porém, no caso do algoritmo PSO é necessário que ao calcular a nova posição, se considere a inércia e uma média entre o $pBest$ e o $gBest$, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.\\
+\indent Porém, no caso do algoritmo PSO é necessário considerar a inércia e uma média entre o $pBest$ e o $gBest$ obtendo assim uma nova posição, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.\\
 %%%%
 \indent Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\\
 %\subsubsubsection{Movimentação Vetorial}
@@ -314,7 +302,7 @@ Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Send
 % 2º linha
 \begin{minipage}{0.48\textwidth}
 \centering
-\caption{Vetor $\vec g$ de o $gBest$}
+\caption{Vetor $\vec g$ de $gBest$}
 \label{fig:vetor-g}
 \includegraphics[width=.9\linewidth]{assets/vec3.png}
 %\small{Incluir vetor g aqui}
@@ -349,9 +337,9 @@ Então somado com o vetor de inércia divido por um valor de significância para
 \indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
 %% TODO - apêndice
 \begin{algorithm}
-    \caption{Pseudocódigo de movimentação de particula}\label{alg:mov-part}
+    \caption{Pseudocódigo de movimentação de partícula}\label{alg:mov-part}
 \begin{algorithmic}
-\State vetor de inercia $\gets$ (posicao inicial $*$ velocidade)
+\State vetor de inércia $\gets$ (posição inicial $*$ velocidade)
 \State melhor media $\gets$ ($pBest$ + $gBest$) / 2
 \State vetor final $\gets$ (melhor media + posição inicial) / 2
 \end{algorithmic}
@@ -370,9 +358,9 @@ Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele �
 %
 Já as funções utilizadas na geração dos indivíduos iniciais utilizam alguns valores aleatórios que seguem um padrão de distribuição uniforme. Os atributos que utilizam valores aleatórios são:
 \begin{itemize}
-    \item A velocidade, que é dada por um valor aleatório entre $0.1$ e $0.2$.
-    \item A posição inicial da partícula, que é dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.
-    \item A última posição da partícula, que é obtida através de um numero inteiro aleatório entre $1$ e $-1$ diferente de zero.
+    \item A velocidade, dada por um valor aleatório entre $0.1$ e $0.2$.
+    \item A posição inicial da partícula, dada por dois números aleatórios entre $1$ e o limite do espaço de soluções $- 1$.
+    \item A última posição da partícula, obtida através de um número inteiro aleatório entre $1$ e $-1$ diferente de zero.
 \end{itemize}
 %
 %
@@ -388,15 +376,15 @@ Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho 
 %% 2.2.5
 \subsection{Algoritmos}
 %%
-A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsavel por fazer a execução e controle dos dados de analise.\\
+A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por fazer a execução e controle dos dados de análise.\\
 %
-Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da particula. A implementação esta disponivel no apendice x.\\ %todo apendice
+Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula. A implementação esta disponível no apêndice x.\\ %todo apendice
 %
 %
-Como criterio de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a ultima atualização do $gBest$ for a mais rodadas do que metade da quantidade de particulas, o algoritmo termina e o resultado é o $gBest$ atual.\\
+Como critério de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a última atualização do $gBest$ for a mais rodadas do que metade da quantidade de partículas, o algoritmo termina e o resultado é o $gBest$ atual.\\
 %%
-\indent O que diferencia as abordagens analisadas nesse trabalho são as heuristicas de movimentação das particulas.\\
-A movimentação basica de uma particula do PSO é definido pela
+\indent O que diferencia as abordagens analisadas nesse trabalho são as heurísticas de movimentação das partículas.\\
+A movimentação básica de uma partícula do PSO é definido pela
 \hyperref[eq:movimentacao-particula]{Equação \ref{eq:movimentacao-particula}}
 .
 %
@@ -405,20 +393,20 @@ A movimentação basica de uma particula do PSO é definido pela
     \vec v_1(t+1)= \vec v_i(t) + a_1 r_1 (pBest - \vec x_i(t)) + a_2 r_2 (gBest - \vec x_i(t))
 \end{equation}
 %
-Como foi observado nos testes a variavel aleatoria é importande para que as particulas não entrem em um estado de equilibrio e parem de se movimentar. Com a introdução de elementos aleatorio a movimentaçãos se torna mais caotica e evita o fim prematuro do algoritmo.
+Como foi observado nos testes a variável aleatória é importam de para que as partículas não entrem em um estado de equilíbrio e parem de se movimentar. Com a introdução de elementos aleatórios a movimentação se torna mais caótica e evita o fim prematuro do algoritmo.
 
-Esse impacto na movimentação inspirou uma abordagem que considera o nivel de atualizações de $gBest$ e assim adiciona mais um fator aleatorio no calculo. como é representado no 
+Esse impacto na movimentação inspirou uma abordagem que considera o nível de atualizações de $gBest$ e assim adiciona mais um fator aleatório no cálculo. como é representado no 
 \hyperref[alg:mov-dinamic]{Pseudocódigo \ref{alg:mov-dinamic}}.
 \begin{algorithm}
-    \caption{Pseudocódigo de movimentação com componente dinamico}\label{alg:mov-dinamic}
+    \caption{Pseudocódigo de movimentação com componente dinâmico}\label{alg:mov-dinamic}
 \begin{algorithmic}
 
-\State vetor de inercia $\gets$ (posicao inicial $*$ velocidade)
+\State vetor de inércia $\gets$ (posição inicial * velocidade)
 \State melhor media $\gets$ (($pBest$ + $gBest$) / 2)
 \State vetor final $\gets$ ((melhor media + posição inicial) / 2)
 
 \If{trocas de $gBest$ é menor que (tamanho da populacao / $10$)}
-    \State vetor final $\gets$ vetor de movimento $+$ $0.1$ $*$ (inercia$*$random($0.1$, $0.9$) )
+    \State vetor final $\gets$ vetor de movimento $+$ $0.1$ $*$ (inercia$*$random($0.1$, $0.9$))
 \Else
     \State vetor final $\gets$ vetor de movimento $+$ $0.1$ $*$ random($0.1$, $0.9$) 
 \EndIf    
@@ -433,31 +421,31 @@ Esse impacto na movimentação inspirou uma abordagem que considera o nivel de a
 Foram utilizados como parâmetros de configuração:
 \begin{itemize}
     \item \code{population\_size} Quantidade de particulas
-    \item \code{coeficente\_populacional}: Coeficiente entre a quantidade de particulas e o tamanho do espaço de soluções
+    \item \code{coeficente\_populacional}: coeficiente entre a quantidade de partículas e o tamanho do espaço de soluções
 \end{itemize}
 %
 O tamanho do espaço de soluções é calculado pela raiz do arrendamento para baixo do tamanho da população elevado ao coeficiente populacional, representado pela equação 
 \hyperref[eq:space-size]{Equação \ref{eq:space-size}}, 
-essa equação é necessaria pois para gerar um espaco de soluções $n \times n$ pois para isso o numero precisa ser uma raiz quadrada perfeita.
+essa equação é necessária, pois para gerar um espaço de soluções $n \times n$ pois para isso o número precisa ser uma raiz quadrada perfeita.
 %
 \begin{equation} 
     \label{eq:space-size}
     space\_size = \lfloor \sqrt{\lfloor n^c \rceil} \rceil
 \end{equation}
 %
-Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 valores diferentes de coeficente populacional que são:
+Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 valores diferentes de coeficiente populacional que são:
 \begin{itemize}
     \item \code{coeficente\_populacional = $3$}: Gera um mapa de $50 \times 50$
     \item \code{coeficente\_populacional = $5$}: Gera um mapa de $70 \times 70$
     \item \code{coeficente\_populacional = $2.645$}: Gera um mapa de $90 \times 90$
 \end{itemize}
 
-Foram gerados 20 espaços de solução diferentes para cada cada um dos 3 coeficentes e cada um dos 4 cenarios de problema diferentes que estão no 
+Foram gerados 20 espaços de solução diferentes para cada um dos 3 coeficientes e cada um dos 4 cenários de problema diferentes que estão disponíveis no 
 \hyperref[apd:problem-instances]{Apendice \ref{apd:problem-instances}}, totalizando assim $240$ espaços de soluções diferentes.\\
 %
-Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatorios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.\\
+Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatórios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.\\
 %
-Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binario.\\
+Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binário.\\
 Os dados salvos são:
 \begin{itemize}
     \item População inicial.
@@ -470,7 +458,7 @@ Os dados salvos são:
 %% 2 ::: Desenvolvimento
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resultados}
-Para avaliar as execuções dos algoritmos foram estabelecidos os seguintes criterios de analise:
+Para avaliar as execuções dos algoritmos foram estabelecidos os seguintes critérios de análise:
 A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo:
 \begin{itemize}
 \item Makespan final das soluções
@@ -485,12 +473,13 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 \end{itemize}
 %
 
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema A}
 
-O problema A tem um tamanho $4 \times 5$, ou seja com 4 \textit{jobs} e 5 maquinas.\\
-\begin{figure}
+O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas...
+\begin{figure}[!htb]
     \caption{Problema A - Gráfico de Frequência de Makespan}
     \label{fig:plobA-freq-mk}
     \begin{minipage}{.5\linewidth}
@@ -513,14 +502,13 @@ O problema A tem um tamanho $4 \times 5$, ou seja com 4 \textit{jobs} e 5 maquin
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_1_2.pgf}}
       }
 \end{figure}
-
-
-Na
-\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
-é possível ver os valores estatísticos da execução
+%(Blablabla)
+%
+%Na
+%\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
+%é possível ver os valores estatísticos da execução
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[]
+\begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema A}
     \label{tab:tableA-freq-mk}
@@ -538,10 +526,17 @@ Na
     \end{tabular}%
     }
 \end{table}
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
 Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
-\begin{figure}
+%
+\begin{figure}[!htb]
     \caption{Problema B - Gráfico de Frequência de Makespan}
     \label{fig:plobB-freq-mk}
     \begin{minipage}{.5\linewidth}
@@ -565,7 +560,7 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
       }
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[]
+\begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema B}
     \label{tab:tableB-freq-mk}
@@ -584,10 +579,17 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema C}
 A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
-\begin{figure}
+%
+\begin{figure}[!htb]
     \caption{Problema C - Gráfico de Frequência de Makespan}
     \label{fig:plobC-freq-mk}
     \begin{minipage}{.5\linewidth}
@@ -610,8 +612,9 @@ A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_3_2.pgf}}
       }
 \end{figure}
+(...)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[]
+\begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema C}
     \label{tab:tableC-freq-mk}
@@ -631,9 +634,16 @@ A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 \section{Problema D}
 A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
-\begin{figure}
+%
+\begin{figure}[!htb]
     \caption{Problema D - Gráfico de Frequência de Makespan}
     \label{fig:plobD-freq-mk}
     \begin{minipage}{.5\linewidth}
@@ -657,7 +667,7 @@ A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
       }
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}[]
+\begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema D}
     \label{tab:tableD-freq-mk}
