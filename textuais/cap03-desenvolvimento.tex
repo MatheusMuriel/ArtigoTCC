@@ -446,15 +446,7 @@ Foram gerados 20 espaços de solução diferentes para cada um dos 3 coeficiente
 Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatórios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.\\
 %
 Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binário.\\
-Os dados salvos são:
-\begin{itemize}
-    \item População inicial.
-    \item Espaço de soluções.
-    \item Números de rodadas do algoritmo.
-    \item Histórico da variável $gBest$.
-    \item Histórico da posição das partículas.
-    \item Soluções encontradas.
-\end{itemize}
+Os dados salvos são a população inicial, o espaço de soluções, o número de rodadas, o histórico da variável $gBest$, o histórico da posição das partículas e as Soluções encontradas.
 %% 2 ::: Desenvolvimento
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Resultados}
@@ -478,7 +470,15 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema A}
 
-O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas...
+O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas, sendo esse o menor dos \textit{datasets} analisados. Este \textit{dataset} é o mesmo utilizado nos \textit{benchmarks} de \cite{Kacem2002}.
+%
+%
+Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} estão representadas as frequências de \textit{Makespan} das execuções, os dados na cor azul representam os resultados obtidos com a implementação padrão do algoritmo PSO, e na cor laranja estão representados os resultados alcançados com a implementação do componente dinâmico de inércia.
+
+
+É possível perceber que o componente dinâmico obteve uma pequena tendência a obter um valor menor de \textit{makespan}, ou seja, atingir um melhor resultado, principalmente nas execuções com um espaço de soluções maior, como na \hyperref[plobA-freq-mk:c]{Figura \ref{plobA-freq-mk:c}}.
+
+%
 \begin{figure}[!htb]
     \caption{Problema A - Gráfico de Frequência de Makespan}
     \label{fig:plobA-freq-mk}
@@ -502,11 +502,10 @@ O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maqui
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_1_2.pgf}}
       }
 \end{figure}
-%(Blablabla)
 %
-%Na
-%\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
-%é possível ver os valores estatísticos da execução
+Na
+\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
+é representado as estatísticas entre os valores de \textit{makespan} obtidos pelas execuções de cada abordagem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[!htb]
     \centering
@@ -526,11 +525,14 @@ O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maqui
     \end{tabular}%
     }
 \end{table}
-\clearpage
+%\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+É possivel ver que a abordagem dinamica 
+apresentou em 
+um \textit{makespan} em média $1.16\%$ menor e com uma 
+variância $62.5\%$ menor e um 
+desvio padrão $40\%$ menor em relação a abordagem padrão.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
