@@ -7,8 +7,9 @@
 %% Interlúdio do [Problemas de Agendamento] %%
 Problemas de agendamento são muito comuns atualmente, pois estão diretamente presentes em diversos cenários, tais como planejamento de produção, sistemas de manufatura, linhas de montagem, processamento de informação, planejamento e gerenciamento de rotas logísticas e mesmo que de maneira indireta, também estão presentes nos computadores através de escalonadores de processos do sistema operacional.
 %
-Com tantos possíveis cenários de aplicação é esperado que existam diversas variações deste problema, cada uma com suas peculiaridades.\\
-%
+Com tantos possíveis cenários de aplicação é esperado que existam diversas variações deste problema, cada uma com suas peculiaridades.
+
+
 \indent Porém, a maioria destes problemas tem características em comum. Geralmente eles se baseiam em um conjunto de recursos e um conjunto de demandas, e tem como objetivo organizar as execuções dessas demandas e distribuí-las entre os recursos, de modo a alcançar da melhor maneira possível um ou mais objetivos, que podem ser, por exemplo: 
 \begin{itemize}
     \item O tempo total para o algoritmo executar o algoritmo e encontrar uma solução, ou seja, um agendamento.
@@ -16,44 +17,52 @@ Com tantos possíveis cenários de aplicação é esperado que existam diversas 
     \item Ou a soma do tempo de ociosidade das máquinas durante o período do agendamento.
 \end{itemize}
 
-Devido a esta característica de buscar um melhor resultado para atender a um objetivo os problemas de agendamento são caracterizados como problemas de otimização, problemas nos quais o objetivo é encontrar uma solução que melhor atenda os critérios de avaliação do problema em questão.\\
-%
-\indent Os problemas de otimização são caracterizados por terem um número muito grande de soluções possíveis, algumas vezes tendendo ao infinito, o que torna inviável a computação de todas essas possibilidade. Por causa dessa característica um algoritmo de otimização não necessariamente precisa encontrar a melhor solução possível entre todas as possibilidades, mas sim uma solução boa o suficiente, também chamado solução ótima, conforme os critérios de avaliação do problema.\\
-%
-Os problemas de otimização podem ser classificados em dois tipos, sendo eles problemas "mono-objetivos", e problemas "multi-objetivos".\\
-%
-\indent Os problemas do tipo multi-objetivo consideram simultaneamente, mais de um critério de avaliação, podendo ter ou não o mesmo peso (nível de importância), e espera se que sejam atingidos de forma satisfatória todos os critérios de avaliação. Por causa dessa diversidade de objetivos que podem muitas vezes ser conflitantes entre si, por exemplo, ser mais rápido e gastar a menos energia, problemas do tipo multi-objetivos são os mais comuns.\\
-%
+Devido a esta característica de buscar um melhor resultado para atender a um objetivo os problemas de agendamento são caracterizados como problemas de otimização, problemas nos quais o objetivo é encontrar uma solução que melhor atenda os critérios de avaliação do problema em questão.
+
+
+\indent Os problemas de otimização são caracterizados por terem um número muito grande de soluções possíveis, algumas vezes tendendo ao infinito, o que torna inviável a computação de todas essas possibilidade. Por causa dessa característica um algoritmo de otimização não necessariamente precisa encontrar a melhor solução possível entre todas as possibilidades, mas sim uma solução boa o suficiente, também chamado solução ótima, conforme os critérios de avaliação do problema.
+
+
+Os problemas de otimização podem ser classificados em dois tipos, sendo eles problemas "mono-objetivos", e problemas "multi-objetivos".
+
+
+\indent Os problemas do tipo multi-objetivo consideram simultaneamente, mais de um critério de avaliação, podendo ter ou não o mesmo peso (nível de importância), e espera se que sejam atingidos de forma satisfatória todos os critérios de avaliação. Por causa dessa diversidade de objetivos que podem muitas vezes ser conflitantes entre si, por exemplo, ser mais rápido e gastar a menos energia, problemas do tipo multi-objetivos são os mais comuns.
+
+
 \indent Já os problemas do tipo mono-objetivo lidam somente com um critério de avaliação, o que diminui significativamente a dificuldade para encontrar uma solução, porém, em contrapartida, espera se um resultado melhor para o objetivo em questão, sendo necessário um maior nível de refinamento da solução.
 %% Fim do Interlúdio do [Problemas de Agendamento] %%
-%
-%
+
+
 %% 1 ::: Introdução
 %% 1.1 ::: Problemas de Agendamento
 %\subsection{Definição}
 Como foi definido por \citeauthor{Bagchi1999} um problema de agendamento (também chamado problema de escalonamento) é um problema de otimização aonde 
 diversas tarefas (chamadas \textit{jobs}) são alocados em uma ordem sequencial entre os recursos (máquinas), 
-com diferentes tarefas podendo ser executadas simultaneamente
-em máquinas diferentes, porém cada atividade devendo ser executada somente em uma máquina por vez.
+com diferentes tarefas podendo ser executadas simultaneamente em máquinas diferentes, porém cada atividade devendo ser executada somente em uma máquina por vez.
 
-Assim como a grande maioria dos problemas de origem combinatória, o problema de escalonamento pertence à classe de problemas NP-Hard, onde não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.\\
+
+Assim como a grande maioria dos problemas de origem combinatória, o problema de escalonamento pertence à classe de problemas NP-Hard, onde não é possível se encontrar a melhor solução em um tempo polinomial, ou seja, um tempo computacionalmente aceitável.
+
+
 \indent Isso acontece devido à quantidade de operações necessárias para verificar todas as possibilidades de soluções para o problema em questão, crescerem de forma exponencial com base no tamanho do problema,
 o que torna os problemas dessa classe inviáveis de serem resolvidos através de métodos comuns de cálculos.
-%
-%
-\indent Por causa disso, nos casos de problemas NP-Hard são normalmente utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.\\
+
+
+\indent Por causa disso, nos casos de problemas NP-Hard são normalmente utilizados algoritmos de aproximação, que tenham um tempo de execução razoável e consigam encontrar uma solução boa o suficiente, a chamada "Solução Ótima",  com base nos critérios de avaliação do problema, como visto por \cite{lawler1993}.
+
+
 \indent As características de uma solução ótima variam conforme o problema, em alguns casos é mais importante que a solução seja encontrada em um curto espaço de tempo, do que seja alguns milissegundos mais rápida do que as outras soluções já encontradas pelo algoritmo.
 %
 Isso se aplica, por exemplo, em ambientes onde o agendamento deve ser feito em tempo real.
 %
 Já em um cenário onde essa solução precisa ser encontrada apenas uma vez no dia e depois ser aplicada varias vezes, como em uma estrutura de linha de montagem, pode ser vantajoso esperar alguns minutos a mais se essa solução economizar tempo de produção (e consequentemente dinheiro) ao longo de seu uso. Então esse critério de avaliação que define uma solução ótima deve ser muito bem analisado de caso a caso.\\
 \indent Nesses ambientes de soluções aproximadas, alguns algoritmos que se destacam são os algoritmos bio inspirados como algoritmos populacionais e algoritmos evolutivos. 
-Que consistem em simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução, para encontrar uma solução ótima para o problema em questão, de maneira similar a qual um ser vivo faria.\\
-%% Fim do [Definição] %%
-%% 1 ::: Introdução
-%% 1.1 ::: Problemas de Agendamento
-%\subsection{Variações}
-Vários autores já classificaram diversas variações de problemas de escalonamento, dentre eles: \cite{graham1979}, \cite{Lenstra1979}, e \cite{maccarthy1993}. E o que diferencia esses problemas é o fluxo dos \textit{jobs} a serem processados e a capacidade dos recursos.\\
+Que consistem em simular uma inteligência biológica ou comportamentos já observados na natureza e selecionados pela evolução, para encontrar uma solução ótima para o problema em questão, de maneira similar a qual um ser vivo faria.
+
+
+Vários autores já classificaram diversas variações de problemas de escalonamento, dentre eles: \cite{graham1979}, \cite{Lenstra1979}, e \cite{maccarthy1993}. E o que diferencia esses problemas é o fluxo dos \textit{jobs} a serem processados e a capacidade dos recursos.
+
+
 \noindent Dentre esses problemas estão:
 \begin{itemize}
     \item \textbf{\textit{Open Shop:}} Os \textit{job} não tem uma ordem de execução, porém as operações de cada \textit{job} tem uma ordem específica de execução.
@@ -143,27 +152,29 @@ duas operações $O_{j,1} $ e $O_{j,2}$.
     \item A operação $O_{2,1}$ na máquina $M_1$ tem o tempo de execução $1$
     \item A operação $O_{2,2}$ na máquina $M_2$ tem o tempo de execução $7$
 \end{itemize}
-%
-%% Fim do [Instancia de um Problema] %%
-%% Fim do [JSP] %%
-%% 1 ::: Introdução
-%% 1.1 ::: Problemas de Agendamento
+
+
 \subsection{Problema de Job Shop Flexível — FJSP}
-%% Interlúdio do [FJSP]%%
-O \gls{fjsp} é uma extensão do problema de \gls{jsp} onde é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.\\
-\indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.\\
-\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.\\
-\indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.\hfill
-%% Fim do Interlúdio do [FJSP]%%
-%% 1 ::: Introdução
-%% 1.1 ::: Problemas de Agendamento
-%% 1.1.4 ::: FJSP
-%\subsubsection{Representações}
-As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da forma de representar o ambiente inicial do problema. \\
+O \gls{fjsp} é uma extensão do problema de \gls{jsp} onde é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.
+
+
+\indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.
+
+
+\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.
+
+
+\indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.
+
+
+As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da forma de representar o ambiente inicial do problema. 
+
+
 Devido a sua característica de ter uma maior possibilidade de alocações entre as máquinas e os \textit{jobs}, 
 %
-uma representação do de um problema de \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.\\
-%
+uma representação do de um problema de \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.
+
+
 No caso de um problema parcial (P-FJSP) é necessário definir os tempos somente das operações que cada maquina pode executar, na 
 \hyperref[fig:ex-instancia-problema-PFJSP]{Figura \ref{fig:ex-instancia-problema-PFJSP}}
 é demonstrado um exemplo de uma representação de uma problema P-FJSP.
@@ -308,14 +319,15 @@ Ao longo do tempo foram propostas, testadas, revisadas e aprimoradas diversas so
 Ao longo de milhões de anos a vida biológica no planeta Terra evoluiu e se adaptou para encontrar modos mais eficientes de resolver os diversos problemas que a natureza impõe. 
 Então observando esses comportamentos adaptativos, foram propostos diversos algoritmos, 
 como os algoritmos populacionais que simulam como populações de animais, como bandos de aves, enxames de abelhas ou colonias de formigas usam o comportamento de bando para solucionar um problema como o de encontrar alimento, ou fugir de predadores. 
-Ou algoritmos que simulam as próprias regras de seleção natural para selecionar e evoluir indivíduos de uma população para gerar e acumular mutações, a fim de obter uma população de indivíduos mais adaptados e solucionar um problema, esses são os Algoritmos Genéticos e Algoritmos Evolutivos.\\
+Ou algoritmos que simulam as próprias regras de seleção natural para selecionar e evoluir indivíduos de uma população para gerar e acumular mutações, de modo a obter uma população de indivíduos mais adaptados e solucionar um problema, esses são os Algoritmos Genéticos e Algoritmos Evolutivos.\\
 %% Fim do Interlúdio %%
 %% 1 ::: Introdução
 %% 1.2 ::: Soluções Existentes
 %\subsection{Algoritmos Evolutivos}
-\indent Os Algoritmos Evolutivos são baseados no mecanismo de seleção natural observado na natureza e descritos por Charles Darwin. Onde um individuo que tem alguma mutação que gere uma característica positiva que o destaque dos outros indivíduos da população, tem maior chance de se reproduzir e transmitir essa característica para os seus descendentes.\\
-%
-\noindent A estrutura básica de um Algoritmo Evolutivo é:
+\indent Os Algoritmos Evolutivos são baseados no mecanismo de seleção natural observado na natureza e descritos por Charles Darwin. Onde um individuo que tem alguma mutação que gere uma característica positiva que o destaque dos outros indivíduos da população, tem maior chance de se reproduzir e transmitir essa característica para os seus descendentes.
+
+
+A estrutura básica de um Algoritmo Evolutivo é:
 \begin{enumerate}
     \item Inicialização da população.
     \item Analise a qualidade de cada indivíduo.
@@ -323,6 +335,8 @@ Ou algoritmos que simulam as próprias regras de seleção natural para selecion
     \item Cruzar esses indivíduos melhores entre si, de modo a gerar uma nova população com melhores indivíduos.
     \item Voltar e repetir a partir do passo 2.
 \end{enumerate}
+
+
 Essa estrutura se repete até que seja atingido o critério de parada estabelecido pelo problema em questão.\\
 \indent Além da estrutura básica é possível melhorar um Algoritmo Evolutivo através de um aprendizado continuo, ou seja, em um ambiente em que tenha mudanças constantes um Algoritmo Evolutivo pode se adaptar e assim se auto melhorar sem a necessidade de uma intervenção do programador.\\
 %% Fim do [Alg EV] %%
@@ -427,16 +441,15 @@ Algumas medidas podem ser tomadas para diminuir essa possibilidade de convergên
 \indent Algumas técnicas podem ser usadas para melhorar o desempenho do PSO em cada cenário de aplicação. Porém, o efeito dessas abordagens varia de acordo com qual problema esta sendo resolvido e dos recursos e limitações de processamento e memoria do ambiente de processamento do algoritmo.\\
 %% Fim do [Interlúdio] %%
 %\subsubsection{Multithreading}
-\indent Uma abordagem com bons resultados é o processamento distribuído do cálculo de movimentação de cada partícula como visto por \cite{Thongkrairat2019} e \cite{Kim2011}. Essa paralelização é possível graças a natureza distribuída dos algoritmos populacionais. No caso do PSO o único fator a se considerar para uma implementação distribuída é a atualização da variável $gBest$.\\
-%
-\indent Um exemplo de cenário onde se tem um bom proveito dessa abordagem são nos gerenciamentos de robôs e drones.\\  
+\indent Uma abordagem com bons resultados é o processamento distribuído do cálculo de movimentação de cada partícula como visto por \cite{Thongkrairat2019} e \cite{Kim2011}. Essa paralelização é possível graças a natureza distribuída dos algoritmos populacionais. No caso do PSO o único fator a se considerar para uma implementação distribuída é a atualização da variável $gBest$.
+
+
 %% Fim do [Multitheading] %%
 %\subsubsection{Hibridização}
 \indent Outra melhoria que tem demonstrado bons resultados é a hibridização de PSO com outros algoritmos, como com Algoritmos Genéticos como demostrado por \cite{carvalho2014}, ou com outros Algoritmos Evolutivos.
 %
 Essas abordagens de hibridizações com Algoritmos Evolutivos tendem a ser tão boas devido às características básicas do PSO como a de não ter componentes evolutivos em seus indivíduos, então uma adição de componentes evolutivos não atrapalha nenhum ponto do PSO.
-%
-Esses componentes evolutivos normalmente trabalham nos valores de inércia e de velocidade, criando partículas mais "teimosas" com uma tendência maior a fugir da convergência do grupo, o que pode ajudar a escapar de mínimos locais, evitando assim uma convergência prematura.
+Esses componentes evolutivos normalmente trabalham nos valores de inércia e de velocidade, criando partículas com uma tendência maior a fugir da convergência do grupo, o que pode ajudar a escapar de mínimos locais, evitando assim uma convergência prematura.
 %
 Um cenário que tem um bom proveito da hibridização evolutiva do PSO são os cenários com multi-objetivo, pois os componentes de mutação de Algoritmos Genéticos podem trazer uma maior diversidade para os indivíduos da população, gerando assim uma maior gama de exploração no espaço de soluções.\\
 %% Fim do [Hibridização] %%
