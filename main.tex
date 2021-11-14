@@ -2,17 +2,16 @@
 % Classe Principal da monografia %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./definitions/unifil}
-\documentclass[12pt,openright,oneside,a4paper,english,french,spanish,brazil]{./definitions/unifil}
+%[..., french,spanish, ...]
+\documentclass[12pt,openright,oneside,a4paper,english,brazil]{./classes/unifil}
 
-% TODO - Definir título da sua monografia %
-\titulo     {Analise da eficiência da implementação de componente dinâmico em algoritmos de enxame de partículas aplicados ao problema de Job Shop Flexível}
-\autor      {Matheus Muriel}
-\instituicao{Centro Universitário Filadélfia}
-\local      {Londrina}
-\data       {2021}
-\preambulo  {Ciência da Computação}
-\orientador {Ricardo Inacio Alvares e Silva}
+\titulo      {Analise da eficiência da implementação de componente dinâmico em algoritmos de enxame de partículas aplicados ao problema de Job Shop Flexível}
+\autor       {Matheus Muriel}
+\instituicao {Centro Universitário Filadélfia}
+\local       {Londrina}
+\data        {2021}
+\preambulo   {Ciência da Computação}
+\orientador  {Ricardo Inacio Alvares e Silva}
 
 \makeglossaries
 \usepackage{algorithm}
@@ -21,27 +20,20 @@
 \usepackage{mwe}
 \usepackage{subfig}
 
-%\usepackage[toc,page]{appendix}
 
 \begin{document}
 \frenchspacing
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 %%%%% Elementos pré-textuais %%%%%
 \pretextual
 
 \imprimircapa
-
 \include{./pretextuais/folhaderosto}
 \include{./pretextuais/folhadeaprovacao}
 %\include{./pretextuais/dedicatoria}
 %\include{./pretextuais/agradecimentos}  % Opcional %
 %\include{./pretextuais/epigrafe}        % Opcional %
-\include{./pretextuais/resumo}
-\include{./pretextuais/abstract}
+%\include{./pretextuais/resumo}
+%\include{./pretextuais/abstract}
 
 %%% Lista de Figuras %%%
 \newpage
@@ -91,10 +83,10 @@
 \renewcommand{\ABNTEXsectionfont}{\uppercase{\fontfamily{cmr}\fontseries{b}\selectfont}}
 \renewcommand{\ABNTEXsectionfontsize}{\large}
 
-\include{./textuais/cap-introducao}
-\include{./textuais/cap-fundamentacao} 
-\include{./textuais/cap-desenvolvimento}
-\include{./textuais/cap-conclusao}
+\include{./textuais/cap01-introducao}
+\include{./textuais/cap02-fundamentacao} 
+\include{./textuais/cap03-desenvolvimento}
+\include{./textuais/cap04-conclusao}
 
 
 \cleardoublepage
