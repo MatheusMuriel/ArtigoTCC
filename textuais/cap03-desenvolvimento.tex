@@ -473,8 +473,12 @@ A partir das médias estatísticas das execuções, são utilizados como critér
 Nas Figuras \ref{fig:plobA-freq-mk}, \ref{fig:plobB-freq-mk}, \ref{fig:plobC-freq-mk} e \ref{fig:plobD-freq-mk} 
 estão representadas as frequências de \textit{Makespan} das execuções, os dados na cor azul representam os resultados obtidos com a implementação padrão do algoritmo PSO, e na cor laranja estão representados os resultados alcançados com a implementação do componente dinâmico de inércia.
 
-
-Todos os \textit{datasets} dos problemas A, B, C e D foram retirados dos \textit{benchmarks} de \cite{Kacem2002}.
+Foram utilizados nos testes \textit{datasets} com tamanhos variados, sendo eles, 
+problema A $4 \times 5$,
+problema B $10 \times 7$,
+problema C $10 \times 10$,
+problema D $15 \times 10$.
+Todos esses \textit{datasets} foram retirados dos \textit{benchmarks} de \cite{Kacem2002}.
 %
 
 
@@ -681,7 +685,7 @@ Essa porcentagem monstra que a tendência de melhora é reforçada em \textit{da
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
-O problema D tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
+O problema D tem um tamanho $15 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
 sendo esse o maior dos \textit{datasets} analisados.
 Na \hyperref[fig:plobD-freq-mk]{Figura \ref{fig:plobD-freq-mk}} 
 %é possível perceber que o componente dinâmico obteve uma 
@@ -745,5 +749,11 @@ em relação à abordagem padrão.
 
 
 Nesse caso vemos uma redução na melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variância. Porém, é possível ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinâmica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
+
+
+Por fim, podemos concluir que com as reduções de 
+\textit{makespan} de $1.16\%$, $4.07\%$, $6.23\%$, $4.14\%$, de 
+desvios padrões de $40\%$, $4.08\%$, $10.38\%$, $12.06\%$, e 
+de variâncias de $62.5\%$, $7.83\%$, $19.94\%$, $44.77\%$, vemos que na média houve uma redução de $3,90\%$ no \textit{makespan}, de $16,63\%$ no desvio padrão e de $33,76\%$ na variância. Essa abordagem não traz uma redução significativa no tempo final de \textit{makespan}, porém traz um menor desvio padrão e menor variância, fazendo assim com que o algoritmo PSO tenha uma maior confiabilidade de bons resultados.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%
