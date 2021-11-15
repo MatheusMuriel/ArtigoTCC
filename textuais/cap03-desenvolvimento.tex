@@ -173,8 +173,6 @@ conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{
 
 Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
 \hyperref[alg:generate-solution-space]{Pseudocódigo \ref{alg:generate-solution-space}}.
-Além disso, a implementação real em Python está no apêndice x desse trabalho.\\
-%% Todo - Apêndice
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}
 \caption{Pseudocódigo de geração do espaço de soluções}\label{alg:generate-solution-space}
@@ -334,8 +332,7 @@ No código Python essa implementação é feita de maneira levemente diferente p
 \indent Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\\
 Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\\
 %
-\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
-%% TODO - apêndice
+\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo.
 \begin{algorithm}
     \caption{Pseudocódigo de movimentação de partícula}\label{alg:mov-part}
 \begin{algorithmic}
@@ -378,7 +375,7 @@ Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho 
 %%
 A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por fazer a execução e controle dos dados de análise.\\
 %
-Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula. A implementação esta disponível no apêndice x.\\ %todo apendice
+Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula.
 %
 %
 Como critério de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a última atualização do $gBest$ for a mais rodadas do que metade da quantidade de partículas, o algoritmo termina e o resultado é o $gBest$ atual.\\
@@ -604,8 +601,6 @@ A porcentagem de melhora em relação ao PSO padrão se mostrou melhor na média
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema C}
-A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
-
 O problema C tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
 sendo esse o segundo maior dos \textit{datasets} analisados.
 Na \hyperref[fig:plobC-freq-mk]{Figura \ref{fig:plobC-freq-mk}} 
@@ -666,14 +661,13 @@ apresentou em
 um \textit{makespan} em média $6,23\%$ menor e com um
 desvio padrão $10,38\%$ menor e uma
 variância $19,94\%$ menor
-em relação à abordagem padrão.
+em relação à abordagem padrão.\\
+Essa porcentagem monstra que a tentencia de melhora é reforçada em \textit{datasets} maiores.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
-A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
-
 O problema D tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
 sendo esse o maior dos \textit{datasets} analisados.
 Na \hyperref[fig:plobD-freq-mk]{Figura \ref{fig:plobD-freq-mk}} 
@@ -734,6 +728,7 @@ apresentou em
 um \textit{makespan} em média $4,14\%$ menor e com um
 desvio padrão $12,06\%$ menor e uma
 variância $22,77\%$ menor
-em relação à abordagem padrão.
+em relação à abordagem padrão.\\
+Nesse caso vemos uma redução no melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variancia. Porém nesse caso é possivel ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinamica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%

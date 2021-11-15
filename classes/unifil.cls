@@ -103,8 +103,6 @@
 \newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
 \makeatother
 
-%%% TODO Colocar comandos da main aqui
-
 \renewcommand{\imprimircapa}{%
   \begin{capa}%
     \begin{figure}[htb]
