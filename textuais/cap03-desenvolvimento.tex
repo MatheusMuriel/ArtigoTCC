@@ -468,17 +468,15 @@ Nas Figuras \ref{fig:plobA-freq-mk}, \ref{fig:plobB-freq-mk}, \ref{fig:plobC-fre
 estão representadas as frequências de \textit{Makespan} das execuções, os dados na cor azul representam os resultados obtidos com a implementação padrão do algoritmo PSO, e na cor laranja estão representados os resultados alcançados com a implementação do componente dinâmico de inércia.
 
 
-Todos os \textit{datasets} dos problemas A, B, C e D são os mesmos utilizados nos \textit{benchmarks} de \cite{Kacem2002}.
+Todos os \textit{datasets} dos problemas A, B, C e D foram retirados dos \textit{benchmarks} de \cite{Kacem2002}.
 %
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Problema A}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Problema A}
 O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas, sendo esse o menor dos \textit{datasets} analisados.
 Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} é possível perceber que o componente dinâmico obteve uma pequena tendência a obter um valor menor de \textit{makespan}, ou seja, atingir um melhor resultado, principalmente nas execuções com um espaço de soluções maior, como na \hyperref[plobA-freq-mk:c]{Figura \ref{plobA-freq-mk:c}}.
-
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htb]
     \caption{Problema A — Gráfico de Frequência de Makespan}
     \label{fig:plobA-freq-mk}
@@ -502,7 +500,7 @@ Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} é possível per
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_1_2.pgf}}
       }
 \end{figure}
-%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Na
 \hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
 é representado as estatísticas entre os valores de \textit{makespan} obtidos pelas execuções de cada abordagem.
@@ -528,17 +526,24 @@ Na
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 É possível ver que a abordagem dinâmica 
 apresentou em 
-um \textit{makespan} em média $1.16\%$ menor e com uma 
-variância $62.5\%$ menor e um 
-desvio padrão $40\%$ menor em relação à abordagem padrão.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+um \textit{makespan} em média $1,16\%$ menor e com um
+desvio padrão $40\%$ menor e uma
+variância $62,5\%$ menor
+em relação à abordagem padrão.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
-Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
-%
+O problema B tem um tamanho $10 \times 7$, ou seja, com 10 \textit{jobs} e 7 maquinas, 
+sendo esse o segundo menor dos \textit{datasets} analisados.
+Na \hyperref[fig:plobB-freq-mk]{Figura \ref{fig:plobB-freq-mk}} 
+é possível perceber que o componente dinâmico obteve uma 
+tendência de atingir um valor menor de \textit{makespan}, 
+uma tendência melhor do que a observada 
+na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htb]
     \caption{Problema B — Gráfico de Frequência de Makespan}
     \label{fig:plobB-freq-mk}
@@ -563,6 +568,10 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
       }
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Na
+\hyperref[tab:tableA-freq-mk]{Tabela \ref{tab:tableA-freq-mk}}
+é representado as estatísticas entre os valores de \textit{makespan} obtidos pelas execuções de cada abordagem.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema B}
@@ -582,13 +591,28 @@ Na \hyperref[tab:tableB-freq-mk]{Tabela \ref{tab:tableB-freq-mk}}...
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+É possível ver que a abordagem dinâmica 
+apresentou em 
+um \textit{makespan} em média $4,07\%$ menor e com um
+desvio padrão $4,08\%$ menor e uma
+variância $7,83\%$ menor
+em relação à abordagem padrão.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema C}
 A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
-%
+
+O problema C tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
+sendo esse o segundo maior dos \textit{datasets} analisados.
+Na \hyperref[fig:plobC-freq-mk]{Figura \ref{fig:plobC-freq-mk}} 
+%é possível perceber que o componente dinâmico obteve uma 
+%tendência de atingir um valor menor de \textit{makespan}, 
+%uma tendência melhor do que a observada 
+%na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htb]
     \caption{Problema C — Gráfico de Frequência de Makespan}
     \label{fig:plobC-freq-mk}
@@ -612,7 +636,10 @@ A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
         \resizebox{.5\linewidth}{!}{\input{assets/problems/problem_legended_3_2.pgf}}
       }
 \end{figure}
-(...)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Na
+\hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}
+é representado as estatísticas entre os valores de \textit{makespan} obtidos pelas execuções de cada abordagem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[!htb]
     \centering
@@ -633,12 +660,27 @@ A \hyperref[tab:tableC-freq-mk]{Tabela \ref{tab:tableC-freq-mk}}...
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+É possível ver que a abordagem dinâmica 
+apresentou em 
+um \textit{makespan} em média $6,23\%$ menor e com um
+desvio padrão $10,38\%$ menor e uma
+variância $19,94\%$ menor
+em relação à abordagem padrão.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
 A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
-%
+
+O problema D tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
+sendo esse o maior dos \textit{datasets} analisados.
+Na \hyperref[fig:plobD-freq-mk]{Figura \ref{fig:plobD-freq-mk}} 
+%é possível perceber que o componente dinâmico obteve uma 
+%tendência de atingir um valor menor de \textit{makespan}, 
+%uma tendência melhor do que a observada 
+%na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htb]
     \caption{Problema D — Gráfico de Frequência de Makespan}
     \label{fig:plobD-freq-mk}
@@ -663,6 +705,10 @@ A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
       }
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Na
+\hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}}
+é representado as estatísticas entre os valores de \textit{makespan} obtidos pelas execuções de cada abordagem.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[!htb]
     \centering
     \caption{Tabela de dados estatísticos da execução do problema D}
@@ -682,5 +728,11 @@ A \hyperref[tab:tableD-freq-mk]{Tabela \ref{tab:tableD-freq-mk}} ....
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+É possível ver que a abordagem dinâmica 
+apresentou em 
+um \textit{makespan} em média $4,14\%$ menor e com um
+desvio padrão $12,06\%$ menor e uma
+variância $22,77\%$ menor
+em relação à abordagem padrão.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%
