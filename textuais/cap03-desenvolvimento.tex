@@ -211,24 +211,29 @@ Por se tratar de um algoritmo populacional focado em partículas, por isso o nom
 Nessa classe são guardados os valores de: posição, velocidade e $pBest$, além de outros dados utilizados para facilitar o gerenciamento como: valor da solução da sua atual posição, assim como seu valor de \textit{fitness} e o tamanho do espaço de soluções.\\
 \indent Para fazer uma melhor movimentação foi optado por não usar uma variável de direção, mas sim uma variável que guarda a última posição onde a partícula esteve.\\
 Além da armazenagem dos valores da partícula, a classe da Partícula também implementa algumas funções como:
-%%
-Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.\\
-%%
-Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e o compara com a variável $pBest$ e caso seja melhora, atualiza o $pBest$.
-%%
-Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.\\
-%
-\indent Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\\
-%
+\begin{itemize}
+    \item Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição inicial e uma velocidade aleatória para a partícula.
+
+    \item Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e o compara com a variável $pBest$ e caso seja melhora, atualiza o $pBest$.
+
+    \item Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.
+\end{itemize}
+
+Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.
+
+
 %% Fim do [Representações] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
 %% 2.2.3 ::: Partícula
-%% 2.2.3.3
 %\subsubsection{Movimentação}
-\indent A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.\\
-\indent Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.\\
-\indent Aonde se tem uma direção e com base nessa direção se soma ou subtrai o valor de velocidade do eixo de movimento e assim se obtém uma nova posição, como mostrado no \hyperref[alg:int-sum]{Pseudocódigo \ref{alg:int-sum}}.
+A movimentação da partícula no espaço de soluções é o ponto mais importante dessa entidade. Pois, se não for feita da maneira certa pode fazer o algoritmo não desempenhar tão quanto o possível.
+
+
+Como a implementação do espaço de soluções foi feita utilizando uma representação matricial, o mecanismo de movimentação mais intuitivo seria uma movimentação por soma de inteiros.
+
+
+Aonde se tem uma direção e com base nessa direção se soma ou subtrai o valor de velocidade do eixo de movimento e assim se obtém uma nova posição, como mostrado no \hyperref[alg:int-sum]{Pseudocódigo \ref{alg:int-sum}}.
 \begin{algorithm}
     \caption{Pseudocódigo de movimentação por soma de inteiros}\label{alg:int-sum}
 \begin{algorithmic}
@@ -253,21 +258,24 @@ Função \textbf{\textit{update\_position}} que faz a movimentação da partícu
   \State posicaoX = posicaoX + 1
   \State posicaoY = posicaoY - 1
 \EndIf    
-
 \end{algorithmic}
 \end{algorithm}
 
+
 Ou seja, tendo uma posição $[15, 7]$ sendo $15$ o valor de $x$ e $7$ o valor de $y$,
-uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$.\\
-%
-Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).\\
-\indent Porém, no caso do algoritmo PSO é necessário considerar a inércia e uma média entre o $pBest$ e o $gBest$ obtendo assim uma nova posição, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.\\
-%%%%
-\indent Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.\\
-%\subsubsubsection{Movimentação Vetorial}
-\indent Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.\\
-\noindent Em um cenário aonde a posição da partícula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.\\
-\noindent Para encontrar a nova posição de uma partícula são utilizados:
+uma velocidade $2$ e a direção do movimento ser \textit{CIMA}, a nova posição é obtida incrementado a velocidade ao valor de $y$ da posição, ou seja $[15, 7+2]$, então a nova posição seria $[15, 9]$.
+
+
+Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Sendo inclusive muito utilizada no desenvolvimento de jogos com mapas baseados em ladrilhos (\textit{Tile-based} / \textit{Grid-based}).
+
+
+Porém, no caso do algoritmo PSO é necessário considerar a inércia e uma média entre o $pBest$ e o $gBest$ obtendo assim uma nova posição, o que gera muitas vezes uma movimentação em ângulos mais específicos o que torna a abordagem de soma de inteiros muito complexa e limitada para esse cenário.
+Então nesse trabalho foi desenvolvido um método de movimentação baseado em cálculos vetoriais que elimina esses problemas de movimentação além de facilitar a implementação de novos pontos de comparação (além do $pBest$ e $gBest$) para o cálculo da nova posição.
+
+
+Essa abordagem de movimentação é baseado no conceito de \textit{Produto Escalar} definido pela Álgebra Linear, e representa o produto interno padrão do espaço euclidiano sendo definido como uma operação binaria entre dois vetores.
+Em um cenário aonde a posição da partícula é $position=[12,8]$ e $pBest=[10, 15]$, $gBest=[16,20]$ e $velocidade=[2,4]$.
+Para encontrar a nova posição de uma partícula são utilizados:
 \begin{itemize}
 \item $\vec p$ Que representa o vetor entre a partícula e o $pBest$ 
 (\hyperref[fig:vetor-p]{Figura \ref{fig:vetor-p}}).
@@ -315,8 +323,9 @@ Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Send
 \end{minipage}
 \end{figure}
 
-\noindent A nova posição da partícula é dada pela 
-\hyperref[eq:movimentacao-vec]{Equação \ref{eq:movimentacao-vec}}
+A nova posição da partícula é dada pela 
+\hyperref[eq:movimentacao-vec]{Equação \ref{eq:movimentacao-vec}} 
+E a partir dela temos o vetor $\vec r$ resultante, então a nova posição da partícula é $[12,10]$.
 .
 %
 \begin{equation} 
@@ -324,15 +333,13 @@ Essa abordagem funciona bem para uma movimentação simples em espaços 2D. Send
     \vec r = ((\vec g + \vec p) / 2) + \vec v
 \end{equation}
 
-\noindent Então temos o vetor $\vec r$ resultante, então a nova posição da partícula é $[12,10]$.
+Na implementação em Python para realizar os cálculos vetoriais foi utilizado a biblioteca \textit{Numpy}.
+Para isso primeiro é calculado um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.
+Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.
 
-No código Python essa implementação é feita de maneira levemente diferente por características da linguagem. Para realizar os cálculos vetoriais foi utilizado a biblioteca \textit{Numpy}.\\
-\indent Para isso primeiro é calculado um vetor médio entre $pBest$ e $gBest$, e o vetor $\vec w$ representando a inércia.\\
-\indent Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\\
-Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\\
-%
-\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
-%% TODO - apêndice
+
+Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).
+No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo
 \begin{algorithm}
     \caption{Pseudocódigo de movimentação de partícula}\label{alg:mov-part}
 \begin{algorithmic}
@@ -346,7 +353,6 @@ Então somado com o vetor de inércia divido por um valor de significância para
 %% Fim do [Partícula] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
-%% 2.2.4
 \subsection{População}
 Pelo algoritmo PSO ser um algoritmo baseado em inteligência populacional, ele é muito influenciado pela geração da população inicial, mesmo nos algoritmos com variações aonde existem mutações e consequentemente evolução dos indivíduos da população, as características como inercia, velocidade, direção e posição desses indivíduos da população inicial são de grande importância.\\
 %
@@ -429,6 +435,8 @@ essa equação é necessária, pois para gerar um espaço de soluções $n \time
     space\_size = \lfloor \sqrt{\lfloor n^c \rceil} \rceil
 \end{equation}
 %
+
+
 Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 valores diferentes de coeficiente populacional que são:
 \begin{itemize}
     \item \code{coeficente\_populacional = $3$}: Gera um mapa de $50 \times 50$
@@ -437,11 +445,13 @@ Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 
 \end{itemize}
 
 Foram gerados 20 espaços de solução diferentes para cada um dos 3 coeficientes e cada um dos 4 cenários de problema diferentes que estão disponíveis no 
-\hyperref[apd:problem-instances]{Apendice \ref{apd:problem-instances}}, totalizando assim $240$ espaços de soluções diferentes.\\
-%
-Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatórios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.\\
-%
-Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binário.\\
+\hyperref[apd:problem-instances]{Apendice \ref{apd:problem-instances}}, totalizando assim $240$ espaços de soluções diferentes.
+
+
+Pela natureza variável do ambiente em nuvem e por se tratar de um algoritmo que utiliza fatores aleatórios, a execução de cada uma das 2 abordagens foi repetida 20 vezes para assim obter uma média mais precisa das soluções de cada algoritmo.
+
+
+Como foi descrito anteriormente, de modo a assegurar uma análise posterior mais detalhada, os dados gerados pelos algoritmos foram salvos em aquivo binário.
 Os dados salvos são a população inicial, o espaço de soluções, o número de rodadas, o histórico da variável $gBest$, o histórico da posição das partículas e as Soluções encontradas.
 %% 2 ::: Desenvolvimento
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -520,6 +530,8 @@ Na
     }
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 É possível ver que a abordagem dinâmica 
 apresentou em 
 um \textit{makespan} em média $1,16\%$ menor e com um
@@ -592,7 +604,9 @@ apresentou em
 um \textit{makespan} em média $4,07\%$ menor e com um
 desvio padrão $4,08\%$ menor e uma
 variância $7,83\%$ menor
-em relação à abordagem padrão.\\
+em relação à abordagem padrão.
+
+
 A porcentagem de melhora em relação ao PSO padrão se mostrou melhor na média de \textit{makespan} obtidos, porém foi menor nos valores de variância e de desvio padrão, isso parece estar relacionado ao tamanho do \textit{dataset} anterior ser pequeno, o que gera menos resultados possíveis e não existe muito espaço de melhora.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -660,7 +674,7 @@ apresentou em
 um \textit{makespan} em média $6,23\%$ menor e com um
 desvio padrão $10,38\%$ menor e uma
 variância $19,94\%$ menor
-em relação à abordagem padrão.\\
+em relação à abordagem padrão.
 Essa porcentagem monstra que a tendência de melhora é reforçada em \textit{datasets} maiores.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -727,7 +741,9 @@ apresentou em
 um \textit{makespan} em média $4,14\%$ menor e com um
 desvio padrão $12,06\%$ menor e uma
 variância $22,77\%$ menor
-em relação à abordagem padrão.\\
-Nesse caso vemos uma redução na melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variância. Porém, nesse caso é possível ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinâmica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
+em relação à abordagem padrão.
+
+
+Nesse caso vemos uma redução na melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variância. Porém, é possível ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinâmica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%
