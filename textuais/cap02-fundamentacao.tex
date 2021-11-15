@@ -75,6 +75,7 @@ Vários autores já classificaram diversas variações de problemas de escalonam
     
     \item \textbf{\textit{Flexible Job Shop:}} Uma extensão do \textit{Job Shop} onde as operações de cada \textit{job} podem ser executados em máquinas diferentes. Esse problema tem duas sub divisões:
     \begin{itemize}
+    \label{items:tfjsp-pfjsp}
     \item \textbf{\textit{Flexible Job Shop Total}}: Em que todas as maquinas podem executar todas as operações. 
     \item \textbf{\textit{Flexible Job Shop Parcial}}: Em que existem limitações para quais maquinas podem executar quais operações.
     \end{itemize}
@@ -89,7 +90,7 @@ Vários autores já classificaram diversas variações de problemas de escalonam
 Como citado anteriormente o \gls{jsp} é um problema de escalonamento de tarefas pertencente à classe de problemas NP-Hard.
 
 
-Como visto por \cite{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
+Como visto por \citeonline{Cheng1996} o problema de \textit{Job Shop} desperta muito interesse de pesquisadores por ser um problema com diversas aplicações no mundo real, e em vários cenários diferentes, como industria, computação e manufatura.\\
 %
 \indent De acordo com \cite{Cheng1996} o problema de \textit{Job Shop} consiste em $m$ máquinas distintas e $n$ \textit{jobs} diferentes entre si, sendo cada \textit{job} formado por diversas operações $O$ em uma ordem específica, e cada operação $O_{ij}$ tem seu respectivo tempo de execução.\\
 %
@@ -161,7 +162,9 @@ O \gls{fjsp} é uma extensão do problema de \gls{jsp} onde é permitido que uma
 \indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.
 
 
-\indent Como dito anteriormente, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.
+\indent Como abordado na
+\hyperref[items:tfjsp-pfjsp]{Seção \ref{items:tfjsp-pfjsp}}
+, existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.
 
 
 \indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.
@@ -279,9 +282,9 @@ sendo $k=[1, ..., m]$, onde $m$ é a quantidade de máquinas e $n$ a quantidade 
 %% 1.1.4.1 ::: Representações
 %% 1.1.4.1.2
 %\subsubsubsection{Solução}
-\indent Na 
+\indent A
 \hyperref[fig:plot-gantt]{Figura \ref{fig:plot-gantt}} 
-é possível ver um gráfico do tipo Diagrama de Gantt que representa uma solução para o problema representado na 
+apresenta um Diagrama de Gantt que representa uma solução para o problema representado na 
 \hyperref[fig:ex-instancia-problema-TFJSP]{Figura \ref{fig:ex-instancia-problema-TFJSP}}, 
 que se trata de um problema de tamanho $10\times10$ do benchmark de  \cite{Kacem2002}.\\
 %%%%%%%%%%%%%%%%%%
