@@ -1,7 +1,7 @@
 %% 2 ::: Desenvolvimento
 \chapter{Desenvolvimento}
 %% Interlúdio do [Desenvolvimento] %%
-    ...
+    Nesse capítulo são descritos os métodos e técnicas utilizadas no desenvolvimento tanto do algoritmo PSO com a nova abordagem proposta quanto da abstração para o problema de FJSP. Também são descritos os critérios de parada escolhidos e modo de execução e os resultados dos testes.
 %% Fim do Interlúdio do [Desenvolvimento] %%
 
 
@@ -173,6 +173,8 @@ conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{
 
 Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
 \hyperref[alg:generate-solution-space]{Pseudocódigo \ref{alg:generate-solution-space}}.
+Além disso, a implementação real em Python está no apêndice x desse trabalho.\\
+%% Todo - Apêndice
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}
 \caption{Pseudocódigo de geração do espaço de soluções}\label{alg:generate-solution-space}
@@ -215,9 +217,6 @@ Função \textbf{\textit{fill\_with\_random\_values}} que gera uma posição ini
 Função \textbf{\textit{evaluate\_value}} que faz o cálculo do valor de \textit{fitness} da atual posição e o compara com a variável $pBest$ e caso seja melhora, atualiza o $pBest$.
 %%
 Função \textbf{\textit{update\_position}} que faz a movimentação da partícula.\\
-\noindent A implementação de toda a classe de partícula está disponível no 
-\hyperref[apd:particule-class]{Apêndice \ref{apd:particule-class}}
-desse trabalho.\\
 %
 \indent Em implementações de código aberto como a já citada \textit{PySwarms}, também se utiliza uma representação de classe, porém sem nenhuma responsabilidade de cálculo de \textit{fitness}, atualização de posição ou de preenchimento de valores aleatórios na partícula.\\
 %
@@ -332,7 +331,8 @@ No código Python essa implementação é feita de maneira levemente diferente p
 \indent Então a posição atual da partícula é deduzido do valor médio entre $pBest$ e $gBest$, isso é feito para que calcular o vetor como se a posição atual da partícula fosse o ponto $[0,0]$ do mapa.\\
 Então somado com o vetor de inércia divido por um valor de significância para a inércia (Definido pelos parâmetros de configuração do algoritmo).\\
 %
-\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo.
+\indent No \hyperref[alg:mov-part]{Pseudocódigo \ref{alg:mov-part}} é possível ver a representação dessa função de cálculo, e a implementação desse método está disponível no apêndice x.
+%% TODO - apêndice
 \begin{algorithm}
     \caption{Pseudocódigo de movimentação de partícula}\label{alg:mov-part}
 \begin{algorithmic}
@@ -364,8 +364,7 @@ Já as funções utilizadas na geração dos indivíduos iniciais utilizam algun
 \indent Assim, como valores iniciais seguindo uma distribuição uniforme é observado uma geração de população inicial bem distribuída, dificultando o acontecimento de convergência prematura.\\
 %
 %
-Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial, cujo a implementação está no 
-\hyperref[apd:fun-gen-init-pop]{Apêndice \ref{apd:fun-gen-init-pop}}
+Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho utilizam a mesma função geradora de população inicial.
 %%% 
 \noindent Garantindo assim um ponto de comparação mais justo entre os algoritmos.
 %% 2 ::: Desenvolvimento
@@ -375,7 +374,7 @@ Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho 
 %%
 A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por fazer a execução e controle dos dados de análise.\\
 %
-Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula.
+Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula. A implementação esta disponível no apêndice x.\\ %todo apendice
 %
 %
 Como critério de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a última atualização do $gBest$ for a mais rodadas do que metade da quantidade de partículas, o algoritmo termina e o resultado é o $gBest$ atual.\\
@@ -594,7 +593,7 @@ um \textit{makespan} em média $4,07\%$ menor e com um
 desvio padrão $4,08\%$ menor e uma
 variância $7,83\%$ menor
 em relação à abordagem padrão.\\
-A porcentagem de melhora em relação ao PSO padrão se mostrou melhor na média de \textit{makespan} obtidos, porém foi menor nos valores de variancia e de desvio padrão, isso parece estar relaciodo ao tamanho do \textit{dataset} anterior ser pequeno, o que gera um menor numero de possiveis resultados e não existe muito espaço de melhora.
+A porcentagem de melhora em relação ao PSO padrão se mostrou melhor na média de \textit{makespan} obtidos, porém foi menor nos valores de variância e de desvio padrão, isso parece estar relacionado ao tamanho do \textit{dataset} anterior ser pequeno, o que gera menos resultados possíveis e não existe muito espaço de melhora.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -662,7 +661,7 @@ um \textit{makespan} em média $6,23\%$ menor e com um
 desvio padrão $10,38\%$ menor e uma
 variância $19,94\%$ menor
 em relação à abordagem padrão.\\
-Essa porcentagem monstra que a tentencia de melhora é reforçada em \textit{datasets} maiores.
+Essa porcentagem monstra que a tendência de melhora é reforçada em \textit{datasets} maiores.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -729,6 +728,6 @@ um \textit{makespan} em média $4,14\%$ menor e com um
 desvio padrão $12,06\%$ menor e uma
 variância $22,77\%$ menor
 em relação à abordagem padrão.\\
-Nesse caso vemos uma redução no melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variancia. Porém nesse caso é possivel ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinamica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
+Nesse caso vemos uma redução na melhora de comparado aos testes anteriores, porém continua a aumentar a redução do desvio padrão e da variância. Porém, nesse caso é possível ver que na \hyperref[plobD-freq-mk:c]{Figura \ref{plobD-freq-mk:c}} a abordagem dinâmica entrou soluções com um valor de \textit{makespan} de $17$ e $18$, valores que não foram encontrados pela abordagem padrão.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Fim do [Resultados] %%
