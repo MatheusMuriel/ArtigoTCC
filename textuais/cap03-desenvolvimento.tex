@@ -15,7 +15,7 @@ Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados 
 %
 %
 \indent Para que possibilitar uma análise de dados mais detalhada e a geração de gráficos para representação nesse trabalho, foram implementados no código pontos de salvamento de dados, para salvar em formato de binários do NumPy, utilizando a função \code{np.savedata}, as informações de execuções e de datasets.\\
-\indent Dentre esses dados estão o espaço de soluções gerado, a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
+\indent Dentre esses dados estão o espaço de soluções gerado, a quantidade de rodadas realizadas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
 %% Fim do Interlúdio do [Metodologia de Pesquisa] %%
 
 %% 2 ::: Desenvolvimento
@@ -69,7 +69,7 @@ Para trazer mais clareza ao código foi optado por criar algumas classes para a 
 
 \indent Como o PSO é um algoritmo estocástico, ou seja, seu resultado é fruto de eventos não previsíveis foi decidido que para obter uma média real dos desempenhos de cada algoritmo, em cada uma das 30 execuções será gerado um novo espaço de soluções e uma população inicial diferente.\\
 \indent E em cada uma dessas execuções será passado para cada um dos algoritmos uma \textit{deepcopy} do espaço de soluções e da população inicial, para que os diferentes algoritmos trabalhem com base nos mesmos dados iniciais, para assim tem uma análise mais justa.\\
-\indent Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas feitas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
+\indent Para que a análise dos dados possa ser feita mais detalhadamente, foram implementados alguns pontos de salvamento de dados, para salvar em arquivo texto as representações da população e do espaço de soluções gerados aleatoriamente, assim como a quantidade de rodadas realizadas, o histórico da variável $gBest$, o número de mudanças de $pBest$, o histórico de posição das partículas e as soluções finais encontradas.
 %
 %% Fim do [Design do Projeto] %%
     
@@ -378,7 +378,7 @@ Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho 
 %% 2.2.5
 \subsection{Algoritmos}
 %%
-A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por fazer a execução e controle dos dados de análise.\\
+A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por realizar a execução e controle dos dados de análise.\\
 %
 Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula. A implementação esta disponível no apêndice x.\\ %todo apendice
 %
@@ -459,7 +459,7 @@ Os dados salvos são a população inicial, o espaço de soluções, o número d
 Para avaliar as execuções dos algoritmos foram estabelecidos os seguintes critérios de análise:
 A partir das médias estatísticas das execuções, são utilizados como critérios de avaliação do algoritmo:
 \begin{itemize}
-\item Makespan final das soluções
+\item Makespan final das soluções.
 \end{itemize}
 
 \noindent E são parâmetros de análise:
