@@ -157,22 +157,16 @@ duas operações $O_{j,1} $ e $O_{j,2}$.
 
 \subsection{Problema de Job Shop Flexível — FJSP}
 O \gls{fjsp} é uma extensão do problema de \gls{jsp} onde é permitido que uma operação seja executada em mais de uma máquina. Então no momento de definir a ordem e a maquina de execução de cada \textit{job} as possibilidades de arranjo são muito maiores, o que aumenta a complexidade por se tratar de um problema exponencial.
-
-
-\indent De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.
+De um lado isso traz uma maior complexidade para o algoritmo, porém possibilita uma maior número de possíveis soluções e deixa o algoritmo mais flexível para encontrar melhores soluções. Mas por esse aumento de fatores a se considerar o \textit{Flexible Job Shop} é definido como uma extensão mais complexa do \textit{Job Shop}.
 
 
 \indent Como abordado na
 \hyperref[items:tfjsp-pfjsp]{Seção \ref{items:tfjsp-pfjsp}}
 , existem duas sub divisões do problema de \textit{FJSP}, sendo elas a \gls{pfjsp} se uma operação só pode ser processada por um certo sub conjunto de máquinas, ou \gls{tfjsp} caso uma operação possa ser processada por qualquer máquina.
-
-
-\indent E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.
+E para ambas as sub divisões do \textit{Flexible Job Shop} são aplicadas as mesmas restrições do \textit{Job Shop} com exceção da que diz que um \textit{job} não pode ser processado duas vezes em uma mesma maquina.
 
 
 As representações do \textit{Flexible Job Shop} são praticamente as mesma do \textit{Job Shop} com exceção da forma de representar o ambiente inicial do problema. 
-
-
 Devido a sua característica de ter uma maior possibilidade de alocações entre as máquinas e os \textit{jobs}, 
 %
 uma representação do de um problema de \textit{Flexible Job Shop} precisa definir quanto tempo cada maquina utilizaria para processar cada operação.
