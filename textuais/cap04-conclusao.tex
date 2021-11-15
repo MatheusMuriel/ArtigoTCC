@@ -1,2 +1,13 @@
-\chapter{Conclusão}
-%\lipsum[1]
+\chapter{Conclusão e Trabalhos Futuros}
+
+O FJSP é um problema complexo de análise combinatória e por isso já foram propostos diversas abordagens para conseguir uma solução, dentre essas abordagens está o algoritmo PSO, um algoritmo populacional bio inspirado que simula o comportamento de enxames de abelhas e bandos de aves para encontrar um objetivo em um espaço de soluções.
+Contudo, esse algoritmo pode acabar convergindo para um mínimo local e assim atingindo uma solução não ótima.
+
+
+Nesse trabalho foi proposto e implementado um componente dinâmico de cálculo de inércia na movimentação das partículas, com o objetivo de conseguir fazer as partículas escaparem desses mínimos locais. Essa nova abordagem foi testada em conjunto com a abordagem padrão do PSO 20 vezes em 20 espaços de soluções distintos em 5 \textit{datasets} de problemas diferentes, os mesmos utilizados nos \textit{benchmarks} de \citeonline{Kacem2002}.
+
+
+Os resultados apontam que houve em média uma redução de $3,90\%$ no tempo total de \textit{makespan} da solução, com um desvio padrão $16,63\%$ menor e com $33,76\%$ menos variância. Indicando que essa abordagem dinâmica trouxe melhores resultados e com uma menor variação, tornando assim esses bons resultados mais frequentes.
+
+
+A partir desses resultados é possível indicar trabalhos futuros que adicionem novos mecanismos dinâmicos em variáveis de direção das partículas, ou que mostrem a variância desse resultado em espaços de soluções com diferentes padrões.
