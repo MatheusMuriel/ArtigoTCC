@@ -117,7 +117,7 @@ na qual os valores mais acima e mais escuros tem um valor de \textit{fitness} ma
     \includegraphics[width=\textwidth]{assets/surfaceplot.png}
 \end{figure}
 
-Esses gráficos se mostraram uteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
+Esses gráficos se mostraram úteis ao decorrer do desenvolvimento deste trabalho, servindo para validar detectar erros na função de inicialização do espaço de soluções.\\
 %% Fim do [Gráficos de Analise] %%
 %% 2 ::: Desenvolvimento
 %% 2.2 ::: Arquitetura
@@ -426,7 +426,7 @@ Foram utilizados como parâmetros de configuração:
     \item \code{coeficente\_populacional}: coeficiente entre a quantidade de partículas e o tamanho do espaço de soluções
 \end{itemize}
 %
-O tamanho do espaço de soluções é calculado pela raiz do arrendamento para baixo do tamanho da população elevado ao coeficiente populacional, representado pela equação 
+O tamanho do espaço de soluções é calculado pela raiz quadrada do arrendamento para baixo do tamanho da população elevado ao coeficiente populacional, representado pela equação 
 \hyperref[eq:space-size]{Equação \ref{eq:space-size}}, 
 essa equação é necessária, pois para gerar um espaço de soluções $n \times n$ pois para isso o número precisa ser uma raiz quadrada perfeita.
 %
@@ -439,8 +439,8 @@ essa equação é necessária, pois para gerar um espaço de soluções $n \time
 
 Para essa analise foram usados os valores de \code{population\_size = 30} e o 3 valores diferentes de coeficiente populacional que são:
 \begin{itemize}
-    \item \code{coeficente\_populacional = $3$}: Gera um mapa de $50 \times 50$
-    \item \code{coeficente\_populacional = $5$}: Gera um mapa de $70 \times 70$
+    \item \code{coeficente\_populacional = $2.3$}: Gera um mapa de $50 \times 50$
+    \item \code{coeficente\_populacional = $2.5$}: Gera um mapa de $70 \times 70$
     \item \code{coeficente\_populacional = $2.645$}: Gera um mapa de $90 \times 90$
 \end{itemize}
 
