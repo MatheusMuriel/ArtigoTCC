@@ -149,7 +149,7 @@ Como o PSO se baseia na média local e global, se houver mais de um mínimo loca
 \indent Um ponto importante percebido na implementação é como sera inicializado o \textit{array} onde será armazenado o espaço de soluções.\\
 \indent O NumPy disponibiliza trés métodos de inicialização para um novo \textit{array} sem um valor de preenchimento, dos quais cada um demonstrou um problema diferente para a implementação. Dentre eles: 
 \begin{itemize}
-    \item \textit{numpy.zeros}: ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos. Por não existir uma maquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
+    \item \textit{numpy.zeros}: ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$0$", devido ao processo de embaralhamento das operações, o algoritmo pode acabar gerando resultados errôneos. Por não existir uma máquina $M_0$ algumas operações não eram consideradas no resultado, e devido à falta de algumas operações, a solução em questão tinha um valor de \textit{fitness} menor, o que tendia a fazer essa solução errônea a melhor.
 
     \item \textit{numpy.ones}: ao inicializar o \textit{array} com todos os valores preenchidos com o valor "$1$", o algoritmo gerava soluções que tendiam a sobre carregar a máquina $M_1$ e assim os resultados finais tendiam a ter um valor de \textit{fitness} mais alto.
 
@@ -185,10 +185,10 @@ Além disso, a implementação real em Python está no apêndice x desse trabalh
   \State solução $\gets$ lista vazia
   \State embaralhar(operações)
   \State embaralhar(jobs)
-  \State embaralhar(maquinas)
+  \State embaralhar(máquinas)
   \State solução[operações] $\gets$ remover ultimo elemento(operações)
   \State solução[jobs] $\gets$ remover ultimo elemento(jobs)
-  \State solução[maquinas] $\gets$ remover ultimo elemento(maquinas)
+  \State solução[máquinas] $\gets$ remover ultimo elemento(máquinas)
   \State espaço soluções $\gets$ adicionar(solução)
 \EndWhile
 \end{algorithmic}
@@ -482,7 +482,7 @@ Todos esses \textit{datasets} foram retirados dos \textit{benchmarks} de \cite{K
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema A}
-O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 maquinas, sendo esse o menor dos \textit{datasets} analisados.
+O problema A tem um tamanho $4 \times 5$, ou seja, com 4 \textit{jobs} e 5 máquinas, sendo esse o menor dos \textit{datasets} analisados.
 Na \hyperref[fig:plobA-freq-mk]{Figura \ref{fig:plobA-freq-mk}} é possível perceber que o componente dinâmico obteve uma pequena tendência a obter um valor menor de \textit{makespan}, ou seja, atingir um melhor resultado, principalmente nas execuções com um espaço de soluções maior, como na \hyperref[plobA-freq-mk:c]{Figura \ref{plobA-freq-mk:c}}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[!htb]
@@ -546,7 +546,7 @@ em relação à abordagem padrão.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema B}
-O problema B tem um tamanho $10 \times 7$, ou seja, com 10 \textit{jobs} e 7 maquinas, 
+O problema B tem um tamanho $10 \times 7$, ou seja, com 10 \textit{jobs} e 7 máquinas, 
 sendo esse o segundo menor dos \textit{datasets} analisados.
 Na \hyperref[fig:plobB-freq-mk]{Figura \ref{fig:plobB-freq-mk}} 
 é possível perceber que o componente dinâmico obteve uma 
@@ -616,7 +616,7 @@ A porcentagem de melhora em relação ao PSO padrão se mostrou melhor na média
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema C}
-O problema C tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
+O problema C tem um tamanho $10 \times 10$, ou seja, com 10 \textit{jobs} e 10 máquinas, 
 sendo esse o segundo maior dos \textit{datasets} analisados.
 Na \hyperref[fig:plobC-freq-mk]{Figura \ref{fig:plobC-freq-mk}} 
 %é possível perceber que o componente dinâmico obteve uma 
@@ -683,7 +683,7 @@ Essa porcentagem monstra que a tendência de melhora é reforçada em \textit{da
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problema D}
-O problema D tem um tamanho $15 \times 10$, ou seja, com 10 \textit{jobs} e 10 maquinas, 
+O problema D tem um tamanho $15 \times 10$, ou seja, com 10 \textit{jobs} e 10 máquinas, 
 sendo esse o maior dos \textit{datasets} analisados.
 Na \hyperref[fig:plobD-freq-mk]{Figura \ref{fig:plobD-freq-mk}} 
 %é possível perceber que o componente dinâmico obteve uma 
