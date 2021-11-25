@@ -9,7 +9,7 @@
 %% 2.1
 \section{Metodologia de Pesquisa}
 %% Interlúdio do [Metodologia de Pesquisa] %%
-Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$. Os problemas de teste podem ser encontrados nos apêndices do trabalho.\\
+Para os testes deste trabalho estão sendo usados os mesmo problemas utilizados por \cite{Kacem2002}, e já são largamente usados na literatura. Sendo representados por $[j, o, m]$ em que $j$ é a quantidade de \textit{jobs}, $o$ é a quantidade de operações e $m$ a quantidade de máquinas. Para observar o comportamento do algoritmo em diversos cenários foram escolhidos problemas de tamanhos variados, sendo eles $[4, 12, 5]$, $[10, 29, 7]$, $[10, 30, 10]$ e $[15, 56, 10]$.\\
 %
 \indent Os algoritmos foram executados no ambiente de nuvem Google Colab Code sendo executado no motor \textit{Python 3 Google Compute Engine Backend}. Para a execução foi utilizado um \textit{runtime} com processadores comuns (CPU) e 12 Gigabytes de memória RAM.\\
 %
@@ -172,9 +172,7 @@ conforme demonstrado no Gráfico da \hyperref[fig:distrib-uniforme]{Figura \ref{
 %% Inicialização do Array
 
 Após as análises citadas acima foi feito uma modelagem e desenvolvido para esse trabalho o algoritmo de inicialização do espaço de soluções representado pelo 
-\hyperref[alg:generate-solution-space]{Pseudocódigo \ref{alg:generate-solution-space}}.
-Além disso, a implementação real em Python está no apêndice x desse trabalho.\\
-%% Todo - Apêndice
+\hyperref[alg:generate-solution-space]{Pseudocódigo \ref{alg:generate-solution-space}}.\\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{algorithm}
 \caption{Pseudocódigo de geração do espaço de soluções}\label{alg:generate-solution-space}
@@ -380,7 +378,7 @@ Sendo assim, todas as variações do algoritmo PSO implementadas nesse trabalho 
 %%
 A execução dos algoritmos é chamada pela classe principal de modelagem do problema, responsável por realizar a execução e controle dos dados de análise.\\
 %
-Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula. A implementação esta disponível no apêndice x.\\ %todo apendice
+Na classe do PSO estão as funções da condição de parada, movimento e \textit{evaluete} do \textit{fitness} da partícula\\
 %
 %
 Como critério de parada para o algoritmo foi utilizado o fator de atualização do $gBest$. Quando a última atualização do $gBest$ for a mais rodadas do que metade da quantidade de partículas, o algoritmo termina e o resultado é o $gBest$ atual.\\
