@@ -424,13 +424,13 @@ Foram utilizados como parâmetros de configuração:
     \item \code{coeficente\_populacional}: coeficiente entre a quantidade de partículas e o tamanho do espaço de soluções
 \end{itemize}
 %
-O tamanho do espaço de soluções é calculado pela raiz quadrada do arrendamento para baixo do tamanho da população elevado ao coeficiente populacional, representado pela equação 
+O tamanho do espaço de soluções é calculado pela raiz quadrada do arrendamento do tamanho da população elevado ao coeficiente populacional, representado pela equação 
 \hyperref[eq:space-size]{Equação \ref{eq:space-size}}, 
 essa equação é necessária, pois para gerar um espaço de soluções $n \times n$ pois para isso o número precisa ser uma raiz quadrada perfeita.
 %
 \begin{equation} 
     \label{eq:space-size}
-    space\_size = \lfloor \sqrt{\lfloor population\_size^c \rceil} \rceil
+    space\_size = \lfloor \sqrt{\lfloor population\_size^coeficente\_popualcional \rceil} \rceil
 \end{equation}
 %
 
